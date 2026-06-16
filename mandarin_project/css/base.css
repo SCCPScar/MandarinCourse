@@ -1,0 +1,49 @@
+/*
+ * base.css — Variáveis, reset, tipografia, layout, nav, responsivo
+ * 学中文 — Curso Completo de Mandarim
+ */
+
+
+  :root {
+    --red: #C0392B; --red-light: #FADBD8; --red-dark: #922B21;
+    --gold: #D4AC0D; --gold-light: #FEF9E7; --gold-dark: #9A7D0A;
+    --ink: #1A1A2E; --ink-mid: #2C3E50; --ink-light: #566573;
+    --paper: #FDFCF8; --paper-mid: #F4F1E8; --paper-dark: #E8E0CC;
+    --white: #FFFFFF; --green: #1E8449; --green-light: #D5F5E3;
+    --blue: #1A5276; --blue-light: #D6EAF8;
+    --font-main: 'Inter', sans-serif;
+    --font-chinese: 'Noto Sans SC', sans-serif;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-hover: 0 6px 24px rgba(0,0,0,0.14);
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-main);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--ink);
+    color: white;
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+    border-bottom: 3px solid var(--red);
+  }
+  .nav-logo { font-size: 22px; font-family: var(--font-chinese); font-weight: 700; color: var(--gold); letter-spacing: 2px; }
+  .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75); text-decoration: none;
+    padding: 6px 10px; border-radius: 6px; font-size: 13px; font-weight: 500;
+    transition: all 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { background: var(--red); color: white; }
+
