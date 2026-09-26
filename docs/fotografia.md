@@ -18,7 +18,7 @@ Uma foto só entra se cumprir **todas** estas condições:
 
 - **Unsplash** e **Pexels**: uso gratuito, também comercial, sem pedir autorização. **Creditamos sempre o fotógrafo**, por ser boa prática e por respeito. Não se podem revender as fotos tal como estão.
 - Não usar fotos do Google Imagens nem de redes sociais sem licença explícita.
-- Cada foto escolhida é registada em `docs/fotos-creditos.csv` (ID, URL, fotógrafo, licença, data).
+- Cada foto escolhida é registrada em `docs/fotos-creditos.csv` (ID, URL, fotógrafo, licença, data).
 
 ## Especificações técnicas
 
@@ -27,8 +27,8 @@ Uma foto só entra se cumprir **todas** estas condições:
 | Capa de cidade / hero | 16:9 (recorte 4:5 em mobile) | 1600px | AVIF + WebP de reserva | 250 KB |
 | Cabeçalho de unidade | 3:2 | 1200px | AVIF + WebP de reserva | 150 KB |
 
-- Carregar com `loading="lazy"`, exceto a foto do primeiro ecrã.
-- Pôr sempre um gradiente escuro por baixo do texto (contraste mínimo AA).
+- Carregar com `loading="lazy"`, exceto a foto do primeira tela.
+- Colocar sempre um gradiente escuro por baixo do texto (contraste mínimo AA).
 - Escrever `alt` em português a descrever a cena (por exemplo, "Banca de noodles à noite no bairro muçulmano de Xi'an").
 
 ## Lista de fotos
@@ -39,17 +39,18 @@ As pesquisas também funcionam no Pexels (`https://www.pexels.com/search/<termos
 
 | ID | Onde aparece | O que mostrar | Pesquisa |
 |---|---|---|---|
-| G1 | Hero da página inicial | Mãos a servir chá numa chávena pequena, com vapor e luz quente | [chinese tea pouring](https://unsplash.com/s/photos/chinese-tea-pouring) |
-| G2 | Onboarding | Pincel a escrever caracteres em papel | [chinese calligraphy brush](https://unsplash.com/s/photos/chinese-calligraphy-brush) |
-| G3 | Página "Sobre" | Mesa com cadernos, chá e alguém a estudar | [studying tea notebook](https://unsplash.com/s/photos/studying-tea-notebook) |
+| G1 | Hero da página inicial | Mãos servindo chá numa xícara pequena, com vapor e luz quente | [chinese tea pouring](https://unsplash.com/s/photos/chinese-tea-pouring) |
+| G2 | Onboarding | Pincel escrevendo caracteres em papel | [chinese calligraphy brush](https://unsplash.com/s/photos/chinese-calligraphy-brush) |
+| G3 | Página "Sobre" | Mesa com cadernos, chá e alguém estudando | [studying tea notebook](https://unsplash.com/s/photos/studying-tea-notebook) |
 
 ### Decisões
 
 | ID | Estado | Notas |
 |---|---|---|
-| G1 | ❌ Rejeitada | A candidata era Unsplash+ (paga) e mostrava chá turco. Falta escolher outra. |
+| G1 | ✅ Aprovada (26/09/2026) | **Duas fotos, uma por tamanho de tela** (direção de arte com `<picture>`, troca em 768px). **Computador:** Yang Louie, `photo-1601366029950-0640bbbb8ce6`, recorte horizontal `rect=0,520,3456,2041`, com o texto **à direita** sobre um degradê escuro (layout 3A). O degradê também cobre o rosto parcial de uma segunda pessoa na borda direita, que não pode ficar visível. **Celular:** Joshua Fernandez, `photo-1627491362358-6d437e65a3bc`, recorte fechado nas taças (`crop=focalpoint&fp-x=0.42&fp-y=0.5&fp-z=1.35`), que tira a tampa de plástico azul. Arquivos: `mandarin_project/img/fotos/hero-desktop-{1280,1920}` e `hero-mobile-{390,780}`, em `.avif` e `.webp`. |
+| — | Reservadas | Candidatas não usadas no hero, guardadas para as cápsulas culturais: ORIENTO `photo-1531970227416-f0cddeb1f748` (mesa comprida), ORIENTO `photo-1531364380693-8f16a988e6d3` (mesa vista de cima) e o recorte vertical 3B da Yang Louie. |
 | G2 | ❌ Rejeitada | A candidata era Unsplash+ (paga) e os caracteres não eram legíveis. Falta escolher outra. |
-| G3 | ✅ Aprovada (26/09/2026) | Bubble tea, `photo-1639927663411-35f23bb792b7`. Usada **só na vertical 4:5, ao lado do texto** (layout A). Na horizontal perde a tampa e o logótipo da marca fica em destaque, por isso não serve para faixas largas. Tem caracteres tradicionais (鮮) e uma marca visível, o que é aceitável numa página secundária. Ficheiros: `mandarin_project/img/fotos/g3-sobre-{640,960}.{avif,webp}`. Fotógrafo: **Kevin Canlas** (Unsplash). |
+| G3 | ✅ Aprovada (26/09/2026) | Bubble tea, `photo-1639927663411-35f23bb792b7`. Usada **só na vertical 4:5, ao lado do texto** (layout A). Na horizontal perde a tampa e o logotipo da marca fica em destaque, por isso não serve para faixas largas. Tem caracteres tradicionais (鮮) e uma marca visível, o que é aceitável numa página secundária. Ficheiros: `mandarin_project/img/fotos/g3-sobre-{640,960}.{avif,webp}`. Fotógrafo: **Kevin Canlas** (Unsplash). |
 
 ### 1. Pequim 北京
 
@@ -57,7 +58,7 @@ As pesquisas também funcionam no Pexels (`https://www.pexels.com/search/<termos
 |---|---|---|---|
 | BJ0 | Capa da cidade | Hutong com bicicletas e portas tradicionais | [beijing hutong](https://unsplash.com/s/photos/beijing-hutong) |
 | BJ1 | 1.1 Pinyin e tons | Caderno quadriculado (田字格) com caracteres escritos | [chinese character practice](https://unsplash.com/s/photos/chinese-character-practice) |
-| BJ2 | 1.2 Olá, eu sou… | Rua de Pequim com pessoas a passar | [beijing street](https://unsplash.com/s/photos/beijing-street) |
+| BJ2 | 1.2 Olá, eu sou… | Rua de Pequim com pessoas passando | [beijing street](https://unsplash.com/s/photos/beijing-street) |
 | BJ3 | 1.3 Números e família | Mesa de jantar redonda com vários pratos | [chinese family dinner](https://unsplash.com/s/photos/chinese-family-dinner) |
 | BJ4 | 1.4 Datas e horas | Torre do Tambor (鼓楼), que antigamente marcava as horas da cidade | [beijing drum tower](https://unsplash.com/s/photos/beijing-drum-tower) |
 
@@ -69,24 +70,24 @@ As pesquisas também funcionam no Pexels (`https://www.pexels.com/search/<termos
 | XA1 | 2.1 Na banca de comida | Comida de rua no bairro muçulmano | [xian muslim quarter food](https://unsplash.com/s/photos/xian-muslim-quarter-food) |
 | XA2 | 2.2 Quanto custa? | Banca de mercado com preços escritos | [chinese market stall](https://unsplash.com/s/photos/chinese-market-stall) |
 | XA3 | 2.3 Onde fica? | Torre do Sino, no centro da cidade, com as ruas à volta | [xian bell tower](https://unsplash.com/s/photos/xian-bell-tower) |
-| XA4 | 2.4 Pagar e planear | Pagamento com QR code no telemóvel | [qr code payment china](https://unsplash.com/s/photos/qr-code-payment-china) |
+| XA4 | 2.4 Pagar e planear | Pagamento com QR code no celular | [qr code payment china](https://unsplash.com/s/photos/qr-code-payment-china) |
 
 ### 3. Chengdu 成都
 
 | ID | Onde aparece | O que mostrar | Pesquisa |
 |---|---|---|---|
 | CD0 | Capa da cidade | Casa de chá ao ar livre, com cadeiras de bambu | [chengdu teahouse](https://unsplash.com/s/photos/chengdu-teahouse) |
-| CD1 | 3.1 A minha rotina | Metro ou rua de manhã, com pessoas a caminho do trabalho | [china subway morning](https://unsplash.com/s/photos/china-subway-morning) |
+| CD1 | 3.1 Minha rotina | Metrô ou rua de manhã, com pessoas a caminho do trabalho | [china subway morning](https://unsplash.com/s/photos/china-subway-morning) |
 | CD2 | 3.2 Gostos e tempo livre | Mesa de mahjong | [mahjong](https://unsplash.com/s/photos/mahjong) |
 | CD3 | 3.3 Convites e planos | Hot pot (火锅) partilhado entre amigos | [sichuan hot pot](https://unsplash.com/s/photos/sichuan-hot-pot) |
-| CD4 | 3.4 Tempo e mensagens | Rua à chuva, com guarda-chuvas e placas em chinês | [china rain street umbrella](https://unsplash.com/s/photos/china-rain-street-umbrella) |
+| CD4 | 3.4 Tempo e mensagens | Rua na chuva, com guarda-chuvas e placas em chinês | [china rain street umbrella](https://unsplash.com/s/photos/china-rain-street-umbrella) |
 
 ### 4. Guilin 桂林
 
 | ID | Onde aparece | O que mostrar | Pesquisa |
 |---|---|---|---|
 | GL0 | Capa da cidade | Rio Li com montanhas cársicas | [li river guilin](https://unsplash.com/s/photos/li-river-guilin) |
-| GL1 | 4.1 Bilhetes e comboios | Comboio de alta velocidade na estação | [china high speed train](https://unsplash.com/s/photos/china-high-speed-train) |
+| GL1 | 4.1 Passagens e trens | Trem de alta velocidade na estação | [china high speed train](https://unsplash.com/s/photos/china-high-speed-train) |
 | GL2 | 4.2 No hotel | Pousada ou receção em Yangshuo | [yangshuo guesthouse](https://unsplash.com/s/photos/yangshuo-guesthouse) |
 | GL3 | 4.3 Descrever lugares | Paisagem de Yangshuo com arrozais e montanhas | [yangshuo landscape](https://unsplash.com/s/photos/yangshuo-landscape) |
 | GL4 | 4.4 Emergências | Fachada de farmácia com cruz verde e texto chinês | [chinese pharmacy](https://unsplash.com/s/photos/chinese-pharmacy) |
@@ -115,5 +116,5 @@ As pesquisas também funcionam no Pexels (`https://www.pexels.com/search/<termos
 
 1. Para cada ID, a família escolhe **2 candidatas** e cola os links numa lista.
 2. Na revisão escolhe-se 1 por ID, com base nas regras de seleção.
-3. As fotos são otimizadas (redimensionar e converter para AVIF/WebP) e registadas em `docs/fotos-creditos.csv`.
+3. As fotos são otimizadas (redimensionar e converter para AVIF/WebP) e registradas em `docs/fotos-creditos.csv`.
 4. Todos os créditos aparecem numa página "Créditos" do site.

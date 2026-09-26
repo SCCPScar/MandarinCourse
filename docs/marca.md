@@ -8,24 +8,28 @@
 
 - A palavra portuguesa "chá" vem do chinês 茶, trazida pelo comércio português através de Macau. É a primeira palavra em mandarim que qualquer lusófono já conhece.
 - A "hora do chá" é a metáfora da sessão diária curta.
-- Domínios livres à data da verificação (25/09/2026): `chamandarim.com`, `chamandarim.pt`.
-- **Pendente:** pesquisar se o nome está registado como marca no INPI (Portugal) e no EUIPO (UE), classe 41 (educação).
+- Domínios livres na data da verificação (25/09/2026): `chamandarim.com`, `chamandarim.pt`.
+- **Pendente:** pesquisar se o nome está registrado como marca no INPI (Portugal) e no EUIPO (UE), classe 41 (educação).
 
-Slogan: *Aprende mandarim ao teu ritmo. De graça, para sempre.*
+Slogan: *Aprenda mandarim no seu ritmo. De graça, para sempre.*
 
-## Logótipo
+## Idioma
+
+**Todo o site é escrito em português do Brasil (pt-BR)**: interface, lições, mensagens e documentação. Trate o aluno por "você" e use o vocabulário brasileiro (celular, tela, trem, passagem, arquivo…). Os caracteres chineses usam a escrita **simplificada**, e a romanização é o **pinyin** com as marcas de tom. As regras legais seguem **Portugal e a UE** (RGPD), onde o projeto é desenvolvido.
+
+## Logotipo
 
 - **Símbolo:** um carimbo chinês (印章) vermelho, com cantos arredondados (raio de 20% do lado) e rotação de −4°. Tem o caractere 茶 em branco, com traço de pincel (fonte Ma Shan Zheng).
-- **Logótipo completo:** o carimbo + a palavra "chá" em Bricolage Grotesque ExtraBold, com "MANDARIM" por baixo em versaletes espaçados.
+- **Logotipo completo:** o carimbo + a palavra "chá" em Bricolage Grotesque ExtraBold, com "MANDARIM" por baixo em versaletes espaçados.
 - **Variantes:** favicon (só o carimbo, 32px) e versão para fundo escuro.
-- **Pendente:** converter o 茶 em vetor (paths SVG), para o logótipo não depender da fonte.
+- **Pendente:** converter o 茶 em vetor (paths SVG), para o logotipo não depender da fonte.
 
 ## Cores
 
 | Token | Nome | Claro | Escuro | Uso |
 |---|---|---|---|---|
 | `--jade` | Jade 玉 | `#0E7C66` | `#3DBE9C` | Cor principal: botões de ação, progresso, respostas certas |
-| `--seal` | Carimbo 朱砂 | `#E0442E` | `#F0553D` | Logótipo, streak, carimbos. **Nunca é usado para erros** |
+| `--seal` | Carimbo 朱砂 | `#E0442E` | `#F0553D` | Logotipo, streak, carimbos. **Nunca é usado para erros** |
 | `--seal-text` | Carimbo (texto) | `#C8361F` | `#FF7A64` | Texto vermelho pequeno (contraste AA) |
 | `--gold` | Ouro 金 | `#E8A317` | `#F2B83A` | Conquistas. Só como fundo, com texto escuro por cima |
 | `--plum` | Ameixa 梅 | `#A8325E` | `#E0679A` | Resposta errada, sempre com o ícone ✗ |
@@ -49,11 +53,11 @@ As cores dos tons são iguais em todo o site. Servem para colorir o pinyin, os f
 
 ## Tipografia
 
-Todas as fontes têm licença SIL Open Font License e são **alojadas no próprio site**, sem Google Fonts por CDN (RGPD).
+Todas as fontes têm licença SIL Open Font License e são **hospedadas no próprio site**, sem Google Fonts por CDN (RGPD).
 
 | Fonte | Função |
 |---|---|
-| Bricolage Grotesque | Títulos e logótipo |
+| Bricolage Grotesque | Títulos e logotipo |
 | Lexend | Texto e interface |
 | Noto Sans SC | Caracteres chineses |
 | Ma Shan Zheng | Só no carimbo |
@@ -63,18 +67,18 @@ Todas as fontes têm licença SIL Open Font License e são **alojadas no própri
 | Momento | Duração |
 |---|---|
 | Hover e press de botões | 120–150 ms |
-| Resposta certa (pop) e errada (abanão) | 320 ms |
+| Resposta certa (pop) e errada (tremida) | 320 ms |
 | Virar o flashcard | 450 ms |
 | Carimbo no passaporte | 420 ms |
-| Mudar de ecrã | 200 ms |
+| Mudar de tela | 200 ms |
 
 Proibido: confetes, partículas, animações em loop, elementos que piscam, som automático. É obrigatório respeitar `prefers-reduced-motion`.
 
 ## Layout
 
 - Largura máxima de 1120px e espaçamento em múltiplos de 4 (4, 8, 12, 16, 24, 32, 48, 64).
-- O primeiro ecrã mostra sempre a próxima ação, a meta do dia e o progresso.
-- No máximo 1 destaque forte (foto ou cor sólida) por ecrã.
+- A primeira tela mostra sempre a próxima ação, a meta do dia e o progresso.
+- No máximo 1 destaque forte (foto ou cor sólida) por tela.
 - Fundo com quadrícula discreta inspirada no 田字格.
 
 Estudo visual completo (com demonstrações interativas): https://claude.ai/artifact/3QLat173XmEtcJ7YmJsDTG

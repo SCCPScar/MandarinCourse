@@ -1,8 +1,8 @@
 /**
  * ai.js
- * Ponto ÚNICO de contacto com a IA (tutor, dicionário, conversação, feedback de pronúncia).
+ * Ponto ÚNICO de contato com a IA (tutor, dicionário, conversação, feedback de pronúncia).
  *
- * Porque um ficheiro só? Hoje o site chama a API diretamente do browser, o que só funciona
+ * Por que um arquivo só? Hoje o site chama a API diretamente do browser, o que só funciona
  * dentro do Claude.ai. Quando fizermos o servidor (backend), muda-se APENAS a função askClaude
  * para chamar /api/... e todas as ferramentas passam a funcionar.
  * 学中文 — Curso Completo de Mandarim
@@ -10,7 +10,7 @@
 
 const AI_MODEL = 'claude-sonnet-4-6';
 const AI_UNAVAILABLE_MSG =
-  'A IA ainda não está disponível neste site: falta ligar o servidor (backend). ' +
+  'A IA ainda não está disponível neste site: falta configurar o servidor (backend). ' +
   'As outras ferramentas funcionam normalmente.';
 
 /**

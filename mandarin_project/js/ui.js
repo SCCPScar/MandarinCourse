@@ -32,7 +32,7 @@ window.addEventListener('scroll', () => {
   else if (typeof ChaNav !== 'undefined') document.title = ChaNav.pageTitle();
 }, {passive: true});
 
-// (O menu do telemóvel está agora em js/nav.js)
+// (O menu do celular agora fica em js/nav.js)
 
 // ═══════════════════════════════════════════════════════
 // ⌨️ KEYBOARD SHORTCUTS
@@ -142,11 +142,11 @@ function openDailyModal() {
   const sessionWords = [...dueWords, ...newWords];
 
   const steps = [
-    { icon:'🔥', title:`Streak: ${streak} dia${streak!==1?'s':''}`, desc: streak>0 ? `Mantém o ritmo! Já estudas há ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}.` : 'Começa hoje e constrói o teu streak!', action: null },
-    { icon:'📚', title:'Revisão SRS', desc: dueWords.length > 0 ? `Tens ${dueWords.length} palavra${dueWords.length!==1?'s':''} para rever hoje:` : 'Nenhuma palavra para rever hoje! Aprende palavras novas primeiro.', words: dueWords },
-    { icon:'✨', title:'Palavras Novas', desc: newWords.length > 0 ? `Aprende ${newWords.length} palavra${newWords.length!==1?'s':''} nova${newWords.length!==1?'s':''} hoje:` : 'Excelente! Já aprendeste todas as palavras disponíveis.', words: newWords },
-    { icon:'🎤', title:'Praticar Pronúncia', desc: 'Vai para a secção de Funcionalidades → Pronúncia e pratica a gravação de 2-3 frases.', action: 'praticar.html#features' },
-    { icon:'🤖', title:'Tutor IA', desc: 'Faz uma pergunta ao tutor IA sobre mandarim ou pede-lhe para criar uma frase de prática.', action: 'praticar.html#features' },
+    { icon:'🔥', title:`Streak: ${streak} dia${streak!==1?'s':''}`, desc: streak>0 ? `Mantenha o ritmo! Você já estuda há ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}.` : 'Comece hoje e construa o seu streak!', action: null },
+    { icon:'📚', title:'Revisão SRS', desc: dueWords.length > 0 ? `Você tem ${dueWords.length} palavra${dueWords.length!==1?'s':''} para revisar hoje:` : 'Nenhuma palavra para revisar hoje! Aprenda palavras novas primeiro.', words: dueWords },
+    { icon:'✨', title:'Palavras Novas', desc: newWords.length > 0 ? `Aprenda ${newWords.length} palavra${newWords.length!==1?'s':''} nova${newWords.length!==1?'s':''} hoje:` : 'Excelente! Você já aprendeu todas as palavras disponíveis.', words: newWords },
+    { icon:'🎤', title:'Praticar Pronúncia', desc: 'Vá até a seção Funcionalidades → Pronúncia e pratique a gravação de 2 ou 3 frases.', action: 'praticar.html#features' },
+    { icon:'🤖', title:'Tutor IA', desc: 'Faça uma pergunta ao tutor IA sobre mandarim ou peça para ele criar uma frase de prática.', action: 'praticar.html#features' },
   ];
 
   const html = steps.map((s,i) => `
@@ -224,7 +224,7 @@ function updateStreakReal() {
   const banner = document.getElementById('streak-text');
   if (banner) {
     if (streak >= 1) {
-      banner.innerHTML = `<span class="streak-fire">🔥</span> ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}! Continua assim!`;
+      banner.innerHTML = `<span class="streak-fire">🔥</span> ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}! Continue assim!`;
       document.getElementById('streak-banner').style.display = '';
     }
   }
@@ -249,10 +249,10 @@ function generateShareCard() {
   `;
   const text = `Aprendi ${count} palavras em mandarim! 🇨🇳🔥 ${streak} dias de estudo seguidos. #Mandarim #学中文`;
   if (navigator.share) {
-    navigator.share({ title:'O meu progresso em Mandarim', text });
+    navigator.share({ title:'Meu progresso em mandarim', text });
   } else {
     navigator.clipboard?.writeText(text);
-    showToast('📋 Texto copiado! Cola nas redes sociais.');
+    showToast('📋 Texto copiado! Cole nas redes sociais.');
   }
 }
 

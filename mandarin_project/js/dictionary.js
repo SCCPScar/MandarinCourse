@@ -20,7 +20,7 @@ Respond ONLY with valid JSON no markdown:
 If English give Chinese. Up to 4 entries.`}]});
     let parsed;
     try { parsed=JSON.parse(raw.replace(/```json|```/g,'').trim()); }
-    catch(e){ throw new Error('A resposta do dicionário veio num formato inesperado. Tenta outra vez.'); }
+    catch(e){ throw new Error('A resposta do dicionário veio num formato inesperado. Tente de novo.'); }
     dictEntries=(Array.isArray(parsed.entries)?parsed.entries:[]).filter(e=>e&&e.simplified).map(e=>({
       simplified:String(e.simplified), traditional:String(e.traditional||e.simplified),
       pinyin:String(e.pinyin||''), definitions:Array.isArray(e.definitions)?e.definitions.map(String):[]
@@ -30,7 +30,7 @@ If English give Chinese. Up to 4 entries.`}]});
   }catch(err){r.innerHTML=`<p style="color:var(--red);font-size:13px">⚠️ ${esc(err.message)}</p>`;}
 }
 
-// Guarda uma entrada do dicionário no caderno
+// Salva uma entrada do dicionário no caderno
 function saveDictEntry(i,btn){
   const e=dictEntries[i];if(!e)return;
   saveNb(e.simplified,e.pinyin,e.definitions[0]||'',btn);

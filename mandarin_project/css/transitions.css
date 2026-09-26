@@ -12,7 +12,7 @@
   min-height: calc(100vh - var(--nav-height));
 }
 
-/* Caixa do tamanho do ecrã que segura uma página durante a animação.
+/* Caixa do tamanho da tela que segura uma página durante a animação.
    overflow: clip corta o resto da página (que pode ser muito comprida). */
 .page-card {
   position: fixed;
@@ -36,6 +36,6 @@ html.is-transitioning:has(> body.dark) { background: #252836; }
 html.is-transitioning body { background: var(--paper-dark); }
 
 /* Durante a transição: sem cliques e com o cursor de espera.
-   O cursor fica no <html>, que continua a receber o rato. */
+   O cursor fica no <html>, que continua a receber o mouse. */
 html.is-transitioning { cursor: wait; }
 html.is-transitioning body * { pointer-events: none !important; }

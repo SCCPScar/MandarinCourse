@@ -3,8 +3,8 @@
  * Transição de página "empurrar cartão" com Barba.js (modo sync) + GSAP.
  *
  * Como funciona, em resumo:
- *  1. O Barba intercepta o clique num link interno e vai buscar a página nova por fetch.
- *  2. A página ATUAL é metida num "cartão" do tamanho do ecrã (fixo, com overflow: clip),
+ *  1. O Barba intercepta o clique num link interno e busca a página nova por fetch.
+ *  2. A página ATUAL é colocada num "cartão" do tamanho da tela (fixo, com overflow: clip),
  *     sem perder a posição de scroll. O cartão encolhe e sai pela esquerda a rodar.
  *  3. A página NOVA entra noutro cartão pela direita, ao mesmo tempo (0.1s depois).
  *  4. No fim, os cartões são removidos, o scroll volta ao topo e a página nova é "ligada".
@@ -20,8 +20,8 @@
   ChaNav.setPageTitle(document.title);
   ChaPage.init(firstPage);
 
-  // Sem transição quando: o utilizador pediu menos movimento, as bibliotecas não carregaram,
-  // ou o site foi aberto como ficheiro (file://), onde o Barba não consegue ir buscar páginas.
+  // Sem transição quando: o usuário pediu menos movimento, as bibliotecas não carregaram,
+  // ou o site foi aberto como arquivo (file://), onde o Barba não consegue buscar páginas.
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduceMotion || !window.barba || !window.gsap || window.location.protocol === 'file:') return;
 
@@ -29,7 +29,7 @@
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
   let savedScroll = 0;
-  let pendingHash = '';   // o Barba descarta o "#secção" do link, por isso guardamo-lo aqui
+  let pendingHash = '';   // o Barba descarta o "#seção" do link, por isso guardamos aqui
 
   // ─── Utilitários ────────────────────────────────────────────
   const normalizePath = p => (p.endsWith('/') ? p + 'index.html' : p);
@@ -37,7 +37,7 @@
   // Altura da barra fixa = espaço que o <body> reserva no topo
   const navOffset = () => parseFloat(getComputedStyle(document.body).paddingTop) || 0;
 
-  // Mete uma página dentro de um cartão fixo do tamanho do ecrã.
+  // Coloca uma página dentro de um cartão fixo do tamanho da tela.
   // offsetY põe a página na mesma posição em que estava visível.
   function wrapInCard(page, modifier, offsetY) {
     const card = document.createElement('div');
@@ -48,7 +48,7 @@
     return card;
   }
 
-  // Tira a página do cartão e devolve-a ao sítio normal
+  // Tira a página do cartão e a devolve ao lugar normal
   function unwrapCard(card, page) {
     card.parentNode.insertBefore(page, card);
     card.remove();
@@ -76,10 +76,10 @@
     else if (trigger !== 'barba') pendingHash = '';   // botões voltar/avançar do browser
     savedScroll = window.scrollY;
     html.classList.add('is-transitioning');   // bloqueia cliques + cursor de espera
-    ChaNav.close(false);                       // o menu do telemóvel fecha sozinho
+    ChaNav.close(false);                       // o menu do celular fecha sozinho
   });
 
-  // Antes de sair: desligar o que pertence à página antiga (microfone, timers…)
+  // Antes de sair: desativar o que pertence à página antiga (microfone, timers…)
   barba.hooks.beforeLeave(() => ChaPage.destroy());
 
   barba.hooks.after(({ next }) => {
@@ -91,7 +91,7 @@
     ChaNav.reveal();          // a barra volta a aparecer
     ChaPage.init(next.container);
 
-    // Se o link tinha #secção (ex.: sons.html#tones), vai até lá e repõe o "#" no endereço
+    // Se o link tinha #seção (ex.: sons.html#tones), vai até lá e recoloca o "#" no endereço
     const hash = pendingHash.replace(/^#/, '');
     pendingHash = '';
     const target = hash && document.getElementById(hash);

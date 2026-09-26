@@ -1,9 +1,9 @@
 /**
  * nav.js
  * Barra de navegação: esconder/mostrar no scroll, letras que rolam no hover,
- * link da página atual (aria-current) e menu em ecrã inteiro no telemóvel.
+ * link da página atual (aria-current) e menu em tela inteira no celular.
  *
- * Regra de ouro deste ficheiro: o JavaScript só muda ATRIBUTOS no <body>
+ * Regra de ouro deste arquivo: o JavaScript só muda ATRIBUTOS no <body>
  * (data-scrolling-direction, data-scrolling-started, data-menu-open).
  * Quem anima é o CSS (css/nav.css).
  * 学中文 — Curso Completo de Mandarim
@@ -50,7 +50,7 @@ const ChaNav = (() => {
 
   // ═══ 2. LETRAS QUE ROLAM ═══
   // "Sons" → <span class="roll" aria-hidden="true"><span class="roll__char" style="--char:0">S</span>…</span>
-  // O texto completo fica no aria-label, para leitores de ecrã lerem "Sons" e não "S, o, n, s".
+  // O texto completo fica no aria-label, para leitores de tela lerem "Sons" e não "S, o, n, s".
   function splitLink(link, label) {
     link.setAttribute('aria-label', label);
     if (!fontsReady) { link.textContent = label; return; }
@@ -143,7 +143,7 @@ const ChaNav = (() => {
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
-  // Se o ecrã passar a ser largo (ex.: rodar o tablet), o menu de telemóvel fecha
+  // Se a tela passar a ser largo (ex.: rodar o tablet), o menu de celular fecha
   mobileQuery.addEventListener('change', e => { if (!e.matches) close(false); });
 
   // ═══ 5. CLIQUES NOS LINKS ═══

@@ -1,5 +1,6 @@
 id,local,url,fotografo,perfil_fotografo,fonte,licenca,data_escolha
-G1,Hero da página inicial,,,,,,
+G1D,Hero da página inicial (computador),https://images.unsplash.com/photo-1601366029950-0640bbbb8ce6,Yang Louie,[PENDENTE],Unsplash,Unsplash License,2026-09-26
+G1M,Hero da página inicial (celular),https://images.unsplash.com/photo-1627491362358-6d437e65a3bc,Joshua Fernandez,[PENDENTE],Unsplash,Unsplash License,2026-09-26
 G2,Onboarding,,,,,,
 G3,Página Sobre,https://images.unsplash.com/photo-1639927663411-35f23bb792b7,Kevin Canlas,[PENDENTE],Unsplash,Unsplash License,2026-09-26
 BJ0,Pequim - capa,,,,,,
@@ -13,7 +14,7 @@ XA2,2.2 Quanto custa,,,,,,
 XA3,2.3 Onde fica,,,,,,
 XA4,2.4 Pagar e planear,,,,,,
 CD0,Chengdu - capa,,,,,,
-CD1,3.1 A minha rotina,,,,,,
+CD1,3.1 Minha rotina,,,,,,
 CD2,3.2 Gostos e tempo livre,,,,,,
 CD3,3.3 Convites e planos,,,,,,
 CD4,3.4 Tempo e mensagens,,,,,,

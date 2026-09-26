@@ -2,9 +2,9 @@
  * page.js
  * Ciclo de vida das páginas: o que corre quando uma página abre e o que se limpa quando sai.
  *
- * Porque é preciso? Com o Barba, o browser NÃO recarrega o site ao mudar de página:
+ * Por que é preciso? Com o Barba, o browser NÃO recarrega o site ao mudar de página:
  * só troca o conteúdo do <main>. Por isso o evento DOMContentLoaded só acontece uma vez,
- * e cada página nova tem de ser "ligada" à mão (e a antiga "desligada").
+ * e cada página nova tem de ser "ligada" manualmente (e a antiga "desligada").
  *
  * Uso:
  *   ChaPage.onInit(fn)    → fn(container) corre em cada página que abre

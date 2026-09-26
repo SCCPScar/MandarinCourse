@@ -4,14 +4,14 @@
  * 学中文 — Curso Completo de Mandarim
  */
 
-// Botão "Partilhar Progresso" no caderno (só nas páginas que têm o caderno)
+// Botão "Compartilhar progresso" no caderno (só nas páginas que têm o caderno)
 ChaPage.onInit(() => {
   const nb = document.getElementById('tab-notebook');
   if (nb && !nb.querySelector('#share-card')) {
     const shareDiv = document.createElement('div');
     shareDiv.style.cssText = 'margin-top:16px;text-align:center';
     shareDiv.innerHTML = `
-      <button onclick="generateShareCard()" style="background:var(--red);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:14px;cursor:pointer;font-family:var(--font-main)">📤 Partilhar Progresso</button>
+      <button onclick="generateShareCard()" style="background:var(--red);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:14px;cursor:pointer;font-family:var(--font-main)">📤 Compartilhar progresso</button>
       <div id="share-card"></div>
     `;
     nb.appendChild(shareDiv);
@@ -45,7 +45,7 @@ ChaPage.onInit(() => {
     flashTab.appendChild(hint);
   }
 
-  // Cada função só atua se a página tiver os elementos dela
+  // Cada função só age se a página tiver os elementos dela
   [updateProgress, setPotd, initFC, renderScenarios, renderNb, updateStreak].forEach(fn => {
     try { fn(); } catch (err) { /* esta página não tem este bloco */ }
   });
