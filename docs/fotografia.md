@@ -52,12 +52,19 @@ As pesquisas também funcionam no Pexels (`https://www.pexels.com/search/<termos
 | G2 | ✅ Aprovada (26/09/2026) | Rua antiga de Xangai na chuva, `photo-1517309230475-6736d926b979` (opção D). Foi escolhida porque tem placas legíveis em caracteres simplificados (上海制扇, 华夏风采) e porque Xangai é o destino final da rota: o aluno vê logo no início onde vai chegar. A caligrafia com pincel foi descartada por não combinar com a primeira tela. **Computador:** painel vertical ao lado das perguntas, recorte `rect=2350,0,1562,2480` (telhados, lanternas e a placa 华夏风采). **Celular:** faixa horizontal por cima das perguntas, recorte `rect=1227,0,3546,2480` (fileira de lojas). Os dois recortes ficam só na metade de cima da foto, para **não mostrar os rostos** das pessoas na rua. Arquivos: `mandarin_project/img/fotos/g2-onboarding-desktop-{340,680}` e `g2-onboarding-mobile-{390,780}`, em `.avif` e `.webp`. Fotógrafo: **Nuno Alberto** (Unsplash). |
 | G3 | ✅ Aprovada (26/09/2026) | Bubble tea, `photo-1639927663411-35f23bb792b7`. Usada **só na vertical 4:5, ao lado do texto** (layout A). Na horizontal perde a tampa e o logotipo da marca fica em destaque, por isso não serve para faixas largas. Tem caracteres tradicionais (鮮) e uma marca visível, o que é aceitável numa página secundária. Ficheiros: `mandarin_project/img/fotos/g3-sobre-{640,960}.{avif,webp}`. Fotógrafo: **Kevin Canlas** (Unsplash). |
 
+### Decisões das cidades
+
+| ID | Estado | Notas |
+|---|---|---|
+| BJ0 | ✅ Aprovada (26/09/2026) | Hutong 草厂胡同 (Caochang Hutong, Dongcheng) com bicicleta antiga, violões e plantas, `photo-1719985970224-19b37fed86e7`. Não tem pessoas. **Computador (16:9):** `rect=0,632,6016,3384`, com o título embaixo à esquerda sobre um degradê escuro. **Celular (4:5):** `rect=1500,0,3213,4016`, deslocado para a direita para a bicicleta aparecer inteira. Arquivos: `mandarin_project/img/fotos/bj0-capa-desktop-{960,1600}` e `bj0-capa-mobile-{390,780}`, em `.avif` e `.webp` (todos com menos de 250 KB). Fotógrafo: **ran liwen** (Unsplash). |
+| BJ1 | ✅ Aprovada (26/09/2026) | **Ilustração própria em SVG**, porque não havia foto gratuita de um 田字格 real. As candidatas do Unsplash (série de Jason Hu) eram papel 稿纸 com letras de músicas do Jay Chou (《简单爱》, 《红尘客栈》), protegidas por direitos autorais (CDADC), e misturavam caracteres simplificados e tradicionais. A ilustração mostra 你好中文 com o pinyin colorido pelos tons (nǐ e hǎo no 3.º tom, zhōng no 1.º, wén no 2.º) e uma linha para cobrir o 你. O texto foi convertido em caminhos (fontes LXGW WenKai e Lexend, as duas com licença SIL OFL), então o SVG não depende de fontes. Tem versão clara e escura: `mandarin_project/img/fotos/bj1-pinyin-tons-{claro,escuro}.svg`. O script que gera os arquivos é `ferramentas/gerar_bj1.py`. Não precisa de crédito. |
+
 ### 1. Pequim 北京
 
 | ID | Onde aparece | O que mostrar | Pesquisa |
 |---|---|---|---|
 | BJ0 | Capa da cidade | Hutong com bicicletas e portas tradicionais | [beijing hutong](https://unsplash.com/s/photos/beijing-hutong) |
-| BJ1 | 1.1 Pinyin e tons | Caderno quadriculado (田字格) com caracteres escritos | [chinese character practice](https://unsplash.com/s/photos/chinese-character-practice) |
+| BJ1 | 1.1 Pinyin e tons | **Ilustração própria** (não é foto): caderno 田字格 com 你好中文 e o pinyin nas cores dos tons | — |
 | BJ2 | 1.2 Olá, eu sou… | Rua de Pequim com pessoas passando | [beijing street](https://unsplash.com/s/photos/beijing-street) |
 | BJ3 | 1.3 Números e família | Mesa de jantar redonda com vários pratos | [chinese family dinner](https://unsplash.com/s/photos/chinese-family-dinner) |
 | BJ4 | 1.4 Datas e horas | Torre do Tambor (鼓楼), que antigamente marcava as horas da cidade | [beijing drum tower](https://unsplash.com/s/photos/beijing-drum-tower) |
