@@ -49,7 +49,7 @@ As pesquisas também funcionam no Pexels (`https://www.pexels.com/search/<termos
 |---|---|---|
 | G1 | ❌ Rejeitada | A candidata era Unsplash+ (paga) e mostrava chá turco. Falta escolher outra. |
 | G2 | ❌ Rejeitada | A candidata era Unsplash+ (paga) e os caracteres não eram legíveis. Falta escolher outra. |
-| G3 | ✅ Aprovada (26/09/2026) | Bubble tea, `photo-1639927663411-35f23bb792b7`. Usada **só na vertical 4:5, ao lado do texto** (layout A). Na horizontal perde a tampa e o logótipo da marca fica em destaque, por isso não serve para faixas largas. Tem caracteres tradicionais (鮮) e uma marca visível, o que é aceitável numa página secundária. Ficheiros: `mandarin_project/img/fotos/g3-sobre-{640,960}.{avif,webp}`. **Falta o nome do fotógrafo.** |
+| G3 | ✅ Aprovada (26/09/2026) | Bubble tea, `photo-1639927663411-35f23bb792b7`. Usada **só na vertical 4:5, ao lado do texto** (layout A). Na horizontal perde a tampa e o logótipo da marca fica em destaque, por isso não serve para faixas largas. Tem caracteres tradicionais (鮮) e uma marca visível, o que é aceitável numa página secundária. Ficheiros: `mandarin_project/img/fotos/g3-sobre-{640,960}.{avif,webp}`. Fotógrafo: **Kevin Canlas** (Unsplash). |
 
 ### 1. Pequim 北京
 
