@@ -1,5 +1,5 @@
 /*
- * base.css — Variáveis, reset, tipografia, layout, nav, responsivo
+ * base.css — Variáveis, reset, tipografia, layout, responsivo
  * 学中文 — Curso Completo de Mandarim
  */
 
@@ -28,22 +28,5 @@
     font-size: 16px;
   }
 
-  /* NAV */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: var(--ink);
-    color: white;
-    padding: 0 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 56px;
-    border-bottom: 3px solid var(--red);
-  }
-  .nav-logo { font-size: 22px; font-family: var(--font-chinese); font-weight: 700; color: var(--gold); letter-spacing: 2px; }
-  .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
-  .nav-links a {
-    color: rgba(255,255,255,0.75); text-decoration: none;
-    padding: 6px 10px; border-radius: 6px; font-size: 13px; font-weight: 500;
-    transition: all 0.2s;
-  }
-  .nav-links a:hover, .nav-links a.active { background: var(--red); color: white; }
+  /* A barra de navegação está em css/nav.css */
 

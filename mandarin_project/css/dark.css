@@ -244,7 +244,6 @@
   body.dark [style*="color:#922B21"] { color: #E07070 !important; }
   body.dark [style*="color:#1E8449;"] { color: #7DC99A !important; }
   body.dark [style*="background:#1E8449"] { background: #1A4030 !important; }
-  /* nav dark - see below */
   body.dark .hero { background: linear-gradient(135deg, #0A0D14 0%, #1A1D27 100%); }
   body.dark .section { background: var(--paper); }
   body.dark table { background: var(--paper-mid); }
@@ -255,11 +254,6 @@
   body.dark .quiz-option.wrong { background: #3A1A1A; color: #E07070; }
 
 
-  body.dark .nav { background: #0D1017; border-bottom-color: var(--red); }
-  body.dark .nav-logo { color: var(--gold); }
-  body.dark .nav-links a { color: rgba(255,255,255,0.80); }
-  body.dark .nav-links a:hover, body.dark .nav-links a.active { background: var(--red); color: #fff; }
-  body.dark #dark-toggle { color: #fff; border-color: rgba(255,255,255,.4); }
   body.dark .hero { background: linear-gradient(135deg,#0D1017 0%,#1A1D27 100%); }
   body.dark .hero h1 { color: #fff; }
   body.dark .hero p { color: rgba(255,255,255,0.75); }
@@ -291,15 +285,6 @@
   /* BACK TO TOP */
   #back-top { position:fixed;bottom:24px;right:24px;background:var(--red);color:#fff;border:none;border-radius:50%;width:44px;height:44px;font-size:20px;cursor:pointer;display:none;z-index:999;box-shadow:0 4px 14px rgba(0,0,0,.25);transition:opacity .2s; }
   #back-top:hover { opacity:.85; }
-
-  /* HAMBURGER NAV */
-  #hamburger { display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer;padding:4px 8px; }
-  @media(max-width:768px){
-    #hamburger { display:block; }
-    .nav-links { display:none;position:fixed;top:56px;left:0;right:0;background:#1A1D27;flex-direction:column;padding:12px;gap:4px;z-index:998;border-bottom:3px solid var(--red); }
-    .nav-links.open { display:flex; }
-    .nav-links a { padding:10px 14px;font-size:15px; }
-  }
 
   /* ONBOARDING MODAL */
   #onboard-overlay { position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:10000;display:flex;align-items:center;justify-content:center;padding:16px; }

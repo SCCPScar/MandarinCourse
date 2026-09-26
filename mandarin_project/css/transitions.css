@@ -1,0 +1,41 @@
+/*
+ * transitions.css — Transição de página "empurrar cartão"
+ * O GSAP anima só transform e opacity; aqui ficam as caixas e os estados.
+ * 学中文 — Curso Completo de Mandarim
+ */
+
+/* Cada página é um "cartão" com fundo próprio, para não ficar transparente
+   quando está a deslizar por cima da outra. */
+.page {
+  display: block;
+  background: var(--paper);
+  min-height: calc(100vh - var(--nav-height));
+}
+
+/* Caixa do tamanho do ecrã que segura uma página durante a animação.
+   overflow: clip corta o resto da página (que pode ser muito comprida). */
+.page-card {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: clip;
+  transform-origin: center bottom;
+  will-change: transform, opacity;
+  background: var(--paper);
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
+}
+.page-card--leaving { z-index: 1; }
+.page-card--entering { z-index: 2; border-radius: 0; } /* sem cantos: termina igual à página normal */
+
+/* Por trás dos cartões aparece uma "mesa" ligeiramente mais escura.
+   (As cores do modo escuro vivem no <body class="dark">, por isso o <html> precisa do :has.) */
+html.is-transitioning { background: #E8E0CC; }
+html.is-transitioning:has(> body.dark) { background: #252836; }
+html.is-transitioning body { background: var(--paper-dark); }
+
+/* Durante a transição: sem cliques e com o cursor de espera.
+   O cursor fica no <html>, que continua a receber o rato. */
+html.is-transitioning { cursor: wait; }
+html.is-transitioning body * { pointer-events: none !important; }

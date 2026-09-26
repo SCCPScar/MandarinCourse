@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caracteres — 学中文</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23C0392B'/><text y='.9em' font-size='75' font-family='serif' fill='white' x='10'>学</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dark.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/transitions.css">
+
+  <!-- HanziWriter -->
+  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+</head>
+<body data-barba="wrapper">
+<div id="read-bar"></div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+<div id="toast"></div>
+
+<!-- ONBOARDING MODAL -->
+<div id="onboard-overlay" style="display:none">
+  <div id="onboard-box">
+    <div style="font-size:48px;margin-bottom:12px">🇨🇳</div>
+    <h2>Bem-vindo ao 学中文!</h2>
+    <p>Vamos personalizar a tua experiência. Qual é o teu nível de mandarim?</p>
+    <button class="onboard-btn" onclick="selectLevel(this,'zero')">🌱 Completo iniciante — nunca estudei mandarim</button>
+    <button class="onboard-btn" onclick="selectLevel(this,'basic')">📖 Básico — conheço algumas palavras e o pinyin</button>
+    <button class="onboard-btn" onclick="selectLevel(this,'inter')">🎯 Intermédio — consigo ter conversas simples</button>
+    <button class="onboard-btn" onclick="selectLevel(this,'adv')">🚀 Avançado — quero aperfeiçoar e expandir</button>
+    <br>
+    <button id="onboard-start" onclick="finishOnboard()" style="display:none">Começar a aprender →</button>
+  </div>
+</div>
+
+<!-- DAILY STUDY MODAL -->
+<div id="daily-modal">
+  <div id="daily-box">
+    <button onclick="closeDailyModal()" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink-light)">✕</button>
+    <h2>📅 Sessão de Hoje</h2>
+    <p style="color:var(--ink-light);font-size:14px;margin-bottom:16px">A tua sessão diária personalizada — ~10 minutos</p>
+    <div id="daily-steps"></div>
+    <button onclick="closeDailyModal()" style="margin-top:16px;background:var(--red);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:15px;cursor:pointer;font-family:var(--font-main)">✓ Marcar como Completo</button>
+  </div>
+</div>
+
+<header class="site-nav" data-site-nav>
+  <a class="site-nav__logo" href="index.html" aria-label="学中文 — página inicial">
+    <span class="site-nav__mark" aria-hidden="true">学</span>
+  </a>
+  <nav class="site-nav__menu" id="site-menu" aria-label="Principal">
+    <ul class="site-nav__links">
+        <li><a class="site-nav__link" href="index.html" data-i18n="nav_home">Início</a></li>
+        <li><a class="site-nav__link" href="sons.html" data-i18n="nav_sounds">Sons</a></li>
+        <li><a class="site-nav__link" href="basico.html" data-i18n="nav_basics">Básico</a></li>
+        <li><a class="site-nav__link" href="vocabulario.html" data-i18n="nav_vocabulary">Vocabulário</a></li>
+        <li><a class="site-nav__link" href="caracteres.html" data-i18n="nav_characters">Caracteres</a></li>
+        <li><a class="site-nav__link" href="praticar.html" data-i18n="nav_practice">Praticar</a></li>
+        <li><a class="site-nav__link" href="biblioteca.html" data-i18n="nav_library">Biblioteca</a></li>
+    </ul>
+    <div class="site-nav__tools">
+      <button type="button" class="site-nav__tool" onclick="openDailyModal()">📅 Hoje</button>
+      <button type="button" class="site-nav__tool" id="lang-toggle" onclick="toggleLang()">🇬🇧 EN</button>
+      <button type="button" class="site-nav__tool" id="dark-toggle" onclick="toggleDark()">🌙 Dark</button>
+    </div>
+  </nav>
+  <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-menu">Menu</button>
+</header>
+
+<main class="page" data-barba="container" data-barba-namespace="caracteres">
+<div class="container">
+
+<!-- ============================================================ -->
+<!-- MODULE 9: CHARACTERS -->
+<!-- ============================================================ -->
+<div class="section-header anchor" id="characters">
+  <div class="section-num">9</div>
+  <h2>Chinese Characters — How to Learn Them <span class="zh">汉字</span></h2>
+</div>
+<p class="section-intro">Characters look intimidating but follow patterns. There are about 50,000 total, but you only need ~2,000 for newspapers and ~3,500 for daily life. Most are combinations of simpler components.</p>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab(event,'radicals')">Radicals (Roots)</button>
+  <button class="tab-btn" onclick="switchTab(event,'stroke-order')">Stroke Order</button>
+  <button class="tab-btn" onclick="switchTab(event,'top100')">Top 50 Characters</button>
+  <button class="tab-btn" onclick="switchTab(event,'simplified')">Simplified vs Traditional</button>
+</div>
+
+<div id="radicals" class="tab-content active">
+  <p class="section-intro">Most characters are made of radicals — building blocks that hint at meaning. Learn ~100 radicals and you can decode thousands of characters.</p>
+  <div class="table-wrap">
+  <table class="phrase-table">
+    <tr><th>Radical</th><th>Meaning Hint</th><th>Examples</th></tr>
+    <tr><td class="zh-cell">氵(水)</td><td>water</td><td>河 river, 海 sea, 洗 wash, 游 swim, 泳 swim</td></tr>
+    <tr><td class="zh-cell">火 (灬)</td><td>fire</td><td>热 hot, 烧 burn, 炒 stir-fry, 煮 boil</td></tr>
+    <tr><td class="zh-cell">木</td><td>wood / tree</td><td>树 tree, 桌 table, 椅 chair, 林 forest</td></tr>
+    <tr><td class="zh-cell">口</td><td>mouth / opening</td><td>吃 eat, 喝 drink, 说 speak, 唱 sing, 叫 call</td></tr>
+    <tr><td class="zh-cell">人 (亻)</td><td>person</td><td>他 he, 你 you, 做 do, 们 plural marker</td></tr>
+    <tr><td class="zh-cell">心 (忄)</td><td>heart / mind</td><td>想 think, 忘 forget, 爱 love, 怕 fear</td></tr>
+    <tr><td class="zh-cell">女</td><td>woman</td><td>妈 mum, 姐 sister, 她 she, 好 good</td></tr>
+    <tr><td class="zh-cell">手 (扌)</td><td>hand</td><td>打 hit/do, 拿 hold, 找 look for, 推 push</td></tr>
+    <tr><td class="zh-cell">目</td><td>eye</td><td>看 look, 睡 sleep, 睁 open eyes, 盲 blind</td></tr>
+    <tr><td class="zh-cell">言 (讠)</td><td>speech</td><td>说 speak, 话 speech, 谢 thank, 请 invite</td></tr>
+    <tr><td class="zh-cell">金 (钅)</td><td>metal / money</td><td>钱 money, 银 silver, 铁 iron, 钟 clock</td></tr>
+    <tr><td class="zh-cell">土</td><td>earth / ground</td><td>地 ground, 城 city, 坐 sit, 在 at/exist</td></tr>
+    <tr><td class="zh-cell">日</td><td>sun / day</td><td>明 bright, 晴 sunny, 时 time, 是 is</td></tr>
+    <tr><td class="zh-cell">月</td><td>moon / month</td><td>期 period, 朋 friend (two moons!), 脸 face</td></tr>
+    <tr><td class="zh-cell">走</td><td>walk / go</td><td>跑 run, 跳 jump, 路 road, 跟 follow</td></tr>
+  </table>
+  </div>
+  <div class="tip"><strong>💡 Memory tip:</strong> 好 (hǎo, good) = woman 女 + child 子. A woman with a child = good! Many characters have stories like this.</div>
+</div>
+
+<div id="stroke-order" class="tab-content">
+  <p class="section-intro">Stroke order matters — it affects how characters look when written quickly, and it's crucial for handwriting recognition on phones. Follow these universal rules:</p>
+  <div class="grammar-box">
+    <h3>The 8 Stroke Order Rules</h3>
+    <ol style="padding-left:1.5rem; line-height:2.2; color:var(--ink-mid);">
+      <li><strong>Top to bottom</strong> — 三 (sān, three): draw top line first, then middle, then bottom</li>
+      <li><strong>Left to right</strong> — 川 (chuān, river): draw left stroke first, then middle, then right</li>
+      <li><strong>Horizontal before vertical</strong> (when they cross) — 十 (shí, ten): horizontal first</li>
+      <li><strong>Enclosures before contents, close last</strong> — 国 (guó, country): frame → contents → bottom</li>
+      <li><strong>Center before sides</strong> (for symmetrical chars) — 小 (xiǎo, small): center stroke first</li>
+      <li><strong>Left-leaning strokes before right-leaning</strong> — 人 (rén, person): left stroke first</li>
+      <li><strong>Bottom horizontal stroke last</strong> — 王 (wáng, king): three horizontals + vertical, bottom horizontal last</li>
+      <li><strong>Right-to-left sweeping strokes last</strong></li>
+    </ol>
+  </div>
+  <div class="stroke-info">📱 <strong>Practice tool:</strong> Install the app <strong>Skritter</strong> (skritter.com) for interactive stroke order practice. Free tier is sufficient for beginners.</div>
+  <div class="tip"><strong>💡 Modern shortcut:</strong> For work in China, you'll mainly type on a phone/computer using Pinyin input. You don't need perfect handwriting for professional work, but you need to recognize characters when reading.</div>
+</div>
+
+<div id="top100" class="tab-content">
+  <p class="section-intro">These 50 characters appear in almost everything you read. Learn to recognize them first.</p>
+  <div class="card-grid">
+    <div class="card"><div class="zh">的</div><div class="pinyin">de</div><div class="en">possessive particle (most common!)</div></div>
+    <div class="card"><div class="zh">一</div><div class="pinyin">yī</div><div class="en">one / a/an</div></div>
+    <div class="card"><div class="zh">是</div><div class="pinyin">shì</div><div class="en">to be</div></div>
+    <div class="card"><div class="zh">不</div><div class="pinyin">bù</div><div class="en">not / no</div></div>
+    <div class="card"><div class="zh">了</div><div class="pinyin">le</div><div class="en">completion particle</div></div>
+    <div class="card"><div class="zh">人</div><div class="pinyin">rén</div><div class="en">person / people</div></div>
+    <div class="card"><div class="zh">我</div><div class="pinyin">wǒ</div><div class="en">I / me</div></div>
+    <div class="card"><div class="zh">在</div><div class="pinyin">zài</div><div class="en">at / exist / -ing</div></div>
+    <div class="card"><div class="zh">有</div><div class="pinyin">yǒu</div><div class="en">have / there is</div></div>
+    <div class="card"><div class="zh">他</div><div class="pinyin">tā</div><div class="en">he / him</div></div>
+    <div class="card"><div class="zh">这</div><div class="pinyin">zhè</div><div class="en">this</div></div>
+    <div class="card"><div class="zh">中</div><div class="pinyin">zhōng</div><div class="en">middle / China</div></div>
+    <div class="card"><div class="zh">大</div><div class="pinyin">dà</div><div class="en">big / great</div></div>
+    <div class="card"><div class="zh">来</div><div class="pinyin">lái</div><div class="en">to come</div></div>
+    <div class="card"><div class="zh">上</div><div class="pinyin">shàng</div><div class="en">above / on / up</div></div>
+    <div class="card"><div class="zh">国</div><div class="pinyin">guó</div><div class="en">country / nation</div></div>
+    <div class="card"><div class="zh">到</div><div class="pinyin">dào</div><div class="en">to arrive / to</div></div>
+    <div class="card"><div class="zh">说</div><div class="pinyin">shuō</div><div class="en">to say / speak</div></div>
+    <div class="card"><div class="zh">和</div><div class="pinyin">hé</div><div class="en">and / with</div></div>
+    <div class="card"><div class="zh">要</div><div class="pinyin">yào</div><div class="en">want / need / will</div></div>
+    <div class="card"><div class="zh">就</div><div class="pinyin">jiù</div><div class="en">then / exactly / just</div></div>
+    <div class="card"><div class="zh">出</div><div class="pinyin">chū</div><div class="en">to go out / exit</div></div>
+    <div class="card"><div class="zh">会</div><div class="pinyin">huì</div><div class="en">can / will / meeting</div></div>
+    <div class="card"><div class="zh">可</div><div class="pinyin">kě</div><div class="en">can / may (可以)</div></div>
+    <div class="card"><div class="zh">以</div><div class="pinyin">yǐ</div><div class="en">use / with (可以, 以前)</div></div>
+    <div class="card"><div class="zh">也</div><div class="pinyin">yě</div><div class="en">also / too</div></div>
+    <div class="card"><div class="zh">时</div><div class="pinyin">shí</div><div class="en">time (时候)</div></div>
+    <div class="card"><div class="zh">年</div><div class="pinyin">nián</div><div class="en">year</div></div>
+    <div class="card"><div class="zh">得</div><div class="pinyin">de/dé/děi</div><div class="en">get/complement/must</div></div>
+    <div class="card"><div class="zh">们</div><div class="pinyin">men</div><div class="en">plural marker (我们)</div></div>
+  </div>
+</div>
+
+<div id="simplified" class="tab-content">
+  <div class="grammar-box">
+    <h3>Simplified (简体) vs Traditional (繁體)</h3>
+    <p style="margin-bottom:12px; color:var(--ink-light);">For working in mainland China: learn Simplified. Traditional is used in Taiwan, Hong Kong, and Macau.</p>
+    <div class="table-wrap">
+    <table class="phrase-table">
+      <tr><th>Simplified</th><th>Traditional</th><th>Pinyin</th><th>Meaning</th></tr>
+      <tr><td class="zh-cell">爱</td><td class="zh-cell" style="font-size:18px">愛</td><td class="py-cell">ài</td><td>love</td></tr>
+      <tr><td class="zh-cell">书</td><td class="zh-cell" style="font-size:18px">書</td><td class="py-cell">shū</td><td>book</td></tr>
+      <tr><td class="zh-cell">说</td><td class="zh-cell" style="font-size:18px">說</td><td class="py-cell">shuō</td><td>speak</td></tr>
+      <tr><td class="zh-cell">国</td><td class="zh-cell" style="font-size:18px">國</td><td class="py-cell">guó</td><td>country</td></tr>
+      <tr><td class="zh-cell">车</td><td class="zh-cell" style="font-size:18px">車</td><td class="py-cell">chē</td><td>car / vehicle</td></tr>
+      <tr><td class="zh-cell">门</td><td class="zh-cell" style="font-size:18px">門</td><td class="py-cell">mén</td><td>door / gate</td></tr>
+      <tr><td class="zh-cell">长</td><td class="zh-cell" style="font-size:18px">長</td><td class="py-cell">cháng/zhǎng</td><td>long / grow</td></tr>
+    </table>
+    </div>
+  </div>
+  <div class="tip">💡 <strong>Good news:</strong> If you learn Simplified first, Traditional will be ~70% familiar. Many characters are identical in both systems.</div>
+</div>
+
+</div><!-- /container -->
+
+<footer>
+  <div class="footer-zh">加油！继续学习！</div>
+  <p>Keep going! Keep learning! • 免费中文学习手册</p>
+  <p style="margin-top: 8px; font-size: 12px;">This complete guide covers Pinyin, tones, grammar, vocabulary, characters, work Chinese and more — all free.</p>
+</footer>
+</main>
+
+<!-- Bibliotecas: animação (GSAP) e navegação entre páginas (Barba) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.js"></script>
+
+<!-- JavaScript do site — carregar por ordem -->
+<script src="js/utils.js"></script>
+<script src="js/page.js"></script>
+<script src="js/hanzi.js"></script>
+<script src="js/data.js"></script>
+<script src="js/exercises.js"></script>
+<script src="js/dictionary.js"></script>
+<script src="js/tools.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/init.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/transitions.js"></script>
+</body>
+</html>

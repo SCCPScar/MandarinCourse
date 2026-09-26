@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca — 学中文</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23C0392B'/><text y='.9em' font-size='75' font-family='serif' fill='white' x='10'>学</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dark.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/transitions.css">
+
+  <!-- HanziWriter -->
+  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+</head>
+<body data-barba="wrapper">
+<div id="read-bar"></div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+<div id="toast"></div>
+
+<!-- ONBOARDING MODAL -->
+<div id="onboard-overlay" style="display:none">
+  <div id="onboard-box">
+    <div style="font-size:48px;margin-bottom:12px">🇨🇳</div>
+    <h2>Bem-vindo ao 学中文!</h2>
+    <p>Vamos personalizar a tua experiência. Qual é o teu nível de mandarim?</p>
+    <button class="onboard-btn" onclick="selectLevel(this,'zero')">🌱 Completo iniciante — nunca estudei mandarim</button>
+    <button class="onboard-btn" onclick="selectLevel(this,'basic')">📖 Básico — conheço algumas palavras e o pinyin</button>
+    <button class="onboard-btn" onclick="selectLevel(this,'inter')">🎯 Intermédio — consigo ter conversas simples</button>
+    <button class="onboard-btn" onclick="selectLevel(this,'adv')">🚀 Avançado — quero aperfeiçoar e expandir</button>
+    <br>
+    <button id="onboard-start" onclick="finishOnboard()" style="display:none">Começar a aprender →</button>
+  </div>
+</div>
+
+<!-- DAILY STUDY MODAL -->
+<div id="daily-modal">
+  <div id="daily-box">
+    <button onclick="closeDailyModal()" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink-light)">✕</button>
+    <h2>📅 Sessão de Hoje</h2>
+    <p style="color:var(--ink-light);font-size:14px;margin-bottom:16px">A tua sessão diária personalizada — ~10 minutos</p>
+    <div id="daily-steps"></div>
+    <button onclick="closeDailyModal()" style="margin-top:16px;background:var(--red);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:15px;cursor:pointer;font-family:var(--font-main)">✓ Marcar como Completo</button>
+  </div>
+</div>
+
+<header class="site-nav" data-site-nav>
+  <a class="site-nav__logo" href="index.html" aria-label="学中文 — página inicial">
+    <span class="site-nav__mark" aria-hidden="true">学</span>
+  </a>
+  <nav class="site-nav__menu" id="site-menu" aria-label="Principal">
+    <ul class="site-nav__links">
+        <li><a class="site-nav__link" href="index.html" data-i18n="nav_home">Início</a></li>
+        <li><a class="site-nav__link" href="sons.html" data-i18n="nav_sounds">Sons</a></li>
+        <li><a class="site-nav__link" href="basico.html" data-i18n="nav_basics">Básico</a></li>
+        <li><a class="site-nav__link" href="vocabulario.html" data-i18n="nav_vocabulary">Vocabulário</a></li>
+        <li><a class="site-nav__link" href="caracteres.html" data-i18n="nav_characters">Caracteres</a></li>
+        <li><a class="site-nav__link" href="praticar.html" data-i18n="nav_practice">Praticar</a></li>
+        <li><a class="site-nav__link" href="biblioteca.html" data-i18n="nav_library">Biblioteca</a></li>
+    </ul>
+    <div class="site-nav__tools">
+      <button type="button" class="site-nav__tool" onclick="openDailyModal()">📅 Hoje</button>
+      <button type="button" class="site-nav__tool" id="lang-toggle" onclick="toggleLang()">🇬🇧 EN</button>
+      <button type="button" class="site-nav__tool" id="dark-toggle" onclick="toggleDark()">🌙 Dark</button>
+    </div>
+  </nav>
+  <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-menu">Menu</button>
+</header>
+
+<main class="page" data-barba="container" data-barba-namespace="biblioteca">
+<div class="container">
+
+<!-- ============================================================ -->
+<!-- FREE LIBRARY -->
+<!-- ============================================================ -->
+<div class="section-header anchor" id="library">
+  <div class="section-num">📚</div>
+  <h2>Free Library — Real Textbooks & Materials <span class="zh">免费资源库</span></h2>
+</div>
+<p class="section-intro">All resources below are 100% free and legal. Click any link to open directly in your browser or download. Organised from beginner to advanced.</p>
+
+<!-- STYLES for library cards -->
+<!-- BEGINNER -->
+<div class="lib-section">
+  <h3>🟥 Beginner — Level 0 to HSK 2</h3>
+  <div class="lib-grid">
+
+    <div class="lib-card">
+      <div class="lib-title">FSI Mandarin Chinese Basic Course</div>
+      <div class="lib-desc">The full US Foreign Service Institute Mandarin course — used to train diplomats. Public domain. Includes textbooks (PDF) + 60+ hours of audio. One of the most complete free resources ever made.</div>
+      <div class="lib-tags"><span class="lib-tag tag-pdf">PDF</span><span class="lib-tag tag-audio">Audio</span></div>
+      <a class="lib-btn" href="https://www.livelingua.com/fsi-language-courses/fsi-mandarin-chinese/" target="_blank">Open Course →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">HSK 1 Official Vocabulary List (PDF)</div>
+      <div class="lib-desc">The official HSK Level 1 word list — 150 words you must know. Issued by Hanban (the Chinese government body). Study all of these first.</div>
+      <div class="lib-tags"><span class="lib-tag tag-pdf">PDF</span></div>
+      <a class="lib-btn" href="https://www.chinesetest.cn/userfiles/file/HSK/HSK1wordlist.pdf" target="_blank">Download PDF →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">HSK 2 Official Vocabulary List (PDF)</div>
+      <div class="lib-desc">Official HSK Level 2 word list — 150 additional words (300 total). After mastering these you can handle simple everyday conversations.</div>
+      <div class="lib-tags"><span class="lib-tag tag-pdf">PDF</span></div>
+      <a class="lib-btn" href="https://www.chinesetest.cn/userfiles/file/HSK/HSK2wordlist.pdf" target="_blank">Download PDF →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">Yoyo Chinese — Beginner Playlist</div>
+      <div class="lib-desc">Yangyang Cheng's famous YouTube Mandarin series. Crystal clear explanations in English, perfect for absolute beginners. Covers Pinyin, tones, basic grammar. 40+ free videos.</div>
+      <div class="lib-tags"><span class="lib-tag tag-video">Video</span></div>
+      <a class="lib-btn" href="https://www.youtube.com/playlist?list=PLGJwjTqNBob4mFb2jFGPD8rT-4NJaF12y" target="_blank">Watch on YouTube →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">HelloChinese App (Free)</div>
+      <div class="lib-desc">The best free beginner app — better than Duolingo for Mandarin. Covers Pinyin, tones, 1500+ words, and grammar. Structured like a course. iOS + Android.</div>
+      <div class="lib-tags"><span class="lib-tag tag-app">App</span></div>
+      <a class="lib-btn" href="https://www.hellochinese.cc/" target="_blank">Get App →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">Pinyin Chart — Interactive (Purple Culture)</div>
+      <div class="lib-desc">Click every Pinyin syllable and hear it pronounced by a native speaker. The most complete free interactive Pinyin pronunciation reference online.</div>
+      <div class="lib-tags"><span class="lib-tag tag-web">Web</span><span class="lib-tag tag-audio">Audio</span></div>
+      <a class="lib-btn" href="https://www.purpleculture.net/chinese-pinyin-chart/" target="_blank">Open Chart →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">Anki + HSK 1–2 Deck (Free Flashcards)</div>
+      <div class="lib-desc">Anki is the world's best spaced-repetition flashcard system (free). Download the HSK 1–6 deck from AnkiWeb to drill all vocabulary with audio and characters.</div>
+      <div class="lib-tags"><span class="lib-tag tag-app">App</span></div>
+      <a class="lib-btn" href="https://ankiweb.net/shared/info/1740499083" target="_blank">Get HSK Deck →</a>
+      <a class="lib-btn secondary" href="https://apps.ankiweb.net/" target="_blank" style="margin-top:4px">Get Anki →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">ChinesePod — Newbie & Elementary Lessons</div>
+      <div class="lib-desc">Podcast-style audio lessons. Newbie and Elementary levels are free. Short 10–15 min episodes with PDF transcripts. Perfect for listening practice from day one.</div>
+      <div class="lib-tags"><span class="lib-tag tag-audio">Audio</span><span class="lib-tag tag-pdf">PDF</span></div>
+      <a class="lib-btn" href="https://chinesepod.com/lessons?level=newbie" target="_blank">Start Listening →</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- INTERMEDIATE -->
+<div class="lib-section">
+  <h3>🟨 Intermediate — HSK 3 to HSK 4</h3>
+  <div class="lib-grid">
+
+    <div class="lib-card">
+      <div class="lib-title">HSK 3 Official Vocabulary List (PDF)</div>
+      <div class="lib-desc">Official 300 new words for HSK 3 (600 total). At this level you can describe experiences, emotions, and handle most daily situations. Essential checkpoint.</div>
+      <div class="lib-tags"><span class="lib-tag tag-pdf">PDF</span></div>
+      <a class="lib-btn" href="https://www.chinesetest.cn/userfiles/file/HSK/HSK3wordlist.pdf" target="_blank">Download PDF →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">HSK 4 Official Vocabulary List (PDF)</div>
+      <div class="lib-desc">600 new words for HSK 4 (1200 total). This is the level where you can hold real conversations on most topics and handle most work situations.</div>
+      <div class="lib-tags"><span class="lib-tag tag-pdf">PDF</span></div>
+      <a class="lib-btn" href="https://www.chinesetest.cn/userfiles/file/HSK/HSK4wordlist.pdf" target="_blank">Download PDF →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">AllSet Learning — Chinese Grammar Wiki</div>
+      <div class="lib-desc">The most comprehensive FREE Mandarin grammar reference in English. Every grammar pattern explained with examples, organized by level (A1 → C1). Bookmark this now.</div>
+      <div class="lib-tags"><span class="lib-tag tag-web">Web</span></div>
+      <a class="lib-btn" href="https://resources.allsetlearning.com/chinese/grammar/" target="_blank">Open Grammar Wiki →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">Mandarin Corner — Intermediate Videos</div>
+      <div class="lib-desc">Excellent YouTube channel with real street interviews, slow Chinese, and structured intermediate lessons. Great for training your ear to real spoken Mandarin.</div>
+      <div class="lib-tags"><span class="lib-tag tag-video">Video</span></div>
+      <a class="lib-btn" href="https://www.youtube.com/@MandarinCorner" target="_blank">Watch on YouTube →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">Slow Chinese Podcast (慢速中文)</div>
+      <div class="lib-desc">Short podcasts about Chinese culture, history and daily life — spoken slowly and clearly. Free transcripts included. Perfect bridge from textbook Chinese to real Chinese.</div>
+      <div class="lib-tags"><span class="lib-tag tag-audio">Audio</span><span class="lib-tag tag-pdf">Transcript</span></div>
+      <a class="lib-btn" href="https://www.slow-chinese.com/" target="_blank">Listen Free →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">DU Chinese — Graded Readers (Free Tier)</div>
+      <div class="lib-desc">Read real Chinese texts graded by your level. The free tier includes dozens of stories from beginner to intermediate. Reading is one of the fastest ways to absorb vocabulary.</div>
+      <div class="lib-tags"><span class="lib-tag tag-app">App</span><span class="lib-tag tag-web">Web</span></div>
+      <a class="lib-btn" href="https://www.duchinese.net/" target="_blank">Start Reading →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">HelloTalk — Language Exchange App</div>
+      <div class="lib-desc">Connect with native Mandarin speakers who want to learn your language. Free text, voice and video chat. The best free way to practice real conversation with real people.</div>
+      <div class="lib-tags"><span class="lib-tag tag-app">App</span></div>
+      <a class="lib-btn" href="https://www.hellotalk.com/" target="_blank">Find a Partner →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">HSK Academy — Free Practice Tests</div>
+      <div class="lib-desc">Free official-style practice exams for HSK 1–6 online. Track your score and identify weak areas. The best free way to benchmark your actual level.</div>
+      <div class="lib-tags"><span class="lib-tag tag-web">Web</span></div>
+      <a class="lib-btn" href="https://hsk.academy/" target="_blank">Take a Test →</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- ADVANCED / WORK LEVEL -->
+<div class="lib-section">
+  <h3>🟦 Advanced & Work-Ready — HSK 5 to HSK 6</h3>
+  <div class="lib-grid">
+
+    <div class="lib-card">
+      <div class="lib-title">HSK 5 Official Vocabulary List (PDF)</div>
+      <div class="lib-desc">1300 new words for HSK 5 (2500 total). This is the work-ready level — you can read newspapers, write professional emails, and handle business meetings in Chinese.</div>
+      <div class="lib-tags"><span class="lib-tag tag-pdf">PDF</span></div>
+      <a class="lib-btn" href="https://www.chinesetest.cn/userfiles/file/HSK/HSK5wordlist.pdf" target="_blank">Download PDF →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">HSK 6 Official Vocabulary List (PDF)</div>
+      <div class="lib-desc">2500 new words for HSK 6 (5000 total). Native-like level. You can debate, write academic papers, understand TV without subtitles. The ultimate goal.</div>
+      <div class="lib-tags"><span class="lib-tag tag-pdf">PDF</span></div>
+      <a class="lib-btn" href="https://www.chinesetest.cn/userfiles/file/HSK/HSK6wordlist.pdf" target="_blank">Download PDF →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">People's Daily (人民日报) — Online Edition</div>
+      <div class="lib-desc">China's main newspaper, free online. Reading news daily is the single best advanced practice — real vocabulary, real sentence structures, real topics you'll discuss at work.</div>
+      <div class="lib-tags"><span class="lib-tag tag-web">Web</span></div>
+      <a class="lib-btn" href="http://www.people.com.cn/" target="_blank">Read News →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">CCTV — Free Chinese TV Online</div>
+      <div class="lib-desc">Watch live and on-demand Chinese television free. News, documentaries, shows. Full immersion — this is how you go from "good" to "fluent". Start with CCTV-1 news.</div>
+      <div class="lib-tags"><span class="lib-tag tag-video">Video</span></div>
+      <a class="lib-btn" href="https://tv.cctv.com/" target="_blank">Watch CCTV →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">Pleco Dictionary App (Free)</div>
+      <div class="lib-desc">The most powerful free Chinese dictionary app. Look up characters by drawing them, camera scan, or pinyin. Includes stroke order, example sentences, and audio. Indispensable.</div>
+      <div class="lib-tags"><span class="lib-tag tag-app">App</span></div>
+      <a class="lib-btn" href="https://www.pleco.com/" target="_blank">Get Pleco →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">Bilibili (哔哩哔哩) — Chinese Video Platform</div>
+      <div class="lib-desc">China's biggest video platform (like YouTube). Millions of videos on every topic in Chinese. Watch content you enjoy — gaming, cooking, travel, science. Immersion at its best.</div>
+      <div class="lib-tags"><span class="lib-tag tag-video">Video</span></div>
+      <a class="lib-btn" href="https://www.bilibili.com/" target="_blank">Open Bilibili →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">Chinese Reading Practice (Mandarin Bean)</div>
+      <div class="lib-desc">Free graded reading articles from beginner to advanced. Each article has pinyin, vocabulary lists, and comprehension questions. Great for systematic reading practice.</div>
+      <div class="lib-tags"><span class="lib-tag tag-web">Web</span></div>
+      <a class="lib-btn" href="https://mandarinbean.com/new-practical-chinese-reader/" target="_blank">Read Articles →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">Skritter — Character Writing (Free Tier)</div>
+      <div class="lib-desc">Learn to write Chinese characters with correct stroke order. The app teaches and tests you on writing. Free tier covers beginner characters — enough to get started properly.</div>
+      <div class="lib-tags"><span class="lib-tag tag-app">App</span></div>
+      <a class="lib-btn" href="https://skritter.com/" target="_blank">Practice Writing →</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- REFERENCE TOOLS -->
+<div class="lib-section">
+  <h3>🛠️ Essential Reference Tools — Use Every Day</h3>
+  <div class="lib-grid">
+
+    <div class="lib-card">
+      <div class="lib-title">MDBG Chinese Dictionary</div>
+      <div class="lib-desc">The best free online Chinese–English dictionary. Look up characters, compounds, or Pinyin. Shows stroke order, radicals, HSK level, and example sentences. Bookmark it.</div>
+      <div class="lib-tags"><span class="lib-tag tag-web">Web</span></div>
+      <a class="lib-btn" href="https://www.mdbg.net/chinese/dictionary" target="_blank">Open Dictionary →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">Yellowbridge — Character Explorer</div>
+      <div class="lib-desc">Look up any character to see its radical breakdown, etymology, stroke order animation, related words, and frequency ranking. Helps you understand WHY characters look the way they do.</div>
+      <div class="lib-tags"><span class="lib-tag tag-web">Web</span></div>
+      <a class="lib-btn" href="https://www.yellowbridge.com/chinese/" target="_blank">Explore Characters →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">Jukuu — Example Sentence Database</div>
+      <div class="lib-desc">Search any word or grammar pattern and get thousands of real example sentences from books, news, and movies — with English translations. See words in real context.</div>
+      <div class="lib-tags"><span class="lib-tag tag-web">Web</span></div>
+      <a class="lib-btn" href="https://jukuu.com/" target="_blank">Search Examples →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">Google Translate — Chinese Input</div>
+      <div class="lib-desc">Use the handwriting input to draw characters you don't know. Or paste Chinese text and tap each word for definitions. Not for learning — but useful as a daily tool when stuck.</div>
+      <div class="lib-tags"><span class="lib-tag tag-app">App</span><span class="lib-tag tag-web">Web</span></div>
+      <a class="lib-btn" href="https://translate.google.com/?sl=zh-CN&tl=en" target="_blank">Open Translate →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">Pinyin Converter (Online Tool)</div>
+      <div class="lib-desc">Paste any Chinese text and instantly get the Pinyin with tone marks. Useful when you encounter new text and want to know the pronunciation before learning the characters.</div>
+      <div class="lib-tags"><span class="lib-tag tag-web">Web</span></div>
+      <a class="lib-btn" href="https://www.purpleculture.net/chinese-pinyin-converter/" target="_blank">Convert to Pinyin →</a>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-title">Chinese Pronunciation Trainer</div>
+      <div class="lib-desc">Record yourself speaking and compare with native audio. Diagnose your own tone and pronunciation mistakes. Built by the University of Arizona — completely free.</div>
+      <div class="lib-tags"><span class="lib-tag tag-web">Web</span><span class="lib-tag tag-audio">Audio</span></div>
+      <a class="lib-btn" href="https://www.archchinese.com/chinese_pinyin.html" target="_blank">Train Pronunciation →</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- RECOMMENDED LEARNING PATH -->
+<div class="grammar-box" style="border-left-color: var(--gold);">
+  <h3>📋 Recommended Daily Stack — Use These Together</h3>
+  <div class="table-wrap">
+  <table class="phrase-table">
+    <tr><th>Time</th><th>Activity</th><th>Resource</th><th>Duration</th></tr>
+    <tr><td>Morning</td><td>Flashcard review</td><td>Anki (HSK deck)</td><td>20 min</td></tr>
+    <tr><td>Morning</td><td>New lesson</td><td>HelloChinese or ChinesePod</td><td>20 min</td></tr>
+    <tr><td>Afternoon</td><td>Grammar study</td><td>AllSet Learning Grammar Wiki</td><td>15 min</td></tr>
+    <tr><td>Afternoon</td><td>Reading practice</td><td>DU Chinese or Mandarin Bean</td><td>15 min</td></tr>
+    <tr><td>Evening</td><td>Listening / watching</td><td>Mandarin Corner or CCTV</td><td>20 min</td></tr>
+    <tr><td>Evening</td><td>Speaking practice</td><td>HelloTalk with native speaker</td><td>15 min</td></tr>
+    <tr><td>Anytime</td><td>Look up words</td><td>Pleco app + MDBG</td><td>On demand</td></tr>
+  </table>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<footer>
+  <div class="footer-zh">加油！继续学习！</div>
+  <p>Keep going! Keep learning! • 免费中文学习手册</p>
+  <p style="margin-top: 8px; font-size: 12px;">This complete guide covers Pinyin, tones, grammar, vocabulary, characters, work Chinese and more — all free.</p>
+</footer>
+</main>
+
+<!-- Bibliotecas: animação (GSAP) e navegação entre páginas (Barba) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.js"></script>
+
+<!-- JavaScript do site — carregar por ordem -->
+<script src="js/utils.js"></script>
+<script src="js/page.js"></script>
+<script src="js/hanzi.js"></script>
+<script src="js/data.js"></script>
+<script src="js/exercises.js"></script>
+<script src="js/dictionary.js"></script>
+<script src="js/tools.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/init.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/transitions.js"></script>
+</body>
+</html>

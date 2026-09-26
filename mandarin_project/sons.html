@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sons e Tons — 学中文</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23C0392B'/><text y='.9em' font-size='75' font-family='serif' fill='white' x='10'>学</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dark.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/transitions.css">
+
+  <!-- HanziWriter -->
+  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+</head>
+<body data-barba="wrapper">
+<div id="read-bar"></div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+<div id="toast"></div>
+
+<!-- ONBOARDING MODAL -->
+<div id="onboard-overlay" style="display:none">
+  <div id="onboard-box">
+    <div style="font-size:48px;margin-bottom:12px">🇨🇳</div>
+    <h2>Bem-vindo ao 学中文!</h2>
+    <p>Vamos personalizar a tua experiência. Qual é o teu nível de mandarim?</p>
+    <button class="onboard-btn" onclick="selectLevel(this,'zero')">🌱 Completo iniciante — nunca estudei mandarim</button>
+    <button class="onboard-btn" onclick="selectLevel(this,'basic')">📖 Básico — conheço algumas palavras e o pinyin</button>
+    <button class="onboard-btn" onclick="selectLevel(this,'inter')">🎯 Intermédio — consigo ter conversas simples</button>
+    <button class="onboard-btn" onclick="selectLevel(this,'adv')">🚀 Avançado — quero aperfeiçoar e expandir</button>
+    <br>
+    <button id="onboard-start" onclick="finishOnboard()" style="display:none">Começar a aprender →</button>
+  </div>
+</div>
+
+<!-- DAILY STUDY MODAL -->
+<div id="daily-modal">
+  <div id="daily-box">
+    <button onclick="closeDailyModal()" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink-light)">✕</button>
+    <h2>📅 Sessão de Hoje</h2>
+    <p style="color:var(--ink-light);font-size:14px;margin-bottom:16px">A tua sessão diária personalizada — ~10 minutos</p>
+    <div id="daily-steps"></div>
+    <button onclick="closeDailyModal()" style="margin-top:16px;background:var(--red);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:15px;cursor:pointer;font-family:var(--font-main)">✓ Marcar como Completo</button>
+  </div>
+</div>
+
+<header class="site-nav" data-site-nav>
+  <a class="site-nav__logo" href="index.html" aria-label="学中文 — página inicial">
+    <span class="site-nav__mark" aria-hidden="true">学</span>
+  </a>
+  <nav class="site-nav__menu" id="site-menu" aria-label="Principal">
+    <ul class="site-nav__links">
+        <li><a class="site-nav__link" href="index.html" data-i18n="nav_home">Início</a></li>
+        <li><a class="site-nav__link" href="sons.html" data-i18n="nav_sounds">Sons</a></li>
+        <li><a class="site-nav__link" href="basico.html" data-i18n="nav_basics">Básico</a></li>
+        <li><a class="site-nav__link" href="vocabulario.html" data-i18n="nav_vocabulary">Vocabulário</a></li>
+        <li><a class="site-nav__link" href="caracteres.html" data-i18n="nav_characters">Caracteres</a></li>
+        <li><a class="site-nav__link" href="praticar.html" data-i18n="nav_practice">Praticar</a></li>
+        <li><a class="site-nav__link" href="biblioteca.html" data-i18n="nav_library">Biblioteca</a></li>
+    </ul>
+    <div class="site-nav__tools">
+      <button type="button" class="site-nav__tool" onclick="openDailyModal()">📅 Hoje</button>
+      <button type="button" class="site-nav__tool" id="lang-toggle" onclick="toggleLang()">🇬🇧 EN</button>
+      <button type="button" class="site-nav__tool" id="dark-toggle" onclick="toggleDark()">🌙 Dark</button>
+    </div>
+  </nav>
+  <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-menu">Menu</button>
+</header>
+
+<main class="page" data-barba="container" data-barba-namespace="sons">
+<div class="container">
+
+<!-- ============================================================ -->
+<!-- MODULE 2: TONES -->
+<!-- ============================================================ -->
+<div class="section-header anchor" id="tones">
+  <div class="section-num">2</div>
+  <h2>The 4 Tones (+ Neutral) <span class="zh">四声</span></h2>
+</div>
+<p class="section-intro">Every syllable in Mandarin has a tone. The same sound with different tones = completely different words. Master this first — it's the foundation of everything.</p>
+
+<div class="tones-grid">
+  <div class="tone-card">
+    <div class="big" style="color:#1A5276">mā</div>
+    <span class="tone-badge t1">1st Tone</span>
+    <h3>High & Flat ―</h3>
+    <p>Stay high, like singing a flat note. Imagine holding a high steady pitch.</p>
+    <div class="example"><div class="zh">妈</div><div>mā = mother</div></div>
+  </div>
+  <div class="tone-card">
+    <div class="big" style="color:#1E8449">má</div>
+    <span class="tone-badge t2">2nd Tone</span>
+    <h3>Rising ↗</h3>
+    <p>Goes up, like asking "huh?" in English. Start mid, end high.</p>
+    <div class="example"><div class="zh">麻</div><div>má = hemp/numb</div></div>
+  </div>
+  <div class="tone-card">
+    <div class="big" style="color:#9A7D0A">mǎ</div>
+    <span class="tone-badge t3">3rd Tone</span>
+    <h3>Dipping ↘↗</h3>
+    <p>Goes down then up, like a skeptical "reeeally?" Start mid, dip low, rise.</p>
+    <div class="example"><div class="zh">马</div><div>mǎ = horse</div></div>
+  </div>
+  <div class="tone-card">
+    <div class="big" style="color:#922B21">mà</div>
+    <span class="tone-badge t4">4th Tone</span>
+    <h3>Falling ↘</h3>
+    <p>Sharp drop, like giving a command: "Stop!" Start high, end low.</p>
+    <div class="example"><div class="zh">骂</div><div>mà = to scold</div></div>
+  </div>
+  <div class="tone-card">
+    <div class="big" style="color:#566573">ma</div>
+    <span class="tone-badge t5">Neutral Tone</span>
+    <h3>Short & Light</h3>
+    <p>No tone mark. Very short, almost swallowed. Usually on particles.</p>
+    <div class="example"><div class="zh">吗</div><div>ma = question particle</div></div>
+  </div>
+</div>
+
+<div class="warning">⚠️ <strong>Critical:</strong> 买 (mǎi, 3rd tone) = "to buy" | 卖 (mài, 4th tone) = "to sell". Getting tones wrong can cause real confusion. Practice every new word WITH its tone from day one.</div>
+
+<div class="tip"><strong>💡 Tone Trick:</strong> When two 3rd tones come together (e.g. 你好 nǐhǎo), the first becomes a 2nd tone in speech. So nǐhǎo sounds like níhǎo. This is called a tone sandhi rule.</div>
+
+<h3 style="margin: 1.5rem 0 1rem; font-size: 18px;">Tone Pairs to Practice</h3>
+<div class="table-wrap">
+<table class="phrase-table">
+  <tr><th>Character</th><th>Pinyin</th><th>Meaning</th><th>Tone</th></tr>
+  <tr><td class="zh-cell">书</td><td class="py-cell">shū</td><td>book</td><td><span class="tone-badge t1">1st</span></td></tr>
+  <tr><td class="zh-cell">熟</td><td class="py-cell">shú</td><td>cooked/ripe</td><td><span class="tone-badge t2">2nd</span></td></tr>
+  <tr><td class="zh-cell">鼠</td><td class="py-cell">shǔ</td><td>mouse/rat</td><td><span class="tone-badge t3">3rd</span></td></tr>
+  <tr><td class="zh-cell">树</td><td class="py-cell">shù</td><td>tree</td><td><span class="tone-badge t4">4th</span></td></tr>
+  <tr><td class="zh-cell">一</td><td class="py-cell">yī / yí / yì</td><td>one (tone changes by context)</td><td><span class="tone-badge t1">1→2→4</span></td></tr>
+</table>
+</div>
+
+<!-- ============================================================ -->
+<!-- MODULE 3: PINYIN -->
+<!-- ============================================================ -->
+<div class="section-header anchor" id="pinyin">
+  <div class="section-num">3</div>
+  <h2>Pinyin — The Romanization System <span class="zh">拼音</span></h2>
+</div>
+<p class="section-intro">Pinyin writes Mandarin sounds using the Latin alphabet + tone marks. It's your training wheels — learn it well so you can sound out any new word. It is NOT pronounced like English letters!</p>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab(event,'initials')">Initials (Consonants)</button>
+  <button class="tab-btn" onclick="switchTab(event,'finals')">Finals (Vowels)</button>
+  <button class="tab-btn" onclick="switchTab(event,'tricky')">Tricky Sounds</button>
+  <button class="tab-btn" onclick="switchTab(event,'tonemarks')">Tone Mark Rules</button>
+</div>
+
+<div id="initials" class="tab-content active">
+  <div class="info">ℹ️ Pinyin consonants are mostly like English, but several are <strong>very different</strong>. Focus on the highlighted ones.</div>
+  <div class="table-wrap">
+  <table class="phrase-table">
+    <tr><th>Pinyin</th><th>Sounds Like</th><th>Example</th><th>⚠️ Watch Out</th></tr>
+    <tr><td><strong>b, p, m, f</strong></td><td>Same as English</td><td>bā 八 (eight)</td><td></td></tr>
+    <tr><td><strong>d, t, n, l</strong></td><td>Same as English</td><td>dà 大 (big)</td><td></td></tr>
+    <tr><td><strong>g, k, h</strong></td><td>Same as English</td><td>gāo 高 (tall)</td><td></td></tr>
+    <tr><td><strong style="color:var(--red)">j</strong></td><td>Like "jee" — NOT "zh"</td><td>jī 鸡 (chicken)</td><td>⚠️ Only before i/ü</td></tr>
+    <tr><td><strong style="color:var(--red)">q</strong></td><td>Like "chee" — NOT "kw"</td><td>qī 七 (seven)</td><td>⚠️ Think "cheek" without the k</td></tr>
+    <tr><td><strong style="color:var(--red)">x</strong></td><td>Like "shee" (lighter than sh)</td><td>xīn 心 (heart)</td><td>⚠️ Tongue tip DOWN, not curled</td></tr>
+    <tr><td><strong style="color:var(--red)">zh</strong></td><td>Like "dj" — tongue curled back</td><td>zhōng 中 (middle)</td><td>⚠️ Retroflex — tongue curls back</td></tr>
+    <tr><td><strong style="color:var(--red)">ch</strong></td><td>Like "ch" but tongue curled back</td><td>chī 吃 (eat)</td><td>⚠️ Retroflex</td></tr>
+    <tr><td><strong style="color:var(--red)">sh</strong></td><td>Like "sh" but tongue curled back</td><td>shū 书 (book)</td><td>⚠️ Retroflex</td></tr>
+    <tr><td><strong style="color:var(--red)">r</strong></td><td>Like "r" + "zh" mixed — unique!</td><td>rén 人 (person)</td><td>⚠️ No direct English equivalent</td></tr>
+    <tr><td><strong>z</strong></td><td>Like "dz" in "adze"</td><td>zài 在 (at/exist)</td><td></td></tr>
+    <tr><td><strong>c</strong></td><td>Like "ts" in "cats"</td><td>cǎo 草 (grass)</td><td>⚠️ NOT like English "c"</td></tr>
+    <tr><td><strong>s</strong></td><td>Like English "s"</td><td>sān 三 (three)</td><td></td></tr>
+    <tr><td><strong>y, w</strong></td><td>Like English y/w</td><td>yī 一 (one), wǒ 我 (I)</td><td></td></tr>
+  </table>
+  </div>
+</div>
+
+<div id="finals" class="tab-content">
+  <div class="info">ℹ️ Finals are the vowel parts of syllables. Some look familiar but sound different from English.</div>
+  <div class="table-wrap">
+  <table class="phrase-table">
+    <tr><th>Final</th><th>Sounds Like</th><th>Example</th></tr>
+    <tr><td><strong>a</strong></td><td>"ah" (open mouth)</td><td>māma 妈妈 (mum)</td></tr>
+    <tr><td><strong>o</strong></td><td>"aw" — like "awe"</td><td>wǒ 我 (I/me)</td></tr>
+    <tr><td><strong>e</strong></td><td>Schwa — like "uh" or "er"</td><td>hē 喝 (drink)</td></tr>
+    <tr><td><strong>i</strong></td><td>"ee" after most consonants</td><td>nǐ 你 (you)</td></tr>
+    <tr><td><strong>i (after zh/ch/sh/r/z/c/s)</strong></td><td>Buzzed sound, barely a vowel</td><td>shī 师 (teacher)</td></tr>
+    <tr><td><strong>u</strong></td><td>"oo" as in "pool"</td><td>bù 不 (not)</td></tr>
+    <tr><td><strong style="color:var(--red)">ü / u (after j/q/x/y)</strong></td><td>Like French "u" — lips rounded, say "ee"</td><td>lǜ 绿 (green), yú 鱼 (fish)</td></tr>
+    <tr><td><strong>ai</strong></td><td>"eye"</td><td>ài 爱 (love)</td></tr>
+    <tr><td><strong>ei</strong></td><td>"ay" as in "hey"</td><td>bēi 杯 (cup)</td></tr>
+    <tr><td><strong>ao</strong></td><td>"ow" as in "cow"</td><td>hǎo 好 (good)</td></tr>
+    <tr><td><strong>ou</strong></td><td>"oh" as in "go"</td><td>gǒu 狗 (dog)</td></tr>
+    <tr><td><strong>an / en / in / un</strong></td><td>"-an"/"-en"/"-in"/"-wen"</td><td>fàn 饭 (rice/meal)</td></tr>
+    <tr><td><strong>ang / eng / ing / ong</strong></td><td>With -ng sound at end</td><td>míng 名 (name)</td></tr>
+    <tr><td><strong style="color:var(--red)">ian</strong></td><td>Sounds like "yen"!</td><td>tiān 天 (sky/day)</td></tr>
+    <tr><td><strong style="color:var(--red)">iu</strong></td><td>"yo" — really "iou" compressed</td><td>liù 六 (six)</td></tr>
+  </table>
+  </div>
+</div>
+
+<div id="tricky" class="tab-content">
+  <div class="grammar-box">
+    <h3>The Most Confusing Pinyin Sounds for English Speakers</h3>
+    <ul class="example-list">
+      <li><span class="zh-ex">e</span><span class="py-ex">NOT "ee" — say "uh"</span><span class="en-ex">鹅 é = goose</span></li>
+      <li><span class="zh-ex">x vs sh</span><span class="py-ex">x = flat tongue tip; sh = curled</span><span class="en-ex">xī 西 (west) vs shī 师 (teacher)</span></li>
+      <li><span class="zh-ex">j vs zh</span><span class="py-ex">j = tongue flat; zh = tongue curled</span><span class="en-ex">jī 鸡 (chicken) vs zhī 知 (know)</span></li>
+      <li><span class="zh-ex">q vs ch</span><span class="py-ex">q = tongue flat; ch = tongue curled</span><span class="en-ex">qī 七 (seven) vs chī 吃 (eat)</span></li>
+      <li><span class="zh-ex">üe / ue</span><span class="py-ex">"weh" with rounded lips</span><span class="en-ex">xuě 雪 (snow)</span></li>
+      <li><span class="zh-ex">r</span><span class="py-ex">Like English "r" but buzz it</span><span class="en-ex">rén 人 (person)</span></li>
+      <li><span class="zh-ex">zhi chi shi ri</span><span class="py-ex">The "i" here barely sounds</span><span class="en-ex">zhī, chī, shī, rì</span></li>
+    </ul>
+  </div>
+</div>
+
+<div id="tonemarks" class="tab-content">
+  <div class="grammar-box">
+    <h3>Where Do Tone Marks Go?</h3>
+    <p style="margin-bottom:12px; color:var(--ink-light);">Tone marks always go on the main vowel. Rules:</p>
+    <ul style="padding-left:1.5rem; color:var(--ink-mid); line-height:2;">
+      <li>If there's <strong>a</strong> or <strong>e</strong>, it always gets the mark: <em>hǎo, duō</em></li>
+      <li>If there's <strong>ou</strong>, mark the <strong>o</strong>: <em>hóu</em></li>
+      <li>Otherwise, mark the <strong>last vowel</strong>: <em>guī, liú</em></li>
+      <li>The tone mark also tells you which syllable is stressed</li>
+    </ul>
+    <div class="formula" style="margin-top:12px;">Rule: a/e always → ou goes on o → otherwise last vowel</div>
+  </div>
+  <div class="tip">💡 <strong>Input method tip:</strong> On your phone/computer, install a Pinyin keyboard. Type the syllable without tone marks, then select the correct character from the popup. Example: type "ni" → choose 你, 妮, 尼, etc.</div>
+</div>
+
+</div><!-- /container -->
+
+<footer>
+  <div class="footer-zh">加油！继续学习！</div>
+  <p>Keep going! Keep learning! • 免费中文学习手册</p>
+  <p style="margin-top: 8px; font-size: 12px;">This complete guide covers Pinyin, tones, grammar, vocabulary, characters, work Chinese and more — all free.</p>
+</footer>
+</main>
+
+<!-- Bibliotecas: animação (GSAP) e navegação entre páginas (Barba) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.js"></script>
+
+<!-- JavaScript do site — carregar por ordem -->
+<script src="js/utils.js"></script>
+<script src="js/page.js"></script>
+<script src="js/hanzi.js"></script>
+<script src="js/data.js"></script>
+<script src="js/exercises.js"></script>
+<script src="js/dictionary.js"></script>
+<script src="js/tools.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/init.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/transitions.js"></script>
+</body>
+</html>

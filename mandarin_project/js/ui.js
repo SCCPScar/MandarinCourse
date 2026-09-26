@@ -29,22 +29,10 @@ window.addEventListener('scroll', () => {
   sections.forEach(s => { if (s.offsetTop <= scrolled + 80) current = s.id; });
   const titleMap = {foundations:'Fundamentos',tones:'Tons',pinyin:'Pinyin',basics:'Básico',grammar:'Gramática',vocabulary:'Vocabulário',work:'Trabalho',characters:'Caracteres',quiz:'Quiz',plan:'Plano',features:'Funcionalidades',library:'Biblioteca'};
   if (titleMap[current]) document.title = titleMap[current] + ' — 学中文';
-  else document.title = '学中文 — Curso Completo de Mandarim';
+  else if (typeof ChaNav !== 'undefined') document.title = ChaNav.pageTitle();
 }, {passive: true});
 
-// ═══════════════════════════════════════════════════════
-// ☰ HAMBURGER MENU
-// ═══════════════════════════════════════════════════════
-function toggleHamburger() {
-  document.getElementById('nav-links').classList.toggle('open');
-}
-function closeHamburger() {
-  const nl = document.getElementById('nav-links');
-  if (nl) nl.classList.remove('open');
-}
-document.addEventListener('click', e => {
-  if (!e.target.closest('nav')) closeHamburger();
-});
+// (O menu do telemóvel está agora em js/nav.js)
 
 // ═══════════════════════════════════════════════════════
 // ⌨️ KEYBOARD SHORTCUTS
@@ -63,7 +51,7 @@ document.addEventListener('keydown', e => {
     const btn = document.getElementById('tutor-send');
     if (btn && !btn.disabled) btn.click();
   }
-  if (e.code === 'Escape') { closeHamburger(); closeDailyModal(); }
+  if (e.code === 'Escape') closeDailyModal();
 });
 
 // ═══════════════════════════════════════════════════════
@@ -129,9 +117,10 @@ function finishOnboard() {
   checkAchievements();
   showToast('🎉 Bem-vindo! Vamos começar a aprender mandarim!');
   // Scroll to suggested start based on level
-  const targets = { zero:'#foundations', basic:'#tones', inter:'#grammar', adv:'#features' };
-  const target = targets[selectedLevel] || '#foundations';
-  setTimeout(() => document.querySelector(target)?.scrollIntoView({behavior:'smooth'}), 500);
+  // Leva o aluno à página certa para o nível dele
+  const targets = { zero:'index.html#foundations', basic:'sons.html#tones', inter:'basico.html#grammar', adv:'praticar.html#features' };
+  const target = targets[selectedLevel] || targets.zero;
+  setTimeout(() => ChaNav.go(target), 500);
 }
 
 // ═══════════════════════════════════════════════════════
@@ -156,8 +145,8 @@ function openDailyModal() {
     { icon:'🔥', title:`Streak: ${streak} dia${streak!==1?'s':''}`, desc: streak>0 ? `Mantém o ritmo! Já estudas há ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}.` : 'Começa hoje e constrói o teu streak!', action: null },
     { icon:'📚', title:'Revisão SRS', desc: dueWords.length > 0 ? `Tens ${dueWords.length} palavra${dueWords.length!==1?'s':''} para rever hoje:` : 'Nenhuma palavra para rever hoje! Aprende palavras novas primeiro.', words: dueWords },
     { icon:'✨', title:'Palavras Novas', desc: newWords.length > 0 ? `Aprende ${newWords.length} palavra${newWords.length!==1?'s':''} nova${newWords.length!==1?'s':''} hoje:` : 'Excelente! Já aprendeste todas as palavras disponíveis.', words: newWords },
-    { icon:'🎤', title:'Praticar Pronúncia', desc: 'Vai para a secção de Funcionalidades → Pronúncia e pratica a gravação de 2-3 frases.', action: '#features' },
-    { icon:'🤖', title:'Tutor IA', desc: 'Faz uma pergunta ao tutor IA sobre mandarim ou pede-lhe para criar uma frase de prática.', action: '#features' },
+    { icon:'🎤', title:'Praticar Pronúncia', desc: 'Vai para a secção de Funcionalidades → Pronúncia e pratica a gravação de 2-3 frases.', action: 'praticar.html#features' },
+    { icon:'🤖', title:'Tutor IA', desc: 'Faz uma pergunta ao tutor IA sobre mandarim ou pede-lhe para criar uma frase de prática.', action: 'praticar.html#features' },
   ];
 
   const html = steps.map((s,i) => `

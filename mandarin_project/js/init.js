@@ -1,12 +1,13 @@
 /**
  * init.js
- * Inicialização — DOMContentLoaded
+ * Inicialização — regista o que corre em cada página (ver js/page.js)
  * 学中文 — Curso Completo de Mandarim
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+// Botão "Partilhar Progresso" no caderno (só nas páginas que têm o caderno)
+ChaPage.onInit(() => {
   const nb = document.getElementById('tab-notebook');
-  if (nb) {
+  if (nb && !nb.querySelector('#share-card')) {
     const shareDiv = document.createElement('div');
     shareDiv.style.cssText = 'margin-top:16px;text-align:center';
     shareDiv.innerHTML = `
@@ -20,61 +21,36 @@ document.addEventListener('DOMContentLoaded', () => {
 // ═══════════════════════════════════════════════════════
 // 🎮 INIT ALL NEW FEATURES
 // ═══════════════════════════════════════════════════════
-// Mark tutor usage for achievements
-const _origSendTutor = window.sendTutor;
+// ── Corre UMA vez, quando o site abre ──────────────────────
+// Onboarding na primeira visita (o modal fica fora do <main>, por isso não se repete)
+if (!LS.get('onboarded', false)) {
+  setTimeout(() => {
+    document.getElementById('onboard-overlay').style.display = 'flex';
+  }, 800);
+}
 
-document.addEventListener('DOMContentLoaded',()=>{
+// ── Corre em CADA página que abre ──────────────────────────
+ChaPage.onInit(() => {
   applyLang(currentLang);
-
-  // Init streak
   updateStreakReal();
+  if (LS.get('onboarded', false)) checkAchievements();
 
-  // Show onboarding if first visit
-  if (!LS.get('onboarded', false)) {
-    setTimeout(() => {
-      document.getElementById('onboard-overlay').style.display = 'flex';
-    }, 800);
-  } else {
-    checkAchievements();
-  }
-
-  // Auto-open daily modal if not opened today
-  const lastDaily = LS.get('lastDaily', null);
-  const today = new Date().toDateString();
-  // Don't auto-open on first visit — let onboarding show first
-
-  // Mark quiz badge when quiz is completed
-  const origStartQuiz = window.startQuiz;
-  if (origStartQuiz) {
-    window.startQuiz = function() {
-      LS.set('quizDone', true);
-      origStartQuiz();
-    };
-  }
-
-  // Keyboard shortcuts hint in flashcards
+  // Dica de atalhos de teclado nos flashcards
   const flashTab = document.getElementById('tab-flash');
-  if (flashTab) {
+  if (flashTab && !flashTab.querySelector('.fc-shortcuts')) {
     const hint = document.createElement('div');
+    hint.className = 'fc-shortcuts';
     hint.style.cssText = 'font-size:12px;color:var(--ink-light);text-align:center;margin-top:8px;';
     hint.innerHTML = 'Atalhos: <span class="kbd">Espaço</span> virar carta · <span class="kbd">1</span> Difícil · <span class="kbd">2</span> OK · <span class="kbd">3</span> Fácil';
     flashTab.appendChild(hint);
   }
 
-  // Active nav link on scroll
-  const navLinks = document.querySelectorAll('.nav-links a');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(a => a.classList.remove('active'));
-        const link = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-        if (link) link.classList.add('active');
-      }
-    });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('section[id], div[id].section').forEach(s => observer.observe(s));
   renderVocab('cg-people',vocabData.people);renderVocab('cg-verbs',vocabData.verbs);renderVocab('cg-adj',vocabData.adj);renderVocab('cg-places',vocabData.places);renderVocab('cg-food',vocabData.food);renderVocab('cg-time',vocabData.time);
-  updateProgress();setPotd();initFC();renderScenarios();renderNb();updateStreak();loadChar('中');
+  // Cada função só atua se a página tiver os elementos dela
+  [updateProgress, setPotd, initFC, renderScenarios, renderNb, updateStreak].forEach(fn => {
+    try { fn(); } catch (err) { /* esta página não tem este bloco */ }
+  });
+  if (document.getElementById('hanzi-target')) loadChar('中');
   const rs=document.getElementById('speak-rate');const rl=document.getElementById('speak-rate-label');if(rs&&rl)rs.addEventListener('input',()=>{rl.textContent=rs.value+'×';});
 });
 
@@ -705,10 +681,28 @@ function similarity(a, b) {
   return matches / Math.max(la.length, lb.length);
 }
 
-// Init on load
-document.addEventListener('DOMContentLoaded', () => {
+// Treino de pronúncia: liga-se em cada página que o tiver
+ChaPage.onInit(() => {
+  if (!document.getElementById('tone-canvas')) return;
   setTimeout(() => { initToneCanvas(); loadRepeatWords(); updatePronunScores(); }, 200);
-  window.addEventListener('resize', () => { if (toneCanvas) { toneCanvas.width = toneCanvas.parentElement.clientWidth; drawToneGuide(); } });
+});
+window.addEventListener('resize', () => {
+  if (toneCanvas && toneCanvas.isConnected) { toneCanvas.width = toneCanvas.parentElement.clientWidth; drawToneGuide(); }
+});
+
+// Ao sair de uma página: desligar o microfone, a voz e os temporizadores dessa página
+ChaPage.onCleanup(() => {
+  toneRecording = false;
+  if (toneAnimFrame) cancelAnimationFrame(toneAnimFrame);
+  if (recogRecognizer) { try { recogRecognizer.abort(); } catch(e){} }
+  if (repeatRecognizer) { try { repeatRecognizer.abort(); } catch(e){} }
+  recogRecording = false; repeatRecording = false;
+  if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
+  if (audioCtx) { try { audioCtx.close(); } catch(e){} audioCtx = null; }
+  toneCanvas = null; waveCanvas = null;
+  if (typeof cgTimer !== 'undefined' && cgTimer) clearInterval(cgTimer);
+  if (typeof timerOn !== 'undefined' && timerOn) { try { stopTimer(); } catch(e){ clearInterval(timerInt); timerOn = false; } } // guarda os minutos estudados
+  if ('speechSynthesis' in window) speechSynthesis.cancel();
 });
 
 

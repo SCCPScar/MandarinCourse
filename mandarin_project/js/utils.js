@@ -114,7 +114,8 @@ const i18n = {
     nav_foundations:'Fundamentos', nav_tones:'Tons', nav_pinyin:'Pinyin',
     nav_basics:'Básico', nav_grammar:'Gramática', nav_vocabulary:'Vocabulário',
     nav_work:'Trabalho', nav_characters:'Caracteres', nav_quiz:'Quiz',
-    nav_plan:'Plano de Estudo', nav_features:'⚡ Funcionalidades', nav_library:'📚 Biblioteca',
+    nav_plan:'Plano de Estudo', nav_features:'⚡ Funcionalidades', nav_library:'Biblioteca',
+    nav_home:'Início', nav_sounds:'Sons', nav_practice:'Praticar',
     dark_btn_dark:'🌙 Escuro', dark_btn_light:'☀️ Claro',
     lang_btn:'🇧🇷 PT',
     hero_title:'Fale <span>Mandarim</span> — Do Zero ao Fluente',
@@ -135,7 +136,8 @@ const i18n = {
     nav_foundations:'Foundations', nav_tones:'Tones', nav_pinyin:'Pinyin',
     nav_basics:'Basics', nav_grammar:'Grammar', nav_vocabulary:'Vocabulary',
     nav_work:'Work', nav_characters:'Characters', nav_quiz:'Quiz',
-    nav_plan:'Study Plan', nav_features:'⚡ Features', nav_library:'📚 Library',
+    nav_plan:'Study Plan', nav_features:'⚡ Features', nav_library:'Library',
+    nav_home:'Home', nav_sounds:'Sounds', nav_practice:'Practice',
     dark_btn_dark:'🌙 Dark', dark_btn_light:'☀️ Light',
     lang_btn:'🇬🇧 EN',
     hero_title:'Speak <span>Mandarin</span> — From Zero to Fluent',
@@ -160,10 +162,13 @@ function applyLang(lang) {
   const t = i18n[lang];
   currentLang = lang;
   LS.set('lang', lang);
-  // Nav links
-  const navLinks = document.querySelectorAll('.nav-links a');
-  const navKeys = ['nav_foundations','nav_tones','nav_pinyin','nav_basics','nav_grammar','nav_vocabulary','nav_work','nav_characters','nav_quiz','nav_plan','nav_features','nav_library'];
-  navLinks.forEach((a,i) => { if(navKeys[i]) a.textContent = t[navKeys[i]]; });
+  // Links da barra de navegação (o nav.js volta a dividir o texto em letras)
+  document.querySelectorAll('.site-nav__link[data-i18n]').forEach(a => {
+    const label = t[a.dataset.i18n];
+    if (!label) return;
+    if (typeof ChaNav !== 'undefined') ChaNav.setLabel(a, label); else a.textContent = label;
+  });
+  document.documentElement.lang = lang === 'pt' ? 'pt' : 'en';
   // Lang button
   const lb = document.getElementById('lang-toggle');
   if(lb) lb.textContent = lang==='pt' ? '🇬🇧 EN' : '🇧🇷 PT';
