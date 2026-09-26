@@ -370,3 +370,6 @@
   .api-tab-content.active { display: block; }
 
 
+
+  /* Caracteres chineses em destaque nas respostas da IA (tutor, conversação) */
+  .ai-han { font-family: var(--font-chinese); color: var(--red); font-weight: 700; }

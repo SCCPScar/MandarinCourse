@@ -45,7 +45,6 @@ ChaPage.onInit(() => {
     flashTab.appendChild(hint);
   }
 
-  renderVocab('cg-people',vocabData.people);renderVocab('cg-verbs',vocabData.verbs);renderVocab('cg-adj',vocabData.adj);renderVocab('cg-places',vocabData.places);renderVocab('cg-food',vocabData.food);renderVocab('cg-time',vocabData.time);
   // Cada função só atua se a página tiver os elementos dela
   [updateProgress, setPotd, initFC, renderScenarios, renderNb, updateStreak].forEach(fn => {
     try { fn(); } catch (err) { /* esta página não tem este bloco */ }
@@ -511,9 +510,9 @@ async function toggleRepeatRecording() {
     const correct = alts.some(a => a.includes(target) || target.includes(a) || similarity(a, target) > 0.6);
     const res = document.getElementById('repeat-result');
     if (correct) {
-      res.innerHTML = `<span class="recog-match">✓ 太好了！(tài hǎo le!) — Recognised: "${heard}"</span>`;
+      res.innerHTML = `<span class="recog-match">✓ 太好了！(tài hǎo le!) — Recognised: "${esc(heard)}"</span>`;
     } else {
-      res.innerHTML = `<span class="recog-miss">✗ Heard: "${heard}" — Target: "${target}" — Try again!</span>`;
+      res.innerHTML = `<span class="recog-miss">✗ Heard: "${esc(heard)}" — Target: "${esc(target)}" — Try again!</span>`;
     }
     savePronunAttempt({ type: 'repeat', word: target, heard, correct });
     // Update word list row
@@ -530,7 +529,7 @@ async function toggleRepeatRecording() {
     repeatRecording = false;
     document.getElementById('repeat-mic-btn').className = 'mic-btn idle';
     document.getElementById('repeat-mic-btn').textContent = '🎤 Say It';
-    document.getElementById('repeat-result').innerHTML = `<span style="color:var(--red)">⚠️ Error: ${e.error}. Make sure mic is allowed.</span>`;
+    document.getElementById('repeat-result').innerHTML = `<span style="color:var(--red)">⚠️ Error: ${esc(e.error)}. Make sure mic is allowed.</span>`;
   };
   repeatRecognizer.onend = () => {
     repeatRecording = false;
@@ -589,7 +588,7 @@ async function toggleRecogRecording() {
   recogRecognizer.onerror = e => {
     recogRecording = false;
     btn.className = 'mic-btn idle'; btn.textContent = '🎤 Record';
-    document.getElementById('recog-result').innerHTML = `<p style="color:var(--red)">⚠️ ${e.error === 'not-allowed' ? 'Microphone access denied.' : 'Error: ' + e.error}</p>`;
+    document.getElementById('recog-result').innerHTML = `<p style="color:var(--red)">⚠️ ${e.error === 'not-allowed' ? 'Microphone access denied.' : 'Error: ' + esc(e.error)}</p>`;
   };
   recogRecognizer.onend = () => {
     recogRecording = false;
@@ -602,24 +601,19 @@ async function getRecogAIFeedback(target, heard) {
   const fb = document.getElementById('recog-ai-feedback');
   fb.innerHTML = '<p style="color:var(--ink-light);font-size:13px">🤖 Analysing your pronunciation…</p>';
   try {
-    const resp = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-6", max_tokens: 300,
-        messages: [{ role: "user", content: `A Mandarin learner was asked to say: "${target}"\nThe speech recognition heard: "${heard}"\n\nGive brief pronunciation feedback in English (3-4 sentences max). Note: 1) Did they say it correctly? 2) What specific sounds or tones might be wrong? 3) One concrete tip to improve. Be encouraging. If it was correct, congratulate them.` }]
-      })
+    const reply = await askClaude({
+      maxTokens: 300,
+      messages: [{ role: "user", content: `A Mandarin learner was asked to say: "${target}"\nThe speech recognition heard: "${heard}"\n\nGive brief pronunciation feedback in English (3-4 sentences max). Note: 1) Did they say it correctly? 2) What specific sounds or tones might be wrong? 3) One concrete tip to improve. Be encouraging. If it was correct, congratulate them.` }]
     });
-    const data = await resp.json();
-    const reply = data.content.map(c => c.text || '').join('');
     const match = heard === target || similarity(heard, target) > 0.7;
     fb.innerHTML = `
       <div style="background:${match ? 'var(--green-light)' : 'var(--blue-light)'};border-radius:10px;padding:12px 16px;border-left:4px solid ${match ? 'var(--green)' : 'var(--blue)'}">
         <div style="font-size:12px;font-weight:700;color:${match ? 'var(--green)' : 'var(--blue)'};margin-bottom:6px">🤖 AI Pronunciation Coach</div>
-        <div style="font-size:13px;color:var(--ink-mid)">${reply.replace(/\n/g, '<br>')}</div>
+        <div style="font-size:13px;color:var(--ink-mid)">${formatAIText(reply)}</div>
       </div>`;
     savePronunAttempt({ type: 'recog', target, heard, correct: match });
   } catch (e) {
-    fb.innerHTML = `<p style="color:var(--red);font-size:13px">⚠️ Could not get AI feedback: ${e.message}</p>`;
+    fb.innerHTML = `<p style="color:var(--red);font-size:13px">⚠️ ${esc(e.message)}</p>`;
   }
 }
 

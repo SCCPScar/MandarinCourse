@@ -10,7 +10,7 @@ function saveNb(zh,py,en,btn){if(notebook.find(n=>n.zh===zh)){btn.textContent='S
 function renderNb(){
   const el=document.getElementById('nb-list');if(!el)return;
   if(!notebook.length){el.innerHTML='<div style="text-align:center;padding:2rem;color:var(--ink-light);font-size:13px">Your notebook is empty.<br>Look up words in the Dictionary tab and click "+ Save".</div>';return;}
-  el.innerHTML=notebook.map((n,i)=>`<div class="nb-entry"><div class="nb-zh-txt">${n.zh}</div><div class="nb-py-txt">${n.py}</div><div class="nb-en-txt">${n.en}</div><button class="speak-btn" onclick="speakText('${n.zh}')">🔊</button><button class="nb-mark${n.done?' done':''}" onclick="toggleNb(${i},this)">${n.done?'✓ Done':'Mark Done'}</button><button class="nb-del" onclick="delNb(${i})">✕</button></div>`).join('');
+  el.innerHTML=notebook.map((n,i)=>`<div class="nb-entry"><div class="nb-zh-txt">${esc(n.zh)}</div><div class="nb-py-txt">${esc(n.py)}</div><div class="nb-en-txt">${esc(n.en)}</div><button class="speak-btn" onclick="speakText(notebook[${i}].zh)" aria-label="Ouvir">🔊</button><button class="nb-mark${n.done?' done':''}" onclick="toggleNb(${i},this)">${n.done?'✓ Done':'Mark Done'}</button><button class="nb-del" onclick="delNb(${i})">✕</button></div>`).join('');
 }
 function toggleNb(i,btn){notebook[i].done=!notebook[i].done;LS.set('notebook',notebook);btn.textContent=notebook[i].done?'✓ Done':'Mark Done';btn.className='nb-mark'+(notebook[i].done?' done':'');}
 function delNb(i){notebook.splice(i,1);LS.set('notebook',notebook);renderNb();}
@@ -45,12 +45,11 @@ async function sendTutor(){
   tutorH.push({role:'user',content:text});
   const lid='l'+Date.now();msgs.innerHTML+=`<div class="tutor-msg ai" id="${lid}"><em style="color:var(--ink-light)">Thinking…</em></div>`;msgs.scrollTop=msgs.scrollHeight;
   try{
-    const resp=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-6",max_tokens:800,system:"You are an expert Mandarin Chinese tutor for a Portuguese person learning Mandarin to work in China. Respond in English. Always include Chinese examples as: 你好 (nǐ hǎo) = Hello. Be encouraging, practical, concise. Under 300 words. Use bullets for vocabulary lists.",messages:tutorH})});
-    const data=await resp.json();const reply=data.content.map(c=>c.text||'').join('');
+    const reply=await askClaude({maxTokens:800,system:"You are an expert Mandarin Chinese tutor for a Portuguese person learning Mandarin to work in China. Respond in English. Always include Chinese examples as: 你好 (nǐ hǎo) = Hello. Be encouraging, practical, concise. Under 300 words. Use bullets for vocabulary lists.",messages:tutorH});
     tutorH.push({role:'assistant',content:reply});
-    const fmt=reply.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\*(.*?)\*/g,'<em>$1</em>').replace(/([一-鿿]+)/g,'<span style="font-family:var(--font-chinese);color:var(--red);font-weight:700">$1</span>').replace(/\n/g,'<br>');
-    document.getElementById(lid).innerHTML=fmt;
-  }catch(err){document.getElementById(lid).innerHTML=`<span style="color:var(--red)">⚠️ ${err.message}</span>`;tutorH.pop();}
+    document.getElementById(lid).innerHTML=formatAIText(reply);
+    LS.set('tutorUsed',true);if(typeof checkAchievements==='function')checkAchievements();
+  }catch(err){document.getElementById(lid).innerHTML=`<span style="color:var(--red)">⚠️ ${esc(err.message)}</span>`;tutorH.pop();}
   send.disabled=false;send.textContent='Send →';msgs.scrollTop=msgs.scrollHeight;
 }
 
@@ -73,24 +72,20 @@ async function startScenario(i){
   document.getElementById('conv-reset-btn').style.display='inline-block';
   document.getElementById('conv-send').disabled=true;
   try{
-    const resp=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-6",max_tokens:200,system:activeScenario.prompt,messages:[{role:"user",content:"[Start]"}]})});
-    const data=await resp.json();const reply=data.content.map(c=>c.text||'').join('');
+    const reply=await askClaude({maxTokens:200,system:activeScenario.prompt,messages:[{role:"user",content:"[Start]"}]});
     convH.push({role:'user',content:'[Start]'});convH.push({role:'assistant',content:reply});
     addConvMsg(reply,'ai');speakText(reply.match(/[一-鿿]+/g)?.join('')||'');
-  }catch(e){addConvMsg('⚠️ Error starting. Check internet.','ai');}
+  }catch(e){addConvMsg('⚠️ '+e.message,'ai');}
   document.getElementById('conv-send').disabled=false;
 }
-function addConvMsg(text,role){const msgs=document.getElementById('conv-messages');const fmt=text.replace(/([一-鿿]+)/g,'<span style="font-family:var(--font-chinese);color:var(--red);font-weight:700;font-size:15px">$1</span>').replace(/\n/g,'<br>');msgs.innerHTML+=`<div class="conv-msg ${role}">${fmt}</div>`;msgs.scrollTop=msgs.scrollHeight;}
+function addConvMsg(text,role){const msgs=document.getElementById('conv-messages');const div=document.createElement('div');div.className='conv-msg '+role;div.innerHTML=formatAIText(text);msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;}
 async function sendConv(){
   if(!activeScenario)return;const inp=document.getElementById('conv-input'),send=document.getElementById('conv-send');const text=inp.value.trim();if(!text)return;
   addConvMsg(text,'user');inp.value='';send.disabled=true;convH.push({role:'user',content:text});
-  try{const resp=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-6",max_tokens:200,system:activeScenario.prompt,messages:convH})});const data=await resp.json();const reply=data.content.map(c=>c.text||'').join('');convH.push({role:'assistant',content:reply});addConvMsg(reply,'ai');speakText(reply.match(/[一-鿿]+/g)?.join('')||'');}catch(e){addConvMsg('⚠️ Error. Try again.','ai');convH.pop();}
+  try{const reply=await askClaude({maxTokens:200,system:activeScenario.prompt,messages:convH});convH.push({role:'assistant',content:reply});addConvMsg(reply,'ai');speakText(reply.match(/[一-鿿]+/g)?.join('')||'');}catch(e){addConvMsg('⚠️ '+e.message,'ai');convH.pop();}
   send.disabled=false;
 }
 function resetConv(){document.getElementById('conv-box').style.display='none';document.getElementById('conv-reset-btn').style.display='none';document.querySelectorAll('.scenario-card').forEach(c=>c.classList.remove('active'));convH=[];activeScenario=null;}
-
-// ═══ HELPERS ═══
-// ═══ INIT ═══
 
 // ═══════════════════════════════════════════════════════
 // 🔔 TOAST

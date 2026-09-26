@@ -185,136 +185,6 @@
 </div>
 
 <!-- ============================================================ -->
-<!-- AI TOOLS SECTION -->
-<!-- ============================================================ -->
-<div class="section-header anchor" id="tools">
-  <div class="section-num">🤖</div>
-  <h2>Interactive AI Tools <span class="zh">智能工具</span></h2>
-</div>
-<p class="section-intro">Four live tools powered by APIs — speak any phrase aloud, look up any character, animate stroke order, and chat with an AI Mandarin tutor. All free, all built into this page.</p>
-
-<div id="tools-api-tabs">
-  <button class="api-tab-btn active" onclick="switchApiTab(event,'tools-tutor')">🤖 AI Tutor</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tools-speak')">🔊 Speak Aloud</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tools-dict')">🔤 Dictionary</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tools-hanzi')">✍️ Stroke Order</button>
-</div>
-
-<!-- TAB 1: AI TUTOR -->
-<div id="tools-tutor" class="api-tab-content active">
-  <div class="info" style="margin-bottom:1rem">🤖 <strong>AI Mandarin Tutor</strong> — Ask anything about Mandarin: grammar, vocabulary, pronunciation, culture, example sentences. The tutor responds in English with Chinese examples.</div>
-  <div class="tutor-suggestions">
-    <span class="tutor-chip" onclick="sendChip(this)">How do I use 了 correctly?</span>
-    <span class="tutor-chip" onclick="sendChip(this)">Explain measure words with examples</span>
-    <span class="tutor-chip" onclick="sendChip(this)">What's the difference between 想 and 要?</span>
-    <span class="tutor-chip" onclick="sendChip(this)">Give me 5 useful work phrases</span>
-    <span class="tutor-chip" onclick="sendChip(this)">How do tones change in sentences?</span>
-    <span class="tutor-chip" onclick="sendChip(this)">Teach me how to count money in Chinese</span>
-  </div>
-  <div id="tools-tutor-section" style="margin-top:10px">
-    <div id="tools-tutor-messages">
-      <div class="tutor-msg ai">你好！👋 I'm your Mandarin tutor. Ask me anything — grammar questions, vocabulary help, example sentences, pronunciation tips, or Chinese culture. I'll always give you real Chinese examples with pinyin. <strong>What would you like to learn?</strong></div>
-    </div>
-    <div id="tools-tutor-input-row">
-      <input id="tools-tutor-input" type="text" placeholder="Ask anything about Mandarin…" onkeydown="if(event.key==='Enter')sendTutor()">
-      <button id="tools-tutor-send" onclick="sendTutor()">Send →</button>
-    </div>
-  </div>
-</div>
-
-<!-- TAB 2: SPEAK ALOUD -->
-<div id="tools-speak" class="api-tab-content">
-  <div class="info" style="margin-bottom:1rem">🔊 <strong>Text-to-Speech</strong> — Uses your browser's built-in speech engine (no API key needed). Type any Chinese text and hear it spoken in Mandarin.</div>
-  <div id="tools2-dict-section">
-    <div id="tools2-dict-input-row">
-      <input id="tools-speak-input" type="text" style="flex:1;min-width:180px;padding:10px 14px;border-radius:10px;border:1.5px solid var(--paper-dark);font-size:20px;font-family:var(--font-chinese);background:var(--paper-mid);outline:none;" placeholder="输入中文… e.g. 你好，我叫李明" value="你好，我叫李明，很高兴认识你！">
-      <button id="tools2-dict-btn" onclick="speakText()">🔊 Speak</button>
-    </div>
-    <div style="margin-bottom:1rem">
-      <label style="font-size:13px;color:var(--ink-light);margin-right:8px">Speed:</label>
-      <input type="range" id="tools-speak-rate" min="0.5" max="1.5" step="0.1" value="0.8" style="vertical-align:middle;width:120px">
-      <span id="tools-speak-rate-label" style="font-size:13px;color:var(--ink-light);margin-left:6px">0.8×</span>
-    </div>
-    <div style="margin-bottom:1rem">
-      <p style="font-size:13px;color:var(--ink-light);margin-bottom:8px">Quick phrases to try:</p>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <button class="preset-char" style="font-size:14px;padding:6px 12px;" onclick="document.getElementById('speak-input').value=this.dataset.text;speakText()" data-text="你好！早上好！">你好！早上好！</button>
-        <button class="preset-char" style="font-size:14px;padding:6px 12px;" onclick="document.getElementById('speak-input').value=this.dataset.text;speakText()" data-text="我想学中文。">我想学中文。</button>
-        <button class="preset-char" style="font-size:14px;padding:6px 12px;" onclick="document.getElementById('speak-input').value=this.dataset.text;speakText()" data-text="这个多少钱？">这个多少钱？</button>
-        <button class="preset-char" style="font-size:14px;padding:6px 12px;" onclick="document.getElementById('speak-input').value=this.dataset.text;speakText()" data-text="对不起，我不明白。">对不起，我不明白。</button>
-        <button class="preset-char" style="font-size:14px;padding:6px 12px;" onclick="document.getElementById('speak-input').value=this.dataset.text;speakText()" data-text="请再说一遍，慢一点。">请再说一遍，慢一点。</button>
-        <button class="preset-char" style="font-size:14px;padding:6px 12px;" onclick="document.getElementById('speak-input').value=this.dataset.text;speakText()" data-text="我是葡萄牙人，我在学中文。">我是葡萄牙人，我在学中文。</button>
-      </div>
-    </div>
-    <div id="tools-speak-status" style="font-size:13px;color:var(--green);min-height:20px"></div>
-    <div class="tip">💡 <strong>Tip:</strong> Set speed to 0.6–0.8× when learning. Native speed is ~1.0. You can click the 🔊 button next to any phrase in this course to hear it instantly.</div>
-  </div>
-</div>
-
-<!-- TAB 3: DICTIONARY -->
-<div id="tools-dict" class="api-tab-content">
-  <div class="info" style="margin-bottom:1rem">🔤 <strong>CC-CEDICT Dictionary</strong> — Look up any Chinese word or character. Uses the open-source CC-CEDICT database (the same database that powers Pleco and MDBG). No API key needed.</div>
-  <div id="tools-dict-section">
-    <div id="tools-dict-input-row">
-      <input id="tools-dict-input" type="text" placeholder="Type Chinese or English… e.g. 朋友 or 'friend'" onkeydown="if(event.key==='Enter')lookupWord()">
-      <button id="tools-dict-btn" onclick="lookupWord()">Search 🔍</button>
-    </div>
-    <div id="tools-dict-result">
-      <p style="color:var(--ink-light);font-size:14px">Try searching: 你好 &nbsp;·&nbsp; 朋友 &nbsp;·&nbsp; 工作 &nbsp;·&nbsp; 学习 &nbsp;·&nbsp; 漂亮 &nbsp;·&nbsp; 中国</p>
-    </div>
-  </div>
-</div>
-
-<!-- TAB 4: STROKE ORDER -->
-<div id="tools-hanzi" class="api-tab-content">
-  <div class="info" style="margin-bottom:1rem">✍️ <strong>HanziWriter</strong> — Animate stroke order for any character. Click <em>Animate</em> to watch it draw, or <em>Quiz Me</em> to practice writing it yourself. Uses the open-source HanziWriter library.</div>
-  <div id="tools-hanzi-section">
-    <div id="tools-hanzi-input-row">
-      <input id="tools-hanzi-input" type="text" maxlength="1" placeholder="字" value="中">
-      <button class="hanzi-action-btn" id="tools-hanzi-animate-btn" onclick="animateHanzi()">▶ Animate</button>
-      <button class="hanzi-action-btn" id="tools-hanzi-quiz-btn" onclick="quizHanzi()">✏️ Quiz Me</button>
-      <button class="speak-btn" style="padding:8px 14px;font-size:13px;" onclick="speakText(document.getElementById('hanzi-input').value)">🔊 Hear it</button>
-    </div>
-    <div id="tools-hanzi-canvas-wrap">
-      <div>
-        <svg id="tools-hanzi-target" width="220" height="220"></svg>
-        <div style="text-align:center;font-size:12px;color:var(--ink-light);margin-top:4px" id="tools-hanzi-hint"></div>
-      </div>
-      <div id="tools-hanzi-info">
-        <h4>Quick Practice Characters</h4>
-        <div id="tools-hanzi-presets">
-          <span class="preset-char" onclick="loadChar('人')">人</span>
-          <span class="preset-char" onclick="loadChar('大')">大</span>
-          <span class="preset-char" onclick="loadChar('中')">中</span>
-          <span class="preset-char" onclick="loadChar('好')">好</span>
-          <span class="preset-char" onclick="loadChar('我')">我</span>
-          <span class="preset-char" onclick="loadChar('你')">你</span>
-          <span class="preset-char" onclick="loadChar('他')">他</span>
-          <span class="preset-char" onclick="loadChar('们')">们</span>
-          <span class="preset-char" onclick="loadChar('是')">是</span>
-          <span class="preset-char" onclick="loadChar('不')">不</span>
-          <span class="preset-char" onclick="loadChar('有')">有</span>
-          <span class="preset-char" onclick="loadChar('爱')">爱</span>
-          <span class="preset-char" onclick="loadChar('国')">国</span>
-          <span class="preset-char" onclick="loadChar('学')">学</span>
-          <span class="preset-char" onclick="loadChar('语')">语</span>
-          <span class="preset-char" onclick="loadChar('言')">言</span>
-          <span class="preset-char" onclick="loadChar('文')">文</span>
-          <span class="preset-char" onclick="loadChar('口')">口</span>
-          <span class="preset-char" onclick="loadChar('心')">心</span>
-          <span class="preset-char" onclick="loadChar('日')">日</span>
-          <span class="preset-char" onclick="loadChar('月')">月</span>
-          <span class="preset-char" onclick="loadChar('山')">山</span>
-          <span class="preset-char" onclick="loadChar('水')">水</span>
-          <span class="preset-char" onclick="loadChar('火')">火</span>
-        </div>
-        <div class="tip" style="margin-top:8px">💡 <strong>How to use:</strong> Pick a character → click Animate to see stroke order → click Quiz Me to draw it yourself. The quiz shows red hints if you go wrong.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ============================================================ -->
 <!-- FEATURES SECTION -->
 <!-- ============================================================ -->
 <div class="section-header anchor" id="features">
@@ -742,6 +612,7 @@
 
 <!-- JavaScript do site — carregar por ordem -->
 <script src="js/utils.js"></script>
+<script src="js/ai.js"></script>
 <script src="js/page.js"></script>
 <script src="js/hanzi.js"></script>
 <script src="js/data.js"></script>
