@@ -40,7 +40,7 @@ As pesquisas também funcionam no Pexels (`https://www.pexels.com/search/<termos
 | ID | Onde aparece | O que mostrar | Pesquisa |
 |---|---|---|---|
 | G1 | Hero da página inicial | Mãos servindo chá numa xícara pequena, com vapor e luz quente | [chinese tea pouring](https://unsplash.com/s/photos/chinese-tea-pouring) |
-| G2 | Onboarding | Pincel escrevendo caracteres em papel | [chinese calligraphy brush](https://unsplash.com/s/photos/chinese-calligraphy-brush) |
+| G2 | Onboarding | Rua chinesa com placas legíveis em caracteres simplificados | [shanghai old street](https://unsplash.com/s/photos/shanghai-old-street) |
 | G3 | Página "Sobre" | Mesa com cadernos, chá e alguém estudando | [studying tea notebook](https://unsplash.com/s/photos/studying-tea-notebook) |
 
 ### Decisões
@@ -48,8 +48,8 @@ As pesquisas também funcionam no Pexels (`https://www.pexels.com/search/<termos
 | ID | Estado | Notas |
 |---|---|---|
 | G1 | ✅ Aprovada (26/09/2026) | **Duas fotos, uma por tamanho de tela** (direção de arte com `<picture>`, troca em 768px). **Computador:** Yang Louie, `photo-1601366029950-0640bbbb8ce6`, recorte horizontal `rect=0,520,3456,2041`, com o texto **à direita** sobre um degradê escuro (layout 3A). O degradê também cobre o rosto parcial de uma segunda pessoa na borda direita, que não pode ficar visível. **Celular:** Joshua Fernandez, `photo-1627491362358-6d437e65a3bc`, recorte fechado nas taças (`crop=focalpoint&fp-x=0.42&fp-y=0.5&fp-z=1.35`), que tira a tampa de plástico azul. Arquivos: `mandarin_project/img/fotos/hero-desktop-{1280,1920}` e `hero-mobile-{390,780}`, em `.avif` e `.webp`. |
-| — | Reservadas | Candidatas não usadas no hero, guardadas para as cápsulas culturais: ORIENTO `photo-1531970227416-f0cddeb1f748` (mesa comprida), ORIENTO `photo-1531364380693-8f16a988e6d3` (mesa vista de cima) e o recorte vertical 3B da Yang Louie. |
-| G2 | ❌ Rejeitada | A candidata era Unsplash+ (paga) e os caracteres não eram legíveis. Falta escolher outra. |
+| — | Reservadas | Candidatas não usadas no hero, guardadas para as cápsulas culturais: ORIENTO `photo-1531970227416-f0cddeb1f748` (mesa comprida), ORIENTO `photo-1531364380693-8f16a988e6d3` (mesa vista de cima) e o recorte vertical 3B da Yang Louie. Da escolha do G2 ficou guardada `photo-1713181011329-687f14b9c30b` (placa 茶馆相声, com o caractere 茶), boa para a cápsula cultural das casas de chá em Chengdu. Antes de usar, recortar a senhora de perfil nítida à esquerda da placa e o logotipo do McDonald's. Falta o nome do fotógrafo. |
+| G2 | ✅ Aprovada (26/09/2026) | Rua antiga de Xangai na chuva, `photo-1517309230475-6736d926b979` (opção D). Foi escolhida porque tem placas legíveis em caracteres simplificados (上海制扇, 华夏风采) e porque Xangai é o destino final da rota: o aluno vê logo no início onde vai chegar. A caligrafia com pincel foi descartada por não combinar com a primeira tela. **Computador:** painel vertical ao lado das perguntas, recorte `rect=2350,0,1562,2480` (telhados, lanternas e a placa 华夏风采). **Celular:** faixa horizontal por cima das perguntas, recorte `rect=1227,0,3546,2480` (fileira de lojas). Os dois recortes ficam só na metade de cima da foto, para **não mostrar os rostos** das pessoas na rua. Arquivos: `mandarin_project/img/fotos/g2-onboarding-desktop-{340,680}` e `g2-onboarding-mobile-{390,780}`, em `.avif` e `.webp`. Fotógrafo: **Nuno Alberto** (Unsplash). |
 | G3 | ✅ Aprovada (26/09/2026) | Bubble tea, `photo-1639927663411-35f23bb792b7`. Usada **só na vertical 4:5, ao lado do texto** (layout A). Na horizontal perde a tampa e o logotipo da marca fica em destaque, por isso não serve para faixas largas. Tem caracteres tradicionais (鮮) e uma marca visível, o que é aceitável numa página secundária. Ficheiros: `mandarin_project/img/fotos/g3-sobre-{640,960}.{avif,webp}`. Fotógrafo: **Kevin Canlas** (Unsplash). |
 
 ### 1. Pequim 北京
