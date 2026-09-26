@@ -49,7 +49,7 @@ Ao todo são **6 cidades, 24 unidades e 240 lições**.
 ### Anatomia de uma lição (~15 min)
 
 1. **Aquecimento (2 min):** 5 palavras da revisão.
-2. **Diálogo (4 min):** áudio lento e normal, com pinyin colorido pelos tons e tradução ao carregar.
+2. **Diálogo (4 min):** áudio lento e normal, com pinyin colorido pelos tons e tradução ao clicar.
 3. **Explicação (3 min):** um ponto de gramática ou vocabulário, com 3 exemplos.
 4. **Prática (5 min):** exercícios variados (escolha, ordenar frases, escrever pinyin, ouvir e escolher).
 5. **Falar (1 min):** repetir uma frase ao microfone (shadowing).
@@ -57,7 +57,7 @@ Ao todo são **6 cidades, 24 unidades e 240 lições**.
 
 ### Avaliação
 
-- **Teste de unidade:** mínimo 70% para desbloquear a unidade seguinte. Pode repetir-se sem limite.
+- **Teste de unidade:** mínimo 70% para desbloquear a unidade seguinte. Pode ser repetido sem limite.
 - **Exame da cidade:** 4 competências (ouvir, ler, falar ao microfone, escrever). Ao passar, o aluno recebe o **carimbo** da cidade.
 - **Teste de nível:** no início, para quem já sabe algum mandarim e quer saltar cidades.
 
@@ -85,7 +85,7 @@ Ao todo são **6 cidades, 24 unidades e 240 lições**.
 - **Meta acumulada:** ~250 palavras · 100 caracteres + 20 radicais.
 - **Você já consegue:** se apresentar, falar da sua família e da sua idade, perguntar e dizer horas e datas.
 - **Missão da cidade:** gravar uma apresentação de 1 minuto (nome, país, família, idade).
-- **Cultura:** o mandarim padrão (普通话) baseia-se na pronúncia de Pequim; 您 como forma de respeito; os hutongs.
+- **Cultura:** o mandarim padrão (普通话) se baseia na pronúncia de Pequim; 您 como forma de respeito; os hutongs.
 
 ### 2. Xi'an 西安 · Meses 3–4 · Comer e comprar
 
@@ -94,7 +94,7 @@ Ao todo são **6 cidades, 24 unidades e 240 lições**.
 | 2.1 | Na banca de comida | 我要…, 来一个, classificadores 碗 / 杯 / 瓶, 好吃, 辣 |
 | 2.2 | Quanto custa? | 块 / 元 / 毛, números até 10 000, 多少钱, 太…了, 一点儿 |
 | 2.3 | Onde fica? | 在, 哪儿, 左 / 右 / 前 / 后, 往…走, 远 / 近 |
-| 2.4 | Pagar e planear | 想 / 要 / 能 / 可以, 了 (ação concluída), pagar com QR code (扫码) |
+| 2.4 | Pagar e planejar | 想 / 要 / 能 / 可以, 了 (ação concluída), pagar com QR code (扫码) |
 
 - **Meta acumulada:** ~500 palavras · 300 caracteres (**nível 1 do HSK 3.0 concluído**).
 - **Você já consegue:** pedir comida, perguntar preços e pechinchar, pedir e entender direções simples.
@@ -126,7 +126,7 @@ Ao todo são **6 cidades, 24 unidades e 240 lições**.
 
 - **Meta acumulada:** ~1272 palavras · 600 caracteres (**nível 2 do HSK 3.0 concluído**).
 - **Você já consegue:** comprar uma passagem de trem, fazer check-in, descrever um lugar e pedir ajuda numa emergência.
-- **Missão da cidade:** planear a viagem Guilin → Yangshuo: comprar a passagem e fazer check-in (roleplay), mais um quiz de frases de emergência.
+- **Missão da cidade:** planejar a viagem Guilin → Yangshuo: comprar a passagem e fazer check-in (roleplay), mais um quiz de frases de emergência.
 - **Cultura:** a paisagem do rio Li que aparece na nota de 20 yuan; Yangshuo (阳朔).
 
 ### 5. Hangzhou 杭州 · Meses 9–10 · Contar e opinar
@@ -170,6 +170,6 @@ Ao todo são **6 cidades, 24 unidades e 240 lições**.
 
 ## Próximas decisões
 
-1. Aprovar as cidades e os temas (podem trocar-se cidades sem mudar os objetivos).
+1. Aprovar as cidades e os temas (dá para trocar cidades sem mudar os objetivos).
 2. Escrever as 10 lições da unidade 1.1 como piloto e testá-las com a família.
 3. Ajustar a duração das lições depois do piloto.
