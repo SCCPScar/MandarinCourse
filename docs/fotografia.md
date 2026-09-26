@@ -108,3 +108,13 @@ As pesquisas também funcionam no Pexels (`https://www.pexels.com/search/<termos
 2. Na revisão escolhe-se 1 por ID, com base nas regras de seleção.
 3. As fotos são otimizadas (redimensionar e converter para AVIF/WebP) e registadas em `docs/fotos-creditos.csv`.
 4. Todos os créditos aparecem numa página "Créditos" do site.
+
+## Estado da escolha (26/09/2026)
+
+| ID | Estado | Foto | Notas |
+|---|---|---|---|
+| G1 | Escolhida | [Chá a ser servido, com vapor](https://unsplash.com/photos/gy_DN08336U), de 五玄土 ORIENTO (Cantão) | Substitui a anterior, que era Unsplash+ (paga). A foto é vertical (2:3): serve bem no recorte 4:5 em mobile; no desktop, usar um hero dividido (foto de um lado, texto do outro), porque um recorte 16:9 corta o jarro ou as chávenas. |
+| G2 | Escolhida | [Pincel a escrever em papel quadriculado](https://unsplash.com/photos/U5fVbJbZPLc), de Felix yu (Xangai) | Substitui a anterior, que era Unsplash+ (paga). Horizontal, com caracteres reais em 米字格. Não repetir em BJ1. |
+| G3 | Decisão pendente | [Bubble tea ao lado do teclado](https://images.unsplash.com/photo-1639927663411-35f23bb792b7) | Imagem gratuita (`images.unsplash.com`); falta confirmar o fotógrafo na página da foto. Ressalvas: o copo diz 鮮茶道 em caracteres **tradicionais** (o curso ensina simplificados, 鲜); é uma cadeia de Taiwan fotografada fora da China (regra 2); não mostra cadernos nem alguém a estudar. Recomendação: procurar outra. |
+
+Todas as fotos gratuitas do Unsplash têm URL `images.unsplash.com`. As que vêm de `plus.unsplash.com` ou têm o selo "Unsplash+" são pagas e não se usam.
