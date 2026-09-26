@@ -10,8 +10,9 @@ Uma foto só entra se cumprir **todas** estas condições:
 2. **Mostra a China real e de hoje.** Pessoas comuns e situações do dia a dia. Nada de postais nem de clichés (dragões e lanternas em todo o lado).
 3. **Tem texto chinês visível sempre que possível** (placas, menus, sinais), porque também é conteúdo.
 4. **Deixa espaço para o título.** A zona de baixo (ou a da esquerda) deve ser calma, para o texto por cima se ler bem.
-5. **As pessoas não são o assunto principal**, a não ser que se veja pouco o rosto. Em Portugal, o direito à imagem (art. 79.º do Código Civil) protege as pessoas identificáveis, e os bancos de imagens gratuitos não garantem autorização dos retratados.
-6. **Tem luz natural e cor real.** Nada de filtros fortes nem de HDR exagerado.
+5. **A foto não é Unsplash+.** As fotos premium (selo "+", link `plus.unsplash.com/premium_photo-…`) são pagas e não entram na licença gratuita.
+6. **As pessoas não são o assunto principal**, a não ser que se veja pouco o rosto. Em Portugal, o direito à imagem (art. 79.º do Código Civil) protege as pessoas identificáveis, e os bancos de imagens gratuitos não garantem autorização dos retratados.
+7. **Tem luz natural e cor real.** Nada de filtros fortes nem de HDR exagerado.
 
 ## Fontes e licenças
 
@@ -41,6 +42,14 @@ As pesquisas também funcionam no Pexels (`https://www.pexels.com/search/<termos
 | G1 | Hero da página inicial | Mãos a servir chá numa chávena pequena, com vapor e luz quente | [chinese tea pouring](https://unsplash.com/s/photos/chinese-tea-pouring) |
 | G2 | Onboarding | Pincel a escrever caracteres em papel | [chinese calligraphy brush](https://unsplash.com/s/photos/chinese-calligraphy-brush) |
 | G3 | Página "Sobre" | Mesa com cadernos, chá e alguém a estudar | [studying tea notebook](https://unsplash.com/s/photos/studying-tea-notebook) |
+
+### Decisões
+
+| ID | Estado | Notas |
+|---|---|---|
+| G1 | ❌ Rejeitada | A candidata era Unsplash+ (paga) e mostrava chá turco. Falta escolher outra. |
+| G2 | ❌ Rejeitada | A candidata era Unsplash+ (paga) e os caracteres não eram legíveis. Falta escolher outra. |
+| G3 | ✅ Aprovada (26/09/2026) | Bubble tea, `photo-1639927663411-35f23bb792b7`. Usada **só na vertical 4:5, ao lado do texto** (layout A). Na horizontal perde a tampa e o logótipo da marca fica em destaque, por isso não serve para faixas largas. Tem caracteres tradicionais (鮮) e uma marca visível, o que é aceitável numa página secundária. Ficheiros: `mandarin_project/img/fotos/g3-sobre-{640,960}.{avif,webp}`. **Falta o nome do fotógrafo.** |
 
 ### 1. Pequim 北京
 
