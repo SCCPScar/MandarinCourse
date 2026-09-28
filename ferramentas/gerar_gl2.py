@@ -84,4 +84,4 @@ for tema, c in THEMES.items():
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">'
            f'<title>Receção de hotel com a placa 前台, o nome 桂林酒店, um cartão de quarto e uma campainha</title>'
            f'{"".join(g)}</svg>')
-    open(OUT + f'/gl2-hotel-{tema}.svg', 'w').write(svg)
+    open(OUT + f'/gl2-ilustracao-{tema}.svg', 'w').write(svg)
