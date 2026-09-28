@@ -10,7 +10,6 @@
  * Uso:
  *   ChaPage.onInit(fn)    → fn(container) roda quando a página abre (container = <main class="page">)
  *   ChaPage.onCleanup(fn) → fn() roda quando a página vai sair
- * 学中文 — Curso Completo de Mandarim
  */
 
 const ChaPage = (() => {
@@ -31,7 +30,7 @@ const ChaPage = (() => {
   }
 
   // Os scripts ficam no fim do <body>, então quando o DOMContentLoaded chega
-  // todos os arquivos já registraram as suas funções com onInit.
+  // todos os ficheiros já registaram as suas funções com onInit.
   document.addEventListener('DOMContentLoaded', () => {
     init(document.querySelector('main.page') || document.body);
   });

@@ -1,7 +1,8 @@
 /**
  * ui.js
- * Toast, Scroll, Hamburger, Keyboard, Achievements, Onboarding, Daily, SRS, Streak, Share
- * 学中文 — Curso Completo de Mandarim
+ * Aqui eu junto as partes da interface usadas em todas as páginas:
+ * avisos (toast), barra de leitura, atalhos, conquistas, boas-vindas,
+ * sessão de hoje, revisão espaçada, dias seguidos e partilha.
  */
 
 function showToast(msg, duration=2500) {
@@ -28,11 +29,11 @@ window.addEventListener('scroll', () => {
   let current = '';
   sections.forEach(s => { if (s.offsetTop <= scrolled + 80) current = s.id; });
   const titleMap = {foundations:'Fundamentos',tones:'Tons',pinyin:'Pinyin',basics:'Básico',grammar:'Gramática',vocabulary:'Vocabulário',work:'Trabalho',characters:'Caracteres',quiz:'Quiz',plan:'Plano',features:'Funcionalidades',library:'Biblioteca'};
-  if (titleMap[current]) document.title = titleMap[current] + ' — 学中文';
+  if (titleMap[current]) document.title = titleMap[current] + ' · Chá';
   else if (typeof ChaNav !== 'undefined') document.title = ChaNav.pageTitle();
 }, {passive: true});
 
-// (O menu do celular agora fica em js/nav.js)
+// (O menu do telemóvel está em js/nav.js)
 
 // ═══════════════════════════════════════════════════════
 // ⌨️ KEYBOARD SHORTCUTS
@@ -115,10 +116,9 @@ function finishOnboard() {
   LS.set('level', selectedLevel || 'zero');
   document.getElementById('onboard-overlay').style.display = 'none';
   checkAchievements();
-  showToast('🎉 Bem-vindo! Vamos começar a aprender mandarim!');
-  // Scroll to suggested start based on level
-  // Leva o aluno à página certa para o nível dele
-  const targets = { zero:'introducao.html#foundations', basic:'sons.html#tones', inter:'basico.html#grammar', adv:'praticar.html#features' };
+  showToast('🎉 Vamos começar a aprender mandarim!');
+  // Eu levo o aluno à cidade certa para o nível dele
+  const targets = { zero:'cidade.php?id=1', basic:'cidade.php?id=2', inter:'cidade.php?id=3', adv:'cidade.php?id=5' };
   const target = targets[selectedLevel] || targets.zero;
   setTimeout(() => ChaNav.go(target), 500);
 }
@@ -142,11 +142,11 @@ function openDailyModal() {
   const sessionWords = [...dueWords, ...newWords];
 
   const steps = [
-    { icon:'🔥', title:`Streak: ${streak} dia${streak!==1?'s':''}`, desc: streak>0 ? `Mantenha o ritmo! Você já estuda há ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}.` : 'Comece hoje e construa o seu streak!', action: null },
-    { icon:'📚', title:'Revisão SRS', desc: dueWords.length > 0 ? `Você tem ${dueWords.length} palavra${dueWords.length!==1?'s':''} para revisar hoje:` : 'Nenhuma palavra para revisar hoje! Aprenda palavras novas primeiro.', words: dueWords },
-    { icon:'✨', title:'Palavras Novas', desc: newWords.length > 0 ? `Aprenda ${newWords.length} palavra${newWords.length!==1?'s':''} nova${newWords.length!==1?'s':''} hoje:` : 'Excelente! Você já aprendeu todas as palavras disponíveis.', words: newWords },
-    { icon:'🎤', title:'Praticar Pronúncia', desc: 'Vá até a seção Funcionalidades → Pronúncia e pratique a gravação de 2 ou 3 frases.', action: 'praticar.html#features' },
-    { icon:'🤖', title:'Tutor IA', desc: 'Faça uma pergunta ao tutor IA sobre mandarim ou peça para ele criar uma frase de prática.', action: 'praticar.html#features' },
+    { icon:'🔥', title:`Dias seguidos: ${streak}`, desc: streak>0 ? `Continua assim! Já estudas há ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}.` : 'Começa hoje e soma o teu primeiro dia!', action: null },
+    { icon:'📚', title:'Revisão espaçada', desc: dueWords.length > 0 ? `Tens ${dueWords.length} palavra${dueWords.length!==1?'s':''} para rever hoje:` : 'Hoje não tens palavras para rever. Aprende primeiro algumas palavras novas.', words: dueWords },
+    { icon:'✨', title:'Palavras novas', desc: newWords.length > 0 ? `Aprende ${newWords.length} palavra${newWords.length!==1?'s':''} nova${newWords.length!==1?'s':''} hoje:` : 'Excelente! Já aprendeste todas as palavras disponíveis.', words: newWords },
+    { icon:'🎤', title:'Praticar a pronúncia', desc: 'Vai a Praticar, abre o separador Pronúncia e grava 2 ou 3 frases.', action: 'praticar.html#features' },
+    { icon:'🤖', title:'Tutor IA', desc: 'Faz uma pergunta ao tutor IA sobre mandarim ou pede-lhe uma frase para praticares.', action: 'praticar.html#features' },
   ];
 
   const html = steps.map((s,i) => `
@@ -156,7 +156,7 @@ function openDailyModal() {
         <div style="font-weight:700;margin-bottom:2px">${s.title}</div>
         <div style="font-size:13px;color:var(--ink-light)">${s.desc}</div>
         ${s.words && s.words.length ? s.words.map(w=>`<span style="display:inline-block;margin:4px 4px 0 0;padding:3px 8px;background:var(--paper-dark);border-radius:8px;font-size:13px"><span style="font-family:var(--font-chinese);color:var(--red)">${w.zh}</span> <span style="color:var(--ink-light)">${w.py}</span> <span>${w.en}</span></span>`).join('') : ''}
-        ${s.action ? `<a href="${s.action}" onclick="closeDailyModal()" style="display:inline-block;margin-top:6px;color:var(--red);font-size:13px;font-weight:600">Ir agora →</a>` : ''}
+        ${s.action ? `<a href="${s.action}" onclick="closeDailyModal()" style="display:inline-block;margin-top:6px;color:var(--jade);font-size:13px;font-weight:600">Ir agora</a>` : ''}
       </div>
     </div>
   `).join('');
@@ -224,7 +224,7 @@ function updateStreakReal() {
   const banner = document.getElementById('streak-text');
   if (banner) {
     if (streak >= 1) {
-      banner.innerHTML = `<span class="streak-fire">🔥</span> ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}! Continue assim!`;
+      banner.innerHTML = `<span class="streak-fire">🔥</span> ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}! Continua assim!`;
       document.getElementById('streak-banner').style.display = '';
     }
   }
@@ -242,17 +242,17 @@ function generateShareCard() {
   if (!card) return;
   card.style.display = 'block';
   card.innerHTML = `
-    <div class="sc-zh">学中文</div>
+    <div class="sc-zh">茶</div>
     <div class="sc-stat">${count} palavras</div>
-    <p>Aprendi ${count} palavras em mandarim com ${streak} dia${streak!==1?'s':''} de streak! 🇨🇳</p>
-    <p style="font-size:12px;opacity:.7">学中文 — Curso Gratuito de Mandarim</p>
+    <p>Aprendi ${count} palavras em mandarim e estudei ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}! 🇨🇳</p>
+    <p style="font-size:12px;opacity:.7">Chá · Curso gratuito de mandarim</p>
   `;
-  const text = `Aprendi ${count} palavras em mandarim! 🇨🇳🔥 ${streak} dias de estudo seguidos. #Mandarim #学中文`;
+  const text = `Aprendi ${count} palavras em mandarim! 🇨🇳🔥 ${streak} dias de estudo seguidos. #Mandarim #Chá`;
   if (navigator.share) {
-    navigator.share({ title:'Meu progresso em mandarim', text });
+    navigator.share({ title:'O meu progresso em mandarim', text });
   } else {
     navigator.clipboard?.writeText(text);
-    showToast('📋 Texto copiado! Cole nas redes sociais.');
+    showToast('📋 Texto copiado! Cola-o nas redes sociais.');
   }
 }
 

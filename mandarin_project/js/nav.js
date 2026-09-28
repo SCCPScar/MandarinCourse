@@ -1,12 +1,11 @@
 /**
  * nav.js
  * Barra de navegação: esconder/mostrar no scroll, letras que rolam no hover,
- * link da página atual (aria-current) e menu em tela inteira no celular.
+ * link da página atual (aria-current) e menu em ecrã inteiro no telemóvel.
  *
- * Regra de ouro deste arquivo: o JavaScript só muda ATRIBUTOS no <body>
+ * Regra de ouro deste ficheiro: o JavaScript só muda ATRIBUTOS no <body>
  * (data-scrolling-direction, data-scrolling-started, data-menu-open).
  * Quem anima é o CSS (css/nav.css).
- * 学中文 — Curso Completo de Mandarim
  */
 
 const ChaNav = (() => {
@@ -49,7 +48,7 @@ const ChaNav = (() => {
 
   // ═══ 2. LETRAS QUE ROLAM ═══
   // "Sons" → <span class="roll" aria-hidden="true"><span class="roll__char" style="--char:0">S</span>…</span>
-  // O texto completo fica no aria-label, para leitores de tela lerem "Sons" e não "S, o, n, s".
+  // O texto completo fica no aria-label, para os leitores de ecrã lerem "Sons" e não "S, o, n, s".
   function splitLink(link, label) {
     link.setAttribute('aria-label', label);
     if (!fontsReady) { link.textContent = label; return; }
@@ -107,7 +106,7 @@ const ChaNav = (() => {
     if (!menu || !toggle) return;
     body.dataset.menuOpen = 'true';
     toggle.setAttribute('aria-expanded', 'true');
-    toggle.textContent = currentLangLabel('close');
+    toggle.textContent = 'Fechar';
     const page = document.querySelector('main.page');
     if (page) page.inert = true;              // o conteúdo por trás fica "desligado"
     // Espera um frame para o menu ficar visível antes de lhe dar foco
@@ -118,17 +117,12 @@ const ChaNav = (() => {
     if (!isOpen()) return;
     body.dataset.menuOpen = 'false';
     toggle.setAttribute('aria-expanded', 'false');
-    toggle.textContent = currentLangLabel('menu');
+    toggle.textContent = 'Menu';
     const page = document.querySelector('main.page');
     if (page) page.inert = false;
     if (returnFocus) toggle.focus();
   }
 
-  function currentLangLabel(which) {
-    const en = typeof currentLang !== 'undefined' && currentLang === 'en';
-    if (which === 'close') return en ? 'Close' : 'Fechar';
-    return 'Menu';
-  }
 
   toggle?.addEventListener('click', () => (isOpen() ? close() : open()));
 
@@ -144,7 +138,7 @@ const ChaNav = (() => {
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
-  // Se a tela passar a ser largo (ex.: rodar o tablet), o menu de celular fecha
+  // Se o ecrã ficar largo (ex.: ao rodar o tablet), eu fecho o menu do telemóvel
   mobileQuery.addEventListener('change', e => { if (!e.matches) close(false); });
 
   // ═══ 5. CLIQUES NOS LINKS ═══

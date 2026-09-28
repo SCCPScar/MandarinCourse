@@ -1,21 +1,20 @@
 /**
  * tools.js
- * Notebook, Timer, Scenario, Conversação, Tutor
- * 学中文 — Curso Completo de Mandarim
+ * Aqui eu junto o caderno, o temporizador de estudo, o tutor IA e as conversas com IA.
  */
 
 // ═══ NOTEBOOK ═══
 let notebook=LS.get('notebook',[]);
-function saveNb(zh,py,en,btn){if(notebook.find(n=>n.zh===zh)){btn.textContent='Saved ✓';return;}notebook.push({zh,py,en,done:false});LS.set('notebook',notebook);btn.textContent='Saved ✓';renderNb();}
+function saveNb(zh,py,en,btn){if(notebook.find(n=>n.zh===zh)){btn.textContent='Guardado ✓';return;}notebook.push({zh,py,en,done:false});LS.set('notebook',notebook);btn.textContent='Guardado ✓';renderNb();}
 function renderNb(){
   const el=document.getElementById('nb-list');if(!el)return;
-  if(!notebook.length){el.innerHTML='<div style="text-align:center;padding:2rem;color:var(--ink-light);font-size:13px">Your notebook is empty.<br>Look up words in the Dictionary tab and click "+ Save".</div>';return;}
-  el.innerHTML=notebook.map((n,i)=>`<div class="nb-entry"><div class="nb-zh-txt">${esc(n.zh)}</div><div class="nb-py-txt">${esc(n.py)}</div><div class="nb-en-txt">${esc(n.en)}</div><button class="speak-btn" onclick="speakText(notebook[${i}].zh)" aria-label="Ouvir">🔊</button><button class="nb-mark${n.done?' done':''}" onclick="toggleNb(${i},this)">${n.done?'✓ Done':'Mark Done'}</button><button class="nb-del" onclick="delNb(${i})">✕</button></div>`).join('');
+  if(!notebook.length){el.innerHTML='<div style="text-align:center;padding:2rem;color:var(--ink-light);font-size:13px">O teu caderno está vazio.<br>Procura palavras no separador Dicionário e carrega em "+ Guardar".</div>';return;}
+  el.innerHTML=notebook.map((n,i)=>`<div class="nb-entry"><div class="nb-zh-txt">${esc(n.zh)}</div><div class="nb-py-txt">${esc(n.py)}</div><div class="nb-en-txt">${esc(n.en)}</div><button class="speak-btn" onclick="speakText(notebook[${i}].zh)" aria-label="Ouvir">🔊</button><button class="nb-mark${n.done?' done':''}" onclick="toggleNb(${i},this)">${n.done?'✓ Sabida':'Marcar como sabida'}</button><button class="nb-del" onclick="delNb(${i})">✕</button></div>`).join('');
 }
-function toggleNb(i,btn){notebook[i].done=!notebook[i].done;LS.set('notebook',notebook);btn.textContent=notebook[i].done?'✓ Done':'Mark Done';btn.className='nb-mark'+(notebook[i].done?' done':'');}
+function toggleNb(i,btn){notebook[i].done=!notebook[i].done;LS.set('notebook',notebook);btn.textContent=notebook[i].done?'✓ Sabida':'Marcar como sabida';btn.className='nb-mark'+(notebook[i].done?' done':'');}
 function delNb(i){notebook.splice(i,1);LS.set('notebook',notebook);renderNb();}
-function clearNotebook(){if(confirm('Clear all saved words?')){notebook=[];LS.set('notebook',notebook);renderNb();}}
-function exportNotebook(){const txt=notebook.map(n=>`${n.zh}\t${n.py}\t${n.en}`).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain'}));a.download='mandarin_notebook.txt';a.click();}
+function clearNotebook(){if(confirm('Apagar todas as palavras guardadas?')){notebook=[];LS.set('notebook',notebook);renderNb();}}
+function exportNotebook(){const txt=notebook.map(n=>`${n.zh}\t${n.py}\t${n.en}`).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain'}));a.download='caderno-mandarim.txt';a.click();}
 
 // ═══ STUDY TIMER & STREAK ═══
 let timerSec=0,timerOn=false,timerInt=null;
@@ -29,9 +28,9 @@ function updateStreak(){
   document.getElementById('streak-num').textContent=streak;
   document.getElementById('total-days').textContent=Object.keys(log).length;
   document.getElementById('total-mins').textContent=Object.values(log).reduce((a,b)=>a+b,0);
-  if(streak>=3){const b=document.getElementById('streak-banner');document.getElementById('streak-text').textContent=`🔥 ${streak}-day streak! 加油！`;b.classList.add('show');}
+  if(streak>=3){const b=document.getElementById('streak-banner');document.getElementById('streak-text').textContent=`🔥 ${streak} dias seguidos! 加油！`;b.classList.add('show');}
   const wg=document.getElementById('week-grid');
-  if(wg){const days=['Su','Mo','Tu','We','Th','Fr','Sa'];wg.innerHTML=Array.from({length:7},(_,i)=>{const d=new Date();d.setDate(d.getDate()-6+i);const ok=!!log[d.toDateString()];return`<div style="text-align:center"><div style="width:32px;height:32px;border-radius:50%;background:${ok?'#0E7C66':'var(--paper-dark)'};display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff">${ok?'✓':''}</div><div style="font-size:10px;color:var(--ink-light);margin-top:2px">${days[d.getDay()]}</div></div>`;}).join('');}
+  if(wg){const days=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];wg.innerHTML=Array.from({length:7},(_,i)=>{const d=new Date();d.setDate(d.getDate()-6+i);const ok=!!log[d.toDateString()];return`<div style="text-align:center"><div style="width:32px;height:32px;border-radius:50%;background:${ok?'#0E7C66':'var(--paper-dark)'};display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff">${ok?'✓':''}</div><div style="font-size:10px;color:var(--ink-light);margin-top:2px">${days[d.getDay()]}</div></div>`;}).join('');}
 }
 
 // ═══ AI TUTOR ═══
@@ -43,24 +42,24 @@ async function sendTutor(){
   msgs.innerHTML+=`<div class="tutor-msg user">${esc(text)}</div>`;
   inp.value='';send.disabled=true;send.textContent='…';msgs.scrollTop=msgs.scrollHeight;
   tutorH.push({role:'user',content:text});
-  const lid='l'+Date.now();msgs.innerHTML+=`<div class="tutor-msg ai" id="${lid}"><em style="color:var(--ink-light)">Thinking…</em></div>`;msgs.scrollTop=msgs.scrollHeight;
+  const lid='l'+Date.now();msgs.innerHTML+=`<div class="tutor-msg ai" id="${lid}"><em style="color:var(--ink-light)">A pensar…</em></div>`;msgs.scrollTop=msgs.scrollHeight;
   try{
-    const reply=await askClaude({maxTokens:800,system:"You are an expert Mandarin Chinese tutor for a Portuguese person learning Mandarin to work in China. Respond in English. Always include Chinese examples as: 你好 (nǐ hǎo) = Hello. Be encouraging, practical, concise. Under 300 words. Use bullets for vocabulary lists.",messages:tutorH});
+    const reply=await askClaude({maxTokens:800,system:"You are an expert Mandarin Chinese tutor for a learner who lives in Portugal. Respond in European Portuguese (Portugal), addressing the learner as 'tu'. Always include Chinese examples as: 你好 (nǐ hǎo) = Olá. Be encouraging, practical, concise. Under 300 words. Use bullets for vocabulary lists.",messages:tutorH});
     tutorH.push({role:'assistant',content:reply});
     document.getElementById(lid).innerHTML=formatAIText(reply);
     LS.set('tutorUsed',true);if(typeof checkAchievements==='function')checkAchievements();
   }catch(err){document.getElementById(lid).innerHTML=`<span style="color:var(--red)">⚠️ ${esc(err.message)}</span>`;tutorH.pop();}
-  send.disabled=false;send.textContent='Send →';msgs.scrollTop=msgs.scrollHeight;
+  send.disabled=false;send.textContent='Enviar';msgs.scrollTop=msgs.scrollHeight;
 }
 
 // ═══ CONVERSATION ═══
 const scenarios=[
-  {emoji:'🏢',title:'First Day at Work',sub:'Meet your colleagues',prompt:'You are a Chinese colleague. I am a new foreign employee. Greet me, ask my name and where I am from. Keep replies to 1-2 sentences. If I make grammar mistakes, note the correction in brackets at the end. Start with: 你好！'},
-  {emoji:'🍜',title:'Ordering Food',sub:'At a Chinese restaurant',prompt:'You are a waiter at a Chinese restaurant. I am a customer. Greet me and take my order. Keep replies short. Correct grammar mistakes in brackets. Start with: 欢迎光临！'},
-  {emoji:'🚕',title:'Taking a Taxi',sub:'Getting around the city',prompt:'You are a taxi driver. I am a foreign passenger. Ask where I am going, confirm the route and price. Correct grammar mistakes in brackets. Start with: 你好，去哪儿？'},
-  {emoji:'💼',title:'Job Interview',sub:'Interview at Chinese company',prompt:'You are interviewing me for a job. Ask about my background, skills and why I want to work in China. Correct big grammar mistakes in brackets. Start with: 你好，请坐。请介绍一下你自己。'},
-  {emoji:'🏪',title:'Market Shopping',sub:'Bargaining for goods',prompt:'You are a market vendor. I am a customer. Show items, state prices, let me bargain. Correct grammar mistakes in brackets. Start with: 你好！来看看！'},
-  {emoji:'🏥',title:'At the Doctor',sub:'Describe symptoms',prompt:'You are a Chinese doctor. I am a patient who does not feel well. Ask about symptoms and give advice. Correct grammar mistakes in brackets. Start with: 你好，哪里不舒服？'},
+  {emoji:'🏢',title:'Primeiro dia de trabalho',sub:'Conhece os colegas',prompt:'You are a Chinese colleague. I am a new foreign employee. Greet me, ask my name and where I am from. Keep replies to 1-2 sentences. If I make grammar mistakes, note the correction in brackets at the end, explained in European Portuguese. Start with: 你好！'},
+  {emoji:'🍜',title:'Pedir comida',sub:'Num restaurante chinês',prompt:'You are a waiter at a Chinese restaurant. I am a customer. Greet me and take my order. Keep replies short. Correct grammar mistakes in brackets, explained in European Portuguese. Start with: 欢迎光临！'},
+  {emoji:'🚕',title:'Apanhar um táxi',sub:'Andar pela cidade',prompt:'You are a taxi driver. I am a foreign passenger. Ask where I am going, confirm the route and price. Correct grammar mistakes in brackets, explained in European Portuguese. Start with: 你好，去哪儿？'},
+  {emoji:'💼',title:'Entrevista de emprego',sub:'Numa empresa chinesa',prompt:'You are interviewing me for a job. Ask about my background, skills and why I want to work in China. Correct big grammar mistakes in brackets, explained in European Portuguese. Start with: 你好，请坐。请介绍一下你自己。'},
+  {emoji:'🏪',title:'Compras no mercado',sub:'Regatear preços',prompt:'You are a market vendor. I am a customer. Show items, state prices, let me bargain. Correct grammar mistakes in brackets, explained in European Portuguese. Start with: 你好！来看看！'},
+  {emoji:'🏥',title:'No médico',sub:'Descrever sintomas',prompt:'You are a Chinese doctor. I am a patient who does not feel well. Ask about symptoms and give advice. Correct grammar mistakes in brackets, explained in European Portuguese. Start with: 你好，哪里不舒服？'},
 ];
 let convH=[],activeScenario=null;
 function renderScenarios(){const g=document.getElementById('scenario-grid');if(!g)return;g.innerHTML=scenarios.map((s,i)=>`<div class="scenario-card" onclick="startScenario(${i})"><div class="sc-emoji">${s.emoji}</div><div class="sc-title">${s.title}</div><div class="sc-sub">${s.sub}</div></div>`).join('');}

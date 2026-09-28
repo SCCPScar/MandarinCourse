@@ -1,9 +1,8 @@
 /*
  * nav.css — Barra de navegação minimalista
  * - Fixa no topo, esconde ao rolar para baixo e volta ao rolar para cima
- * - Efeito de "rolagem de letras" no hover (só com mouse)
- * - Menu em tela inteira no celular (< 768px)
- * 学中文 — Curso Completo de Mandarim
+ * - Efeito de "rolagem de letras" no hover (só com rato)
+ * - Menu em ecrã inteiro no telemóvel (< 768px)
  */
 
 :root {
@@ -35,7 +34,7 @@ body { padding-top: var(--nav-height); }
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-main);
-  /* "none" e não translateY(0): um transform no pai faria o menu de tela inteira
+  /* "none" e não translateY(0): um transform no pai faria o menu de ecrã inteiro
      (position: fixed) ficar preso dentro da barra de 44px */
   transform: none;
   transition: transform 0.35s var(--ease-nav);
@@ -151,7 +150,7 @@ body { padding-top: var(--nav-height); }
   }
 }
 
-/* ═══ BOTÃO "MENU" (só no celular) ═══ */
+/* ═══ BOTÃO "MENU" (só no telemóvel) ═══ */
 .site-nav__toggle {
   display: none;
   background: none;
@@ -169,7 +168,7 @@ body { padding-top: var(--nav-height); }
 @media (max-width: 767.98px) {
   .site-nav__toggle { display: inline-block; }
 
-  /* O menu vira um painel em tela inteira, por baixo da barra */
+  /* O menu vira um painel em ecrã inteiro, por baixo da barra */
   .site-nav__menu {
     position: fixed;
     inset: var(--nav-height) 0 0 0;

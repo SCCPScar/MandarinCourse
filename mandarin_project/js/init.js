@@ -1,17 +1,16 @@
 /**
  * init.js
  * Inicialização — regista o que corre em cada página (ver js/page.js)
- * 学中文 — Curso Completo de Mandarim
  */
 
-// Botão "Compartilhar progresso" no caderno (só nas páginas que têm o caderno)
+// Botão "Partilhar progresso" no caderno (só nas páginas que têm o caderno)
 ChaPage.onInit(() => {
   const nb = document.getElementById('tab-notebook');
   if (nb && !nb.querySelector('#share-card')) {
     const shareDiv = document.createElement('div');
     shareDiv.style.cssText = 'margin-top:16px;text-align:center';
     shareDiv.innerHTML = `
-      <button onclick="generateShareCard()" style="background:var(--red);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:14px;cursor:pointer;font-family:var(--font-main)">📤 Compartilhar progresso</button>
+      <button onclick="generateShareCard()" style="background:var(--red);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:14px;cursor:pointer;font-family:var(--font-main)">📤 Partilhar progresso</button>
       <div id="share-card"></div>
     `;
     nb.appendChild(shareDiv);
@@ -31,7 +30,6 @@ if (!LS.get('onboarded', false)) {
 
 // ── Corre em CADA página que abre ──────────────────────────
 ChaPage.onInit(() => {
-  applyLang(currentLang);
   updateStreakReal();
   if (LS.get('onboarded', false)) checkAchievements();
 
@@ -41,7 +39,7 @@ ChaPage.onInit(() => {
     const hint = document.createElement('div');
     hint.className = 'fc-shortcuts';
     hint.style.cssText = 'font-size:12px;color:var(--ink-light);text-align:center;margin-top:8px;';
-    hint.innerHTML = 'Atalhos: <span class="kbd">Espaço</span> virar carta · <span class="kbd">1</span> Difícil · <span class="kbd">2</span> OK · <span class="kbd">3</span> Fácil';
+    hint.innerHTML = 'Atalhos: <span class="kbd">Espaço</span> virar o cartão · <span class="kbd">1</span> Difícil · <span class="kbd">2</span> Razoável · <span class="kbd">3</span> Fácil';
     flashTab.appendChild(hint);
   }
 
@@ -77,7 +75,7 @@ async function getMic() {
     micStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
     return micStream;
   } catch (e) {
-    alert('Microphone access denied. Please allow microphone access in your browser settings and try again.');
+    alert('O acesso ao microfone foi recusado. Autoriza o microfone nas definições do browser e tenta outra vez.');
     return null;
   }
 }
@@ -132,7 +130,7 @@ let pitchHistory = [], selectedTone = 1;
 let toneCanvas, toneCtx, waveCanvas, waveCtx;
 
 const TONE_COLORS = { 1: '#2F6FD0', 2: '#0E7C66', 3: '#E8A317', 4: '#C8361F' };
-const TONE_NAMES = { 1: '1st — High Flat', 2: '2nd — Rising', 3: '3rd — Dipping', 4: '4th — Falling' };
+const TONE_NAMES = { 1: '1.º tom: alto e plano', 2: '2.º tom: a subir', 3: '3.º tom: desce e sobe', 4: '4.º tom: a descer' };
 
 // Ideal tone paths (normalised 0–1, y=0 is TOP of canvas = highest pitch)
 const TONE_PATHS = {
@@ -185,11 +183,11 @@ function drawToneGuide() {
 
   // Horizontal guide lines
   const levels = [
-    { y: 0.1, label: 'High (5)', color: 'rgba(192,57,43,.2)' },
-    { y: 0.32, label: 'Mid-high (4)', color: 'rgba(212,172,13,.15)' },
-    { y: 0.54, label: 'Mid (3)', color: 'rgba(30,132,73,.15)' },
-    { y: 0.76, label: 'Low (2)', color: 'rgba(26,82,118,.15)' },
-    { y: 0.92, label: 'Very low (1)', color: 'rgba(100,100,100,.1)' },
+    { y: 0.1, label: 'Alto (5)', color: 'rgba(192,57,43,.2)' },
+    { y: 0.32, label: 'Médio-alto (4)', color: 'rgba(212,172,13,.15)' },
+    { y: 0.54, label: 'Médio (3)', color: 'rgba(30,132,73,.15)' },
+    { y: 0.76, label: 'Baixo (2)', color: 'rgba(26,82,118,.15)' },
+    { y: 0.92, label: 'Muito baixo (1)', color: 'rgba(100,100,100,.1)' },
   ];
   levels.forEach(l => {
     toneCtx.strokeStyle = l.color;
@@ -201,7 +199,7 @@ function drawToneGuide() {
     toneCtx.stroke();
     toneCtx.setLineDash([]);
     toneCtx.fillStyle = 'rgba(86,101,115,.7)';
-    toneCtx.font = '9px Inter, sans-serif';
+    toneCtx.font = '9px Lexend, sans-serif';
     toneCtx.fillText(l.label, 2, H * l.y + 4);
   });
 
@@ -223,10 +221,10 @@ function drawToneGuide() {
 
   // Label
   toneCtx.fillStyle = col;
-  toneCtx.font = 'bold 12px Inter, sans-serif';
+  toneCtx.font = 'bold 12px Lexend, sans-serif';
   toneCtx.fillText(TONE_NAMES[selectedTone], 50, 14);
   toneCtx.fillStyle = '#E8A317';
-  toneCtx.fillText('── Target', W - 90, 14);
+  toneCtx.fillText('── Alvo', W - 90, 14);
 }
 
 function drawPitchLine() {
@@ -290,7 +288,7 @@ async function toggleToneRecording() {
     toneRecording = false;
     if (toneAnimFrame) cancelAnimationFrame(toneAnimFrame);
     btn.className = 'mic-btn idle';
-    btn.textContent = '🎤 Start Recording';
+    btn.textContent = '🎤 Começar a gravar';
     analyzeToneResult();
     return;
   }
@@ -300,7 +298,7 @@ async function toggleToneRecording() {
   toneRecording = true;
   pitchHistory = [];
   btn.className = 'mic-btn recording';
-  btn.textContent = '⏹ Stop Recording';
+  btn.textContent = '⏹ Parar a gravação';
   document.getElementById('tone-feedback').innerHTML = '';
   clearToneCanvas();
 
@@ -332,7 +330,7 @@ async function toggleToneRecording() {
       toneRecording = false;
       if (toneAnimFrame) cancelAnimationFrame(toneAnimFrame);
       btn.className = 'mic-btn idle';
-      btn.textContent = '🎤 Start Recording';
+      btn.textContent = '🎤 Começar a gravar';
       analyzeToneResult();
     }
   }, 3000);
@@ -341,7 +339,7 @@ async function toggleToneRecording() {
 function analyzeToneResult() {
   const validPitches = pitchHistory.filter(p => p > 0);
   if (validPitches.length < 4) {
-    document.getElementById('tone-feedback').innerHTML = '<div class="feedback-badge fb-try">😕 Too short — try again, speak clearly for 1-2 seconds</div>';
+    document.getElementById('tone-feedback').innerHTML = '<div class="feedback-badge fb-try">😕 Foi muito curto. Tenta outra vez e fala claramente durante 1 ou 2 segundos.</div>';
     return;
   }
   // Analyse shape
@@ -362,35 +360,35 @@ function analyzeToneResult() {
     const flatness = 1 - Math.min(totalRange / avgAll, 1);
     score = Math.round(flatness * 100);
     const good = totalRange < avgAll * 0.18;
-    feedbackText = good ? '✓ Flat and steady — great 1st tone!' : `Try to keep your pitch completely flat. Range: ${Math.round(totalRange)}Hz (aim for < ${Math.round(avgAll * 0.18)}Hz)`;
+    feedbackText = good ? '✓ Plano e estável. Ótimo 1.º tom!' : `Tenta manter a voz completamente plana. Variação: ${Math.round(totalRange)} Hz (o objetivo é menos de ${Math.round(avgAll * 0.18)} Hz)`;
     cls = good ? 'fb-great' : score > 50 ? 'fb-good' : 'fb-try';
   } else if (selectedTone === 2) {
     // Should rise: last > first
     const rise = avgLast - avgFirst;
     score = Math.round(Math.max(0, Math.min(rise / 60, 1)) * 100);
     const good = rise > 30;
-    feedbackText = good ? '✓ Nice rising tone — great 2nd tone!' : `Your pitch needs to rise more. Rise: ${Math.round(rise)}Hz (aim for > 30Hz rise)`;
+    feedbackText = good ? '✓ Boa subida. Ótimo 2.º tom!' : `A tua voz precisa de subir mais. Subida: ${Math.round(rise)} Hz (o objetivo é mais de 30 Hz)`;
     cls = good ? 'fb-great' : score > 40 ? 'fb-good' : 'fb-try';
   } else if (selectedTone === 3) {
     // Should dip: mid lower than both ends
     const dip = Math.min(avgFirst, avgLast) - avgMid;
     score = Math.round(Math.max(0, Math.min(dip / 50, 1)) * 100);
     const good = dip > 20;
-    feedbackText = good ? '✓ Good dipping shape — solid 3rd tone!' : `The pitch should dip down in the middle then rise. Dip: ${Math.round(dip)}Hz (aim for > 20Hz)`;
+    feedbackText = good ? '✓ Boa descida e subida. Bom 3.º tom!' : `A voz deve descer a meio e depois subir. Descida: ${Math.round(dip)} Hz (o objetivo é mais de 20 Hz)`;
     cls = good ? 'fb-great' : score > 40 ? 'fb-good' : 'fb-try';
   } else if (selectedTone === 4) {
     // Should fall: last < first
     const fall = avgFirst - avgLast;
     score = Math.round(Math.max(0, Math.min(fall / 60, 1)) * 100);
     const good = fall > 30;
-    feedbackText = good ? '✓ Sharp falling tone — excellent 4th tone!' : `Your pitch needs to fall more sharply. Fall: ${Math.round(fall)}Hz (aim for > 30Hz drop)`;
+    feedbackText = good ? '✓ Descida firme. Excelente 4.º tom!' : `A tua voz precisa de descer com mais força. Descida: ${Math.round(fall)} Hz (o objetivo é mais de 30 Hz)`;
     cls = good ? 'fb-great' : score > 40 ? 'fb-good' : 'fb-try';
   }
 
   const fb = document.getElementById('tone-feedback');
   fb.innerHTML = `
     <div class="feedback-badge ${cls}">${feedbackText}</div>
-    <div style="margin-top:6px;font-size:12px;color:var(--ink-light)">Pitch range: ${Math.round(Math.min(...validPitches))}–${Math.round(Math.max(...validPitches))} Hz &nbsp;|&nbsp; Score: ${score}/100</div>
+    <div style="margin-top:6px;font-size:12px;color:var(--ink-light)">Altura da voz: ${Math.round(Math.min(...validPitches))} a ${Math.round(Math.max(...validPitches))} Hz &nbsp;|&nbsp; Pontuação: ${score}/100</div>
   `;
 
   // Save score
@@ -407,39 +405,39 @@ function playTargetTone() {
 // ═══════════════════════
 const repeatWords = {
   greetings: [
-    { zh: '你好', py: 'nǐ hǎo', en: 'Hello' },
-    { zh: '谢谢', py: 'xièxie', en: 'Thank you' },
-    { zh: '再见', py: 'zàijiàn', en: 'Goodbye' },
-    { zh: '早上好', py: 'zǎoshang hǎo', en: 'Good morning' },
-    { zh: '不客气', py: 'bú kèqi', en: "You're welcome" },
+    { zh: '你好', py: 'nǐ hǎo', en: 'Olá' },
+    { zh: '谢谢', py: 'xièxie', en: 'Obrigado' },
+    { zh: '再见', py: 'zàijiàn', en: 'Adeus' },
+    { zh: '早上好', py: 'zǎoshang hǎo', en: 'Bom dia' },
+    { zh: '不客气', py: 'bú kèqi', en: 'De nada' },
   ],
   numbers: [
-    { zh: '一二三', py: 'yī èr sān', en: 'One two three' },
-    { zh: '四五六', py: 'sì wǔ liù', en: 'Four five six' },
-    { zh: '七八九十', py: 'qī bā jiǔ shí', en: 'Seven eight nine ten' },
-    { zh: '一百', py: 'yī bǎi', en: 'One hundred' },
-    { zh: '一千', py: 'yī qiān', en: 'One thousand' },
+    { zh: '一二三', py: 'yī èr sān', en: 'Um, dois, três' },
+    { zh: '四五六', py: 'sì wǔ liù', en: 'Quatro, cinco, seis' },
+    { zh: '七八九十', py: 'qī bā jiǔ shí', en: 'Sete, oito, nove, dez' },
+    { zh: '一百', py: 'yī bǎi', en: 'Cem' },
+    { zh: '一千', py: 'yī qiān', en: 'Mil' },
   ],
   food: [
-    { zh: '米饭', py: 'mǐfàn', en: 'Rice' },
-    { zh: '好吃', py: 'hǎo chī', en: 'Delicious' },
-    { zh: '我要这个', py: 'wǒ yào zhège', en: 'I want this one' },
-    { zh: '太辣了', py: 'tài là le', en: 'Too spicy' },
-    { zh: '买单', py: 'mǎidān', en: 'The bill please' },
+    { zh: '米饭', py: 'mǐfàn', en: 'Arroz' },
+    { zh: '好吃', py: 'hǎo chī', en: 'Delicioso' },
+    { zh: '我要这个', py: 'wǒ yào zhège', en: 'Quero este' },
+    { zh: '太辣了', py: 'tài là le', en: 'Muito picante' },
+    { zh: '买单', py: 'mǎidān', en: 'A conta, por favor' },
   ],
   work: [
-    { zh: '你好', py: 'nǐ hǎo', en: 'Hello' },
-    { zh: '我同意', py: 'wǒ tóngyì', en: 'I agree' },
-    { zh: '没问题', py: 'méi wèntí', en: 'No problem' },
-    { zh: '收到谢谢', py: 'shōudào xièxie', en: 'Received, thank you' },
-    { zh: '请问', py: 'qǐngwèn', en: 'May I ask' },
+    { zh: '你好', py: 'nǐ hǎo', en: 'Olá' },
+    { zh: '我同意', py: 'wǒ tóngyì', en: 'Concordo' },
+    { zh: '没问题', py: 'méi wèntí', en: 'Não há problema' },
+    { zh: '收到谢谢', py: 'shōudào xièxie', en: 'Recebido, obrigado' },
+    { zh: '请问', py: 'qǐngwèn', en: 'Com licença, posso perguntar' },
   ],
   tones: [
-    { zh: '买卖', py: 'mǎi mài', en: 'Buy / Sell (3rd & 4th)' },
-    { zh: '妈麻马骂', py: 'mā má mǎ mà', en: 'All four tones on "ma"' },
-    { zh: '书熟鼠树', py: 'shū shú shǔ shù', en: 'All four tones on "shu"' },
-    { zh: '飞', py: 'fēi', en: 'Fly (1st tone)' },
-    { zh: '学习', py: 'xuéxí', en: 'Study (2nd 2nd)' },
+    { zh: '买卖', py: 'mǎi mài', en: 'Comprar / vender (3.º e 4.º tom)' },
+    { zh: '妈麻马骂', py: 'mā má mǎ mà', en: 'Os quatro tons em "ma"' },
+    { zh: '书熟鼠树', py: 'shū shú shǔ shù', en: 'Os quatro tons em "shu"' },
+    { zh: '飞', py: 'fēi', en: 'Voar (1.º tom)' },
+    { zh: '学习', py: 'xuéxí', en: 'Estudar (2.º e 2.º tom)' },
   ],
 };
 let repeatTarget = null, repeatRecording = false, repeatRecognizer = null;
@@ -455,7 +453,7 @@ function loadRepeatWords() {
       <div class="rw-py">${w.py}</div>
       <div style="font-size:12px;color:var(--ink-light);flex:1">${w.en}</div>
       <button class="speak-btn" onclick="speakText('${w.zh}',0.7)">🔊</button>
-      <button onclick="startRepeatWord(${i})" style="background:var(--red);color:#fff;border:none;padding:5px 12px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font-main)">Practice →</button>
+      <button onclick="startRepeatWord(${i})" style="background:var(--red);color:#fff;border:none;padding:5px 12px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font-main)">Praticar</button>
       <div class="rw-result" id="rwr-${i}"></div>
     </div>`).join('');
   document.getElementById('repeat-active-wrap').style.display = 'none';
@@ -488,7 +486,7 @@ async function toggleRepeatRecording() {
   if (!repeatTarget) return;
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SR) {
-    document.getElementById('repeat-result').innerHTML = '<span style="color:var(--red)">⚠️ Speech recognition not supported. Use Chrome or Edge.</span>';
+    document.getElementById('repeat-result').innerHTML = '<span style="color:var(--red)">⚠️ Este browser não reconhece a voz. Usa o Chrome ou o Edge.</span>';
     return;
   }
   repeatRecognizer = new SR();
@@ -510,9 +508,9 @@ async function toggleRepeatRecording() {
     const correct = alts.some(a => a.includes(target) || target.includes(a) || similarity(a, target) > 0.6);
     const res = document.getElementById('repeat-result');
     if (correct) {
-      res.innerHTML = `<span class="recog-match">✓ 太好了！(tài hǎo le!) — Recognised: "${esc(heard)}"</span>`;
+      res.innerHTML = `<span class="recog-match">✓ 太好了！(tài hǎo le!) Reconhecido: "${esc(heard)}"</span>`;
     } else {
-      res.innerHTML = `<span class="recog-miss">✗ Heard: "${esc(heard)}" — Target: "${esc(target)}" — Try again!</span>`;
+      res.innerHTML = `<span class="recog-miss">✗ Ouvi: "${esc(heard)}". Pretendido: "${esc(target)}". Tenta outra vez!</span>`;
     }
     savePronunAttempt({ type: 'repeat', word: target, heard, correct });
     // Update word list row
@@ -529,7 +527,7 @@ async function toggleRepeatRecording() {
     repeatRecording = false;
     document.getElementById('repeat-mic-btn').className = 'mic-btn idle';
     document.getElementById('repeat-mic-btn').textContent = '🎤 Say It';
-    document.getElementById('repeat-result').innerHTML = `<span style="color:var(--red)">⚠️ Error: ${esc(e.error)}. Make sure mic is allowed.</span>`;
+    document.getElementById('repeat-result').innerHTML = `<span style="color:var(--red)">⚠️ Erro: ${esc(e.error)}. Confirma se o microfone está autorizado.</span>`;
   };
   repeatRecognizer.onend = () => {
     repeatRecording = false;
@@ -553,13 +551,13 @@ async function toggleRecogRecording() {
   const btn = document.getElementById('recog-mic-btn');
   if (recogRecording) {
     recogRecording = false;
-    btn.className = 'mic-btn idle'; btn.textContent = '🎤 Record';
+    btn.className = 'mic-btn idle'; btn.textContent = '🎤 Gravar';
     if (recogRecognizer) { try { recogRecognizer.stop(); } catch(e){} }
     return;
   }
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SR) {
-    document.getElementById('recog-result').innerHTML = '<p style="color:var(--red)">⚠️ Speech recognition not supported in this browser. Please use Chrome or Edge.</p>';
+    document.getElementById('recog-result').innerHTML = '<p style="color:var(--red)">⚠️ Este browser não reconhece a voz. Usa o Chrome ou o Edge.</p>';
     return;
   }
   recogRecognizer = new SR();
@@ -567,7 +565,7 @@ async function toggleRecogRecording() {
   recogRecognizer.interimResults = true;
   recogRecognizer.maxAlternatives = 5;
   recogRecording = true;
-  btn.className = 'mic-btn recording'; btn.textContent = '⏹ Stop';
+  btn.className = 'mic-btn recording'; btn.textContent = '⏹ Parar';
   document.getElementById('recog-result').innerHTML = '<p style="color:var(--ink-light);font-size:13px">🎤 Listening — speak clearly in Mandarin…</p>';
   document.getElementById('recog-ai-feedback').innerHTML = '';
 
@@ -576,39 +574,39 @@ async function toggleRecogRecording() {
     const finals = Array.from(e.results).filter(r => r.isFinal).map(r => r[0].transcript).join('');
     const display = finals || interim;
     document.getElementById('recog-result').innerHTML = `
-      <div style="margin-bottom:6px;font-size:12px;color:var(--ink-light)">${e.results[0]?.isFinal ? '✓ Final' : '⏳ Interim'} transcription:</div>
+      <div style="margin-bottom:6px;font-size:12px;color:var(--ink-light)">${e.results[0]?.isFinal ? '✓ Transcrição final' : '⏳ Transcrição provisória'}:</div>
       <div class="recog-zh">${display}</div>
     `;
     if (e.results[e.results.length - 1]?.isFinal) {
       recogRecording = false;
-      btn.className = 'mic-btn idle'; btn.textContent = '🎤 Record';
+      btn.className = 'mic-btn idle'; btn.textContent = '🎤 Gravar';
       if (recogPromptText) getRecogAIFeedback(recogPromptText, finals || interim);
     }
   };
   recogRecognizer.onerror = e => {
     recogRecording = false;
-    btn.className = 'mic-btn idle'; btn.textContent = '🎤 Record';
-    document.getElementById('recog-result').innerHTML = `<p style="color:var(--red)">⚠️ ${e.error === 'not-allowed' ? 'Microphone access denied.' : 'Error: ' + esc(e.error)}</p>`;
+    btn.className = 'mic-btn idle'; btn.textContent = '🎤 Gravar';
+    document.getElementById('recog-result').innerHTML = `<p style="color:var(--red)">⚠️ ${e.error === 'not-allowed' ? 'O acesso ao microfone foi recusado.' : 'Erro: ' + esc(e.error)}</p>`;
   };
   recogRecognizer.onend = () => {
     recogRecording = false;
-    btn.className = 'mic-btn idle'; btn.textContent = '🎤 Record';
+    btn.className = 'mic-btn idle'; btn.textContent = '🎤 Gravar';
   };
   recogRecognizer.start();
 }
 
 async function getRecogAIFeedback(target, heard) {
   const fb = document.getElementById('recog-ai-feedback');
-  fb.innerHTML = '<p style="color:var(--ink-light);font-size:13px">🤖 Analysing your pronunciation…</p>';
+  fb.innerHTML = '<p style="color:var(--ink-light);font-size:13px">🤖 A analisar a tua pronúncia…</p>';
   try {
     const reply = await askClaude({
       maxTokens: 300,
-      messages: [{ role: "user", content: `A Mandarin learner was asked to say: "${target}"\nThe speech recognition heard: "${heard}"\n\nGive brief pronunciation feedback in English (3-4 sentences max). Note: 1) Did they say it correctly? 2) What specific sounds or tones might be wrong? 3) One concrete tip to improve. Be encouraging. If it was correct, congratulate them.` }]
+      messages: [{ role: "user", content: `A Mandarin learner was asked to say: "${target}"\nThe speech recognition heard: "${heard}"\n\nGive brief pronunciation feedback in European Portuguese (Portugal), addressing the learner as "tu" (3-4 sentences max). Note: 1) Did they say it correctly? 2) What specific sounds or tones might be wrong? 3) One concrete tip to improve. Be encouraging. If it was correct, congratulate them.` }]
     });
     const match = heard === target || similarity(heard, target) > 0.7;
     fb.innerHTML = `
       <div style="background:${match ? 'var(--green-light)' : 'var(--blue-light)'};border-radius:10px;padding:12px 16px;border-left:4px solid ${match ? 'var(--green)' : 'var(--blue)'}">
-        <div style="font-size:12px;font-weight:700;color:${match ? 'var(--green)' : 'var(--blue)'};margin-bottom:6px">🤖 AI Pronunciation Coach</div>
+        <div style="font-size:12px;font-weight:700;color:${match ? 'var(--green)' : 'var(--blue)'};margin-bottom:6px">🤖 Treinador de pronúncia com IA</div>
         <div style="font-size:13px;color:var(--ink-mid)">${formatAIText(reply)}</div>
       </div>`;
     savePronunAttempt({ type: 'recog', target, heard, correct: match });
@@ -643,11 +641,11 @@ function updatePronunScores() {
   if (el('ps-pct')) el('ps-pct').textContent = pct + '%';
   const hist = el('ps-history');
   if (!hist) return;
-  if (!s.history.length) { hist.innerHTML = '<p style="color:var(--ink-light);font-size:13px">No attempts yet.</p>'; return; }
+  if (!s.history.length) { hist.innerHTML = '<p style="color:var(--ink-light);font-size:13px">Ainda não há tentativas.</p>'; return; }
   hist.innerHTML = s.history.slice(0, 15).map(h => {
     const d = new Date(h.ts);
-    const time = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const label = h.type === 'tone' ? `Tone ${h.tone}` : h.type === 'repeat' ? `"${h.word}"` : `"${h.target}"`;
+    const time = d.toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' });
+    const label = h.type === 'tone' ? `Tom ${h.tone}` : h.type === 'repeat' ? `"${h.word}"` : `"${h.target}"`;
     return `<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--paper-dark);font-size:12px">
       <span style="color:${h.correct ? 'var(--green)' : 'var(--red)'};font-weight:700">${h.correct ? '✓' : '✗'}</span>
       <span style="flex:1;color:var(--ink-mid)">${label}</span>
@@ -657,7 +655,7 @@ function updatePronunScores() {
 }
 
 function clearPronunScores() {
-  if (confirm('Clear all pronunciation history?')) {
+  if (confirm('Apagar todo o histórico de pronúncia?')) {
     pronunStats = { attempts: 0, correct: 0, streak: 0, bestStreak: 0, history: [] };
     LS.set('pronunStats', pronunStats);
     updatePronunScores();
