@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chá · Aprende mandarim</title>
+  <title>Introdução · Chá</title>
 
   <!-- Ícone do separador: o carimbo 茶 -->
   <link rel="icon" href="img/logo-cha.svg" type="image/svg+xml">
@@ -53,12 +53,13 @@
 </div>
 
 <header class="site-nav" data-site-nav>
-  <a class="site-nav__logo" href="index.html" aria-label="Chá, página inicial">
+  <a class="site-nav__logo" href="index.php" aria-label="Chá, página inicial">
     <img class="site-nav__mark" src="img/logo-cha.svg" alt="" width="30" height="30">
   </a>
   <nav class="site-nav__menu" id="site-menu" aria-label="Principal">
     <ul class="site-nav__links">
-        <li><a class="site-nav__link" href="index.html" data-i18n="nav_home">Início</a></li>
+        <li><a class="site-nav__link" href="index.php" data-i18n="nav_home">Início</a></li>
+        <li><a class="site-nav__link" href="introducao.html" data-i18n="nav_intro">Introdução</a></li>
         <li><a class="site-nav__link" href="sons.html" data-i18n="nav_sounds">Sons</a></li>
         <li><a class="site-nav__link" href="basico.html" data-i18n="nav_basics">Básico</a></li>
         <li><a class="site-nav__link" href="vocabulario.html" data-i18n="nav_vocabulary">Vocabulário</a></li>
@@ -70,12 +71,13 @@
       <button type="button" class="site-nav__tool" onclick="openDailyModal()">📅 Hoje</button>
       <button type="button" class="site-nav__tool" id="lang-toggle" onclick="toggleLang()">🇬🇧 EN</button>
       <button type="button" class="site-nav__tool" id="dark-toggle" onclick="toggleDark()">🌙 Dark</button>
+      <a class="site-nav__tool" href="conta.php">👤 Conta</a>
     </div>
   </nav>
   <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-menu">Menu</button>
 </header>
 
-<main class="page" data-page="home">
+<main class="page" data-page="introducao">
 <div id="achievements-bar">
   <span class="ach-label">🏆</span>
   <span class="badge" id="badge-start" title="Começou o curso">🌱 Início</span>

@@ -82,7 +82,8 @@ const ChaNav = (() => {
 
   // ═══ 3. PÁGINA ATUAL (aria-current) ═══
   function normalizePath(pathname) {
-    return pathname.endsWith('/') ? pathname + 'index.html' : pathname;
+    // O endereço "/" abre o index.php, por isso eu trato os dois como a mesma página
+    return pathname.endsWith('/') ? pathname + 'index.php' : pathname;
   }
 
   function updateCurrent() {

@@ -28,7 +28,7 @@ require 'includes/cabecalho.php';
   <h1>Olá, <?= e($utilizador['nome']) ?>!</h1>
   <p>E-mail: <?= e($utilizador['email']) ?><br>Membro desde <?= e($membro_desde) ?></p>
 
-  <a class="botao" href="index.html" style="display:grid;place-items:center;text-decoration:none">Continuar a estudar</a>
+  <a class="botao" href="index.php" style="display:grid;place-items:center;text-decoration:none">Continuar a estudar</a>
 
   <form method="post" action="sair.php">
     <input type="hidden" name="csrf" value="<?= e(token_csrf()) ?>">

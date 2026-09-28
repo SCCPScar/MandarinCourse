@@ -45,6 +45,7 @@ erDiagram
         varchar nome_zh
         varchar meses
         varchar tema
+        varchar capa
     }
     UNIDADES {
         smallint id PK
@@ -94,7 +95,7 @@ erDiagram
 | Tabela | O que eu guardo |
 |---|---|
 | `utilizadores` | Quem tem conta: nome, e-mail, palavra-passe (só o hash), nível, meta diária e dias seguidos a estudar |
-| `cidades` | As 6 cidades da rota |
+| `cidades` | As 6 cidades da rota, com o nome da foto de capa |
 | `unidades` | As 24 unidades (4 por cidade) |
 | `licoes` | As lições de cada unidade |
 | `palavras` | O vocabulário, com hanzi, pinyin e tradução |
@@ -124,6 +125,8 @@ erDiagram
 
 | Ficheiro | O que faz |
 |---|---|
+| `index.php` | Página inicial: hero, painel do aluno e a rota das 6 cidades com o progresso de cada uma (consulta com `LEFT JOIN` e `GROUP BY`) |
+| `includes/navegacao.php` e `includes/scripts.php` | A barra de navegação e o JavaScript partilhados pelas páginas PHP |
 | `includes/ligacao.php` | Liga o PHP à base `cha` com PDO e `charset=utf8mb4` |
 | `includes/sessao.php` | Inicia a sessão e tem as funções `exigir_sessao()`, `iniciar_sessao()`, `token_csrf()`, `validar_csrf()` e `e()` |
 | `registo.php` | Cria a conta (valida os dados, confirma a idade mínima e o consentimento) |
@@ -133,4 +136,4 @@ erDiagram
 | `eliminar-conta.php` | Elimina a conta e, em cascata, todos os dados do utilizador |
 | `privacidade.php` | Política de Privacidade (tem campos entre `[ ]` para preencher antes de publicar) |
 
-Para testar no XAMPP, copio a pasta `mandarin_project` para `C:\xampp\htdocs\cha` e abro `http://localhost/cha/registo.php`.
+Para testar no XAMPP, copio a pasta `mandarin_project` para `C:\xampp\htdocs\cha` e abro `http://localhost/cha/`. O Apache abre o `index.php` sozinho.

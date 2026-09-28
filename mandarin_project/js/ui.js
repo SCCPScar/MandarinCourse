@@ -118,7 +118,7 @@ function finishOnboard() {
   showToast('🎉 Bem-vindo! Vamos começar a aprender mandarim!');
   // Scroll to suggested start based on level
   // Leva o aluno à página certa para o nível dele
-  const targets = { zero:'index.html#foundations', basic:'sons.html#tones', inter:'basico.html#grammar', adv:'praticar.html#features' };
+  const targets = { zero:'introducao.html#foundations', basic:'sons.html#tones', inter:'basico.html#grammar', adv:'praticar.html#features' };
   const target = targets[selectedLevel] || targets.zero;
   setTimeout(() => ChaNav.go(target), 500);
 }

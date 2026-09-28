@@ -1,0 +1,166 @@
+/*
+ * inicio.css
+ * Aqui eu dou estilo à página inicial: o hero, o painel do aluno e a rota das cidades.
+ */
+
+/* ═══ 1. HERO ═══ */
+/* A foto ocupa a secção toda e o texto fica por cima, à direita. */
+.hero-cha {
+  position: relative;
+  min-height: min(78vh, 640px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+  background: #0F1519;
+}
+.hero-cha__foto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left 80%;      /* as taças ficam em baixo, à esquerda */
+}
+/* Um degradê escuro por trás do texto, para as letras brancas se lerem bem */
+.hero-cha::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to left, rgba(15, 21, 25, 0.88) 0%, rgba(15, 21, 25, 0.6) 38%, rgba(15, 21, 25, 0) 65%);
+}
+.hero-cha__texto {
+  position: relative;
+  z-index: 1;
+  max-width: 460px;
+  margin-right: max(var(--page-gutter), calc((100% - var(--page-max)) / 2 + var(--page-gutter)));
+  color: #fff;
+}
+.hero-cha h1 {
+  font-size: clamp(34px, 4.6vw, 56px);
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+.hero-cha p { font-size: 17px; line-height: 1.55; opacity: 0.9; margin-bottom: 24px; }
+
+/* Botões do hero */
+.botao-cha {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 22px;
+  margin: 0 8px 8px 0;
+  border-radius: 12px;
+  background: var(--jade);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 0 #084C3F;     /* uma "base" por baixo, como uma tecla */
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.botao-cha:hover { transform: translateY(-1px); }
+.botao-cha:active { transform: translateY(3px); box-shadow: 0 1px 0 #084C3F; }
+.botao-cha--claro { background: rgba(255, 255, 255, 0.14); box-shadow: none; }
+
+/* Crédito do fotógrafo, pequeno, no canto */
+.credito {
+  position: absolute;
+  z-index: 1;
+  left: 12px;
+  bottom: 8px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+}
+.credito--telemovel { display: none; }
+
+/* ═══ 2. PAINEL DO ALUNO ═══ */
+.painel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 24px;
+  max-width: var(--page-max);
+  margin: -32px auto 0;            /* sobe um pouco por cima do hero */
+  padding: 20px 24px;
+  position: relative;
+  z-index: 2;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: calc(100% - 2 * var(--page-gutter));
+}
+.painel__ola { font-family: var(--font-titulos); font-size: 20px; font-weight: 800; color: var(--ink); }
+.painel p { color: var(--ink-light); flex: 1 1 320px; }
+.painel__numeros { display: flex; gap: 20px; list-style: none; color: var(--ink-light); }
+.painel__numeros strong { color: var(--ink); font-size: 20px; margin-right: 4px; }
+.painel a { margin-left: auto; color: var(--jade); font-weight: 600; }
+
+/* ═══ 3. ROTA DAS CIDADES ═══ */
+.rota {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 56px var(--page-gutter) 72px;
+}
+.rota h2 { font-size: 32px; color: var(--ink); }
+.rota__intro { color: var(--ink-light); margin: 4px 0 24px; }
+
+/* 3 colunas no computador, 2 no tablet, 1 no telemóvel */
+.rota__lista {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.cidade {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.cidade__foto {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+/* Quando a cidade ainda não tem foto, mostro o nome em chinês */
+.cidade__foto--vazia {
+  display: grid;
+  place-items: center;
+  background: var(--paper-mid);
+  color: var(--paper-dark);
+  font-family: var(--font-chinese);
+  font-size: 64px;
+  font-weight: 700;
+}
+.cidade__texto { padding: 16px 18px 20px; }
+.cidade__meses { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--jade); }
+.cidade h3 { font-family: var(--font-titulos); font-size: 22px; font-weight: 800; color: var(--ink); margin: 2px 0; }
+.cidade h3 span { font-family: var(--font-chinese); font-weight: 500; color: var(--ink-light); margin-left: 4px; }
+.cidade p { color: var(--ink-light); font-size: 15px; }
+.cidade__feitas { margin-top: 6px; font-size: 13px !important; }
+
+/* Barra de progresso de cada cidade */
+.progresso { height: 6px; margin-top: 12px; border-radius: 3px; background: var(--paper-dark); overflow: hidden; }
+.progresso__barra { height: 100%; background: var(--jade); border-radius: 3px; }
+
+/* ═══ TABLET E TELEMÓVEL ═══ */
+@media (max-width: 960px) {
+  .rota__lista { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 767.98px) {
+  /* No telemóvel a foto fica em cima e o texto em baixo, sobre o degradê */
+  .hero-cha { min-height: 88svh; align-items: flex-end; justify-content: flex-start; }
+  .hero-cha__foto { object-position: center top; }
+  .hero-cha::after { background: linear-gradient(to top, rgba(15, 21, 25, 0.92) 0%, rgba(15, 21, 25, 0.55) 45%, rgba(15, 21, 25, 0) 70%); }
+  .hero-cha__texto { margin: 0; padding: 0 var(--page-gutter) 64px; }
+  .credito { top: 8px; bottom: auto; }
+  .credito--computador { display: none; }
+  .credito--telemovel { display: block; }
+  .painel a { margin-left: 0; }
+}
+
+@media (max-width: 560px) {
+  .rota__lista { grid-template-columns: 1fr; }
+}

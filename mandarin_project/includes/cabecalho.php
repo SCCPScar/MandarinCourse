@@ -17,7 +17,7 @@
 </head>
 <body>
 <header class="conta-topo">
-  <a href="index.html" class="conta-logo" aria-label="Chá, voltar ao início"><img src="img/logo-cha.svg" alt="" width="36" height="36"></a>
-  <a href="index.html" class="conta-voltar">← Voltar ao curso</a>
+  <a href="index.php" class="conta-logo" aria-label="Chá, voltar ao início"><img src="img/logo-cha.svg" alt="" width="36" height="36"></a>
+  <a href="index.php" class="conta-voltar">← Voltar ao curso</a>
 </header>
 <main class="page conta">

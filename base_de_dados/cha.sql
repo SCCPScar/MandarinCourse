@@ -49,7 +49,8 @@ CREATE TABLE cidades (
   nome     VARCHAR(40) NOT NULL,
   nome_zh  VARCHAR(10) NOT NULL,
   meses    VARCHAR(10) NOT NULL,
-  tema     VARCHAR(60) NOT NULL
+  tema     VARCHAR(60) NOT NULL,
+  capa     VARCHAR(10) NULL     -- início do nome da foto de capa (ex.: "bj0"); NULL se ainda não houver
 ) ENGINE=InnoDB;
 
 
@@ -150,13 +151,13 @@ CREATE TABLE caderno (
 -- =====================================================================
 
 -- As 6 cidades da rota
-INSERT INTO cidades (id, ordem, nome, nome_zh, meses, tema) VALUES
-  (1, 1, 'Pequim',   '北京', '1–2',   'Os sons do mandarim'),
-  (2, 2, 'Xi''an',   '西安', '3–4',   'Comer e comprar'),
-  (3, 3, 'Chengdu',  '成都', '5–6',   'O dia a dia'),
-  (4, 4, 'Guilin',   '桂林', '7–8',   'Viajar'),
-  (5, 5, 'Hangzhou', '杭州', '9–10',  'Contar e opinar'),
-  (6, 6, 'Xangai',   '上海', '11–12', 'Trabalho e cidade');
+INSERT INTO cidades (id, ordem, nome, nome_zh, meses, tema, capa) VALUES
+  (1, 1, 'Pequim',   '北京', '1–2',   'Os sons do mandarim', 'bj0'),
+  (2, 2, 'Xi''an',   '西安', '3–4',   'Comer e comprar',     'xa0'),
+  (3, 3, 'Chengdu',  '成都', '5–6',   'O dia a dia',         'cd0'),
+  (4, 4, 'Guilin',   '桂林', '7–8',   'Viajar',              NULL),
+  (5, 5, 'Hangzhou', '杭州', '9–10',  'Contar e opinar',     NULL),
+  (6, 6, 'Xangai',   '上海', '11–12', 'Trabalho e cidade',   NULL);
 
 -- As 24 unidades (4 por cidade)
 INSERT INTO unidades (id, cidade_id, codigo, titulo) VALUES
