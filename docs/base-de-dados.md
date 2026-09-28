@@ -9,7 +9,7 @@
 3. Clico no separador **Importar** (no topo, sem escolher nenhuma base à esquerda).
 4. Em **Ficheiro a importar**, escolho `base_de_dados/cha.sql`. O conjunto de caracteres deve ficar em **utf-8**.
 5. Clico em **Importar** (ou **Executar**) no fim da página.
-6. À esquerda aparece a base **cha** com 8 tabelas. No separador **Designer** vejo o diagrama com as ligações.
+6. À esquerda aparece a base **cha** com 9 tabelas. No separador **Designer** vejo o diagrama com as ligações.
 
 O script começa com `DROP DATABASE IF EXISTS cha`, por isso posso importar de novo sempre que mudar alguma coisa. **Atenção:** isso apaga os dados que já estavam na base.
 
@@ -20,6 +20,7 @@ erDiagram
     CIDADES   ||--|{ UNIDADES  : "tem 4"
     UNIDADES  ||--|{ LICOES    : "tem várias"
     LICOES    ||--o{ PALAVRAS  : "ensina"
+    LICOES    ||--o{ FRASES    : "dá exemplos em"
     UTILIZADORES  ||--o{ PROGRESSO : "termina"
     LICOES    ||--o{ PROGRESSO : "é terminada em"
     UTILIZADORES  ||--o{ REVISOES  : "revê"
@@ -60,8 +61,16 @@ erDiagram
         tinyint ordem
         varchar titulo
         tinyint minutos
+        text explicacao
     }
     PALAVRAS {
+        int id PK
+        int licao_id FK
+        varchar hanzi
+        varchar pinyin
+        varchar traducao
+    }
+    FRASES {
         int id PK
         int licao_id FK
         varchar hanzi
@@ -98,8 +107,9 @@ erDiagram
 | `utilizadores` | Quem tem conta: nome, e-mail, palavra-passe (só o hash), nível, meta diária e dias seguidos a estudar |
 | `cidades` | As 6 cidades da rota, com o nome da foto de capa |
 | `unidades` | As 24 unidades (4 por cidade), com o nome da foto de cada uma |
-| `licoes` | As lições de cada unidade |
+| `licoes` | As lições de cada unidade, com uma explicação curta do tema |
 | `palavras` | O vocabulário, com hanzi, pinyin e tradução |
+| `frases` | As frases de exemplo de cada lição, também com hanzi, pinyin e tradução |
 | `progresso` | Que lições cada utilizador já terminou, e com que pontuação |
 | `revisoes` | Quando cada utilizador deve rever cada palavra (revisão espaçada) |
 | `caderno` | As palavras que cada utilizador guardou no caderno pessoal |
@@ -116,7 +126,7 @@ erDiagram
 
 ## Testes que fiz (MariaDB 10.11, a mesma do XAMPP)
 
-- O script importa sem erros e cria as 8 tabelas, as 6 cidades, as 24 unidades, 6 lições e 16 palavras.
+- O script importa sem erros e cria as 9 tabelas, as 6 cidades, as 24 unidades e as 12 lições de Pequim (3 por unidade), com 90 palavras e 36 frases.
 - O mesmo utilizador não consegue terminar a mesma lição duas vezes (a chave primária bloqueia).
 - Não dá para criar uma lição numa unidade que não existe (a chave estrangeira bloqueia).
 - Ao eliminar um utilizador, o progresso, as revisões e o caderno dele somem juntos.
@@ -128,7 +138,7 @@ erDiagram
 |---|---|
 | `index.php` | Página inicial: hero, painel do aluno e a rota das 6 cidades com o progresso de cada uma (consulta com `LEFT JOIN` e `GROUP BY`) |
 | `cidade.php?id=` | Página de uma cidade: capa, as 4 unidades com a foto e as lições, marcando as que o aluno já fez |
-| `licao.php?id=` | Página de uma lição: palavras novas com áudio e o botão "Concluir lição" |
+| `licao.php?id=` | Página de uma lição: explicação, palavras novas e frases de exemplo com áudio, e o botão "Concluir lição" |
 | `concluir-licao.php` | Grava a lição no progresso, põe as palavras nas revisões para o dia seguinte e atualiza os dias seguidos |
 | `includes/navegacao.php` e `includes/scripts.php` | A barra de navegação e o JavaScript partilhados pelas páginas PHP |
 | `includes/ligacao.php` | Liga o PHP à base `cha` com PDO e `charset=utf8mb4` |

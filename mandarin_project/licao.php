@@ -1,6 +1,6 @@
 <?php
 // licao.php
-// Aqui eu mostro uma lição: o título, as palavras novas (com áudio) e o botão para a concluir.
+// Aqui eu mostro uma lição: a explicação, as palavras novas e as frases (com áudio) e o botão para a concluir.
 // O endereço é licao.php?id=4.
 
 require 'includes/sessao.php';
@@ -10,7 +10,7 @@ $id = (int) ($_GET['id'] ?? 0);
 
 // Eu vou buscar a lição e, com JOIN, a unidade e a cidade a que ela pertence
 $consulta = $pdo->prepare('
-    SELECT l.id, l.titulo, l.minutos,
+    SELECT l.id, l.titulo, l.minutos, l.explicacao,
            u.codigo, u.titulo AS unidade,
            c.id AS cidade_id, c.nome AS cidade
     FROM licoes l
@@ -30,6 +30,11 @@ if (!$licao) {
 $consulta = $pdo->prepare('SELECT hanzi, pinyin, traducao FROM palavras WHERE licao_id = ? ORDER BY id');
 $consulta->execute([$id]);
 $palavras = $consulta->fetchAll();
+
+// As frases de exemplo desta lição
+$consulta = $pdo->prepare('SELECT hanzi, pinyin, traducao FROM frases WHERE licao_id = ? ORDER BY id');
+$consulta->execute([$id]);
+$frases = $consulta->fetchAll();
 
 // O aluno já fez esta lição?
 $feita = false;
@@ -65,6 +70,11 @@ if (id_utilizador() !== null) {
   <h1><?= e($licao['titulo']) ?></h1>
   <p class="licao__tempo">Cerca de <?= (int) $licao['minutos'] ?> minutos</p>
 
+  <?php if ($licao['explicacao']): ?>
+    <!-- nl2br mantém as mudanças de linha do texto que está na base de dados -->
+    <p class="licao__explicacao"><?= nl2br(e($licao['explicacao'])) ?></p>
+  <?php endif; ?>
+
   <?php if ($palavras): ?>
     <h2>Palavras novas</h2>
     <ul class="palavras">
@@ -81,6 +91,21 @@ if (id_utilizador() !== null) {
     </ul>
   <?php else: ?>
     <p>Esta lição é sobre os sons do mandarim. Pratica-os na página <a href="sons.html">Sons</a> e depois volta aqui para a concluir.</p>
+  <?php endif; ?>
+
+  <?php if ($frases): ?>
+    <h2>Frases de exemplo</h2>
+    <ul class="frases">
+      <?php foreach ($frases as $frase): ?>
+        <li class="frase">
+          <button type="button" class="palavra__ouvir" data-falar="<?= e($frase['hanzi']) ?>"
+                  onclick="speakText(this.dataset.falar)" aria-label="Ouvir a frase">🔊</button>
+          <span class="frase__hanzi" lang="zh-CN"><?= e($frase['hanzi']) ?></span>
+          <span class="frase__pinyin"><?= e($frase['pinyin']) ?></span>
+          <span class="frase__traducao"><?= e($frase['traducao']) ?></span>
+        </li>
+      <?php endforeach; ?>
+    </ul>
   <?php endif; ?>
 
   <div class="licao__fim">

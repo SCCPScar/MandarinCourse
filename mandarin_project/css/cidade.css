@@ -119,6 +119,33 @@
 }
 .palavra__ouvir:hover { background: var(--paper-dark); }
 
+/* A explicação da lição: texto curto numa caixa clara */
+.licao__explicacao {
+  background: var(--white);
+  border-left: 4px solid var(--jade);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+/* As frases de exemplo: uma por linha, com o botão de ouvir à esquerda */
+.frases { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.licao .palavras + h2 { margin-top: 32px; }
+.frase {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  column-gap: 14px;
+  padding: 14px 16px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.frase .palavra__ouvir { position: static; grid-row: span 3; align-self: center; }
+.frase__hanzi { font-family: var(--font-chinese); font-size: 22px; color: var(--ink); }
+.frase__pinyin { color: var(--jade); font-weight: 600; }
+.frase__traducao { color: var(--ink-light); font-size: 15px; }
+
 .licao__fim { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
 .licao__fim .aviso-feita { margin: 0; width: auto; }
 .licao__fim button { border: 0; font: inherit; cursor: pointer; }
