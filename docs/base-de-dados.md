@@ -126,7 +126,7 @@ erDiagram
 
 ## Testes que fiz (MariaDB 10.11, a mesma do XAMPP)
 
-- O script importa sem erros e cria as 9 tabelas, as 6 cidades, as 24 unidades e as 12 lições de Pequim (3 por unidade), com 90 palavras e 36 frases.
+- O script importa sem erros e cria as 9 tabelas, as 6 cidades, as 24 unidades e as 24 lições de Pequim e de Xi'an (3 por unidade), com 180 palavras e 73 frases.
 - O mesmo utilizador não consegue terminar a mesma lição duas vezes (a chave primária bloqueia).
 - Não dá para criar uma lição numa unidade que não existe (a chave estrangeira bloqueia).
 - Ao eliminar um utilizador, o progresso, as revisões e o caderno dele somem juntos.
