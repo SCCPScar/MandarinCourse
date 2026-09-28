@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-PT">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Praticar — 学中文</title>
+  <title>Praticar · Chá</title>
 
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23C0392B'/><text y='.9em' font-size='75' font-family='serif' fill='white' x='10'>学</text></svg>">
+  <!-- Ícone do separador: o carimbo 茶 -->
+  <link rel="icon" href="img/logo-cha.svg" type="image/svg+xml">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fontes da marca, guardadas no próprio site -->
+  <link rel="stylesheet" href="css/fontes.css">
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/base.css">
@@ -54,8 +53,8 @@
 </div>
 
 <header class="site-nav" data-site-nav>
-  <a class="site-nav__logo" href="index.html" aria-label="学中文 — página inicial">
-    <span class="site-nav__mark" aria-hidden="true">学</span>
+  <a class="site-nav__logo" href="index.html" aria-label="Chá, página inicial">
+    <img class="site-nav__mark" src="img/logo-cha.svg" alt="" width="30" height="30">
   </a>
   <nav class="site-nav__menu" id="site-menu" aria-label="Principal">
     <ul class="site-nav__links">
@@ -249,7 +248,7 @@
   <div id="fc-box">
     <div class="fc-stats-row">
       <div class="fc-stat"><div class="fsn" id="fc-total">0</div><div class="fsl">Total</div></div>
-      <div class="fc-stat"><div class="fsn" id="fc-learned" style="color:#1E8449">0</div><div class="fsl">Learned</div></div>
+      <div class="fc-stat"><div class="fsn" id="fc-learned" style="color:#0E7C66">0</div><div class="fsl">Learned</div></div>
       <div class="fc-stat"><div class="fsn" id="fc-due" style="color:var(--red)">0</div><div class="fsl">Remaining</div></div>
     </div>
     <div class="fc-card-wrap" onclick="flipCard()">
@@ -372,7 +371,7 @@
   <div class="info" style="margin-bottom:.8rem">📓 <strong>My Vocabulary Notebook</strong> — Words saved from the Dictionary appear here. Saves in your browser automatically.</div>
   <div id="nb-box">
     <div style="display:flex;gap:7px;margin-bottom:.9rem;flex-wrap:wrap">
-      <button onclick="clearNotebook()" style="background:#FADBD8;color:#922B21;border:1.5px solid #FADBD8;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:12px;font-family:var(--font-main)">Clear All</button>
+      <button onclick="clearNotebook()" style="background:#FBE3DE;color:#A32A18;border:1.5px solid #FBE3DE;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:12px;font-family:var(--font-main)">Clear All</button>
       <button onclick="exportNotebook()" style="background:var(--paper-dark);color:var(--ink);border:none;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:12px;font-family:var(--font-main)">Export as Text</button>
     </div>
     <div id="nb-list"></div>
@@ -385,7 +384,7 @@
   <div id="timer-wrap">
     <div id="timer-display">00:00</div>
     <div class="timer-btns">
-      <button class="timer-btn" id="t-start" onclick="startTimer()" style="background:#1E8449;color:#fff">▶ Start</button>
+      <button class="timer-btn" id="t-start" onclick="startTimer()" style="background:#0E7C66;color:#fff">▶ Start</button>
       <button class="timer-btn" id="t-stop" onclick="stopTimer()" style="background:var(--red);color:#fff;display:none">⏸ Pause</button>
       <button class="timer-btn" id="t-reset" onclick="resetTimer()" style="background:var(--paper-dark);color:var(--ink)">↺ Reset</button>
     </div>
@@ -476,19 +475,19 @@
     <div class="tone-practice-grid" id="tone-target-grid">
       <div class="tone-target-card selected" onclick="selectTone(this,1)" data-tone="1">
         <div class="ttc-zh">妈</div><div class="ttc-py">mā</div>
-        <div class="ttc-tone" style="color:#1A5276">1st — High Flat ―</div>
+        <div class="ttc-tone" style="color:#2F6FD0">1st — High Flat ―</div>
       </div>
       <div class="tone-target-card" onclick="selectTone(this,2)" data-tone="2">
         <div class="ttc-zh">麻</div><div class="ttc-py">má</div>
-        <div class="ttc-tone" style="color:#1E8449">2nd — Rising ↗</div>
+        <div class="ttc-tone" style="color:#0E7C66">2nd — Rising ↗</div>
       </div>
       <div class="tone-target-card" onclick="selectTone(this,3)" data-tone="3">
         <div class="ttc-zh">马</div><div class="ttc-py">mǎ</div>
-        <div class="ttc-tone" style="color:#9A7D0A">3rd — Dipping ↘↗</div>
+        <div class="ttc-tone" style="color:#9A6A08">3rd — Dipping ↘↗</div>
       </div>
       <div class="tone-target-card" onclick="selectTone(this,4)" data-tone="4">
         <div class="ttc-zh">骂</div><div class="ttc-py">mà</div>
-        <div class="ttc-tone" style="color:#922B21">4th — Falling ↘</div>
+        <div class="ttc-tone" style="color:#A32A18">4th — Falling ↘</div>
       </div>
     </div>
 

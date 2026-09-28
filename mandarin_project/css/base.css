@@ -1,22 +1,40 @@
 /*
- * base.css — Variáveis, reset, tipografia, layout, responsivo
- * 学中文 — Curso Completo de Mandarim
+ * base.css
+ * Aqui eu guardo as variáveis, o reset, a tipografia, o layout e as regras para telemóvel.
  */
 
 
+  /* Aqui eu guardo as cores e as fontes da marca Chá (ver docs/marca.md).
+     Os nomes antigos (--red, --green…) continuam a existir, para eu não ter de
+     mudar todos os ficheiros, mas agora apontam para as cores novas. */
   :root {
-    --red: #C0392B; --red-light: #FADBD8; --red-dark: #922B21;
-    --gold: #D4AC0D; --gold-light: #FEF9E7; --gold-dark: #9A7D0A;
-    --ink: #1A1A2E; --ink-mid: #2C3E50; --ink-light: #566573;
-    --paper: #FDFCF8; --paper-mid: #F4F1E8; --paper-dark: #E8E0CC;
-    --white: #FFFFFF; --green: #1E8449; --green-light: #D5F5E3;
-    --blue: #1A5276; --blue-light: #D6EAF8;
-    --font-main: 'Inter', sans-serif;
-    --font-chinese: 'Noto Sans SC', sans-serif;
+    /* Cores da marca */
+    --jade: #0E7C66;      /* cor principal: botões, progresso, respostas certas */
+    --seal: #E0442E;      /* carimbo: logótipo e streak */
+    --seal-text: #C8361F; /* carimbo em texto pequeno (tem contraste suficiente) */
+    --gold-brand: #E8A317;/* conquistas */
+    --plum: #A8325E;      /* resposta errada */
+
+    /* Nomes antigos, agora com as cores novas */
+    --red: var(--seal-text); --red-light: #FBE3DE; --red-dark: #A32A18;
+    --gold: var(--gold-brand); --gold-light: #FDF3DC; --gold-dark: #9A6A08;
+    --ink: #18212B; --ink-mid: #2E3A46; --ink-light: #5B6873;
+    --paper: #F4F7F6; --paper-mid: #EAF0EE; --paper-dark: #D5DEDB;
+    --white: #FFFFFF; --green: var(--jade); --green-light: #D8EEE8;
+    --blue: #2F6FD0; --blue-light: #DCE8F8;
+
+    /* Fontes (carregadas em css/fontes.css) */
+    --font-titulos: 'Bricolage Grotesque', 'Lexend', system-ui, sans-serif;
+    --font-main: 'Lexend', system-ui, sans-serif;
+    --font-chinese: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Noto Sans CJK SC', sans-serif;
+
     --shadow: 0 2px 12px rgba(0,0,0,0.08);
     --shadow-hover: 0 6px 24px rgba(0,0,0,0.14);
     --radius: 12px;
   }
+
+  /* Os títulos usam a fonte da marca */
+  h1, h2 { font-family: var(--font-titulos); letter-spacing: -0.01em; }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 

@@ -19,8 +19,8 @@ function loadChar(char) {
   try {
     hanziWriterInstance = HanziWriter.create('hanzi-target', char, {
       width:200, height:200, padding:16,
-      strokeColor:'#C0392B', radicalColor:'#922B21',
-      outlineColor:'#E8E0CC', showOutline:true,
+      strokeColor:'#C8361F', radicalColor:'#A32A18',
+      outlineColor:'#D5DEDB', showOutline:true,
       strokeAnimationSpeed:1, delayBetweenStrokes:200, rendererType:'svg'
     });
     if (hint) hint.textContent = 'Click ▶ Animate ou ✏️ Quiz Me';

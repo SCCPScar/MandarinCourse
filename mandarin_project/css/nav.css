@@ -57,15 +57,9 @@ body { padding-top: var(--nav-height); }
   border-radius: 7px;
 }
 .site-nav__mark {
-  width: 28px; height: 28px;
-  display: grid; place-items: center;
-  border-radius: 7px;
-  background: var(--red);
-  color: #fff;
-  font-family: var(--font-chinese);
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 1;
+  display: block;
+  width: 30px;
+  height: 30px;
 }
 
 /* ═══ LINKS (desktop) ═══ */

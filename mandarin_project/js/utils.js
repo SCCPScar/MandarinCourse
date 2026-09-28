@@ -117,7 +117,7 @@ const i18n = {
     nav_plan:'Plano de Estudo', nav_features:'⚡ Funcionalidades', nav_library:'Biblioteca',
     nav_home:'Início', nav_sounds:'Sons', nav_practice:'Praticar',
     dark_btn_dark:'🌙 Escuro', dark_btn_light:'☀️ Claro',
-    lang_btn:'🇧🇷 PT',
+    lang_btn:'🇵🇹 PT',
     hero_title:'Fale <span>Mandarim</span> — Do Zero ao Fluente',
     hero_sub:'Um curso completo, gratuito e intensivo para chegar ao mandarim conversacional e profissional.',
     stat_modules:'Módulos', stat_words:'Palavras Essenciais', stat_patterns:'Padrões de Gramática', stat_level:'Nível Alvo',
@@ -171,7 +171,7 @@ function applyLang(lang) {
   document.documentElement.lang = lang === 'pt' ? 'pt' : 'en';
   // Lang button
   const lb = document.getElementById('lang-toggle');
-  if(lb) lb.textContent = lang==='pt' ? '🇬🇧 EN' : '🇧🇷 PT';
+  if(lb) lb.textContent = lang==='pt' ? '🇬🇧 EN' : '🇵🇹 PT';
   // Dark button
   const db = document.getElementById('dark-toggle');
   if(db) db.textContent = document.body.classList.contains('dark') ? t.dark_btn_light : t.dark_btn_dark;

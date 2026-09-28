@@ -31,7 +31,7 @@ function updateStreak(){
   document.getElementById('total-mins').textContent=Object.values(log).reduce((a,b)=>a+b,0);
   if(streak>=3){const b=document.getElementById('streak-banner');document.getElementById('streak-text').textContent=`🔥 ${streak}-day streak! 加油！`;b.classList.add('show');}
   const wg=document.getElementById('week-grid');
-  if(wg){const days=['Su','Mo','Tu','We','Th','Fr','Sa'];wg.innerHTML=Array.from({length:7},(_,i)=>{const d=new Date();d.setDate(d.getDate()-6+i);const ok=!!log[d.toDateString()];return`<div style="text-align:center"><div style="width:32px;height:32px;border-radius:50%;background:${ok?'#1E8449':'var(--paper-dark)'};display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff">${ok?'✓':''}</div><div style="font-size:10px;color:var(--ink-light);margin-top:2px">${days[d.getDay()]}</div></div>`;}).join('');}
+  if(wg){const days=['Su','Mo','Tu','We','Th','Fr','Sa'];wg.innerHTML=Array.from({length:7},(_,i)=>{const d=new Date();d.setDate(d.getDate()-6+i);const ok=!!log[d.toDateString()];return`<div style="text-align:center"><div style="width:32px;height:32px;border-radius:50%;background:${ok?'#0E7C66':'var(--paper-dark)'};display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff">${ok?'✓':''}</div><div style="font-size:10px;color:var(--ink-light);margin-top:2px">${days[d.getDay()]}</div></div>`;}).join('');}
 }
 
 // ═══ AI TUTOR ═══

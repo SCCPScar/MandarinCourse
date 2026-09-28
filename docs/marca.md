@@ -29,7 +29,7 @@ Slogan: *Aprenda mandarim no seu ritmo. De graça, para sempre.*
 - **Símbolo:** um carimbo chinês (印章) vermelho, com cantos arredondados (raio de 20% do lado) e rotação de −4°. Tem o caractere 茶 em branco, com traço de pincel (fonte Ma Shan Zheng).
 - **Logotipo completo:** o carimbo + a palavra "chá" em Bricolage Grotesque ExtraBold, com "MANDARIM" por baixo em versaletes espaçados.
 - **Variantes:** favicon (só o carimbo, 32px) e versão para fundo escuro.
-- **Pendente:** converter o 茶 em vetor (paths SVG), para o logotipo não depender da fonte.
+- **Feito (28/09/2026):** o 茶 foi convertido em desenho vetorial em `mandarin_project/img/logo-cha.svg`, que também serve de ícone do separador. O logótipo não depende da fonte.
 
 ## Cores
 
@@ -60,13 +60,13 @@ As cores dos tons são iguais em todo o site. Servem para colorir o pinyin, os f
 
 ## Tipografia
 
-Todas as fontes têm licença SIL Open Font License e são **hospedadas no próprio site**, sem Google Fonts por CDN (RGPD).
+As fontes latinas têm licença SIL Open Font License e estão **guardadas no próprio site** (`mandarin_project/fonts/`, carregadas por `css/fontes.css`), sem Google Fonts (RGPD). Para os caracteres chineses uso as fontes que já vêm no sistema, porque uma fonte chinesa completa pesa vários megabytes.
 
 | Fonte | Função |
 |---|---|
 | Bricolage Grotesque | Títulos e logotipo |
 | Lexend | Texto e interface |
-| Noto Sans SC | Caracteres chineses |
+| Fontes do sistema (PingFang SC, Microsoft YaHei, Noto Sans SC) | Caracteres chineses |
 | Ma Shan Zheng | Só no carimbo |
 
 ## Movimento

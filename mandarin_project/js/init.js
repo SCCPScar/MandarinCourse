@@ -131,7 +131,7 @@ let toneRecording = false, toneAnimFrame = null;
 let pitchHistory = [], selectedTone = 1;
 let toneCanvas, toneCtx, waveCanvas, waveCtx;
 
-const TONE_COLORS = { 1: '#1A5276', 2: '#1E8449', 3: '#D4AC0D', 4: '#C0392B' };
+const TONE_COLORS = { 1: '#2F6FD0', 2: '#0E7C66', 3: '#E8A317', 4: '#C8361F' };
 const TONE_NAMES = { 1: '1st — High Flat', 2: '2nd — Rising', 3: '3rd — Dipping', 4: '4th — Falling' };
 
 // Ideal tone paths (normalised 0–1, y=0 is TOP of canvas = highest pitch)
@@ -209,7 +209,7 @@ function drawToneGuide() {
   const path = TONE_PATHS[selectedTone];
   const col = TONE_COLORS[selectedTone];
   const stepW = (W - 60) / (path.length - 1);
-  toneCtx.strokeStyle = '#D4AC0D';
+  toneCtx.strokeStyle = '#E8A317';
   toneCtx.lineWidth = 2.5;
   toneCtx.setLineDash([6, 4]);
   toneCtx.beginPath();
@@ -225,7 +225,7 @@ function drawToneGuide() {
   toneCtx.fillStyle = col;
   toneCtx.font = 'bold 12px Inter, sans-serif';
   toneCtx.fillText(TONE_NAMES[selectedTone], 50, 14);
-  toneCtx.fillStyle = '#D4AC0D';
+  toneCtx.fillStyle = '#E8A317';
   toneCtx.fillText('── Target', W - 90, 14);
 }
 
@@ -242,7 +242,7 @@ function drawPitchLine() {
   const maxHz = Math.max(...validPitches) * 1.05;
   const range = maxHz - minHz || 1;
 
-  toneCtx.strokeStyle = '#C0392B';
+  toneCtx.strokeStyle = '#C8361F';
   toneCtx.lineWidth = 3;
   toneCtx.lineJoin = 'round';
   toneCtx.lineCap = 'round';
@@ -267,9 +267,9 @@ function drawPitchLine() {
 function drawWaveform(dataArray) {
   if (!waveCtx) return;
   const W = waveCanvas.width, H = waveCanvas.height;
-  waveCtx.fillStyle = '#1A1A2E';
+  waveCtx.fillStyle = '#18212B';
   waveCtx.fillRect(0, 0, W, H);
-  waveCtx.strokeStyle = '#C0392B';
+  waveCtx.strokeStyle = '#C8361F';
   waveCtx.lineWidth = 1.5;
   waveCtx.beginPath();
   const sliceW = W / dataArray.length;

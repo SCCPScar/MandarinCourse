@@ -67,10 +67,10 @@
     display: inline-block; font-size: 11px; padding: 2px 8px;
     border-radius: 20px; margin-bottom: 8px; font-weight: 600;
   }
-  .t1 { background: #EBF5FB; color: #1A5276; }
-  .t2 { background: #E9F7EF; color: #1E8449; }
-  .t3 { background: #FEF9E7; color: #9A7D0A; }
-  .t4 { background: #FADBD8; color: #922B21; }
+  .t1 { background: #EEF4FC; color: #2F6FD0; }
+  .t2 { background: #E8F4F0; color: #0E7C66; }
+  .t3 { background: #FDF3DC; color: #9A6A08; }
+  .t4 { background: #FBE3DE; color: #A32A18; }
   .t5 { background: var(--paper-dark); color: var(--ink-light); }
 
   /* TONES VISUAL */
@@ -334,7 +334,7 @@
   .tutor-msg.user { background: var(--red); color: white; border-radius: 14px 4px 14px 14px; align-self: flex-end; }
   .tutor-msg .zh-inline { font-family: var(--font-chinese); color: var(--red); font-weight: 700; font-size: 16px; }
   .tutor-msg.ai .zh-inline { color: var(--red); }
-  .tutor-msg.user .zh-inline { color: #FFD9D9; }
+  .tutor-msg.user .zh-inline { color: #FBE3DE; }
   #tutor-input-row { display: flex; gap: 8px; padding: 12px; border-top: 1px solid var(--paper-dark); background: var(--white); }
   #tutor-input {
     flex: 1; padding: 10px 14px; border-radius: 10px;
