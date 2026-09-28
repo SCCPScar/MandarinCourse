@@ -63,6 +63,7 @@ CREATE TABLE unidades (
   cidade_id  TINYINT UNSIGNED NOT NULL,
   codigo     VARCHAR(5)  NOT NULL,   -- ex.: "1.2"
   titulo     VARCHAR(60) NOT NULL,
+  foto       VARCHAR(30) NULL,   -- início do nome da foto (ex.: "bj2-cumprimentos"); NULL se ainda não houver
   FOREIGN KEY (cidade_id) REFERENCES cidades(id)
 ) ENGINE=InnoDB;
 
@@ -160,31 +161,31 @@ INSERT INTO cidades (id, ordem, nome, nome_zh, meses, tema, capa) VALUES
   (6, 6, 'Xangai',   '上海', '11–12', 'Trabalho e cidade',   NULL);
 
 -- As 24 unidades (4 por cidade)
-INSERT INTO unidades (id, cidade_id, codigo, titulo) VALUES
-  (1,  1, '1.1', 'Pinyin e tons'),
-  (2,  1, '1.2', 'Olá, eu sou…'),
-  (3,  1, '1.3', 'Números e família'),
-  (4,  1, '1.4', 'Datas e horas'),
-  (5,  2, '2.1', 'Na banca de comida'),
-  (6,  2, '2.2', 'Quanto custa?'),
-  (7,  2, '2.3', 'Onde fica?'),
-  (8,  2, '2.4', 'Pagar e planear'),
-  (9,  3, '3.1', 'Minha rotina'),
-  (10, 3, '3.2', 'Gostos e tempo livre'),
-  (11, 3, '3.3', 'Convites e planos'),
-  (12, 3, '3.4', 'Tempo e mensagens'),
-  (13, 4, '4.1', 'Bilhetes e comboios'),
-  (14, 4, '4.2', 'No hotel'),
-  (15, 4, '4.3', 'Descrever lugares'),
-  (16, 4, '4.4', 'Emergências'),
-  (17, 5, '5.1', 'Comparar'),
-  (18, 5, '5.2', 'Contar o passado'),
-  (19, 5, '5.3', 'Dar opinião'),
-  (20, 5, '5.4', 'Compras online e serviços'),
-  (21, 6, '6.1', 'Casa e serviços'),
-  (22, 6, '6.2', 'No trabalho'),
-  (23, 6, '6.3', 'Entrevista de emprego'),
-  (24, 6, '6.4', 'Ler a cidade');
+INSERT INTO unidades (id, cidade_id, codigo, titulo, foto) VALUES
+  (1,  1, '1.1', 'Pinyin e tons', 'bj1-pinyin-tons'),
+  (2,  1, '1.2', 'Olá, eu sou…', 'bj2-cumprimentos'),
+  (3,  1, '1.3', 'Números e família', 'bj3-familia'),
+  (4,  1, '1.4', 'Datas e horas', 'bj4-horas'),
+  (5,  2, '2.1', 'Na banca de comida', 'xa1-banca'),
+  (6,  2, '2.2', 'Quanto custa?', 'xa2-precos'),
+  (7,  2, '2.3', 'Onde fica?', 'xa3-muralha'),
+  (8,  2, '2.4', 'Pagar e planear', 'xa4-pagar'),
+  (9,  3, '3.1', 'Minha rotina', 'cd1-rotina'),
+  (10, 3, '3.2', 'Gostos e tempo livre', 'cd2-mahjong'),
+  (11, 3, '3.3', 'Convites e planos', 'cd3-hotpot'),
+  (12, 3, '3.4', 'Tempo e mensagens', 'cd4-chuva'),
+  (13, 4, '4.1', 'Bilhetes e comboios', NULL),
+  (14, 4, '4.2', 'No hotel', NULL),
+  (15, 4, '4.3', 'Descrever lugares', NULL),
+  (16, 4, '4.4', 'Emergências', NULL),
+  (17, 5, '5.1', 'Comparar', NULL),
+  (18, 5, '5.2', 'Contar o passado', NULL),
+  (19, 5, '5.3', 'Dar opinião', NULL),
+  (20, 5, '5.4', 'Compras online e serviços', NULL),
+  (21, 6, '6.1', 'Casa e serviços', NULL),
+  (22, 6, '6.2', 'No trabalho', NULL),
+  (23, 6, '6.3', 'Entrevista de emprego', NULL),
+  (24, 6, '6.4', 'Ler a cidade', 'sh4-placas');
 
 -- Algumas lições de Pequim (as outras eu adiciono depois)
 INSERT INTO licoes (id, unidade_id, ordem, titulo, minutos) VALUES

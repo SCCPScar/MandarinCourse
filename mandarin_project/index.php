@@ -107,6 +107,8 @@ $feitas_total = array_sum(array_column($cidades, 'feitas'));
     <ol class="rota__lista">
       <?php foreach ($cidades as $cidade): ?>
         <li class="cidade">
+          <!-- O cartão inteiro é um link para a página da cidade -->
+          <a class="cidade__link" href="cidade.php?id=<?= (int) $cidade['id'] ?>">
           <?php if ($cidade['capa']): ?>
             <picture>
               <source type="image/avif" srcset="img/fotos/<?= e($cidade['capa']) ?>-capa-desktop-960.avif">
@@ -135,6 +137,7 @@ $feitas_total = array_sum(array_column($cidades, 'feitas'));
               <p class="cidade__feitas">Lições em preparação</p>
             <?php endif; ?>
           </div>
+          </a>
         </li>
       <?php endforeach; ?>
     </ol>

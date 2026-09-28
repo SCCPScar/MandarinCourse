@@ -52,6 +52,7 @@ erDiagram
         tinyint cidade_id FK
         varchar codigo
         varchar titulo
+        varchar foto
     }
     LICOES {
         int id PK
@@ -96,7 +97,7 @@ erDiagram
 |---|---|
 | `utilizadores` | Quem tem conta: nome, e-mail, palavra-passe (só o hash), nível, meta diária e dias seguidos a estudar |
 | `cidades` | As 6 cidades da rota, com o nome da foto de capa |
-| `unidades` | As 24 unidades (4 por cidade) |
+| `unidades` | As 24 unidades (4 por cidade), com o nome da foto de cada uma |
 | `licoes` | As lições de cada unidade |
 | `palavras` | O vocabulário, com hanzi, pinyin e tradução |
 | `progresso` | Que lições cada utilizador já terminou, e com que pontuação |
@@ -126,6 +127,9 @@ erDiagram
 | Ficheiro | O que faz |
 |---|---|
 | `index.php` | Página inicial: hero, painel do aluno e a rota das 6 cidades com o progresso de cada uma (consulta com `LEFT JOIN` e `GROUP BY`) |
+| `cidade.php?id=` | Página de uma cidade: capa, as 4 unidades com a foto e as lições, marcando as que o aluno já fez |
+| `licao.php?id=` | Página de uma lição: palavras novas com áudio e o botão "Concluir lição" |
+| `concluir-licao.php` | Grava a lição no progresso, põe as palavras nas revisões para o dia seguinte e atualiza os dias seguidos |
 | `includes/navegacao.php` e `includes/scripts.php` | A barra de navegação e o JavaScript partilhados pelas páginas PHP |
 | `includes/ligacao.php` | Liga o PHP à base `cha` com PDO e `charset=utf8mb4` |
 | `includes/sessao.php` | Inicia a sessão e tem as funções `exigir_sessao()`, `iniciar_sessao()`, `token_csrf()`, `validar_csrf()` e `e()` |

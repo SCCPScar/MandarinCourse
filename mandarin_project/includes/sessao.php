@@ -2,6 +2,9 @@
 // sessao.php
 // Aqui eu inicio a sessão e junto as funções que várias páginas usam.
 
+// As datas (dias seguidos, revisões) seguem a hora de Portugal continental
+date_default_timezone_set('Europe/Lisbon');
+
 // Eu protejo o cookie da sessão:
 // - httponly: o JavaScript não o consegue ler (ajuda contra XSS);
 // - samesite Lax: o navegador não o envia em pedidos vindos de outros sites.

@@ -48,3 +48,21 @@
 
   /* A barra de navegação está em css/nav.css */
 
+  /* Botão principal da marca (verde jade), usado em várias páginas */
+  .botao-cha {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 22px;
+    margin: 0 8px 8px 0;
+    border-radius: 12px;
+    background: var(--jade);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 0 #084C3F;     /* uma "base" por baixo, como uma tecla */
+    transition: transform 0.12s, box-shadow 0.12s;
+  }
+  .botao-cha:hover { transform: translateY(-1px); }
+  .botao-cha:active { transform: translateY(3px); box-shadow: 0 1px 0 #084C3F; }
+  .botao-cha--claro { background: rgba(255, 255, 255, 0.14); box-shadow: none; }

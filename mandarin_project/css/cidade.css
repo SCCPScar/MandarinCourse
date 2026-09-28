@@ -1,0 +1,130 @@
+/*
+ * cidade.css
+ * Aqui eu dou estilo à página de cada cidade (capa e unidades) e à página da lição.
+ * Eu reaproveito o botão .botao-cha e as cores da marca de base.css.
+ */
+
+/* ═══ CAPA DA CIDADE ═══ */
+.capa {
+  position: relative;
+  min-height: 360px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--ink);
+  color: #fff;
+}
+.capa__foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* Degradê escuro em baixo, para o título se ler bem */
+.capa::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 21, 25, 0.85) 0%, rgba(15, 21, 25, 0.3) 45%, rgba(15, 21, 25, 0) 70%);
+}
+.capa__texto {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 32px var(--page-gutter);
+}
+.capa__meses { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; }
+.capa h1 { font-size: clamp(36px, 5vw, 56px); line-height: 1.1; }
+.capa h1 span { font-family: var(--font-chinese); font-weight: 500; opacity: 0.85; }
+
+/* Mensagem depois de concluir uma lição */
+.aviso-feita {
+  max-width: var(--page-max);
+  margin: 24px auto 0;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: var(--green-light);
+  color: var(--jade);
+  font-weight: 600;
+  width: calc(100% - 2 * var(--page-gutter));
+}
+
+/* ═══ UNIDADES ═══ */
+.unidades {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 32px var(--page-gutter) 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.unidade { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.unidade__foto { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.unidade__texto { padding: 16px 20px 20px; }
+.unidade__codigo { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--jade); }
+.unidade h2 { font-size: 22px; color: var(--ink); margin: 2px 0 12px; }
+.unidade__vazia { color: var(--ink-light); }
+
+/* Lista das lições: cada uma é uma linha clicável */
+.licoes { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.licoes a {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 44px;
+  align-items: center;
+  padding: 8px 14px;
+  border: 2px solid var(--paper-dark);
+  border-radius: 10px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.licoes a:hover { border-color: var(--jade); }
+.licoes__estado { font-size: 13px; color: var(--ink-light); white-space: nowrap; }
+.licoes a.feita { background: var(--green-light); border-color: transparent; }
+.licoes a.feita .licoes__estado { color: var(--jade); font-weight: 600; }
+
+.voltar { max-width: var(--page-max); margin: 0 auto; padding: 8px var(--page-gutter) 56px; }
+.voltar a, .licao a { color: var(--jade); font-weight: 600; }
+
+/* ═══ PÁGINA DA LIÇÃO ═══ */
+.licao { max-width: 760px; margin: 0 auto; padding: 32px var(--page-gutter) 64px; }
+.licao__caminho { font-size: 14px; color: var(--ink-light); }
+.licao h1 { font-size: clamp(30px, 4vw, 42px); color: var(--ink); margin: 6px 0 2px; }
+.licao__tempo { color: var(--ink-light); margin-bottom: 28px; }
+.licao h2 { font-size: 22px; color: var(--ink); margin-bottom: 12px; }
+
+/* Cada palavra: caractere grande, pinyin, tradução e botão de ouvir */
+.palavras { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.palavra {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 16px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.palavra__hanzi { font-family: var(--font-chinese); font-size: 32px; font-weight: 700; color: var(--ink); }
+.palavra__pinyin { color: var(--jade); font-weight: 600; }
+.palavra__traducao { color: var(--ink-light); font-size: 15px; }
+.palavra__ouvir {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--paper-mid);
+  cursor: pointer;
+}
+.palavra__ouvir:hover { background: var(--paper-dark); }
+
+.licao__fim { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
+.licao__fim .aviso-feita { margin: 0; width: auto; }
+.licao__fim button { border: 0; font: inherit; cursor: pointer; }
+
+/* ═══ TELEMÓVEL ═══ */
+@media (max-width: 767.98px) {
+  .unidades { grid-template-columns: 1fr; }
+  .capa { min-height: 300px; }
+}
