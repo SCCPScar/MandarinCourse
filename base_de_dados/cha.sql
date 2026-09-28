@@ -189,7 +189,7 @@ INSERT INTO unidades (id, cidade_id, codigo, titulo, foto) VALUES
   (10, 3, '3.2', 'Gostos e tempo livre', 'cd2-mahjong'),
   (11, 3, '3.3', 'Convites e planos', 'cd3-hotpot'),
   (12, 3, '3.4', 'Tempo e mensagens', 'cd4-chuva'),
-  (13, 4, '4.1', 'Bilhetes e comboios', NULL),
+  (13, 4, '4.1', 'Bilhetes e comboios', 'gl1-comboios'),
   (14, 4, '4.2', 'No hotel', NULL),
   (15, 4, '4.3', 'Descrever lugares', NULL),
   (16, 4, '4.4', 'Emergências', NULL),
