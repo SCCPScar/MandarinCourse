@@ -195,7 +195,7 @@ INSERT INTO unidades (id, cidade_id, codigo, titulo, foto) VALUES
   (16, 4, '4.4', 'Emergências', 'gl4-farmacia'),
   (17, 5, '5.1', 'Comparar', 'hz1-cha'),
   (18, 5, '5.2', 'Contar o passado', 'hz2-wuzhen'),
-  (19, 5, '5.3', 'Dar opinião', NULL),
+  (19, 5, '5.3', 'Dar opinião', 'hz3-esplanada'),
   (20, 5, '5.4', 'Compras online e serviços', NULL),
   (21, 6, '6.1', 'Casa e serviços', NULL),
   (22, 6, '6.2', 'No trabalho', NULL),
