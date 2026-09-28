@@ -1,10 +1,10 @@
 -- =====================================================================
 -- Chá · Base de dados
--- Eu importo este arquivo no phpMyAdmin (aba "Importar").
+-- Eu importo este ficheiro no phpMyAdmin (separador "Importar").
 -- Ele cria a base "cha", as 8 tabelas e alguns dados de exemplo.
 -- =====================================================================
 
--- Eu aviso ao MySQL que este arquivo está em UTF-8.
+-- Eu aviso o MySQL de que este ficheiro está em UTF-8.
 -- Sem esta linha, os caracteres chineses podem ficar embaralhados (ex.: "è‘¡è„").
 SET NAMES utf8mb4;
 
@@ -20,21 +20,21 @@ USE cha;
 
 
 -- ---------------------------------------------------------------------
--- 1. USUÁRIOS
+-- 1. UTILIZADORES
 -- Aqui eu guardo quem tem conta no site.
--- A senha nunca fica em texto: eu guardo só o "hash" feito pelo PHP
+-- A palavra-passe nunca fica em texto: eu guardo só o "hash" feito pelo PHP
 -- com password_hash(). Por isso o campo tem 255 caracteres.
 -- ---------------------------------------------------------------------
-CREATE TABLE usuarios (
+CREATE TABLE utilizadores (
   id              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   nome            VARCHAR(80)  NOT NULL,
   email           VARCHAR(120) NOT NULL UNIQUE,
-  senha_hash      VARCHAR(255) NOT NULL,
-  nivel           ENUM('zero', 'basico', 'intermediario', 'avancado') NOT NULL DEFAULT 'zero',
+  palavra_passe   VARCHAR(255) NOT NULL,  -- só o hash
+  nivel           ENUM('zero', 'basico', 'intermedio', 'avancado') NOT NULL DEFAULT 'zero',
   minutos_por_dia TINYINT UNSIGNED NOT NULL DEFAULT 60,
-  sequencia_dias  SMALLINT UNSIGNED NOT NULL DEFAULT 0,  -- a "streak"
+  sequencia_dias  SMALLINT UNSIGNED NOT NULL DEFAULT 0,  -- dias seguidos a estudar
   ultimo_estudo   DATE NULL,
-  aceitou_termos  DATETIME NOT NULL,                     -- quando aceitou a política de privacidade (RGPD)
+  consentimento   DATETIME NOT NULL,  -- quando aceitou a política de privacidade (RGPD)
   criado_em       DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
@@ -96,57 +96,57 @@ CREATE TABLE palavras (
 
 -- ---------------------------------------------------------------------
 -- 6. PROGRESSO
--- Quais lições cada usuário já terminou (relação N:N entre usuários e lições).
--- A chave primária tem duas colunas: o mesmo usuário não termina a mesma lição duas vezes.
--- ON DELETE CASCADE: se eu apagar o usuário, o progresso dele também é apagado (RGPD).
+-- Que lições cada utilizador já terminou (relação N:N entre utilizadores e lições).
+-- A chave primária tem duas colunas: o mesmo utilizador não termina a mesma lição duas vezes.
+-- ON DELETE CASCADE: se eu eliminar o utilizador, o progresso dele também é eliminado (RGPD).
 -- ---------------------------------------------------------------------
 CREATE TABLE progresso (
-  usuario_id    INT UNSIGNED NOT NULL,
+  utilizador_id    INT UNSIGNED NOT NULL,
   licao_id      INT UNSIGNED NOT NULL,
   pontuacao     TINYINT UNSIGNED NOT NULL,   -- de 0 a 100
   concluida_em  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (usuario_id, licao_id),
-  FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+  PRIMARY KEY (utilizador_id, licao_id),
+  FOREIGN KEY (utilizador_id) REFERENCES utilizadores(id) ON DELETE CASCADE,
   FOREIGN KEY (licao_id)   REFERENCES licoes(id)
 ) ENGINE=InnoDB;
 
 
 -- ---------------------------------------------------------------------
 -- 7. REVISÕES (revisão espaçada / SRS)
--- Para cada palavra que o usuário já estudou, eu guardo quando ele deve revisá-la.
--- Se ele acerta, o intervalo aumenta; se erra, ele volta para 1 dia.
+-- Para cada palavra que o utilizador já estudou, eu guardo quando a deve rever.
+-- Se ele acerta, o intervalo aumenta; se erra, volta a 1 dia.
 -- ---------------------------------------------------------------------
 CREATE TABLE revisoes (
-  usuario_id       INT UNSIGNED NOT NULL,
+  utilizador_id       INT UNSIGNED NOT NULL,
   palavra_id       INT UNSIGNED NOT NULL,
   intervalo_dias   SMALLINT UNSIGNED NOT NULL DEFAULT 1,
   proxima_revisao  DATE NOT NULL,
   acertos          SMALLINT UNSIGNED NOT NULL DEFAULT 0,
-  PRIMARY KEY (usuario_id, palavra_id),
-  FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+  PRIMARY KEY (utilizador_id, palavra_id),
+  FOREIGN KEY (utilizador_id) REFERENCES utilizadores(id) ON DELETE CASCADE,
   FOREIGN KEY (palavra_id) REFERENCES palavras(id)
 ) ENGINE=InnoDB;
 
 
 -- ---------------------------------------------------------------------
 -- 8. CADERNO
--- As palavras que o usuário guardou no caderno pessoal.
+-- As palavras que o utilizador guardou no caderno pessoal.
 -- ---------------------------------------------------------------------
 CREATE TABLE caderno (
   id          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  usuario_id  INT UNSIGNED NOT NULL,
+  utilizador_id  INT UNSIGNED NOT NULL,
   hanzi       VARCHAR(20)  NOT NULL,
   pinyin      VARCHAR(40)  NOT NULL,
   traducao    VARCHAR(100) NOT NULL,
   criado_em   DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+  FOREIGN KEY (utilizador_id) REFERENCES utilizadores(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 
 -- =====================================================================
 -- DADOS DE EXEMPLO
--- Eu não crio usuários aqui: eles são criados pela página de registro,
--- porque é o PHP que faz o hash da senha.
+-- Eu não crio utilizadores aqui: eles são criados na página de registo,
+-- porque é o PHP que faz o hash da palavra-passe.
 -- =====================================================================
 
 -- As 6 cidades da rota
@@ -167,12 +167,12 @@ INSERT INTO unidades (id, cidade_id, codigo, titulo) VALUES
   (5,  2, '2.1', 'Na banca de comida'),
   (6,  2, '2.2', 'Quanto custa?'),
   (7,  2, '2.3', 'Onde fica?'),
-  (8,  2, '2.4', 'Pagar e planejar'),
+  (8,  2, '2.4', 'Pagar e planear'),
   (9,  3, '3.1', 'Minha rotina'),
   (10, 3, '3.2', 'Gostos e tempo livre'),
   (11, 3, '3.3', 'Convites e planos'),
   (12, 3, '3.4', 'Tempo e mensagens'),
-  (13, 4, '4.1', 'Passagens e trens'),
+  (13, 4, '4.1', 'Bilhetes e comboios'),
   (14, 4, '4.2', 'No hotel'),
   (15, 4, '4.3', 'Descrever lugares'),
   (16, 4, '4.4', 'Emergências'),
@@ -192,23 +192,23 @@ INSERT INTO licoes (id, unidade_id, ordem, titulo, minutos) VALUES
   (3, 1, 3, 'Finais do pinyin',         15),
   (4, 2, 1, 'Cumprimentos',             15),
   (5, 2, 2, 'Qual é o seu nome?',       15),
-  (6, 2, 3, 'De onde você é?',          15);
+  (6, 2, 3, 'De onde és?',              15);
 
 -- Palavras das lições da unidade 1.2
 INSERT INTO palavras (licao_id, hanzi, pinyin, traducao) VALUES
   (4, '你好',     'nǐ hǎo',        'olá'),
   (4, '您好',     'nín hǎo',       'olá (formal)'),
   (4, '谢谢',     'xièxie',        'obrigado'),
-  (4, '再见',     'zàijiàn',       'tchau'),
+  (4, '再见',     'zàijiàn',       'adeus'),
   (5, '我',       'wǒ',            'eu'),
-  (5, '你',       'nǐ',            'você'),
+  (5, '你',       'nǐ',            'tu'),
   (5, '您',       'nín',           'o senhor / a senhora'),
   (5, '叫',       'jiào',          'chamar-se'),
   (5, '什么',     'shénme',        'o quê'),
   (5, '名字',     'míngzi',        'nome'),
   (6, '是',       'shì',           'ser'),
   (6, '吗',       'ma',            'partícula de pergunta (sim/não)'),
-  (6, '呢',       'ne',            'e você? (partícula)'),
+  (6, '呢',       'ne',            'e tu? (partícula)'),
   (6, '中国人',   'Zhōngguó rén',  'chinês / chinesa'),
   (6, '巴西人',   'Bāxī rén',      'brasileiro / brasileira'),
   (6, '葡萄牙人', 'Pútáoyá rén',   'português / portuguesa');

@@ -1,0 +1,85 @@
+/*
+ * conta.css
+ * Aqui eu dou estilo às páginas da conta: registo, entrar, a minha conta e privacidade.
+ * Eu reaproveito as cores de base.css (--red, --ink, --paper…).
+ */
+
+/* Barra simples no topo, com o logótipo e um link para voltar ao curso */
+.conta-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 16px;
+}
+.conta-logo {
+  width: 36px; height: 36px;
+  display: grid; place-items: center;
+  border-radius: 9px;
+  background: var(--red);
+  color: #fff;
+  font-family: var(--font-chinese);
+  font-size: 22px;
+  text-decoration: none;
+  transform: rotate(-4deg);
+}
+.conta-voltar { color: var(--ink-light); font-size: 14px; }
+
+/* A caixa branca no centro, com o formulário */
+.conta {
+  min-height: 100vh;
+  padding: 8px 16px 48px;
+}
+.conta-caixa {
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 32px 28px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.conta-caixa h1 { margin: 0 0 8px; font-size: 28px; color: var(--ink); }
+.conta-caixa p { color: var(--ink-light); line-height: 1.5; }
+
+/* Campos do formulário: um por linha, com a etiqueta por cima */
+.campo { display: flex; flex-direction: column; gap: 6px; margin: 16px 0; }
+.campo label { font-weight: 600; font-size: 14px; color: var(--ink); }
+.campo input {
+  min-height: 44px;            /* altura mínima boa para tocar no telemóvel */
+  padding: 0 12px;
+  border: 2px solid var(--paper-dark);
+  border-radius: 10px;
+  font: inherit;
+}
+.campo input:focus-visible { outline: 3px solid var(--blue-light); border-color: var(--blue); }
+
+/* Caixas de confirmação (idade e privacidade) */
+.confirmar { display: flex; gap: 10px; align-items: flex-start; margin: 12px 0; font-size: 14px; }
+.confirmar input { width: 20px; height: 20px; margin-top: 2px; }
+
+/* Botões */
+.botao {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 8px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--green);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.botao:hover { filter: brightness(1.08); }
+.botao--perigo { background: var(--red); }
+.botao--simples { background: var(--paper-mid); color: var(--ink); }
+
+/* Mensagens de erro e de sucesso */
+.aviso { padding: 12px 14px; border-radius: 10px; font-size: 14px; margin: 16px 0; }
+.aviso--erro { background: var(--red-light); color: var(--red-dark); }
+.aviso--ok { background: var(--green-light); color: var(--green); }
+.aviso ul { margin: 0; padding-left: 18px; }
+
+/* Zona de perigo da página "A minha conta" */
+.zona-perigo { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--paper-dark); }

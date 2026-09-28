@@ -1,6 +1,6 @@
 # Chá · Identidade de marca
 
-> Decisões aprovadas a 25/09/2026. Este documento é a referência para o design e o código.
+> Decisões aprovadas a 25/09/2026 (idioma revisto a 28/09/2026). Este documento é a referência para o design e o código.
 
 ## Nome
 
@@ -15,7 +15,14 @@ Slogan: *Aprenda mandarim no seu ritmo. De graça, para sempre.*
 
 ## Idioma
 
-**Todo o site é escrito em português do Brasil (pt-BR)**: interface, lições, mensagens e documentação. Trate o aluno por "você" e use o vocabulário brasileiro (celular, tela, trem, passagem, arquivo…). Os caracteres chineses usam a escrita **simplificada**, e a romanização é o **pinyin** com as marcas de tom. As regras legais seguem **Portugal e a UE** (RGPD), onde o projeto é desenvolvido.
+**Todo o projeto é escrito em português europeu (pt-PT)**: interface, lições, mensagens, código, comentários e documentação. O projeto é o trabalho final de um curso em Portugal, avaliado também por uma professora de português. O relatório segue as normas **APA (7.ª edição)**.
+
+- Trata-se o aluno por **"tu"** (ex.: "Guarda o teu progresso").
+- Usa-se o vocabulário de Portugal: utilizador, palavra-passe, registo, ficheiro, ecrã, telemóvel, comboio, bilhete, pequeno-almoço…
+- Os comentários do código ficam na **primeira pessoa** (ex.: "Aqui eu guardo…") e o código deve ser simples e curto.
+- Os caracteres chineses usam a escrita **simplificada**, e a romanização é o **pinyin** com as marcas de tom.
+- As regras legais seguem **Portugal e a UE** (RGPD e Lei n.º 58/2019).
+- **Pendente:** passar para pt-PT o que ainda está em pt-BR (as páginas HTML, os textos do JavaScript e os documentos `rota-12-meses.md` e `fotografia.md`).
 
 ## Logotipo
 
