@@ -193,7 +193,7 @@ INSERT INTO unidades (id, cidade_id, codigo, titulo, foto) VALUES
   (14, 4, '4.2', 'No hotel', 'gl2-hotel'),
   (15, 4, '4.3', 'Descrever lugares', 'gl3-yangshuo'),
   (16, 4, '4.4', 'Emergências', 'gl4-farmacia'),
-  (17, 5, '5.1', 'Comparar', NULL),
+  (17, 5, '5.1', 'Comparar', 'hz1-cha'),
   (18, 5, '5.2', 'Contar o passado', NULL),
   (19, 5, '5.3', 'Dar opinião', NULL),
   (20, 5, '5.4', 'Compras online e serviços', NULL),
