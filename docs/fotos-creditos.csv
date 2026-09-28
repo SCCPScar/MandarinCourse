@@ -1,6 +1,6 @@
 id,local,url,fotografo,perfil_fotografo,fonte,licenca,data_escolha
 G1D,Hero da página inicial (computador),https://images.unsplash.com/photo-1601366029950-0640bbbb8ce6,Yang Louie,https://unsplash.com/@louie530,Unsplash,Unsplash License,2026-09-26
-G1M,Hero da página inicial (celular),https://images.unsplash.com/photo-1627491362358-6d437e65a3bc,Joshua Fernandez,https://unsplash.com/@joshuafernandez,Unsplash,Unsplash License,2026-09-26
+G1M,Hero da página inicial (telemóvel),https://images.unsplash.com/photo-1627491362358-6d437e65a3bc,Joshua Fernandez,https://unsplash.com/@joshuafernandez,Unsplash,Unsplash License,2026-09-26
 G2,Onboarding,https://images.unsplash.com/photo-1517309230475-6736d926b979,Nuno Alberto,https://unsplash.com/@nunoalberto,Unsplash,Unsplash License,2026-09-26
 G3,Página Sobre,https://images.unsplash.com/photo-1639927663411-35f23bb792b7,Kevin Canlas,https://unsplash.com/@kvncnls,Unsplash,Unsplash License,2026-09-26
 BJ0,Pequim - capa,https://images.unsplash.com/photo-1719985970224-19b37fed86e7,ran liwen,https://unsplash.com/@nikol_royce,Unsplash,Unsplash License,2026-09-26
@@ -12,14 +12,14 @@ XA0,Xi'an - capa,https://images.unsplash.com/photo-1547253807-593ee708edab,Xiaol
 XA1,2.1 Na banca de comida,https://images.unsplash.com/photo-1784543965983-956b090037c7,Falco Negenman,https://unsplash.com/@f9lco,Unsplash,Unsplash License,2026-09-26
 XA2,2.2 Quanto custa,https://images.unsplash.com/photo-1789372666719-e4bc6bf3bcf0,Haydn,https://unsplash.com/@hgpound,Unsplash,Unsplash License,2026-09-26
 XA3,2.3 Onde fica,https://images.unsplash.com/photo-1588088470830-ab765f87abd5,Camillo Corsetti Antonini,https://unsplash.com/@signorsmith,Unsplash,Unsplash License,2026-09-26
-XA4,2.4 Pagar e planejar,https://images.unsplash.com/photo-1540109296173-755cfc624a5a,Steve Long,https://unsplash.com/@stevelong3,Unsplash,Unsplash License,2026-09-26
+XA4,2.4 Pagar e planear,https://images.unsplash.com/photo-1540109296173-755cfc624a5a,Steve Long,https://unsplash.com/@stevelong3,Unsplash,Unsplash License,2026-09-26
 CD0,Chengdu - capa,https://images.unsplash.com/photo-1713181011329-687f14b9c30b,PENDENTE,PENDENTE,Unsplash,Unsplash License,2026-09-28
-CD1,3.1 Minha rotina,https://images.unsplash.com/photo-1615592315136-598868a2bddf,Brady Bellini,https://unsplash.com/@brady_bellini,Unsplash,Unsplash License,2026-09-28
+CD1,3.1 A minha rotina,https://images.unsplash.com/photo-1615592315136-598868a2bddf,Brady Bellini,https://unsplash.com/@brady_bellini,Unsplash,Unsplash License,2026-09-28
 CD2,3.2 Gostos e tempo livre,https://images.unsplash.com/photo-1643508522267-2c9a1c544187,Mick Haupt,https://unsplash.com/@rocinante_11,Unsplash,Unsplash License,2026-09-28
 CD3,3.3 Convites e planos,https://images.unsplash.com/photo-1703945530505-2f06e3e1cf97,Yihan Wang,https://unsplash.com/@amxiazhi,Unsplash,Unsplash License,2026-09-28
 CD4,3.4 Tempo e mensagens,https://images.unsplash.com/photo-1627542424169-3122c2a3c998,Chris,https://unsplash.com/@chris_pixel,Unsplash,Unsplash License,2026-09-28
-GL0,Guilin - capa,,,,,,
-GL1,4.1 Passagens e trens,,,,,,
+GL0,Guilin - capa,https://images.unsplash.com/photo-1659233306527-226a26a08634,Sergio Li,https://unsplash.com/@guiyu,Unsplash,Unsplash License,2026-09-28
+GL1,4.1 Bilhetes e comboios,,,,,,
 GL2,4.2 No hotel,,,,,,
 GL3,4.3 Descrever lugares,,,,,,
 GL4,4.4 Emergências,,,,,,
