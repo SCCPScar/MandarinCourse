@@ -18,7 +18,6 @@ const ChaNav = (() => {
 
   let fontsReady = false;
   let pageTitle = document.title;
-  let router = null;            // o transitions.js liga aqui o Barba (barba.go)
 
   // ═══ 1. ESCONDER / MOSTRAR NO SCROLL ═══
   const START_AFTER = 50;       // só esconde depois de 50px
@@ -41,7 +40,7 @@ const ChaNav = (() => {
     if (!ticking) { ticking = true; requestAnimationFrame(updateScrollState); }
   }, { passive: true });
 
-  // Mostra a barra outra vez (usado depois de cada troca de página)
+  // Mostra a barra (estado inicial de cada página)
   function reveal() {
     lastY = window.scrollY;
     body.dataset.scrollingDirection = 'up';
@@ -108,7 +107,7 @@ const ChaNav = (() => {
     body.dataset.menuOpen = 'true';
     toggle.setAttribute('aria-expanded', 'true');
     toggle.textContent = currentLangLabel('close');
-    const page = document.querySelector('[data-barba="container"]');
+    const page = document.querySelector('main.page');
     if (page) page.inert = true;              // o conteúdo por trás fica "desligado"
     // Espera um frame para o menu ficar visível antes de lhe dar foco
     requestAnimationFrame(() => menu.querySelector('.site-nav__link')?.focus());
@@ -119,7 +118,8 @@ const ChaNav = (() => {
     body.dataset.menuOpen = 'false';
     toggle.setAttribute('aria-expanded', 'false');
     toggle.textContent = currentLangLabel('menu');
-    document.querySelectorAll('[data-barba="container"]').forEach(p => { p.inert = false; });
+    const page = document.querySelector('main.page');
+    if (page) page.inert = false;
     if (returnFocus) toggle.focus();
   }
 
@@ -157,12 +157,12 @@ const ChaNav = (() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
-    // Outros links internos: o menu fecha (a transição trata do resto)
+    // Outros links internos: o menu fecha e o navegador abre a página nova com a transição
     if (isOpen()) close(false);
   });
 
   // ═══ 6. NAVEGAR POR CÓDIGO ═══
-  // Ex.: ChaNav.go('sons.html#tones'). Usa a transição se estiver ativa.
+  // Ex.: ChaNav.go('sons.html#tones'). Na mesma página, só rola até a seção.
   function go(url) {
     const target = new URL(url, window.location.href);
     const samePage = normalizePath(target.pathname) === normalizePath(window.location.pathname);
@@ -172,8 +172,7 @@ const ChaNav = (() => {
       else window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
-    if (router) router(target.href);
-    else window.location.href = target.href;
+    window.location.href = target.href;
   }
 
   updateCurrent();
@@ -181,7 +180,6 @@ const ChaNav = (() => {
 
   return {
     setLabel, updateCurrent, reveal, open, close, isOpen, go,
-    useRouter(fn) { router = fn; },
     pageTitle() { return pageTitle; },
     setPageTitle(title) { pageTitle = title; }
   };

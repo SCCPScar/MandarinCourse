@@ -1,14 +1,15 @@
 /**
  * page.js
- * Ciclo de vida das páginas: o que corre quando uma página abre e o que se limpa quando sai.
+ * Ciclo de vida das páginas: o que roda quando uma página abre e o que se limpa quando ela sai.
  *
- * Por que é preciso? Com o Barba, o browser NÃO recarrega o site ao mudar de página:
- * só troca o conteúdo do <main>. Por isso o evento DOMContentLoaded só acontece uma vez,
- * e cada página nova tem de ser "ligada" manualmente (e a antiga "desligada").
+ * Cada link carrega uma página nova de verdade (a transição é feita pelo próprio
+ * navegador, em css/transitions.css). Por isso basta:
+ *   - ligar a página quando o HTML estiver pronto (DOMContentLoaded);
+ *   - desligar microfone, voz e temporizadores quando a página sai (pagehide).
  *
  * Uso:
- *   ChaPage.onInit(fn)    → fn(container) corre em cada página que abre
- *   ChaPage.onCleanup(fn) → fn() corre quando a página atual vai sair
+ *   ChaPage.onInit(fn)    → fn(container) roda quando a página abre (container = <main class="page">)
+ *   ChaPage.onCleanup(fn) → fn() roda quando a página vai sair
  * 学中文 — Curso Completo de Mandarim
  */
 
@@ -16,25 +17,32 @@ const ChaPage = (() => {
   const inits = [];
   const cleanups = [];
 
-  // Corre uma função sem deixar que um erro numa parte estrague as outras
+  // Executa uma função sem deixar que um erro numa parte estrague as outras
   function safeRun(fn, arg) {
     try { fn(arg); } catch (err) { console.error('[ChaPage]', err); }
   }
 
+  function init(container) {
+    inits.forEach(fn => safeRun(fn, container));
+  }
+
+  function destroy() {
+    cleanups.forEach(fn => safeRun(fn));
+  }
+
+  // Os scripts ficam no fim do <body>, então quando o DOMContentLoaded chega
+  // todos os arquivos já registraram as suas funções com onInit.
+  document.addEventListener('DOMContentLoaded', () => {
+    init(document.querySelector('main.page') || document.body);
+  });
+
+  // pagehide acontece ao sair para outra página (também quando ela vai para o cache do "voltar")
+  window.addEventListener('pagehide', destroy);
+
   return {
     onInit(fn) { inits.push(fn); },
     onCleanup(fn) { cleanups.push(fn); },
-
-    init(container) {
-      inits.forEach(fn => safeRun(fn, container));
-      // Se algum dia usarmos o ScrollTrigger do GSAP, recalcula as posições na página nova
-      if (window.ScrollTrigger) window.ScrollTrigger.refresh();
-    },
-
-    destroy() {
-      cleanups.forEach(fn => safeRun(fn));
-      // Destrói animações ligadas ao scroll da página antiga (se existirem)
-      if (window.ScrollTrigger) window.ScrollTrigger.getAll().forEach(t => t.kill());
-    }
+    init,
+    destroy
   };
 })();
