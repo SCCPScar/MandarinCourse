@@ -53,7 +53,7 @@ Ao todo são **6 cidades, 24 unidades e 240 lições**.
 3. **Explicação (3 min):** um ponto de gramática ou vocabulário, com 3 exemplos.
 4. **Prática (5 min):** exercícios variados (escolha, ordenar frases, escrever pinyin, ouvir e escolher).
 5. **Falar (1 min):** repetir uma frase ao microfone (shadowing).
-6. **Fechamento:** resumo do que o aluno "já consegue" e o anel da meta enchendo.
+6. **Fechamento:** resumo do que o aluno "já consegue" e o anel da meta a encher.
 
 ### Avaliação
 
@@ -61,7 +61,7 @@ Ao todo são **6 cidades, 24 unidades e 240 lições**.
 - **Exame da cidade:** 4 competências (ouvir, ler, falar ao microfone, escrever). Ao passar, o aluno recebe o **carimbo** da cidade.
 - **Teste de nível:** no início, para quem já sabe algum mandarim e quer saltar cidades.
 
-### Trilhas que atravessam o ano inteiro
+### Percursos que atravessam o ano inteiro
 
 - **Revisão espaçada (SRS):** todos os dias, com as palavras das lições anteriores.
 - **Caracteres:** 3 a 4 caracteres novos por dia, com a ordem dos traços.
@@ -83,7 +83,7 @@ Ao todo são **6 cidades, 24 unidades e 240 lições**.
 | 1.4 | Datas e horas | Dias da semana, datas, horas; ordem tempo → lugar → ação |
 
 - **Meta acumulada:** ~250 palavras · 100 caracteres + 20 radicais.
-- **Você já consegue:** se apresentar, falar da sua família e da sua idade, perguntar e dizer horas e datas.
+- **Já consegues:** apresentar-te, falar da tua família e da tua idade, perguntar e dizer horas e datas.
 - **Missão da cidade:** gravar uma apresentação de 1 minuto (nome, país, família, idade).
 - **Cultura:** o mandarim padrão (普通话) se baseia na pronúncia de Pequim; 您 como forma de respeito; os hutongs.
 
@@ -94,10 +94,10 @@ Ao todo são **6 cidades, 24 unidades e 240 lições**.
 | 2.1 | Na banca de comida | 我要…, 来一个, classificadores 碗 / 杯 / 瓶, 好吃, 辣 |
 | 2.2 | Quanto custa? | 块 / 元 / 毛, números até 10 000, 多少钱, 太…了, 一点儿 |
 | 2.3 | Onde fica? | 在, 哪儿, 左 / 右 / 前 / 后, 往…走, 远 / 近 |
-| 2.4 | Pagar e planejar | 想 / 要 / 能 / 可以, 了 (ação concluída), pagar com QR code (扫码) |
+| 2.4 | Pagar e planear | 想 / 要 / 能 / 可以, 了 (ação concluída), pagar com QR code (扫码) |
 
 - **Meta acumulada:** ~500 palavras · 300 caracteres (**nível 1 do HSK 3.0 concluído**).
-- **Você já consegue:** pedir comida, perguntar preços e pechinchar, pedir e entender direções simples.
+- **Já consegues:** pedir comida, perguntar preços e regatear, pedir e perceber direções simples.
 - **Missão da cidade:** roleplay com o tutor IA num mercado de rua: pedir 2 pratos, perguntar o preço e pagar.
 - **Cultura:** o bairro muçulmano (回民街), os noodles biangbiang, os guerreiros de terracota.
 
@@ -111,22 +111,22 @@ Ao todo são **6 cidades, 24 unidades e 240 lições**.
 | 3.4 | Tempo e mensagens | Meteorologia, 了 (mudança de estado), 在 (ação em curso), 过 (experiência) |
 
 - **Meta acumulada:** ~850 palavras · 450 caracteres.
-- **Você já consegue:** descrever sua rotina, falar dos seus gostos, convidar alguém e marcar planos por mensagem.
-- **Missão da cidade:** combinar um fim de semana com um amigo por chat, escrevendo em caracteres.
-- **Cultura:** as casas de chá (茶馆), onde se passa a tarde conversando (ligação direta à marca); os pandas; o sabor 麻辣.
+- **Já consegues:** descrever a tua rotina, falar dos teus gostos, convidar alguém e marcar planos por mensagem.
+- **Missão da cidade:** combinar um fim de semana com um amigo por chat, a escrever em caracteres.
+- **Cultura:** as casas de chá (茶馆), onde se passa a tarde a conversar (ligação direta à marca); os pandas; o sabor 麻辣.
 
 ### 4. Guilin 桂林 · Meses 7–8 · Viajar
 
 | Unidade | Tema | Gramática e vocabulário principal |
 |---|---|---|
-| 4.1 | Passagens e trens | 高铁, 票, 从…到…, 坐, horários |
+| 4.1 | Bilhetes e comboios | 高铁, 票, 从…到…, 坐, horários |
 | 4.2 | No hotel | 入住, 房间, 把 (introdução), pedidos educados 请 / 麻烦你 |
 | 4.3 | Descrever lugares | Complemento de grau 得, 离 (distância), 又…又… |
 | 4.4 | Emergências | Farmácia, hospital, perdi…; complementos de resultado 完 / 到 / 懂 / 错; 来 / 去 |
 
 - **Meta acumulada:** ~1272 palavras · 600 caracteres (**nível 2 do HSK 3.0 concluído**).
-- **Você já consegue:** comprar uma passagem de trem, fazer check-in, descrever um lugar e pedir ajuda numa emergência.
-- **Missão da cidade:** planejar a viagem Guilin → Yangshuo: comprar a passagem e fazer check-in (roleplay), mais um quiz de frases de emergência.
+- **Já consegues:** comprar um bilhete de comboio, fazer check-in, descrever um lugar e pedir ajuda numa emergência.
+- **Missão da cidade:** planear a viagem Guilin → Yangshuo: comprar o bilhete e fazer check-in (roleplay), mais um quiz de frases de emergência.
 - **Cultura:** a paisagem do rio Li que aparece na nota de 20 yuan; Yangshuo (阳朔).
 
 ### 5. Hangzhou 杭州 · Meses 9–10 · Contar e opinar
@@ -139,7 +139,7 @@ Ao todo são **6 cidades, 24 unidades e 240 lições**.
 | 5.4 | Compras online e serviços | 被 (introdução), complementos potenciais 看得懂 / 买不到, reclamar com educação |
 
 - **Meta acumulada:** ~1750 palavras · 750 caracteres.
-- **Você já consegue:** contar uma viagem que fez, comparar produtos e dar e justificar sua opinião.
+- **Já consegues:** contar uma viagem que fizeste, comparar produtos e dar e justificar a tua opinião.
 - **Missão da cidade:** contar uma viagem em 2 minutos (gravação) e escrever uma avaliação curta de um restaurante.
 - **Cultura:** o Lago do Oeste (西湖), o chá Longjing (龙井茶) e Hangzhou como capital do comércio online.
 
@@ -148,12 +148,12 @@ Ao todo são **6 cidades, 24 unidades e 240 lições**.
 | Unidade | Tema | Gramática e vocabulário principal |
 |---|---|---|
 | 6.1 | Casa e serviços | Alugar casa, banco, contas; 除了…以外 |
-| 6.2 | No trabalho | Profissões, reuniões, e-mails; registro formal 您 / 请 / 贵公司 |
+| 6.2 | No trabalho | Profissões, reuniões, e-mails; registo formal 您 / 请 / 贵公司 |
 | 6.3 | Entrevista de emprego | 不但…而且…, 只要…就…, 对…来说 |
 | 6.4 | Ler a cidade | Sinais, menus, notícias simplificadas; 把 e 被 completos, 连…都… |
 
 - **Meta acumulada:** ~2245 palavras · 900 caracteres (**nível 3 do HSK 3.0 concluído**).
-- **Você já consegue:** manter uma conversa de 5 minutos ou mais, ler textos curtos do dia a dia e fazer uma entrevista de emprego simples.
+- **Já consegues:** manter uma conversa de 5 minutos ou mais, ler textos curtos do dia a dia e fazer uma entrevista de emprego simples.
 - **Missão final:** entrevista de emprego de 5 minutos com o tutor IA + leitura de um texto com perguntas. Ao passar, o aluno recebe o último carimbo e o **certificado Chá** (não oficial).
 - **Cultura:** o Bund (外滩) e Pudong (浦东); o dialeto de Xangai (上海话) ao lado do mandarim.
 

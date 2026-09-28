@@ -1,15 +1,15 @@
 /**
  * page.js
- * Ciclo de vida das páginas: o que roda quando uma página abre e o que se limpa quando ela sai.
+ * Ciclo de vida das páginas: o que corre quando uma página abre e o que se limpa quando ela sai.
  *
  * Cada link carrega uma página nova de verdade (a transição é feita pelo próprio
- * navegador, em css/transitions.css). Por isso basta:
+ * browser, em css/transitions.css). Por isso basta:
  *   - ligar a página quando o HTML estiver pronto (DOMContentLoaded);
  *   - desligar microfone, voz e temporizadores quando a página sai (pagehide).
  *
  * Uso:
- *   ChaPage.onInit(fn)    → fn(container) roda quando a página abre (container = <main class="page">)
- *   ChaPage.onCleanup(fn) → fn() roda quando a página vai sair
+ *   ChaPage.onInit(fn)    → fn(container) corre quando a página abre (container = <main class="page">)
+ *   ChaPage.onCleanup(fn) → fn() corre quando a página vai sair
  */
 
 const ChaPage = (() => {

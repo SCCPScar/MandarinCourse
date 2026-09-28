@@ -7,7 +7,7 @@ date_default_timezone_set('Europe/Lisbon');
 
 // Eu protejo o cookie da sessão:
 // - httponly: o JavaScript não o consegue ler (ajuda contra XSS);
-// - samesite Lax: o navegador não o envia em pedidos vindos de outros sites.
+// - samesite Lax: o browser não o envia em pedidos vindos de outros sites.
 session_set_cookie_params(['httponly' => true, 'samesite' => 'Lax']);
 session_start();
 

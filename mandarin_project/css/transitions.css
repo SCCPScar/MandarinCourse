@@ -1,12 +1,13 @@
 /*
- * transitions.css — Transição entre páginas (esmaecer + desfocar)
+ * transitions.css
+ * Aqui eu faço a transição entre páginas: esbater e desfocar.
  *
- * Usa as View Transitions do próprio navegador: sem bibliotecas e sem JavaScript.
- * Ao clicar num link, o navegador tira uma "foto" da página antiga e outra da nova
- * e anima as duas ao mesmo tempo: a antiga some e a nova aparece, ambas com desfoque.
- * Funciona também com o "voltar" e o "avançar" do navegador.
+ * Eu uso as View Transitions do próprio browser: sem bibliotecas e sem JavaScript.
+ * Quando se carrega num link, o browser tira uma "foto" da página antiga e outra da nova
+ * e anima as duas ao mesmo tempo: a antiga desaparece e a nova aparece, ambas com desfoque.
+ * Funciona também com o "voltar" e o "avançar" do browser.
  *
- * Navegadores sem suporte simplesmente trocam de página sem animação.
+ * Os browsers sem suporte simplesmente trocam de página sem animação.
  */
 
 /* 1. Liga a transição em todas as navegações entre páginas do mesmo site.
@@ -25,7 +26,7 @@
   min-height: calc(100vh - var(--nav-height));
 }
 
-/* 3. A barra de navegação tem nome próprio: o navegador a anima separadamente,
+/* 3. A barra de navegação tem nome próprio: o browser anima-a à parte,
       por isso ela fica parada no lugar enquanto o conteúdo troca. */
 .site-nav {
   view-transition-name: site-nav;

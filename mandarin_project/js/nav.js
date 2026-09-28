@@ -152,7 +152,7 @@ const ChaNav = (() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
-    // Outros links internos: o menu fecha e o navegador abre a página nova com a transição
+    // Outros links internos: o menu fecha e o browser abre a página nova com a transição
     if (isOpen()) close(false);
   });
 

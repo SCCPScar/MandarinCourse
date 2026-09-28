@@ -9,9 +9,9 @@
 - A palavra portuguesa "chá" vem do chinês 茶, trazida pelo comércio português através de Macau. É a primeira palavra em mandarim que qualquer lusófono já conhece.
 - A "hora do chá" é a metáfora da sessão diária curta.
 - Domínios livres na data da verificação (25/09/2026): `chamandarim.com`, `chamandarim.pt`.
-- **Pendente:** pesquisar se o nome está registrado como marca no INPI (Portugal) e no EUIPO (UE), classe 41 (educação).
+- **Pendente:** pesquisar se o nome está registado como marca no INPI (Portugal) e no EUIPO (UE), classe 41 (educação).
 
-Slogan: *Aprenda mandarim no seu ritmo. De graça, para sempre.*
+Slogan: *Aprende mandarim ao teu ritmo. De graça, para sempre.*
 
 ## Idioma
 
@@ -77,15 +77,15 @@ As fontes latinas têm licença SIL Open Font License e estão **guardadas no pr
 | Resposta certa (pop) e errada (tremida) | 320 ms |
 | Virar o flashcard | 450 ms |
 | Carimbo no passaporte | 420 ms |
-| Mudar de tela | 200 ms |
+| Mudar de ecrã | 200 ms |
 
 Proibido: confetes, partículas, animações em loop, elementos que piscam, som automático. É obrigatório respeitar `prefers-reduced-motion`.
 
 ## Layout
 
 - Largura máxima de 1120px e espaçamento em múltiplos de 4 (4, 8, 12, 16, 24, 32, 48, 64).
-- A primeira tela mostra sempre a próxima ação, a meta do dia e o progresso.
-- No máximo 1 destaque forte (foto ou cor sólida) por tela.
+- A primeiro ecrã mostra sempre a próxima ação, a meta do dia e o progresso.
+- No máximo 1 destaque forte (foto ou cor sólida) por ecrã.
 - Fundo com quadrícula discreta inspirada no 田字格.
 
 Estudo visual completo (com demonstrações interativas): https://claude.ai/artifact/3QLat173XmEtcJ7YmJsDTG
