@@ -172,7 +172,7 @@ INSERT INTO cidades (id, ordem, nome, nome_zh, meses, tema, capa) VALUES
   (2, 2, 'Xi''an',   '西安', '3–4',   'Comer e comprar',     'xa0'),
   (3, 3, 'Chengdu',  '成都', '5–6',   'O dia a dia',         'cd0'),
   (4, 4, 'Guilin',   '桂林', '7–8',   'Viajar',              'gl0'),
-  (5, 5, 'Hangzhou', '杭州', '9–10',  'Contar e opinar',     NULL),
+  (5, 5, 'Hangzhou', '杭州', '9–10',  'Contar e opinar',     'hz0'),
   (6, 6, 'Xangai',   '上海', '11–12', 'Trabalho e cidade',   NULL);
 
 -- As 24 unidades (4 por cidade)
