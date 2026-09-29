@@ -38,10 +38,9 @@ require 'includes/cabecalho.php';
         <tr>
           <td><?= e($foto['local']) ?></td>
           <td>
-            <?php if ($foto['perfil'] !== '' && $foto['perfil'] !== 'PENDENTE'): ?>
+            <?php if ($foto['perfil'] !== ''): ?>
+              <!-- Se houver perfil, o nome do autor é um link para a página dele no Unsplash -->
               <a href="<?= e($foto['perfil']) ?>" target="_blank" rel="noopener"><?= e($foto['fotografo']) ?></a>
-            <?php elseif ($foto['fotografo'] === 'PENDENTE'): ?>
-              Unsplash (autor a confirmar)
             <?php else: ?>
               <?= e($foto['fotografo']) ?>
             <?php endif; ?>
