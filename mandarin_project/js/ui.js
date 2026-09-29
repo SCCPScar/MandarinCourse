@@ -48,10 +48,6 @@ document.addEventListener('keydown', e => {
   if (e.code === 'Digit1') { const b = document.querySelector('#tab-flash.active .fc-btn.hard'); if(b) b.click(); }
   if (e.code === 'Digit2') { const b = document.querySelector('#tab-flash.active .fc-btn.ok'); if(b) b.click(); }
   if (e.code === 'Digit3') { const b = document.querySelector('#tab-flash.active .fc-btn.easy'); if(b) b.click(); }
-  if (e.code === 'Enter' && e.ctrlKey) {
-    const btn = document.getElementById('tutor-send');
-    if (btn && !btn.disabled) btn.click();
-  }
   if (e.code === 'Escape') closeDailyModal();
 });
 
@@ -67,7 +63,6 @@ const BADGES = [
   { id:'badge-streak7',check: s => s.streak>=7,        label:'⚡ 7 dias'      },
   { id:'badge-streak30',check:s => s.streak>=30,       label:'👑 30 dias'     },
   { id:'badge-quiz',   check: s => s.quizDone,         label:'🧠 Quiz'        },
-  { id:'badge-tutor',  check: s => s.tutorUsed,        label:'🤖 IA'          },
   { id:'badge-perfect',check: s => s.quizPerfect,      label:'⭐ Perfeito'    },
 ];
 let earnedBadges = LS.get('badges', []);
@@ -77,7 +72,6 @@ function checkAchievements() {
     learnedCount: Object.keys(LS.get('learned',{})).length,
     streak: LS.get('streak',0),
     quizDone: LS.get('quizDone',false),
-    tutorUsed: LS.get('tutorUsed',false),
     quizPerfect: LS.get('quizPerfect',false),
   };
   let newlyEarned = false;
@@ -146,7 +140,7 @@ function openDailyModal() {
     { icon:'📚', title:'Revisão espaçada', desc: dueWords.length > 0 ? `Tens ${dueWords.length} palavra${dueWords.length!==1?'s':''} para rever hoje:` : 'Hoje não tens palavras para rever. Aprende primeiro algumas palavras novas.', words: dueWords },
     { icon:'✨', title:'Palavras novas', desc: newWords.length > 0 ? `Aprende ${newWords.length} palavra${newWords.length!==1?'s':''} nova${newWords.length!==1?'s':''} hoje:` : 'Excelente! Já aprendeste todas as palavras disponíveis.', words: newWords },
     { icon:'🎤', title:'Praticar a pronúncia', desc: 'Vai a Praticar, abre o separador Pronúncia e grava 2 ou 3 frases.', action: 'praticar.html#features' },
-    { icon:'🤖', title:'Tutor IA', desc: 'Faz uma pergunta ao tutor IA sobre mandarim ou pede-lhe uma frase para praticares.', action: 'praticar.html#features' },
+    { icon:'📓', title:'Caderno', desc: 'Procura uma palavra no Dicionário, guarda-a no Caderno e escreve-a três vezes à mão.', action: 'praticar.html#features' },
   ];
 
   const html = steps.map((s,i) => `

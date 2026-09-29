@@ -1,36 +1,53 @@
 /**
  * dictionary.js
- * Aqui eu faço o dicionário: pergunto à IA e mostro até 4 entradas.
+ * Aqui eu faço o dicionário: procuro a palavra no vocabulário do curso (allVocab, em data.js)
+ * e mostro até 6 resultados. Funciona sem internet e sem IA.
  */
 
-// As entradas da última pesquisa ficam aqui. Os botões usam só o número da entrada
-// (ex.: saveDictEntry(0, this)), por isso nenhum texto vindo da IA vai parar dentro de um onclick.
+// Os resultados da última pesquisa ficam aqui. Os botões usam só o número do resultado
+// (ex.: saveDictEntry(0, this)), por isso nenhum texto vai parar dentro de um onclick.
 let dictEntries = [];
 
-// ═══ DICTIONARY ═══
-async function lookupWord(){
-  const q=document.getElementById('dict-input').value.trim();if(!q)return;
-  const r=document.getElementById('dict-result');
-  r.innerHTML='<p style="color:var(--ink-light);font-size:13px">🔍 A procurar…</p>';
-  try{
-    const raw=await askClaude({maxTokens:600,messages:[{role:"user",content:`You are a Chinese dictionary. Look up: "${q}"
-Respond ONLY with valid JSON no markdown:
-{"entries":[{"simplified":"字","traditional":"字","pinyin":"zì","definitions":["def1","def2"]}]}
-Write the definitions in European Portuguese (Portugal). If the query is in Portuguese or English, give the Chinese words. Up to 4 entries.`}]});
-    let parsed;
-    try { parsed=JSON.parse(raw.replace(/```json|```/g,'').trim()); }
-    catch(e){ throw new Error('A resposta do dicionário veio num formato inesperado. Tenta outra vez.'); }
-    dictEntries=(Array.isArray(parsed.entries)?parsed.entries:[]).filter(e=>e&&e.simplified).map(e=>({
-      simplified:String(e.simplified), traditional:String(e.traditional||e.simplified),
-      pinyin:String(e.pinyin||''), definitions:Array.isArray(e.definitions)?e.definitions.map(String):[]
-    }));
-    if(!dictEntries.length){r.innerHTML='<p style="color:var(--red)">Não encontrei resultados.</p>';return;}
-    r.innerHTML=dictEntries.map((e,i)=>`<div class="dict-entry"><div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap"><span class="dict-trad">${esc(e.simplified)}</span>${e.traditional!==e.simplified?`<span style="font-family:var(--font-chinese);font-size:16px;color:var(--ink-light)">(${esc(e.traditional)})</span>`:''}<button class="speak-btn" onclick="speakText(dictEntries[${i}].simplified)" aria-label="Ouvir">🔊</button><button class="learn-btn" style="position:static;margin-left:0" onclick="saveDictEntry(${i},this)">+ Guardar</button></div><div class="dict-pin">${esc(e.pinyin)}</div><div class="dict-defs">${e.definitions.map((d,j)=>`<span style="color:var(--ink-light);margin-right:4px">${j+1}.</span>${esc(d)}`).join('<br>')}</div></div>`).join('');
-  }catch(err){r.innerHTML=`<p style="color:var(--red);font-size:13px">⚠️ ${esc(err.message)}</p>`;}
+// Eu tiro os acentos e passo a minúsculas, para "gōngzuò", "gongzuo" e "GONGZUO" serem iguais.
+// normalize('NFD') separa a letra do acento, e o replace apaga os acentos que ficaram soltos.
+function semAcentos(texto) {
+  return texto.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/\s+/g, '');
 }
 
-// Eu guardo uma entrada do dicionário no caderno
-function saveDictEntry(i,btn){
-  const e=dictEntries[i];if(!e)return;
-  saveNb(e.simplified,e.pinyin,e.definitions[0]||'',btn);
+function lookupWord() {
+  const q = document.getElementById('dict-input').value.trim();
+  const r = document.getElementById('dict-result');
+  if (!q) return;
+
+  const busca = semAcentos(q);
+  // Uma palavra entra nos resultados se a pesquisa aparecer no chinês, no pinyin ou na tradução
+  dictEntries = allVocab.filter(p =>
+    p.zh.includes(q) ||
+    semAcentos(p.py).includes(busca) ||
+    semAcentos(p.en).includes(busca)
+  ).slice(0, 6);
+
+  if (!dictEntries.length) {
+    r.innerHTML = '<p style="color:var(--red)">Não encontrei esta palavra no vocabulário do curso.</p>';
+    return;
+  }
+
+  // Nota: no data.js a tradução portuguesa está no campo "en" (nome antigo do campo)
+  r.innerHTML = dictEntries.map((p, i) => `
+    <div class="dict-entry">
+      <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap">
+        <span class="dict-trad">${esc(p.zh)}</span>
+        <button class="speak-btn" onclick="speakText(dictEntries[${i}].zh)" aria-label="Ouvir">🔊</button>
+        <button class="learn-btn" style="position:static;margin-left:0" onclick="saveDictEntry(${i},this)">+ Guardar</button>
+      </div>
+      <div class="dict-pin">${esc(p.py)}</div>
+      <div class="dict-defs">${esc(p.en)}</div>
+    </div>`).join('');
+}
+
+// Eu guardo um resultado do dicionário no caderno
+function saveDictEntry(i, btn) {
+  const p = dictEntries[i];
+  if (!p) return;
+  saveNb(p.zh, p.py, p.en, btn);
 }

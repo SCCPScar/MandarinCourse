@@ -119,6 +119,11 @@ $feitas_total = array_sum(array_column($cidades, 'feitas'));
             <div class="cidade__foto cidade__foto--vazia" aria-hidden="true"><?= e($cidade['nome_zh']) ?></div>
           <?php endif; ?>
 
+          <?php if ($aluno && $cidade['total'] > 0 && $cidade['feitas'] == $cidade['total']): ?>
+            <!-- O aluno fez todas as lições: eu mostro o carimbo da cidade (完成 = concluído) -->
+            <span class="carimbo" lang="zh-CN" title="Cidade concluída"><?= e($cidade['nome_zh']) ?><br>完成</span>
+          <?php endif; ?>
+
           <div class="cidade__texto">
             <p class="cidade__meses">Meses <?= e($cidade['meses']) ?></p>
             <h3><?= e($cidade['nome']) ?> <span lang="zh-CN"><?= e($cidade['nome_zh']) ?></span></h3>

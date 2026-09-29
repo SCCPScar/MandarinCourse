@@ -44,7 +44,7 @@ ChaPage.onInit(() => {
   }
 
   // Cada função só age se a página tiver os elementos dela
-  [updateProgress, setPotd, initFC, renderScenarios, renderNb, updateStreak].forEach(fn => {
+  [updateProgress, setPotd, initFC, renderNb, updateStreak].forEach(fn => {
     try { fn(); } catch (err) { /* esta página não tem este bloco */ }
   });
   if (document.getElementById('hanzi-target')) loadChar('中');
@@ -566,8 +566,8 @@ async function toggleRecogRecording() {
   recogRecognizer.maxAlternatives = 5;
   recogRecording = true;
   btn.className = 'mic-btn recording'; btn.textContent = '⏹ Parar';
-  document.getElementById('recog-result').innerHTML = '<p style="color:var(--ink-light);font-size:13px">🎤 Listening — speak clearly in Mandarin…</p>';
-  document.getElementById('recog-ai-feedback').innerHTML = '';
+  document.getElementById('recog-result').innerHTML = '<p style="color:var(--ink-light);font-size:13px">🎤 A ouvir… Fala devagar e com clareza, em mandarim.</p>';
+  document.getElementById('recog-feedback').innerHTML = '';
 
   recogRecognizer.onresult = e => {
     const interim = Array.from(e.results).filter(r => !r.isFinal).map(r => r[0].transcript).join('');
@@ -575,12 +575,12 @@ async function toggleRecogRecording() {
     const display = finals || interim;
     document.getElementById('recog-result').innerHTML = `
       <div style="margin-bottom:6px;font-size:12px;color:var(--ink-light)">${e.results[0]?.isFinal ? '✓ Transcrição final' : '⏳ Transcrição provisória'}:</div>
-      <div class="recog-zh">${display}</div>
+      <div class="recog-zh">${esc(display)}</div>
     `;
     if (e.results[e.results.length - 1]?.isFinal) {
       recogRecording = false;
       btn.className = 'mic-btn idle'; btn.textContent = '🎤 Gravar';
-      if (recogPromptText) getRecogAIFeedback(recogPromptText, finals || interim);
+      if (recogPromptText) mostrarRecogFeedback(recogPromptText, finals || interim);
     }
   };
   recogRecognizer.onerror = e => {
@@ -595,24 +595,19 @@ async function toggleRecogRecording() {
   recogRecognizer.start();
 }
 
-async function getRecogAIFeedback(target, heard) {
-  const fb = document.getElementById('recog-ai-feedback');
-  fb.innerHTML = '<p style="color:var(--ink-light);font-size:13px">🤖 A analisar a tua pronúncia…</p>';
-  try {
-    const reply = await askClaude({
-      maxTokens: 300,
-      messages: [{ role: "user", content: `A Mandarin learner was asked to say: "${target}"\nThe speech recognition heard: "${heard}"\n\nGive brief pronunciation feedback in European Portuguese (Portugal), addressing the learner as "tu" (3-4 sentences max). Note: 1) Did they say it correctly? 2) What specific sounds or tones might be wrong? 3) One concrete tip to improve. Be encouraging. If it was correct, congratulate them.` }]
-    });
-    const match = heard === target || similarity(heard, target) > 0.7;
-    fb.innerHTML = `
-      <div style="background:${match ? 'var(--green-light)' : 'var(--blue-light)'};border-radius:10px;padding:12px 16px;border-left:4px solid ${match ? 'var(--green)' : 'var(--blue)'}">
-        <div style="font-size:12px;font-weight:700;color:${match ? 'var(--green)' : 'var(--blue)'};margin-bottom:6px">🤖 Treinador de pronúncia com IA</div>
-        <div style="font-size:13px;color:var(--ink-mid)">${formatAIText(reply)}</div>
-      </div>`;
-    savePronunAttempt({ type: 'recog', target, heard, correct: match });
-  } catch (e) {
-    fb.innerHTML = `<p style="color:var(--red);font-size:13px">⚠️ ${esc(e.message)}</p>`;
-  }
+// Aqui eu comparo o que o reconhecimento de voz ouviu com a frase escolhida, sem IA.
+// A função similarity (mais abaixo) dá um valor entre 0 e 1: acima de 0,7 conto como certo.
+function mostrarRecogFeedback(target, heard) {
+  const fb = document.getElementById('recog-feedback');
+  const match = heard === target || similarity(heard, target) > 0.7;
+  const texto = match
+    ? '✓ Muito bem! Disseste a frase corretamente.'
+    : `Querias dizer <span class="recog-zh">${esc(target)}</span>, mas ouvi <span class="recog-zh">${esc(heard)}</span>. Ouve a frase outra vez com o 🔊 e repete devagar, com atenção aos tons.`;
+  fb.innerHTML = `
+    <div style="background:${match ? 'var(--green-light)' : 'var(--blue-light)'};border-radius:10px;padding:12px 16px;border-left:4px solid ${match ? 'var(--green)' : 'var(--blue)'}">
+      <div style="font-size:13px;color:var(--ink-mid)">${texto}</div>
+    </div>`;
+  savePronunAttempt({ type: 'recog', target, heard, correct: match });
 }
 
 // ═══════════════════════

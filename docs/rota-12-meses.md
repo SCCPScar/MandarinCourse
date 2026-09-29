@@ -98,7 +98,7 @@ Ao todo são **6 cidades, 24 unidades e 240 lições**.
 
 - **Meta acumulada:** ~500 palavras · 300 caracteres (**nível 1 do HSK 3.0 concluído**).
 - **Já consegues:** pedir comida, perguntar preços e regatear, pedir e perceber direções simples.
-- **Missão da cidade:** roleplay com o tutor IA num mercado de rua: pedir 2 pratos, perguntar o preço e pagar.
+- **Missão da cidade:** gravar um diálogo num mercado de rua: pedir 2 pratos, perguntar o preço e pagar.
 - **Cultura:** o bairro muçulmano (回民街), os noodles biangbiang, os guerreiros de terracota.
 
 ### 3. Chengdu 成都 · Meses 5–6 · O dia a dia
@@ -154,7 +154,7 @@ Ao todo são **6 cidades, 24 unidades e 240 lições**.
 
 - **Meta acumulada:** ~2245 palavras · 900 caracteres (**nível 3 do HSK 3.0 concluído**).
 - **Já consegues:** manter uma conversa de 5 minutos ou mais, ler textos curtos do dia a dia e fazer uma entrevista de emprego simples.
-- **Missão final:** entrevista de emprego de 5 minutos com o tutor IA + leitura de um texto com perguntas. Ao passar, o aluno recebe o último carimbo e o **certificado Chá** (não oficial).
+- **Missão final:** gravar uma apresentação de 5 minutos para uma entrevista de emprego + leitura de um texto com perguntas. Ao passar, o aluno recebe o último carimbo e o **certificado Chá** (não oficial).
 - **Cultura:** o Bund (外滩) e Pudong (浦东); o dialeto de Xangai (上海话) ao lado do mandarim.
 
 ---

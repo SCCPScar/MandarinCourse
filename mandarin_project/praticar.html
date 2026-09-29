@@ -200,12 +200,10 @@
   <div class="section-num">⚡</div>
   <h2>Ferramentas para praticar <span class="zh">互动工具</span></h2>
 </div>
-<p class="section-intro">13 ferramentas para praticar: cartões de memória, conversas, jogos, temporizador, cultura e mais. Algumas usam inteligência artificial.</p>
+<p class="section-intro">11 ferramentas para praticar: cartões de memória, jogos, dicionário, temporizador, cultura, pronúncia e mais.</p>
 
 <div id="api-tabs" style="display:flex;gap:3px;border-bottom:2px solid var(--paper-dark);flex-wrap:wrap;margin-bottom:0">
-  <button class="api-tab-btn active" onclick="switchApiTab(event,'tab-tutor')">🤖 Tutor IA</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-conv')">💬 Conversa</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-flash')">🃏 Cartões</button>
+  <button class="api-tab-btn active" onclick="switchApiTab(event,'tab-flash')">🃏 Cartões</button>
   <button class="api-tab-btn" onclick="switchApiTab(event,'tab-sb')">🔧 Construir frases</button>
   <button class="api-tab-btn" onclick="switchApiTab(event,'tab-chargame')">🎮 Jogo de caracteres</button>
   <button class="api-tab-btn" onclick="switchApiTab(event,'tab-speak')">🔊 Ouvir</button>
@@ -218,42 +216,8 @@
   <button class="api-tab-btn" onclick="switchApiTab(event,'tab-mic')">🎤 Pronúncia</button>
 </div>
 
-<!-- AI TUTOR -->
-<div id="tab-tutor" class="api-tab-content active" style="padding-top:1.2rem">
-  <div class="info" style="margin-bottom:.8rem">🤖 <strong>Tutor de mandarim com IA</strong>. Pergunta o que quiseres sobre mandarim. Funciona com a IA Claude.</div>
-  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
-    <span class="tutor-chip" onclick="sendChip(this)">Como uso bem o 了?</span>
-    <span class="tutor-chip" onclick="sendChip(this)">Explica os classificadores</span>
-    <span class="tutor-chip" onclick="sendChip(this)">Qual é a diferença entre 想 e 要?</span>
-    <span class="tutor-chip" onclick="sendChip(this)">Dá-me 5 frases úteis para o trabalho</span>
-    <span class="tutor-chip" onclick="sendChip(this)">Para que serve o 把?</span>
-    <span class="tutor-chip" onclick="sendChip(this)">Dicas sobre a cultura de trabalho na China</span>
-  </div>
-  <div id="tutor-section">
-    <div id="tutor-messages"><div class="tutor-msg ai">你好！👋 Sou o teu tutor de mandarim. Pergunta-me o que quiseres: gramática, vocabulário, pronúncia ou cultura. Dou sempre exemplos em chinês com o pinyin. <strong>O que queres aprender?</strong></div></div>
-    <div id="tutor-input-row">
-      <input id="tutor-input" type="text" placeholder="Pergunta o que quiseres sobre mandarim…" onkeydown="if(event.key==='Enter')sendTutor()">
-      <button id="tutor-send" onclick="sendTutor()">Enviar</button>
-    </div>
-  </div>
-</div>
-
-<!-- CONVERSATION -->
-<div id="tab-conv" class="api-tab-content" style="padding-top:1.2rem">
-  <div class="info" style="margin-bottom:.8rem">💬 <strong>Praticar conversas</strong>. Escolhe uma situação real. A IA faz de outra pessoa em chinês e tu respondes em chinês!</div>
-  <div class="scenario-grid" id="scenario-grid"></div>
-  <div id="conv-box">
-    <div id="conv-messages"></div>
-    <div id="conv-input-row">
-      <input id="conv-input" type="text" placeholder="Escreve a tua resposta em chinês…" onkeydown="if(event.key==='Enter')sendConv()">
-      <button id="conv-send" onclick="sendConv()" disabled>Enviar</button>
-    </div>
-  </div>
-  <button id="conv-reset-btn" onclick="resetConv()" style="display:none;margin-top:8px;background:var(--paper-dark);border:none;padding:7px 15px;border-radius:8px;cursor:pointer;font-family:var(--font-main);font-size:13px;">↺ Escolher outra situação</button>
-</div>
-
 <!-- FLASHCARDS -->
-<div id="tab-flash" class="api-tab-content" style="padding-top:1.2rem">
+<div id="tab-flash" class="api-tab-content active" style="padding-top:1.2rem">
   <div class="info" style="margin-bottom:.8rem">🃏 <strong>Cartões com revisão espaçada</strong>. Toca para virar e avalia-te. Os cartões difíceis voltam mais cedo. O progresso fica guardado sozinho.</div>
   <div id="fc-box">
     <div class="fc-stats-row">
@@ -343,13 +307,13 @@
 
 <!-- DICTIONARY -->
 <div id="tab-dict" class="api-tab-content" style="padding-top:1.2rem">
-  <div class="info" style="margin-bottom:.8rem">🔤 <strong>Dicionário com IA</strong>. Procura qualquer palavra em chinês ou em português. Carrega em "+ Guardar" para a pôr no caderno.</div>
+  <div class="info" style="margin-bottom:.8rem">🔤 <strong>Dicionário</strong>. Procura uma palavra do vocabulário do curso em chinês, em pinyin ou em português. Carrega em "+ Guardar" para a pôr no caderno.</div>
   <div id="dict-section">
     <div id="dict-input-row">
       <input id="dict-input" type="text" placeholder="Escreve em chinês ou em português… ex.: 朋友 ou amigo" onkeydown="if(event.key==='Enter')lookupWord()">
       <button id="dict-btn" onclick="lookupWord()">Procurar 🔍</button>
     </div>
-    <div id="dict-result"><p style="color:var(--ink-light);font-size:13px">Experimenta: 你好 · 朋友 · 工作 · 学习 · 漂亮</p></div>
+    <div id="dict-result"><p style="color:var(--ink-light);font-size:13px">Experimenta: 朋友 · gōngzuò · casa · 学习 · caro</p></div>
   </div>
 </div>
 
@@ -560,7 +524,7 @@
 
   <!-- SPEECH RECOGNITION FREE PLAY -->
   <div id="mictab-recog" class="mic-tab-content">
-    <p style="font-size:13px;color:var(--ink-light);margin-bottom:10px">Diz livremente qualquer frase em chinês. O reconhecimento de voz escreve o que disseste e a IA avalia e sugere correções.</p>
+    <p style="font-size:13px;color:var(--ink-light);margin-bottom:10px">Diz livremente qualquer frase em chinês. O reconhecimento de voz escreve o que disseste e compara com a frase que escolheste.</p>
 
     <div style="background:var(--paper-mid);border-radius:10px;padding:12px 16px;margin-bottom:10px">
       <p style="font-size:12px;font-weight:700;color:var(--ink-light);margin-bottom:6px">Experimenta dizer uma destas:</p>
@@ -583,7 +547,7 @@
       <p style="color:var(--ink-light);font-size:13px">O que disseres vai aparecer aqui…</p>
     </div>
 
-    <div id="recog-ai-feedback" style="margin-top:10px"></div>
+    <div id="recog-feedback" style="margin-top:10px"></div>
   </div>
 
   <!-- SCORES -->
@@ -616,7 +580,6 @@
 
 <!-- JavaScript do site — carregar nesta ordem -->
 <script src="js/utils.js"></script>
-<script src="js/ai.js"></script>
 <script src="js/page.js"></script>
 <script src="js/hanzi.js"></script>
 <script src="js/data.js"></script>

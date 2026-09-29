@@ -321,40 +321,6 @@
   }
   .preset-char:hover { background: var(--red); color: white; border-color: var(--red); }
 
-  /* ── AI TUTOR ── */
-  #tutor-section { background: var(--white); border-radius: var(--radius); border: 1.5px solid var(--paper-dark); overflow: hidden; }
-  #tutor-messages {
-    height: 340px; overflow-y: auto; padding: 1.25rem;
-    display: flex; flex-direction: column; gap: 12px;
-    background: var(--paper-mid);
-  }
-  .tutor-msg { max-width: 82%; padding: 10px 14px; border-radius: 14px; font-size: 14px; line-height: 1.6; }
-  .tutor-msg.ai { background: var(--white); border: 1px solid var(--paper-dark); border-radius: 4px 14px 14px 14px; align-self: flex-start; }
-  .tutor-msg.user { background: var(--red); color: white; border-radius: 14px 4px 14px 14px; align-self: flex-end; }
-  .tutor-msg .zh-inline { font-family: var(--font-chinese); color: var(--red); font-weight: 700; font-size: 16px; }
-  .tutor-msg.ai .zh-inline { color: var(--red); }
-  .tutor-msg.user .zh-inline { color: #FBE3DE; }
-  #tutor-input-row { display: flex; gap: 8px; padding: 12px; border-top: 1px solid var(--paper-dark); background: var(--white); }
-  #tutor-input {
-    flex: 1; padding: 10px 14px; border-radius: 10px;
-    border: 1.5px solid var(--paper-dark); font-size: 15px;
-    font-family: var(--font-main); outline: none;
-  }
-  #tutor-input:focus { border-color: var(--red); }
-  #tutor-send {
-    padding: 10px 20px; background: var(--red); color: white; border: none;
-    border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: var(--font-main);
-  }
-  #tutor-send:hover { background: var(--red-dark); }
-  #tutor-send:disabled { background: var(--paper-dark); color: var(--ink-light); cursor: not-allowed; }
-  .tutor-suggestions { display: flex; gap: 6px; flex-wrap: wrap; padding: 8px 12px 0; }
-  .tutor-chip {
-    font-size: 12px; padding: 4px 10px; border-radius: 20px;
-    border: 1px solid var(--paper-dark); background: var(--paper-mid);
-    cursor: pointer; color: var(--ink-mid); transition: all 0.15s;
-  }
-  .tutor-chip:hover { border-color: var(--red); color: var(--red); background: var(--red-light); }
-
   /* ── FEATURE TABS ── */
   #api-tabs { display: flex; gap: 4px; margin-bottom: 0; border-bottom: 2px solid var(--paper-dark); flex-wrap: wrap; }
   .api-tab-btn {
@@ -370,8 +336,6 @@
 
 
 
-  /* Caracteres chineses em destaque nas respostas da IA (tutor, conversação) */
-  .ai-han { font-family: var(--font-chinese); color: var(--red); font-weight: 700; }
 
 /* Links da privacidade e dos créditos, no fim do rodapé */
 footer .footer-links { margin-top: 10px; font-size: 13px; }
