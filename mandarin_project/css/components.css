@@ -5,9 +5,11 @@
  */
 
   /* TOPO (HERO) */
+  /* Uso as cores da marca, como na página inicial: fundo porcelana e texto em tinta.
+     São variáveis, por isso no modo escuro trocam sozinhas. */
   .hero {
-    background: var(--ink);
-    color: white;
+    background: var(--paper);
+    color: var(--ink);
     padding: 5rem 2rem 4rem;
     text-align: center;
     position: relative;
@@ -16,17 +18,17 @@
   .hero::before {
     content: '普通话';
     position: absolute; font-family: var(--font-chinese);
-    font-size: 220px; font-weight: 700; color: rgba(255,255,255,0.04);
+    font-size: 220px; font-weight: 700; color: var(--ink); opacity: 0.04;
     top: -20px; left: 50%; transform: translateX(-50%);
     pointer-events: none; white-space: nowrap;
   }
-  .hero h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 700; margin-bottom: 1rem; position: relative; }
-  .hero h1 span { color: var(--gold); }
-  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto 2rem; position: relative; }
+  .hero h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 700; line-height: 1.05; margin-bottom: 1rem; position: relative; }
+  .hero h1 span { color: var(--jade); }
+  .hero p { font-size: 18px; color: var(--ink-light); max-width: 600px; margin: 0 auto 2rem; position: relative; }
   .hero-stats { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; position: relative; }
   .hero-stat { text-align: center; }
-  .hero-stat .num { font-size: 32px; font-weight: 700; color: var(--gold); }
-  .hero-stat .label { font-size: 13px; color: rgba(255,255,255,0.6); }
+  .hero-stat .num { font-size: 32px; font-weight: 700; color: var(--jade); }
+  .hero-stat .label { font-size: 13px; color: var(--ink-light); }
 
   /* PROGRESSO */
   .progress-bar-wrap { background: var(--paper-dark); border-radius: 4px; height: 8px; margin: 8px 0 4px; }
@@ -347,11 +349,47 @@ footer .footer-links a { color: inherit; text-decoration: underline; }
    No computador são duas colunas; no telemóvel a foto passa para baixo. */
 .hero--foto { display: grid; gap: 2rem; justify-items: center; }
 .hero__foto { margin: 0; position: relative; width: min(280px, 100%); }
-.hero__foto img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); }
-.hero__foto figcaption { margin-top: 6px; font-size: 12px; color: rgba(255,255,255,0.6); }
+.hero__foto img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; box-shadow: 0 24px 50px rgba(24, 33, 43, 0.22); }
+.hero__foto figcaption { margin-top: 8px; font-size: 11px; color: var(--ink-light); text-align: right; }
 @media (min-width: 900px) {
   .hero--foto { grid-template-columns: 1fr 360px; align-items: center; text-align: left; max-width: 1100px; margin: 0 auto; }
   .hero--foto .hero__foto { width: 360px; }
   .hero--foto p { margin-left: 0; }
   .hero--foto .hero-stats { justify-content: flex-start; }
 }
+
+/* ═══ BIBLIOTECA ═══
+   Aqui eu dou estilo aos cartões da página Biblioteca. Estas regras estavam dentro de um
+   <style> no ficheiro original e perderam-se quando o dividi em várias páginas. */
+.lib-section { margin-bottom: 2.5rem; }
+.lib-section h3 { font-size: 18px; font-weight: 700; margin-bottom: 1rem; padding-left: 12px; border-left: 4px solid var(--jade); }
+.lib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.lib-card {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 1.25rem;
+  background: var(--white);
+  border: 1.5px solid var(--paper-dark);
+  border-radius: var(--radius);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.lib-card:hover { border-color: var(--jade); box-shadow: var(--shadow); transform: translateY(-2px); }
+.lib-title { font-size: 15px; font-weight: 700; color: var(--ink); }
+.lib-desc { flex: 1; font-size: 13px; line-height: 1.5; color: var(--ink-light); }
+.lib-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.lib-tag { padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; background: var(--paper-mid); color: var(--ink-mid); }
+/* Cada tipo de recurso tem a sua cor, sempre clara no fundo e escura no texto */
+.tag-pdf   { background: #FBE3DE; color: #A32A18; }
+.tag-web   { background: #DCE8F8; color: #1F4E8C; }
+.tag-audio { background: #D8EEE8; color: #0B6655; }
+.tag-video { background: #FBEFD3; color: #7A5406; }
+/* O botão de cada cartão: jade, a cor das ações na marca */
+.lib-btn {
+  display: inline-block; margin-top: 4px; padding: 8px 14px;
+  background: var(--jade); color: #fff; text-decoration: none;
+  border-radius: 8px; font-size: 13px; font-weight: 600; text-align: center;
+}
+.lib-btn:hover { filter: brightness(1.1); }
+.lib-btn.secondary { background: var(--ink); color: var(--paper); }
+
+/* No modo escuro o jade é claro, por isso o texto do botão fica escuro para se ler bem */
+body.dark .lib-btn { color: #0F1519; }
