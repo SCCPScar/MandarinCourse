@@ -174,8 +174,12 @@
 
 /* ═══ HERO EM CARTÃO ═══
    Aqui eu mudo o hero para duas colunas: o texto à esquerda e a imagem num cartão à direita.
-   O fundo fica escuro e liso, por isso deixo de precisar do degradê por cima da foto. */
+   Uso as cores da marca: o fundo porcelana (--paper) e o texto em tinta (--ink).
+   No modo escuro estas variáveis trocam sozinhas (ver dark.css).
+   Como a imagem já não fica por baixo do texto, deixo de precisar do degradê. */
 .hero-cha--cartao {
+  background: var(--paper);
+  color: var(--ink);
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
@@ -184,16 +188,19 @@
   padding: 56px max(var(--page-gutter), calc((100% - var(--page-max)) / 2 + var(--page-gutter))) 88px;
 }
 .hero-cha--cartao::after { display: none; }
-.hero-cha--cartao .hero-cha__texto { margin: 0; max-width: 520px; }
+.hero-cha--cartao .hero-cha__texto { margin: 0; max-width: 520px; color: var(--ink); }
+.hero-cha--cartao p { color: var(--ink-light); opacity: 1; }
+/* O segundo botão fica branco com contorno, para se ver bem no fundo claro */
+.hero-cha--cartao .botao-cha--claro { background: var(--white); color: var(--ink); border: 1.5px solid var(--paper-dark); }
 .hero-cha__cartao { position: relative; z-index: 1; margin: 0; width: 420px; }
 .hero-cha__cartao img {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 20px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 24px 50px rgba(24, 33, 43, 0.22);
 }
-.hero-cha__cartao figcaption { margin-top: 8px; font-size: 11px; color: rgba(255, 255, 255, 0.7); text-align: right; }
+.hero-cha__cartao figcaption { margin-top: 8px; font-size: 11px; color: var(--ink-light); text-align: right; }
 
 @media (max-width: 900px) {
   .hero-cha--cartao { grid-template-columns: 1fr; justify-items: center; gap: 28px; padding-top: 32px; }
