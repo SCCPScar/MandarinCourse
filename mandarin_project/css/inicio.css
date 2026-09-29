@@ -3,7 +3,7 @@
  * Aqui eu dou estilo à página inicial: o hero, o painel do aluno e a rota das cidades.
  */
 
-/* ═══ 1. HERO ═══ */
+/* ═══ 1. TOPO (HERO) ═══ */
 /* A foto ocupa a secção toda e o texto fica por cima, à direita. */
 .hero-cha {
   position: relative;

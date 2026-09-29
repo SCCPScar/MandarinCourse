@@ -4,10 +4,10 @@
  * e para o aluno praticar a escrita.
  */
 
-// ═══ HANZIWRITER ═══
+// ═══ HANZI WRITER ═══
 let hanziWriterInstance = null;
 
-// ═══ HANZIWRITER FUNCTIONS ═══
+// ═══ FUNÇÕES DO HANZI WRITER ═══
 function loadChar(char) {
   const input = document.getElementById('hanzi-input');
   if (input) input.value = char;

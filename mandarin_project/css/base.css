@@ -10,7 +10,7 @@
   :root {
     /* Cores da marca */
     --jade: #0E7C66;      /* cor principal: botões, progresso, respostas certas */
-    --seal: #E0442E;      /* carimbo: logótipo e streak */
+    --seal: #E0442E;      /* carimbo: logótipo e dias seguidos */
     --seal-text: #C8361F; /* carimbo em texto pequeno (tem contraste suficiente) */
     --gold-brand: #E8A317;/* conquistas */
     --plum: #A8325E;      /* resposta errada */

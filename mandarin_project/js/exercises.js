@@ -3,7 +3,7 @@
  * Aqui eu faço o jogo de caracteres: o aluno vê um caractere e escolhe ou escreve o pinyin.
  */
 
-// ═══ CHARACTER GAME ═══
+// ═══ JOGO DE CARACTERES ═══
 let cgScore=0,cgBest=LS.get('cgBest',0),cgMode='',cgCur=null,cgTimer=null,cgTime=0,cgDone=false;
 function startCG(mode){cgMode=mode;cgScore=0;document.getElementById('cg-score-label').textContent=`Pontos: 0 | Recorde: ${cgBest}`;nextCG();}
 function nextCG(){

@@ -1,6 +1,6 @@
 /**
  * init.js
- * Inicialização — regista o que corre em cada página (ver js/page.js)
+ * Aqui eu registo o que corre quando cada página abre (ver js/page.js).
  */
 
 // Botão "Partilhar progresso" no caderno (só nas páginas que têm o caderno)
@@ -18,7 +18,7 @@ ChaPage.onInit(() => {
 });
 
 // ═══════════════════════════════════════════════════════
-// 🎮 INIT ALL NEW FEATURES
+// 🎮 LIGAR AS FERRAMENTAS
 // ═══════════════════════════════════════════════════════
 // ── Corre UMA vez, quando o site abre ──────────────────────
 // Onboarding na primeira visita (o modal fica fora do <main>, por isso não se repete)
@@ -54,7 +54,7 @@ ChaPage.onInit(() => {
 
 
 // ═══════════════════════════════════════════════════════════════
-// 🎤 PRONUNCIATION & TONE TRAINER
+// 🎤 TREINO DE PRONÚNCIA E TONS
 // ═══════════════════════════════════════════════════════════════
 
 // --- Mic Sub-tabs ---
@@ -90,7 +90,7 @@ function initAudioCtx(stream) {
   pitchSrc.connect(analyser);
 }
 
-// ═══ YIN PITCH DETECTION ═══
+// ═══ DETEÇÃO DA ALTURA DA VOZ (ALGORITMO YIN) ═══
 function detectPitch(buf, sampleRate) {
   const SIZE = buf.length;
   const MAX_SAMPLES = Math.floor(SIZE / 2);
@@ -100,7 +100,7 @@ function detectPitch(buf, sampleRate) {
   rmsLevel = Math.sqrt(rmsLevel / SIZE);
   if (rmsLevel < 0.01) return -1; // silence
 
-  // Autocorrelation pitch detection
+  // Aqui eu deteto a altura da voz por autocorrelação
   const correlations = new Array(MAX_SAMPLES).fill(0);
   for (let i = 0; i < MAX_SAMPLES; i++) {
     for (let j = 0; j < MAX_SAMPLES; j++) {
@@ -123,7 +123,7 @@ function detectPitch(buf, sampleRate) {
 }
 
 // ═══════════════════════
-// TONE VISUALIZER
+// VISUALIZADOR DE TONS
 // ═══════════════════════
 let toneRecording = false, toneAnimFrame = null;
 let pitchHistory = [], selectedTone = 1;
@@ -132,12 +132,12 @@ let toneCanvas, toneCtx, waveCanvas, waveCtx;
 const TONE_COLORS = { 1: '#2F6FD0', 2: '#0E7C66', 3: '#E8A317', 4: '#C8361F' };
 const TONE_NAMES = { 1: '1.º tom: alto e plano', 2: '2.º tom: a subir', 3: '3.º tom: desce e sobe', 4: '4.º tom: a descer' };
 
-// Ideal tone paths (normalised 0–1, y=0 is TOP of canvas = highest pitch)
+// Caminhos ideais de cada tom (valores de 0 a 1; y=0 é o topo do canvas, ou seja, a nota mais aguda)
 const TONE_PATHS = {
   1: [.15,.15,.14,.15,.15,.14,.15,.15], // flat high
-  2: [.85,.78,.68,.56,.43,.32,.22,.15], // rising (start low, go high)
+  2: [.85,.78,.68,.56,.43,.32,.22,.15], // sobe (começa grave e acaba agudo)
   3: [.45,.52,.62,.72,.78,.72,.60,.45], // dip then rise
-  4: [.15,.22,.32,.45,.58,.70,.82,.90], // falling (start high, go low)
+  4: [.15,.22,.32,.45,.58,.70,.82,.90], // desce (começa agudo e acaba grave)
 };
 
 function selectTone(card, tone) {
@@ -203,7 +203,7 @@ function drawToneGuide() {
     toneCtx.fillText(l.label, 2, H * l.y + 4);
   });
 
-  // Draw ideal tone guide path in gold
+  // Aqui eu desenho a dourado o caminho ideal do tom
   const path = TONE_PATHS[selectedTone];
   const col = TONE_COLORS[selectedTone];
   const stepW = (W - 60) / (path.length - 1);
@@ -230,7 +230,7 @@ function drawToneGuide() {
 function drawPitchLine() {
   if (!toneCtx || pitchHistory.length < 2) return;
   const W = toneCanvas.width, H = toneCanvas.height;
-  // Redraw guide first
+  // Primeiro volto a desenhar o guia
   drawToneGuide();
 
   const validPitches = pitchHistory.filter(p => p > 0);
@@ -363,7 +363,7 @@ function analyzeToneResult() {
     feedbackText = good ? '✓ Plano e estável. Ótimo 1.º tom!' : `Tenta manter a voz completamente plana. Variação: ${Math.round(totalRange)} Hz (o objetivo é menos de ${Math.round(avgAll * 0.18)} Hz)`;
     cls = good ? 'fb-great' : score > 50 ? 'fb-good' : 'fb-try';
   } else if (selectedTone === 2) {
-    // Should rise: last > first
+    // Deve subir: o último valor é maior do que o primeiro
     const rise = avgLast - avgFirst;
     score = Math.round(Math.max(0, Math.min(rise / 60, 1)) * 100);
     const good = rise > 30;
@@ -377,7 +377,7 @@ function analyzeToneResult() {
     feedbackText = good ? '✓ Boa descida e subida. Bom 3.º tom!' : `A voz deve descer a meio e depois subir. Descida: ${Math.round(dip)} Hz (o objetivo é mais de 20 Hz)`;
     cls = good ? 'fb-great' : score > 40 ? 'fb-good' : 'fb-try';
   } else if (selectedTone === 4) {
-    // Should fall: last < first
+    // Deve descer: o último valor é menor do que o primeiro
     const fall = avgFirst - avgLast;
     score = Math.round(Math.max(0, Math.min(fall / 60, 1)) * 100);
     const good = fall > 30;
@@ -401,7 +401,7 @@ function playTargetTone() {
 }
 
 // ═══════════════════════
-// REPEAT PRACTICE
+// REPETIR PALAVRAS
 // ═══════════════════════
 const repeatWords = {
   greetings: [
@@ -513,7 +513,7 @@ async function toggleRepeatRecording() {
       res.innerHTML = `<span class="recog-miss">✗ Ouvi: "${esc(heard)}". Pretendido: "${esc(target)}". Tenta outra vez!</span>`;
     }
     savePronunAttempt({ type: 'repeat', word: target, heard, correct });
-    // Update word list row
+    // Atualizo a linha da palavra na lista
     const cat = document.getElementById('repeat-category')?.value || 'greetings';
     const words = repeatWords[cat] || [];
     words.forEach((w, i) => {
@@ -538,7 +538,7 @@ async function toggleRepeatRecording() {
 }
 
 // ═══════════════════════
-// SPEECH RECOGNITION (FREE PLAY)
+// RECONHECIMENTO DE VOZ (FALA LIVRE)
 // ═══════════════════════
 let recogRecording = false, recogRecognizer = null, recogPromptText = '';
 
@@ -611,7 +611,7 @@ function mostrarRecogFeedback(target, heard) {
 }
 
 // ═══════════════════════
-// SCORES & HISTORY
+// PONTUAÇÕES E HISTÓRICO
 // ═══════════════════════
 let pronunStats = LS.get('pronunStats', { attempts: 0, correct: 0, streak: 0, bestStreak: 0, history: [] });
 
@@ -657,7 +657,7 @@ function clearPronunScores() {
   }
 }
 
-// ═══ SIMILARITY HELPER ═══
+// ═══ SEMELHANÇA ENTRE TEXTOS ═══
 function similarity(a, b) {
   if (!a || !b) return 0;
   const la = a.toLowerCase().replace(/\s/g, '');

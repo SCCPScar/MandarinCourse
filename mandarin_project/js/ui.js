@@ -14,7 +14,7 @@ function showToast(msg, duration=2500) {
 }
 
 // ═══════════════════════════════════════════════════════
-// 📜 READING PROGRESS BAR + BACK TO TOP
+// 📜 BARRA DE LEITURA E VOLTAR AO TOPO
 // ═══════════════════════════════════════════════════════
 window.addEventListener('scroll', () => {
   const bar = document.getElementById('read-bar');
@@ -36,7 +36,7 @@ window.addEventListener('scroll', () => {
 // (O menu do telemóvel está em js/nav.js)
 
 // ═══════════════════════════════════════════════════════
-// ⌨️ KEYBOARD SHORTCUTS
+// ⌨️ ATALHOS DE TECLADO
 // ═══════════════════════════════════════════════════════
 document.addEventListener('keydown', e => {
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
@@ -52,7 +52,7 @@ document.addEventListener('keydown', e => {
 });
 
 // ═══════════════════════════════════════════════════════
-// 🏆 ACHIEVEMENTS
+// 🏆 CONQUISTAS
 // ═══════════════════════════════════════════════════════
 const BADGES = [
   { id:'badge-start',  check: s => true,              label:'🌱 Início'     },
@@ -96,7 +96,7 @@ function checkAchievements() {
 }
 
 // ═══════════════════════════════════════════════════════
-// 🎓 ONBOARDING
+// 🎓 BOAS-VINDAS
 // ═══════════════════════════════════════════════════════
 let selectedLevel = null;
 function selectLevel(btn, level) {
@@ -118,14 +118,14 @@ function finishOnboard() {
 }
 
 // ═══════════════════════════════════════════════════════
-// 📅 DAILY STUDY SESSION
+// 📅 SESSÃO DE HOJE
 // ═══════════════════════════════════════════════════════
 function openDailyModal() {
   const learned = LS.get('learned',{});
   const learnedCount = Object.keys(learned).length;
   const streak = LS.get('streak',0);
 
-  // Pick 3 SRS review words (ones due today) + 2 new words
+  // Escolho 3 palavras para rever (as que são para hoje) e 2 palavras novas
   const srsData = LS.get('srs',{});
   const today = new Date().toDateString();
   const dueWords = allVocab.filter(w => {
@@ -165,7 +165,7 @@ function closeDailyModal() {
 }
 
 // ═══════════════════════════════════════════════════════
-// 🃏 SRS — SPACED REPETITION (SM-2 simplified)
+// 🃏 REVISÃO ESPAÇADA (SM-2 SIMPLIFICADO)
 // ═══════════════════════════════════════════════════════
 let srsData = LS.get('srs', {});
 
@@ -189,11 +189,11 @@ function srsRate(word, quality) {
   LS.set('srs', srsData);
 }
 
-// Hook into existing rateCard function to also update SRS
-// rateCard merged into original above
+// Aproveito a função rateCard para também atualizar a revisão espaçada
+// A função rateCard já foi juntada à original, mais acima
 
 // ═══════════════════════════════════════════════════════
-// 📊 REAL STREAK SYSTEM
+// 📊 DIAS SEGUIDOS
 // ═══════════════════════════════════════════════════════
 function updateStreakReal() {
   const today = new Date().toDateString();
@@ -201,14 +201,14 @@ function updateStreakReal() {
   let streak = LS.get('streak', 0);
 
   if (lastStudy === today) {
-    // Already studied today, streak unchanged
+    // Já estudou hoje: os dias seguidos ficam iguais
   } else {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     if (lastStudy === yesterday.toDateString()) {
       streak += 1;
     } else if (lastStudy !== today) {
-      streak = 1; // Reset streak (missed a day)
+      streak = 1; // Recomeço os dias seguidos (falhou um dia)
     }
     LS.set('streak', streak);
     LS.set('lastStudy', today);
@@ -227,7 +227,7 @@ function updateStreakReal() {
 }
 
 // ═══════════════════════════════════════════════════════
-// 📤 SHARE PROGRESS CARD
+// 📤 CARTÃO PARA PARTILHAR O PROGRESSO
 // ═══════════════════════════════════════════════════════
 function generateShareCard() {
   const count = Object.keys(LS.get('learned',{})).length;
@@ -250,4 +250,4 @@ function generateShareCard() {
   }
 }
 
-// Add share button to notebook tab if it exists
+// Ponho o botão de partilhar no separador do caderno, se ele existir

@@ -1,11 +1,12 @@
 /**
  * nav.js
- * Barra de navegação: esconder/mostrar no scroll, letras que rolam no hover,
- * link da página atual (aria-current) e menu em ecrã inteiro no telemóvel.
+ * Aqui eu controlo a barra de navegação: escondo-a ao descer e mostro-a ao subir,
+ * faço as letras rolarem quando o rato passa por cima, marco a página atual
+ * (aria-current) e abro o menu em ecrã inteiro no telemóvel.
  *
- * Regra de ouro deste ficheiro: o JavaScript só muda ATRIBUTOS no <body>
+ * A minha regra neste ficheiro: o JavaScript só muda ATRIBUTOS no <body>
  * (data-scrolling-direction, data-scrolling-started, data-menu-open).
- * Quem anima é o CSS (css/nav.css).
+ * Quem faz a animação é o CSS (css/nav.css).
  */
 
 const ChaNav = (() => {

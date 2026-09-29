@@ -5,10 +5,10 @@
  */
 
 
-// ═══ STORAGE (must be first) ═══
+// ═══ ARMAZENAMENTO NO BROWSER (tem de vir primeiro) ═══
 const LS={get:(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch{return d;}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch{}}};
 
-// ═══ ESCAPE HELPERS ═══
+// ═══ ESCAPAR TEXTO ═══
 function esc(s){return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function escHtml(s){return esc(s);}
 
@@ -93,7 +93,7 @@ function checkAnswer(i) {
 }
 
 // ═══════════════════════════════════════════════════════
-// API TABS SWITCHER
+// TROCAR DE SEPARADOR
 // ═══════════════════════════════════════════════════════
 function switchApiTab(e, id) {
   const btn = e.target;
@@ -109,14 +109,14 @@ function switchApiTab(e, id) {
 
 
 
-// ═══ PINYIN DISPLAY TOGGLE ═══
+// ═══ MOSTRAR OU ESCONDER O PINYIN ═══
 function togglePinyinDisplay() {
   const cb = document.getElementById('show-pinyin-toggle');
   const show = cb ? cb.checked : true;
   document.querySelectorAll('.zh-with-pinyin').forEach(el => {
     el.classList.toggle('pinyin-hidden', !show);
   });
-  // Also toggle pinyin visibility in tone cards and repeat words
+  // Também mostro ou escondo o pinyin nos cartões dos tons e nas palavras para repetir
   document.querySelectorAll('.ttc-py, #repeat-target-py, .repeat-py').forEach(el => {
     el.style.display = show ? '' : 'none';
   });

@@ -1,8 +1,9 @@
 /*
- * nav.css — Barra de navegação minimalista
- * - Fixa no topo, esconde ao rolar para baixo e volta ao rolar para cima
- * - Efeito de "rolagem de letras" no hover (só com rato)
- * - Menu em ecrã inteiro no telemóvel (< 768px)
+ * nav.css
+ * Aqui eu dou estilo à barra de navegação:
+ * - fica fixa no topo, esconde-se quando desço e volta quando subo;
+ * - as letras rolam quando passo o rato por cima (só com rato);
+ * - no telemóvel (menos de 768px) o menu abre em ecrã inteiro.
  */
 
 :root {

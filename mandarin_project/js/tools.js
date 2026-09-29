@@ -3,7 +3,7 @@
  * Aqui eu junto o caderno e o temporizador de estudo.
  */
 
-// ═══ NOTEBOOK ═══
+// ═══ CADERNO ═══
 let notebook=LS.get('notebook',[]);
 function saveNb(zh,py,en,btn){if(notebook.find(n=>n.zh===zh)){btn.textContent='Guardado ✓';return;}notebook.push({zh,py,en,done:false});LS.set('notebook',notebook);btn.textContent='Guardado ✓';renderNb();}
 function renderNb(){
@@ -16,7 +16,7 @@ function delNb(i){notebook.splice(i,1);LS.set('notebook',notebook);renderNb();}
 function clearNotebook(){if(confirm('Apagar todas as palavras guardadas?')){notebook=[];LS.set('notebook',notebook);renderNb();}}
 function exportNotebook(){const txt=notebook.map(n=>`${n.zh}\t${n.py}\t${n.en}`).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain'}));a.download='caderno-mandarim.txt';a.click();}
 
-// ═══ STUDY TIMER & STREAK ═══
+// ═══ TEMPORIZADOR E DIAS SEGUIDOS ═══
 let timerSec=0,timerOn=false,timerInt=null;
 function startTimer(){if(timerOn)return;timerOn=true;document.getElementById('t-start').style.display='none';document.getElementById('t-stop').style.display='inline-block';timerInt=setInterval(()=>{timerSec++;const m=String(Math.floor(timerSec/60)).padStart(2,'0');const s=String(timerSec%60).padStart(2,'0');document.getElementById('timer-display').textContent=`${m}:${s}`;},1000);const today=new Date().toDateString();const log=LS.get('studyLog',{});log[today]=log[today]||0;LS.set('studyLog',log);updateStreak();}
 function stopTimer(){if(!timerOn)return;timerOn=false;clearInterval(timerInt);document.getElementById('t-start').style.display='inline-block';document.getElementById('t-stop').style.display='none';const today=new Date().toDateString();const log=LS.get('studyLog',{});log[today]=(log[today]||0)+Math.floor(timerSec/60);LS.set('studyLog',log);document.getElementById('total-mins').textContent=Object.values(log).reduce((a,b)=>a+b,0);}
@@ -34,5 +34,5 @@ function updateStreak(){
 }
 
 // ═══════════════════════════════════════════════════════
-// 🔔 TOAST
+// 🔔 AVISOS (TOAST)
 // ═══════════════════════════════════════════════════════

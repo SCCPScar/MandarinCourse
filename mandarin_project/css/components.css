@@ -1,8 +1,10 @@
 /*
- * components.css — Hero, cards, tabs, quiz, flashcards, features, modais
+ * components.css
+ * Aqui eu dou estilo às peças comuns das páginas: hero, cartões, separadores, quiz,
+ * cartões de memória, ferramentas e janelas (modais).
  */
 
-  /* HERO */
+  /* TOPO (HERO) */
   .hero {
     background: var(--ink);
     color: white;
@@ -26,14 +28,14 @@
   .hero-stat .num { font-size: 32px; font-weight: 700; color: var(--gold); }
   .hero-stat .label { font-size: 13px; color: rgba(255,255,255,0.6); }
 
-  /* PROGRESS */
+  /* PROGRESSO */
   .progress-bar-wrap { background: var(--paper-dark); border-radius: 4px; height: 8px; margin: 8px 0 4px; }
   .progress-bar { background: var(--red); height: 8px; border-radius: 4px; transition: width 0.4s; }
 
-  /* MAIN LAYOUT */
+  /* ESTRUTURA PRINCIPAL */
   .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
 
-  /* SECTION HEADERS */
+  /* TÍTULOS DAS SECÇÕES */
   .section-header {
     display: flex; align-items: center; gap: 16px;
     margin: 3rem 0 1.5rem;
@@ -50,7 +52,7 @@
   .section-header .zh { font-family: var(--font-chinese); color: var(--ink-light); font-size: 18px; margin-left: 8px; }
   .section-intro { color: var(--ink-light); margin-bottom: 1.5rem; font-size: 15px; max-width: 720px; }
 
-  /* CARDS */
+  /* CARTÕES */
   .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
   .card {
     background: var(--white); border-radius: var(--radius);
@@ -72,7 +74,7 @@
   .t4 { background: #FBE3DE; color: #A32A18; }
   .t5 { background: var(--paper-dark); color: var(--ink-light); }
 
-  /* TONES VISUAL */
+  /* TONS (VISUAL) */
   .tones-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
   .tone-card {
     background: var(--white); border-radius: var(--radius);
@@ -85,7 +87,7 @@
   .tone-card .example { margin-top: 10px; background: var(--paper-mid); border-radius: 8px; padding: 8px; }
   .tone-card .example .zh { font-family: var(--font-chinese); font-size: 20px; color: var(--red); font-weight: 700; }
 
-  /* PHRASE TABLES */
+  /* TABELAS DE FRASES */
   .phrase-table { width: 100%; border-collapse: collapse; font-size: 15px; }
   .phrase-table th {
     background: var(--ink); color: white;
@@ -98,7 +100,7 @@
   .phrase-table .use-cell { color: var(--ink-light); font-size: 13px; }
   .table-wrap { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
 
-  /* GRAMMAR BOXES */
+  /* CAIXAS DE GRAMÁTICA */
   .grammar-box {
     background: var(--white); border-radius: var(--radius);
     border: 1.5px solid var(--paper-dark);
@@ -124,7 +126,7 @@
   .py-ex { font-style: italic; color: var(--ink-light); font-size: 14px; }
   .en-ex { font-size: 14px; color: var(--ink); }
 
-  /* NUMBERS */
+  /* NÚMEROS */
   .num-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
   .num-card {
     background: var(--white); border: 1.5px solid var(--paper-dark);
@@ -158,7 +160,7 @@
   .quiz-feedback.bad { background: var(--red-light); color: var(--red-dark); }
   .quiz-score { font-size: 22px; font-weight: 700; color: var(--red); text-align: center; margin: 1rem 0; }
 
-  /* CALLOUTS */
+  /* AVISOS EM DESTAQUE */
   .tip {
     background: var(--gold-light); border-left: 4px solid var(--gold);
     border-radius: 0 10px 10px 0; padding: 14px 18px; margin: 14px 0;
@@ -176,7 +178,7 @@
     font-size: 14px; color: var(--blue);
   }
 
-  /* PINYIN CHART */
+  /* TABELA DO PINYIN */
   .pinyin-chart { overflow-x: auto; }
   .pinyin-chart table { border-collapse: collapse; font-size: 14px; min-width: 600px; }
   .pinyin-chart th { background: var(--ink); color: white; padding: 8px 12px; }
@@ -184,7 +186,7 @@
   .pinyin-chart td:first-child { background: var(--paper-mid); font-weight: 600; }
   .pinyin-chart .filled { background: var(--paper-mid); }
 
-  /* TABS */
+  /* SEPARADORES */
   .tabs { display: flex; gap: 4px; border-bottom: 2px solid var(--paper-dark); margin-bottom: 1.5rem; flex-wrap: wrap; }
   .tab-btn {
     padding: 10px 18px; border-radius: 8px 8px 0 0; cursor: pointer;
@@ -197,7 +199,7 @@
   .tab-content { display: none; }
   .tab-content.active { display: block; }
 
-  /* HSK TABLE */
+  /* TABELA DO HSK */
   .hsk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
   .hsk-card {
     background: var(--white); border: 1.5px solid var(--paper-dark);
@@ -207,7 +209,7 @@
   .hsk-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
   .hsk-card p { font-size: 13px; color: var(--ink-light); margin-bottom: 4px; }
 
-  /* FOOTER */
+  /* RODAPÉ */
   footer {
     background: var(--ink); color: rgba(255,255,255,0.6);
     text-align: center; padding: 3rem 2rem; margin-top: 4rem;
@@ -215,7 +217,7 @@
   }
   footer .footer-zh { font-family: var(--font-chinese); font-size: 28px; color: var(--gold); margin-bottom: 8px; }
 
-  /* RESPONSIVE */
+  /* ECRÃS PEQUENOS */
   @media (max-width: 700px) {
     .example-list li { grid-template-columns: 1fr; }
     .quiz-options { grid-template-columns: 1fr; }
@@ -224,13 +226,13 @@
   }
 
 
-  /* KEYBOARD */
+  /* TECLADO */
   kbd {
     background: var(--paper-dark); border: 1px solid var(--ink-light);
     border-radius: 4px; padding: 2px 7px; font-size: 12px; font-family: monospace;
   }
 
-  /* DIALOGUE */
+  /* DIÁLOGO */
   .dialogue { background: var(--white); border-radius: var(--radius); border: 1.5px solid var(--paper-dark); overflow: hidden; margin: 1rem 0; }
   .dialogue-line { display: flex; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--paper-dark); align-items: flex-start; }
   .dialogue-line:last-child { border-bottom: none; }
@@ -241,10 +243,10 @@
   .bubble .py { font-style: italic; color: var(--ink-light); font-size: 13px; }
   .bubble .en { font-size: 14px; color: var(--ink); }
 
-  /* STROKE ORDER */
+  /* ORDEM DOS TRAÇOS */
   .stroke-info { background: var(--paper-mid); border-radius: 8px; padding: 10px 16px; font-size: 14px; margin: 8px 0; }
 
-  /* STUDY PLAN */
+  /* PLANO DE ESTUDO */
   .plan-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
   .plan-card {
     background: var(--white); border-radius: var(--radius);
@@ -259,7 +261,7 @@
 
   .big-chinese { font-family: var(--font-chinese); font-size: 72px; color: var(--red); font-weight: 700; text-align: center; margin: 1rem 0; line-height: 1; }
 
-  /* ── SPEAK BUTTON ── */
+  /* ── BOTÃO DE OUVIR ── */
   .speak-btn {
     background: none; border: 1.5px solid var(--red); border-radius: 20px;
     color: var(--red); font-size: 12px; padding: 2px 9px; cursor: pointer;
@@ -269,7 +271,7 @@
   .speak-btn:hover { background: var(--red); color: white; }
   .speak-btn:active { transform: scale(0.94); }
 
-  /* ── DICTIONARY LOOKUP ── */
+  /* ── DICIONÁRIO ── */
   #dict-section { background: var(--white); border-radius: var(--radius); border: 1.5px solid var(--paper-dark); padding: 1.5rem; margin-bottom: 1.5rem; }
   #dict-input-row { display: flex; gap: 10px; margin-bottom: 1rem; flex-wrap: wrap; }
   #dict-input {
@@ -321,7 +323,7 @@
   }
   .preset-char:hover { background: var(--red); color: white; border-color: var(--red); }
 
-  /* ── FEATURE TABS ── */
+  /* ── SEPARADORES DAS FERRAMENTAS ── */
   #api-tabs { display: flex; gap: 4px; margin-bottom: 0; border-bottom: 2px solid var(--paper-dark); flex-wrap: wrap; }
   .api-tab-btn {
     padding: 12px 18px; border: none; background: none; cursor: pointer;
