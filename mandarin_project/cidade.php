@@ -118,6 +118,7 @@ foreach ($consulta->fetchAll() as $licao) {
   </section>
 
   <p class="voltar"><a href="index.php#rota">← Voltar à rota</a></p>
+  <?php require 'includes/rodape-site.php'; ?>
 </main>
 
 <?php require 'includes/scripts.php'; ?>

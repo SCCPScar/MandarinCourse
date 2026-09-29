@@ -143,6 +143,7 @@ $feitas_total = array_sum(array_column($cidades, 'feitas'));
     </ol>
   </section>
 
+  <?php require 'includes/rodape-site.php'; ?>
 </main>
 
 <?php require 'includes/scripts.php'; ?>

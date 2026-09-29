@@ -18,7 +18,7 @@ Uma foto só entra se cumprir **todas** estas condições:
 
 - **Unsplash** e **Pexels**: uso gratuito, também comercial, sem pedir autorização. **Creditamos sempre o fotógrafo**, por ser boa prática e por respeito. Não se podem revender as fotos tal como estão.
 - Não usar fotos do Google Imagens nem de redes sociais sem licença explícita.
-- Cada foto escolhida é registada em `docs/fotos-creditos.csv` (ID, URL, fotógrafo, licença, data).
+- Cada foto escolhida é registada em `mandarin_project/dados/fotos-creditos.csv` (ID, URL, fotógrafo, licença, data). A página `creditos.php` lê este ficheiro e mostra os créditos no site.
 
 ## Especificações técnicas
 
@@ -152,5 +152,5 @@ As pesquisas também funcionam no Pexels (`https://www.pexels.com/search/<termos
 
 1. Para cada ID, a família escolhe **2 candidatas** e cola os links numa lista.
 2. Na revisão escolhe-se 1 por ID, com base nas regras de seleção.
-3. As fotos são otimizadas (redimensionar e converter para AVIF/WebP) e registadas em `docs/fotos-creditos.csv`.
+3. As fotos são otimizadas (redimensionar e converter para AVIF/WebP) e registadas em `mandarin_project/dados/fotos-creditos.csv`.
 4. Todos os créditos aparecem numa página "Créditos" do site.

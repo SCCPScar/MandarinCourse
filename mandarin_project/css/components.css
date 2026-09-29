@@ -372,3 +372,7 @@
 
   /* Caracteres chineses em destaque nas respostas da IA (tutor, conversação) */
   .ai-han { font-family: var(--font-chinese); color: var(--red); font-weight: 700; }
+
+/* Links da privacidade e dos créditos, no fim do rodapé */
+footer .footer-links { margin-top: 10px; font-size: 13px; }
+footer .footer-links a { color: inherit; text-decoration: underline; }

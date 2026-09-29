@@ -74,3 +74,16 @@
 
 /* Zona de perigo da página "A minha conta" */
 .zona-perigo { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--paper-dark); }
+
+/* Página de créditos: a caixa é mais larga, porque tem uma tabela */
+.conta-caixa.creditos { max-width: 760px; }
+.creditos h2 { margin: 28px 0 8px; font-size: 20px; color: var(--ink); }
+.creditos ul { padding-left: 20px; color: var(--ink-light); line-height: 1.7; }
+.creditos-tabela { width: 100%; border-collapse: collapse; font-size: 15px; }
+.creditos-tabela th { text-align: left; padding: 8px; border-bottom: 2px solid var(--jade); color: var(--ink); }
+.creditos-tabela td { padding: 8px; border-bottom: 1px solid var(--paper-mid); color: var(--ink-light); }
+
+/* Links do rodapé das páginas da conta */
+.conta-rodape { max-width: 460px; margin: 24px auto 0; text-align: center; font-size: 14px; }
+.conta-rodape a { color: var(--ink-light); }
+.creditos a { color: var(--jade); font-weight: 600; }

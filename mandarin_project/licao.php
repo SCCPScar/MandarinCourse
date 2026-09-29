@@ -122,6 +122,7 @@ if (id_utilizador() !== null) {
     <?php endif; ?>
     <p><a href="cidade.php?id=<?= (int) $licao['cidade_id'] ?>">← Voltar a <?= e($licao['cidade']) ?></a></p>
   </div>
+  <?php require 'includes/rodape-site.php'; ?>
 </main>
 
 <?php require 'includes/scripts.php'; ?>
