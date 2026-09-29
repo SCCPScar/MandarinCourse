@@ -108,6 +108,19 @@ body { padding-top: var(--nav-height); }
   align-items: center;
   gap: 14px;
 }
+
+/* Links ao centro: o menu ocupa o espaço que sobra depois do logótipo,
+   os links ficam no meio e as ferramentas (Hoje, Escuro, Conta) ficam à direita. */
+@media (min-width: 768px) {
+  .site-nav__menu { flex: 1; }
+  .site-nav__links { margin-inline: auto; }
+  .site-nav__tools { margin-left: auto; }   /* empurra as ferramentas para a direita */
+}
+/* Em ecrãs largos centro os links na página inteira, e não só no espaço que sobra.
+   Uso position: absolute com left: 50%; o translateX(-50%) puxa-os metade da largura para trás. */
+@media (min-width: 1180px) {
+  .site-nav__links { position: absolute; left: 50%; transform: translateX(-50%); gap: 22px; }
+}
 .site-nav__tool {
   background: none;
   border: none;
