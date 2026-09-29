@@ -24,11 +24,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (mb_strlen($nome) < 2 || mb_strlen($nome) > 80) {
         $erros[] = 'O nome tem de ter entre 2 e 80 caracteres.';
     }
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    // A coluna email na base de dados tem 120 caracteres
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL) || mb_strlen($email) > 120) {
         $erros[] = 'O e-mail não é válido.';
     }
     if (strlen($palavra_passe) < 8) {
         $erros[] = 'A palavra-passe tem de ter pelo menos 8 caracteres.';
+    }
+    // O password_hash (bcrypt) só usa os primeiros 72 bytes, por isso eu não aceito mais do que isso
+    if (strlen($palavra_passe) > 72) {
+        $erros[] = 'A palavra-passe pode ter no máximo 72 caracteres.';
+    }
+    // Uma palavra-passe igual ao e-mail ou ao nome é fácil de adivinhar
+    if (strcasecmp($palavra_passe, $email) === 0 || strcasecmp($palavra_passe, $nome) === 0) {
+        $erros[] = 'A palavra-passe não pode ser igual ao nome nem ao e-mail.';
     }
     if ($palavra_passe !== $confirmacao) {
         $erros[] = 'As palavras-passe não são iguais.';
@@ -92,11 +101,11 @@ require 'includes/cabecalho.php';
     </div>
     <div class="campo">
       <label for="email">E-mail</label>
-      <input id="email" name="email" type="email" autocomplete="email" required value="<?= e($email) ?>">
+      <input id="email" name="email" type="email" maxlength="120" autocomplete="email" required value="<?= e($email) ?>">
     </div>
     <div class="campo">
       <label for="palavra_passe">Palavra-passe (mínimo 8 caracteres)</label>
-      <input id="palavra_passe" name="palavra_passe" type="password" autocomplete="new-password" required minlength="8">
+      <input id="palavra_passe" name="palavra_passe" type="password" autocomplete="new-password" required minlength="8" maxlength="72">
     </div>
     <div class="campo">
       <label for="confirmacao">Repete a palavra-passe</label>
@@ -109,7 +118,7 @@ require 'includes/cabecalho.php';
     </label>
     <label class="confirmar">
       <input type="checkbox" name="privacidade" required>
-      <span>Li e aceito a <a href="privacidade.php" target="_blank">Política de Privacidade</a>.</span>
+      <span>Li e aceito a <a href="privacidade.php" target="_blank" rel="noopener">Política de Privacidade</a>.</span>
     </label>
 
     <button class="botao" type="submit">Criar conta</button>

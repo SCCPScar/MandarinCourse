@@ -8,8 +8,20 @@ date_default_timezone_set('Europe/Lisbon');
 // Eu protejo o cookie da sessão:
 // - httponly: o JavaScript não o consegue ler (ajuda contra XSS);
 // - samesite Lax: o browser não o envia em pedidos vindos de outros sites.
-session_set_cookie_params(['httponly' => true, 'samesite' => 'Lax']);
+// - secure: se o site estiver em HTTPS, o cookie só viaja por ligações cifradas.
+// use_strict_mode faz o PHP recusar ids de sessão inventados por quem visita.
+ini_set('session.use_strict_mode', '1');
+session_set_cookie_params([
+    'httponly' => true,
+    'samesite' => 'Lax',
+    'secure'   => !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off',
+]);
 session_start();
+
+// Eu não mostro os erros do PHP ao visitante, porque podem revelar o SQL e as pastas do servidor.
+// Os erros continuam a ir para o registo de erros do Apache (xampp/apache/logs/error.log).
+ini_set('display_errors', '0');
+ini_set('log_errors', '1');
 
 // Eu devolvo o id do utilizador com sessão iniciada, ou null se não houver.
 function id_utilizador() {

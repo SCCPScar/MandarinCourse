@@ -160,6 +160,19 @@ CREATE TABLE caderno (
 ) ENGINE=InnoDB;
 
 
+-- ---------------------------------------------------------------------
+-- 9. TENTATIVAS DE LOGIN FALHADAS
+-- Serve para travar quem tenta adivinhar palavras-passe (ataque de força bruta).
+-- Cada tentativa falhada fica aqui só 15 minutos: o PHP apaga as antigas.
+-- ---------------------------------------------------------------------
+CREATE TABLE tentativas_login (
+  id       INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  email    VARCHAR(120) NOT NULL,
+  momento  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX (email, momento)
+) ENGINE=InnoDB;
+
+
 -- =====================================================================
 -- DADOS DE EXEMPLO
 -- Eu não crio utilizadores aqui: eles são criados na página de registo,

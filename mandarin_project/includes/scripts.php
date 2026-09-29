@@ -11,4 +11,5 @@
 <script src="js/tools.js"></script>
 <script src="js/ui.js"></script>
 <script src="js/init.js"></script>
+<script src="js/ouvir.js"></script>
 <script src="js/nav.js"></script>

@@ -17,11 +17,14 @@
 
     /* Nomes antigos, agora com as cores novas */
     --red: var(--seal-text); --red-light: #FBE3DE; --red-dark: #A32A18;
-    --gold: var(--gold-brand); --gold-light: #FDF3DC; --gold-dark: #9A6A08;
+    --gold: var(--gold-brand); --gold-light: #FDF3DC; --gold-dark: #7A5406;
     --ink: #18212B; --ink-mid: #2E3A46; --ink-light: #5B6873;
     --paper: #F4F7F6; --paper-mid: #EAF0EE; --paper-dark: #D5DEDB;
     --white: #FFFFFF; --green: var(--jade); --green-light: #D8EEE8;
-    --blue: #2F6FD0; --blue-light: #DCE8F8;
+    --blue: #2F6FD0; --blue-light: #DCE8F8; --blue-dark: #1F4E8C;
+    /* Fundo escuro que continua escuro nos dois modos (cabeçalhos de tabelas, rodapé).
+       Não uso var(--ink) como fundo, porque no modo escuro a tinta passa a ser clara. */
+    --fundo-escuro: #18212B;
 
     /* Fontes (carregadas em css/fontes.css) */
     --font-titulos: 'Bricolage Grotesque', 'Lexend', system-ui, sans-serif;

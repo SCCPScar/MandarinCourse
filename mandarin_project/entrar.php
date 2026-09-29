@@ -17,23 +17,43 @@ $email = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     validar_csrf();
 
-    $email = trim($_POST['email'] ?? '');
+    // Eu corto o e-mail a 120 caracteres, o tamanho da coluna na base de dados
+    $email = mb_substr(trim($_POST['email'] ?? ''), 0, 120);
     $palavra_passe = $_POST['palavra_passe'] ?? '';
 
-    $consulta = $pdo->prepare('SELECT id, palavra_passe FROM utilizadores WHERE email = ?');
+    // Proteção contra força bruta: primeiro apago as tentativas com mais de 15 minutos
+    // e depois conto quantas vezes falharam com este e-mail nesse tempo.
+    $pdo->exec('DELETE FROM tentativas_login WHERE momento < NOW() - INTERVAL 15 MINUTE');
+    $consulta = $pdo->prepare('SELECT COUNT(*) FROM tentativas_login WHERE email = ?');
     $consulta->execute([$email]);
-    $utilizador = $consulta->fetch();
+    $falhas = (int) $consulta->fetchColumn();
 
-    // password_verify compara a palavra-passe escrita com o hash guardado
-    if ($utilizador && password_verify($palavra_passe, $utilizador['palavra_passe'])) {
-        iniciar_sessao($utilizador['id']);
-        header('Location: conta.php');
-        exit;
+    if ($falhas >= 5) {
+        // Com 5 falhas seguidas eu bloqueio este e-mail durante 15 minutos
+        $erro = 'Demasiadas tentativas falhadas. Espera 15 minutos e tenta outra vez.';
+    } else {
+        $consulta = $pdo->prepare('SELECT id, palavra_passe FROM utilizadores WHERE email = ?');
+        $consulta->execute([$email]);
+        $utilizador = $consulta->fetch();
+
+        // password_verify compara a palavra-passe escrita com o hash guardado
+        if ($utilizador && password_verify($palavra_passe, $utilizador['palavra_passe'])) {
+            // Entrou bem: apago as falhas deste e-mail e inicio a sessão
+            $apagar = $pdo->prepare('DELETE FROM tentativas_login WHERE email = ?');
+            $apagar->execute([$email]);
+            iniciar_sessao($utilizador['id']);
+            header('Location: conta.php');
+            exit;
+        }
+
+        // Falhou: guardo a tentativa
+        $inserir = $pdo->prepare('INSERT INTO tentativas_login (email) VALUES (?)');
+        $inserir->execute([$email]);
+
+        // Eu uso a mesma mensagem nos dois casos (e-mail ou palavra-passe errados),
+        // para ninguém descobrir que e-mails têm conta no site
+        $erro = 'E-mail ou palavra-passe incorretos.';
     }
-
-    // Eu uso a mesma mensagem nos dois casos (e-mail ou palavra-passe errados),
-    // para ninguém descobrir que e-mails têm conta no site
-    $erro = 'E-mail ou palavra-passe incorretos.';
 }
 
 $titulo = 'Iniciar sessão';

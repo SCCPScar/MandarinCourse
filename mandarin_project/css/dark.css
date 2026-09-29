@@ -4,7 +4,11 @@
  */
 
   /* MODO ESCURO */
-  body.dark{--paper:#0F1519;--paper-mid:#172026;--paper-dark:#24323A;--white:#1B262D;--ink:#E6ECEA;--ink-mid:#B5C2C0;--ink-light:#8C9A98;--jade:#3DBE9C;--seal:#F0553D;--seal-text:#FF7A64;--gold-brand:#F2B83A;--plum:#E0679A;}
+  body.dark{--paper:#0F1519;--paper-mid:#172026;--paper-dark:#24323A;--white:#1B262D;--ink:#E6ECEA;--ink-mid:#B5C2C0;--ink-light:#8C9A98;--jade:#3DBE9C;--seal:#F0553D;--seal-text:#FF7A64;--gold-brand:#F2B83A;--plum:#E0679A;
+    /* As cores das caixas de aviso também têm versão escura (antes ficavam claras com texto claro) */
+    --gold-light:#2E2512;--gold-dark:#F2B83A;--blue:#6FA2F0;--blue-light:#16243A;--blue-dark:#9CC0F5;--green-light:#10302A;--red-light:#3A1C17;--red-dark:#FF7A64;--fundo-escuro:#24323A;
+    /* O --red do base.css copia o --seal-text logo no início, por isso tenho de o repetir aqui */
+    --red:#FF7A64;}
   /* FAIXA DOS DIAS SEGUIDOS */
   #streak-banner{background:linear-gradient(135deg,#9A6A08,#E8A317);color:#fff;text-align:center;padding:8px 16px;font-size:13px;font-weight:600;display:none;}
   #streak-banner.show{display:block;}
@@ -55,7 +59,7 @@
   .sb-slot-row{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:.9rem;min-height:42px;}
   .sb-slot{padding:7px 12px;border-radius:10px;border:2px dashed var(--paper-dark);background:var(--paper-mid);font-size:14px;color:var(--ink-light);cursor:pointer;transition:all .2s;font-family:var(--font-chinese);}
   .sb-slot.filled{border-style:solid;border-color:var(--red);background:#FBE3DE;color:#A32A18;font-weight:700;}
-  .sb-slot.fixed{border-style:solid;border-color:var(--ink);background:var(--ink);color:#fff;font-family:var(--font-chinese);font-size:15px;}
+  .sb-slot.fixed{border-style:solid;border-color:var(--fundo-escuro);background:var(--fundo-escuro);color:#fff;font-family:var(--font-chinese);font-size:15px;}
   .sb-pool{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:.9rem;}
   .sb-word{padding:6px 11px;border-radius:10px;border:1.5px solid var(--paper-dark);background:var(--white);font-size:16px;font-family:var(--font-chinese);color:var(--ink);cursor:pointer;transition:all .2s;font-weight:600;}
   .sb-word:hover{border-color:var(--red);background:#FBE3DE;color:#A32A18;}
@@ -122,7 +126,7 @@
   #pitch-indicator{position:absolute;left:0;top:50%;width:100%;height:2px;background:rgba(192,57,43,.18);pointer-events:none;}
 
   /* ONDA DO SOM */
-  #wave-canvas{display:block;width:100%;height:80px;background:var(--ink);border-radius:10px;margin:8px 0;}
+  #wave-canvas{display:block;width:100%;height:80px;background:var(--fundo-escuro);border-radius:10px;margin:8px 0;}
 
   /* BOTÃO DO MICROFONE */
   .mic-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 28px;border:none;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--font-main);transition:all .25s;box-shadow:0 4px 14px rgba(0,0,0,.12);}
@@ -283,8 +287,8 @@
   /* CONQUISTAS */
   #achievements-bar { background:var(--paper-mid);border-bottom:1px solid var(--paper-dark);padding:8px 2rem;display:flex;gap:8px;flex-wrap:wrap;align-items:center; }
   #achievements-bar .ach-label { font-size:12px;font-weight:700;color:var(--ink-light);margin-right:4px; }
-  .badge { display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700;background:var(--paper-dark);color:var(--ink-light);border:1.5px solid var(--paper-dark);transition:all .3s; }
-  .badge.earned { background:#FDF3DC;color:#9A6A08;border-color:#E8A317; }
+  .badge { display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700;background:var(--paper-dark);color:var(--ink-mid);border:1.5px solid var(--paper-dark);transition:all .3s; }
+  .badge.earned { background:#FDF3DC;color:#7A5406;border-color:#E8A317; }
   .badge.earned.new { animation:badgePop .5s ease; }
   @keyframes badgePop { 0%{transform:scale(1)} 50%{transform:scale(1.3)} 100%{transform:scale(1)} }
   body.dark .badge.earned { background:#2E2512;color:#F2B83A;border-color:#9A6A08; }
@@ -322,3 +326,29 @@
   @keyframes flicker { from{opacity:1} to{opacity:.7} }
 
 
+
+  /* LETRA ESCURA SOBRE FUNDOS CLAROS (modo escuro)
+     No modo escuro o vermelho e o jade ficam mais claros, para o texto se ler bem no fundo escuro.
+     Mas quando essas cores são o FUNDO de um botão, a letra branca deixa de se ler.
+     Aqui eu troco essa letra branca por uma quase preta. */
+  body.dark .botao-cha:not(.botao-cha--claro),
+  body.dark .section-num,
+  body.dark .speaker,
+  body.dark .speak-btn:hover,
+  body.dark #dict-btn,
+  body.dark #hanzi-animate-btn,
+  body.dark .preset-char:hover,
+  body.dark .botao--perigo,
+  body.dark .fc-btn.hard:hover,
+  body.dark .mic-btn.idle,
+  body.dark .tab-btn.active,
+  body.dark .api-tab-btn.active,
+  body.dark .chip:hover,
+  body.dark #back-top,
+  body.dark th[style*="--red-dark"] { color: #0F1519; }
+  /* Os botões com a cor escrita no próprio HTML (style="...") só mudam com !important */
+  body.dark [style*="background:var(--red)"] { color: #0F1519 !important; }
+  /* O botão secundário da Biblioteca tem fundo escuro, por isso a letra continua branca */
+  body.dark .lib-btn.secondary { color: #fff; }
+  /* O botão 🔊 das lições herdava letra preta */
+  body.dark .palavra__ouvir { color: var(--ink); }

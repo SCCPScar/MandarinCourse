@@ -70,11 +70,11 @@
     display: inline-block; font-size: 11px; padding: 2px 8px;
     border-radius: 20px; margin-bottom: 8px; font-weight: 600;
   }
-  .t1 { background: #EEF4FC; color: #2F6FD0; }
+  .t1 { background: #EEF4FC; color: #245BB0; }
   .t2 { background: #E8F4F0; color: #0E7C66; }
-  .t3 { background: #FDF3DC; color: #9A6A08; }
+  .t3 { background: #FDF3DC; color: #7A5406; }
   .t4 { background: #FBE3DE; color: #A32A18; }
-  .t5 { background: var(--paper-dark); color: var(--ink-light); }
+  .t5 { background: var(--paper-dark); color: var(--ink-mid); }
 
   /* TONS (VISUAL) */
   .tones-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
@@ -92,7 +92,7 @@
   /* TABELAS DE FRASES */
   .phrase-table { width: 100%; border-collapse: collapse; font-size: 15px; }
   .phrase-table th {
-    background: var(--ink); color: white;
+    background: var(--fundo-escuro); color: white;
     padding: 10px 14px; text-align: left; font-size: 13px; font-weight: 600;
   }
   .phrase-table tr:nth-child(even) { background: var(--paper-mid); }
@@ -111,7 +111,7 @@
   }
   .grammar-box h3 { font-size: 17px; font-weight: 700; margin-bottom: 12px; color: var(--ink); }
   .grammar-box .formula {
-    background: var(--ink); color: white;
+    background: var(--fundo-escuro); color: white;
     border-radius: 8px; padding: 12px 16px;
     font-family: monospace; font-size: 14px; margin-bottom: 12px;
     letter-spacing: 0.5px;
@@ -177,13 +177,13 @@
   .info {
     background: var(--blue-light); border-left: 4px solid var(--blue);
     border-radius: 0 10px 10px 0; padding: 14px 18px; margin: 14px 0;
-    font-size: 14px; color: var(--blue);
+    font-size: 14px; color: var(--blue-dark);
   }
 
   /* TABELA DO PINYIN */
   .pinyin-chart { overflow-x: auto; }
   .pinyin-chart table { border-collapse: collapse; font-size: 14px; min-width: 600px; }
-  .pinyin-chart th { background: var(--ink); color: white; padding: 8px 12px; }
+  .pinyin-chart th { background: var(--fundo-escuro); color: white; padding: 8px 12px; }
   .pinyin-chart td { padding: 8px 12px; border: 1px solid var(--paper-dark); text-align: center; }
   .pinyin-chart td:first-child { background: var(--paper-mid); font-weight: 600; }
   .pinyin-chart .filled { background: var(--paper-mid); }
@@ -213,7 +213,7 @@
 
   /* RODAPÉ */
   footer {
-    background: var(--ink); color: rgba(255,255,255,0.6);
+    background: var(--fundo-escuro); color: rgba(255,255,255,0.75);
     text-align: center; padding: 3rem 2rem; margin-top: 4rem;
     font-size: 14px;
   }
@@ -310,7 +310,7 @@
     font-size: 14px; font-weight: 600; cursor: pointer; font-family: var(--font-main);
   }
   #hanzi-animate-btn { background: var(--red); color: white; }
-  #hanzi-quiz-btn { background: var(--ink); color: white; }
+  #hanzi-quiz-btn { background: var(--fundo-escuro); color: white; }
   #hanzi-animate-btn:hover { background: var(--red-dark); }
   #hanzi-quiz-btn:hover { background: var(--ink-mid); }
   #hanzi-canvas-wrap { display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-start; margin-top: 8px; }
@@ -389,7 +389,18 @@ footer .footer-links a { color: inherit; text-decoration: underline; }
   border-radius: 8px; font-size: 13px; font-weight: 600; text-align: center;
 }
 .lib-btn:hover { filter: brightness(1.1); }
-.lib-btn.secondary { background: var(--ink); color: var(--paper); }
+.lib-btn.secondary { background: var(--fundo-escuro); color: #fff; }
 
 /* No modo escuro o jade é claro, por isso o texto do botão fica escuro para se ler bem */
 body.dark .lib-btn { color: #0F1519; }
+
+/* ═══ CHINÊS QUE SE PODE OUVIR (js/ouvir.js) ═══
+   Mostro que o elemento se pode carregar: a mão do rato, um fundo suave e um 🔊 no canto. */
+.pode-ouvir { cursor: pointer; position: relative; transition: background 0.15s; }
+.pode-ouvir:hover, .pode-ouvir:focus-visible { background: var(--green-light); }
+.pode-ouvir:focus-visible { outline: 2px solid var(--jade); outline-offset: 2px; }
+.card.pode-ouvir::after, .num-card.pode-ouvir::after, .bubble.pode-ouvir::after {
+  content: "🔊"; position: absolute; top: 6px; right: 8px; font-size: 12px; opacity: 0.45;
+}
+.pode-ouvir:hover::after { opacity: 1; }
+body.dark .pode-ouvir:hover, body.dark .pode-ouvir:focus-visible { background: var(--paper-dark); }

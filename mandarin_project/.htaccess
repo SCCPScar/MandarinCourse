@@ -1,0 +1,26 @@
+# .htaccess
+# Aqui eu dou instruções ao Apache (o servidor web do XAMPP) para esta pasta.
+
+# 1) Página de erro 404: quando alguém abre um endereço que não existe, vê a nossa página.
+#    O caminho começa em /cha/ porque o site fica em C:\xampp\htdocs\cha.
+#    Se a pasta tiver outro nome, eu troco "cha" pelo nome da pasta.
+ErrorDocument 404 /cha/404.php
+# As pastas proibidas (erro 403) também mostram a mesma página, para não se saber o que lá está
+ErrorDocument 403 /cha/404.php
+
+# 2) Não mostrar a lista de ficheiros de uma pasta (por exemplo /cha/img/) a quem a abrir.
+Options -Indexes
+
+# 3) Proteger ficheiros que só o PHP deve ler: os includes e os dados.
+#    Quem tentar abri-los no browser recebe "Proibido" (erro 403).
+RedirectMatch 403 ^/cha/(includes|dados)/
+
+# 4) Cabeçalhos de segurança enviados em todas as respostas.
+<IfModule mod_headers.c>
+    # O browser não tenta "adivinhar" o tipo de um ficheiro (evita executar um .txt como script)
+    Header set X-Content-Type-Options "nosniff"
+    # Nenhum outro site pode mostrar o Chá dentro de uma moldura (proteção contra clickjacking)
+    Header set X-Frame-Options "DENY"
+    # Quando o aluno segue um link para fora, o outro site não fica a saber a página exata de onde veio
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

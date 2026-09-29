@@ -83,7 +83,7 @@ body { padding-top: var(--nav-height); }
   letter-spacing: 0.02em;
   color: var(--ink);
   text-decoration: none;
-  opacity: 0.6;
+  opacity: 0.72;              /* 0.72 e não menos: abaixo disto o texto fica sem contraste suficiente */
   transition: opacity 0.2s;
 }
 .site-nav__link:hover,
