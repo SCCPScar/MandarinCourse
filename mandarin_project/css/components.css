@@ -340,3 +340,16 @@
 /* Links da privacidade e dos créditos, no fim do rodapé */
 footer .footer-links { margin-top: 10px; font-size: 13px; }
 footer .footer-links a { color: inherit; text-decoration: underline; }
+
+/* Hero da Introdução com a foto ao lado do texto.
+   No computador são duas colunas; no telemóvel a foto passa para baixo. */
+.hero--foto { display: grid; gap: 2rem; justify-items: center; }
+.hero__foto { margin: 0; position: relative; width: min(280px, 100%); }
+.hero__foto img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); }
+.hero__foto figcaption { margin-top: 6px; font-size: 12px; color: rgba(255,255,255,0.6); }
+@media (min-width: 900px) {
+  .hero--foto { grid-template-columns: 1fr 360px; align-items: center; text-align: left; max-width: 1100px; margin: 0 auto; }
+  .hero--foto .hero__foto { width: 360px; }
+  .hero--foto p { margin-left: 0; }
+  .hero--foto .hero-stats { justify-content: flex-start; }
+}

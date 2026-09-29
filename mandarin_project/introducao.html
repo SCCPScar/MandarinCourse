@@ -112,15 +112,25 @@
   <button id="speak-potd" onclick="speakText(document.getElementById('potd-zh').textContent)">🔊</button>
 </div>
 
-<section class="hero">
+<section class="hero hero--foto">
+  <div class="hero__texto">
   <h1>Introdução ao <span>mandarim</span></h1>
   <p>Antes de começares a rota, conhece a língua: como funciona, quanto tempo demora e que recursos gratuitos existem.</p>
   <div class="hero-stats">
     <div class="hero-stat"><div class="num">6</div><div class="label">Cidades</div></div>
     <div class="hero-stat"><div class="num">24</div><div class="label">Unidades</div></div>
-    <div class="hero-stat"><div class="num">2245</div><div class="label">Palavras</div></div>
-    <div class="hero-stat"><div class="num">HSK 3</div><div class="label">Nível no fim da rota</div></div>
+    <div class="hero-stat"><div class="num">72</div><div class="label">Lições</div></div>
+    <div class="hero-stat"><div class="num">523</div><div class="label">Palavras novas</div></div>
   </div>
+  </div>
+  <!-- Foto ao lado do texto (vertical, 4:5). No telemóvel fica por baixo, mais pequena. -->
+  <figure class="hero__foto">
+    <picture>
+      <source type="image/avif" srcset="img/fotos/g3-sobre-640.avif 640w, img/fotos/g3-sobre-960.avif 960w" sizes="(max-width: 899px) 280px, 360px">
+      <img src="img/fotos/g3-sobre-640.webp" srcset="img/fotos/g3-sobre-640.webp 640w, img/fotos/g3-sobre-960.webp 960w" sizes="(max-width: 899px) 280px, 360px" alt="Copo de chá com leite e pérolas de tapioca ao lado de um caderno e de um teclado" width="640" height="800">
+    </picture>
+    <figcaption>Foto: Kevin Canlas, Unsplash</figcaption>
+  </figure>
 </section>
 
 <div id="progress-overview">

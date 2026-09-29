@@ -41,7 +41,7 @@ As pesquisas também funcionam no Pexels (`https://www.pexels.com/search/<termos
 |---|---|---|---|
 | G1 | Hero da página inicial | Mãos a servir chá numa taça pequena, com vapor e luz quente | [chinese tea pouring](https://unsplash.com/s/photos/chinese-tea-pouring) |
 | G2 | Onboarding | Rua chinesa com placas legíveis em caracteres simplificados | [shanghai old street](https://unsplash.com/s/photos/shanghai-old-street) |
-| G3 | Página "Sobre" | Mesa com cadernos, chá e alguém a estudar | [studying tea notebook](https://unsplash.com/s/photos/studying-tea-notebook) |
+| G3 | Página Introdução (ao lado do título) | Mesa com cadernos, chá e alguém a estudar | [studying tea notebook](https://unsplash.com/s/photos/studying-tea-notebook) |
 
 ### Decisões
 
