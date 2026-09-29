@@ -1,7 +1,7 @@
 <?php
 // index.php
 // Aqui eu mostro a página inicial do Chá:
-// 1) o hero com a foto das taças de chá;
+// 1) o hero com o texto e a imagem da mesa de chá num cartão;
 // 2) o painel do aluno (ou o convite para criar conta);
 // 3) a rota das 6 cidades, com o progresso de cada uma.
 
@@ -57,17 +57,8 @@ $feitas_total = array_sum(array_column($cidades, 'feitas'));
 <main class="page" data-page="inicio">
 
   <!-- 1. HERO -->
-  <section class="hero-cha">
-    <!-- No telemóvel eu mostro uma foto vertical, no computador uma horizontal -->
-    <picture>
-      <source media="(max-width: 767.98px)" type="image/avif" srcset="img/fotos/hero-mobile-390.avif 390w, img/fotos/hero-mobile-780.avif 780w" sizes="100vw">
-      <source media="(max-width: 767.98px)" type="image/webp" srcset="img/fotos/hero-mobile-390.webp 390w, img/fotos/hero-mobile-780.webp 780w" sizes="100vw">
-      <source type="image/avif" srcset="img/fotos/hero-desktop-1280.avif 1280w, img/fotos/hero-desktop-1920.avif 1920w" sizes="100vw">
-      <img class="hero-cha__foto" src="img/fotos/hero-desktop-1280.webp"
-           srcset="img/fotos/hero-desktop-1280.webp 1280w, img/fotos/hero-desktop-1920.webp 1920w" sizes="100vw"
-           alt="Mãos a servir chá em pequenas taças" fetchpriority="high">
-    </picture>
-
+  <!-- O texto fica à esquerda e a imagem num cartão à direita. No telemóvel o cartão passa para baixo. -->
+  <section class="hero-cha hero-cha--cartao">
     <div class="hero-cha__texto">
       <h1>Aprende mandarim ao teu ritmo</h1>
       <p>Uma rota de 12 meses por 6 cidades da China, com lições curtas todos os dias. Gratuito, para sempre.</p>
@@ -79,8 +70,14 @@ $feitas_total = array_sum(array_column($cidades, 'feitas'));
       <?php endif; ?>
     </div>
 
-    <p class="credito credito--computador">Foto: Yang Louie, Unsplash</p>
-    <p class="credito credito--telemovel">Foto: Joshua Fernandez, Unsplash</p>
+    <figure class="hero-cha__cartao">
+      <picture>
+        <source type="image/avif" srcset="img/fotos/hero-cartao-480.avif 480w, img/fotos/hero-cartao-928.avif 928w" sizes="(max-width: 767.98px) 80vw, 420px">
+        <img src="img/fotos/hero-cartao-480.webp" srcset="img/fotos/hero-cartao-480.webp 480w, img/fotos/hero-cartao-928.webp 928w" sizes="(max-width: 767.98px) 80vw, 420px"
+             width="928" height="1152" alt="Mesa de chá com um livro aberto, taças de porcelana verde, um bule de barro e uma pintura de montanhas ao fundo" fetchpriority="high">
+      </picture>
+      <figcaption>Imagem gerada com IA (Google Gemini)</figcaption>
+    </figure>
   </section>
 
   <!-- 2. PAINEL DO ALUNO -->
