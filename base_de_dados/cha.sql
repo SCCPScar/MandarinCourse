@@ -197,9 +197,9 @@ INSERT INTO unidades (id, cidade_id, codigo, titulo, foto) VALUES
   (18, 5, '5.2', 'Contar o passado', 'hz2-wuzhen'),
   (19, 5, '5.3', 'Dar opinião', 'hz3-esplanada'),
   (20, 5, '5.4', 'Compras online e serviços', 'hz4-estafeta'),
-  (21, 6, '6.1', 'Casa e serviços', NULL),
-  (22, 6, '6.2', 'No trabalho', NULL),
-  (23, 6, '6.3', 'Entrevista de emprego', NULL),
+  (21, 6, '6.1', 'Casa e serviços', 'sh1-longtang'),
+  (22, 6, '6.2', 'No trabalho', 'sh2-escritorio'),
+  (23, 6, '6.3', 'Entrevista de emprego', 'sh3-curriculo'),
   (24, 6, '6.4', 'Ler a cidade', 'sh4-placas');
 
 -- As 72 lições da rota (3 por unidade)
