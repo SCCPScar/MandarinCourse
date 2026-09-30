@@ -1,7 +1,7 @@
 -- =====================================================================
 -- Chá · Base de dados
 -- Eu importo este ficheiro no phpMyAdmin (separador "Importar").
--- Ele cria a base "cha", as 8 tabelas e alguns dados de exemplo.
+-- Ele cria a base "cha", as 10 tabelas e alguns dados de exemplo.
 -- =====================================================================
 
 -- Eu aviso o MySQL de que este ficheiro está em UTF-8.
