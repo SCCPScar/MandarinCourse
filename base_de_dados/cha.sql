@@ -1,7 +1,7 @@
 -- =====================================================================
 -- Chá · Base de dados
 -- Eu importo este ficheiro no phpMyAdmin (separador "Importar").
--- Ele cria a base "cha", as 10 tabelas e alguns dados de exemplo.
+-- Ele cria a base "cha", as 11 tabelas e alguns dados de exemplo.
 -- =====================================================================
 
 -- Eu aviso o MySQL de que este ficheiro está em UTF-8.
@@ -44,13 +44,17 @@ CREATE TABLE utilizadores (
 -- As 6 paradas da rota de 12 meses.
 -- ---------------------------------------------------------------------
 CREATE TABLE cidades (
-  id       TINYINT UNSIGNED PRIMARY KEY,
-  ordem    TINYINT UNSIGNED NOT NULL,
-  nome     VARCHAR(40) NOT NULL,
-  nome_zh  VARCHAR(10) NOT NULL,
-  meses    VARCHAR(10) NOT NULL,
-  tema     VARCHAR(60) NOT NULL,
-  capa     VARCHAR(10) NULL     -- início do nome da foto de capa (ex.: "bj0"); NULL se ainda não houver
+  id        TINYINT UNSIGNED PRIMARY KEY,
+  ordem     TINYINT UNSIGNED NOT NULL,
+  nome      VARCHAR(40) NOT NULL,
+  nome_zh   VARCHAR(10) NOT NULL,
+  pinyin    VARCHAR(20) NOT NULL,   -- ex.: "Běijīng"
+  meses     VARCHAR(10) NOT NULL,
+  tema      VARCHAR(60) NOT NULL,
+  hsk       VARCHAR(40) NOT NULL,   -- a parte do HSK 3.0 que a cidade cobre (ex.: "HSK 1 · primeira metade")
+  descricao TEXT NOT NULL,          -- o que a cidade tem de especial e porque é que a rota passa por ela
+  consegues VARCHAR(255) NOT NULL,  -- o que o aluno já consegue fazer no fim da cidade
+  capa      VARCHAR(10) NULL        -- início do nome da foto de capa (ex.: "bj0"); NULL se ainda não houver
 ) ENGINE=InnoDB;
 
 
@@ -64,6 +68,22 @@ CREATE TABLE unidades (
   codigo     VARCHAR(5)  NOT NULL,   -- ex.: "1.2"
   titulo     VARCHAR(60) NOT NULL,
   foto       VARCHAR(30) NULL,   -- início do nome da foto (ex.: "bj2-cumprimentos"); NULL se ainda não houver
+  legenda    VARCHAR(400) NULL,  -- o que a foto mostra (texto para quem a vê e para o atributo alt)
+  FOREIGN KEY (cidade_id) REFERENCES cidades(id)
+) ENGINE=InnoDB;
+
+-- ---------------------------------------------------------------------
+-- 3B. CULTURA
+-- Curiosidades sobre cada cidade. Cada uma tem a palavra em chinês e o pinyin,
+-- para o aluno também a poder ouvir e aprender.
+-- ---------------------------------------------------------------------
+CREATE TABLE cultura (
+  id         SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  cidade_id  TINYINT UNSIGNED NOT NULL,
+  hanzi      VARCHAR(20)  NOT NULL,
+  pinyin     VARCHAR(40)  NOT NULL,
+  titulo     VARCHAR(60)  NOT NULL,
+  texto      VARCHAR(500) NOT NULL,
   FOREIGN KEY (cidade_id) REFERENCES cidades(id)
 ) ENGINE=InnoDB;
 
@@ -180,13 +200,27 @@ CREATE TABLE tentativas_login (
 -- =====================================================================
 
 -- As 6 cidades da rota
-INSERT INTO cidades (id, ordem, nome, nome_zh, meses, tema, capa) VALUES
-  (1, 1, 'Pequim',   '北京', '1–2',   'Os sons do mandarim', 'bj0'),
-  (2, 2, 'Xi''an',   '西安', '3–4',   'Comer e comprar',     'xa0'),
-  (3, 3, 'Chengdu',  '成都', '5–6',   'O dia a dia',         'cd0'),
-  (4, 4, 'Guilin',   '桂林', '7–8',   'Viajar',              'gl0'),
-  (5, 5, 'Hangzhou', '杭州', '9–10',  'Contar e opinar',     'hz0'),
-  (6, 6, 'Xangai',   '上海', '11–12', 'Trabalho e cidade',   'sh0');
+-- O nível HSK segue a norma HSK 3.0 (GF 0025-2021): no fim de Xi'an o aluno tem o nível 1,
+-- no fim de Guilin o nível 2 e no fim de Xangai o nível 3 (ver docs/rota-12-meses.md).
+INSERT INTO cidades (id, ordem, nome, nome_zh, pinyin, meses, tema, hsk, descricao, consegues, capa) VALUES
+  (1, 1, 'Pequim', '北京', 'Běijīng', '1–2', 'Os sons do mandarim', 'HSK 1 · primeira metade',
+   'Pequim é a capital da China há mais de 800 anos. A rota começa aqui porque o mandarim padrão, o 普通话 (pǔtōnghuà), tem por base a pronúncia de Pequim: é a cidade certa para aprender os sons e os tons. Entre os prédios modernos ainda há hutongs, ruelas estreitas com casas à volta de um pátio, onde os vizinhos se cumprimentam à porta. A capa mostra um deles, o Caochang Hutong, com uma bicicleta antiga encostada à parede.',
+   'apresentar-te, falar da tua família e da tua idade, e perguntar e dizer as horas e as datas.', 'bj0'),
+  (2, 2, 'Xi''an', '西安', 'Xī''ān', '3–4', 'Comer e comprar', 'HSK 1 · completo',
+   'Xi''an foi capital da China durante mais de mil anos e era o ponto de partida da Rota da Seda, o caminho de comércio que ligava a China à Europa. Ainda tem a muralha antiga inteira, onde se pode andar de bicicleta. Por causa da Rota da Seda vive aqui uma grande comunidade muçulmana, os hui, e o bairro deles é famoso pela comida de rua: é o lugar perfeito para aprender a pedir comida e a perguntar preços. A capa mostra a Torre do Sino, no centro da cidade, iluminada à noite.',
+   'pedir comida, perguntar preços e regatear, e pedir e perceber direções simples.', 'xa0'),
+  (3, 3, 'Chengdu', '成都', 'Chéngdū', '5–6', 'O dia a dia', 'HSK 2 · primeira metade',
+   'Chengdu, a capital da província de Sichuan, tem fama de ser a cidade mais descontraída da China. As pessoas passam a tarde nas casas de chá, a jogar mahjong e a conversar sem pressa. Por isso é aqui que aprendes a falar do dia a dia: a rotina, os gostos e os convites. É também a terra dos pandas e da comida 麻辣 (málà), picante e que deixa a boca dormente. A placa da capa, 茶馆相声, anuncia uma casa de chá com espetáculo de comédia.',
+   'descrever a tua rotina, falar dos teus gostos, convidar alguém e marcar planos por mensagem.', 'cd0'),
+  (4, 4, 'Guilin', '桂林', 'Guìlín', '7–8', 'Viajar', 'HSK 2 · completo',
+   'Guilin, no sul da China, é famosa pelas montanhas de calcário que se erguem ao longo do rio Li. A paisagem é tão conhecida que está desenhada na nota de 20 yuan. Daqui segue-se de barco ou de comboio de alta velocidade até Yangshuo. Por isso é em Guilin que aprendes a viajar: comprar bilhetes, fazer o check-in no hotel, descrever lugares e pedir ajuda. A capa mostra o rio Li, com um barco entre as montanhas.',
+   'comprar um bilhete de comboio, fazer o check-in num hotel, descrever um lugar e pedir ajuda numa emergência.', 'gl0'),
+  (5, 5, 'Hangzhou', '杭州', 'Hángzhōu', '9–10', 'Contar e opinar', 'HSK 3 · primeira metade',
+   'Um ditado chinês diz 上有天堂，下有苏杭: «em cima há o paraíso, cá em baixo há Suzhou e Hangzhou». Hangzhou tem o Lago do Oeste, cheio de pavilhões e pontes, e à volta crescem as plantações do chá Longjing, um dos mais famosos da China. Ao mesmo tempo é uma cidade moderna, onde nasceram grandes empresas de comércio online. É o sítio certo para aprender a comparar, a contar o que fizeste e a dar a tua opinião. A capa mostra um pavilhão sobre o Lago do Oeste.',
+   'contar uma viagem que fizeste, comparar produtos e dar e justificar a tua opinião.', 'hz0'),
+  (6, 6, 'Xangai', '上海', 'Shànghǎi', '11–12', 'Trabalho e cidade', 'HSK 3 · completo',
+   'Xangai é a maior cidade da China e o seu centro financeiro. Numa margem do rio Huangpu fica o Bund, com edifícios de estilo europeu do início do século XX; na outra, os arranha-céus de Pudong, que vês na capa. Entre os prédios altos ainda há lòngtáng, ruelas com casas antigas. É a última paragem da rota: aqui aprendes a alugar casa, a trabalhar e a fazer uma entrevista de emprego.',
+   'manter uma conversa de 5 minutos ou mais, ler textos curtos do dia a dia e fazer uma entrevista de emprego simples.', 'sh0');
 
 -- As 24 unidades (4 por cidade)
 INSERT INTO unidades (id, cidade_id, codigo, titulo, foto) VALUES
@@ -214,6 +248,61 @@ INSERT INTO unidades (id, cidade_id, codigo, titulo, foto) VALUES
   (22, 6, '6.2', 'No trabalho', 'sh2-escritorio'),
   (23, 6, '6.3', 'Entrevista de emprego', 'sh3-curriculo'),
   (24, 6, '6.4', 'Ler a cidade', 'sh4-placas');
+
+-- O que cada foto mostra. Quando a foto não é da cidade da unidade, eu digo-o.
+UPDATE unidades SET legenda = CASE id
+  WHEN 1  THEN 'Ilustração feita para o Chá: um caderno com 你好中文 (nǐ hǎo zhōngwén) e o pinyin pintado com a cor de cada tom.'
+  WHEN 2  THEN 'Entrada de um mercado em Pequim com a placa 天桥欢迎您 (Tiānqiáo huānyíng nín): «Tianqiao dá-te as boas-vindas». O 欢迎 e o 您 são palavras desta unidade.'
+  WHEN 3  THEN 'Jantar de família com um 火锅 (huǒguō) de caldo claro no meio da mesa, como no jantar de reunião do Ano Novo Chinês.'
+  WHEN 4  THEN 'A Torre do Tambor (鼓楼, gǔlóu) de Pequim. Durante séculos, os tambores desta torre marcavam as horas da cidade.'
+  WHEN 5  THEN 'Banca de comida de rua no bairro muçulmano de Xi''an, à noite, com espetadas de lula e as placas 灌汤臭豆腐 e 火爆鱿鱼.'
+  WHEN 6  THEN 'Balcão de uma banca de massas com tigelas azuis e brancas e uma ementa com preços: 28元/份 (28 yuan a dose).'
+  WHEN 7  THEN 'O caminho no alto da muralha de Xi''an, com lanternas vermelhas e pessoas de bicicleta. A muralha tem cerca de 14 km à volta do centro.'
+  WHEN 8  THEN 'Balcão com os códigos QR do 支付宝 (Zhīfùbǎo, Alipay) e do 微信支付 (Wēixìn zhīfù, WeChat Pay). A foto é de Pequim; os códigos foram desfocados.'
+  WHEN 9  THEN 'Placa do metro com 14号线 (shísì hào xiàn, linha 14) e 乘车 (chéngchē, apanhar o metro): o caminho de todos os dias para o trabalho.'
+  WHEN 10 THEN 'Uma partida de mahjong (麻将, májiàng), o passatempo mais famoso de Chengdu. Uma das peças mostra 北 (běi, norte).'
+  WHEN 11 THEN 'Hot pot com um tacho 鸳鸯锅 (yuānyāng guō): metade caldo de tomate, metade picante 麻辣. Foto de Chongqing, vizinha de Chengdu.'
+  WHEN 12 THEN 'Dia de chuva no pátio de um templo de Chengdu. Serve para dizer 下雨了 (xià yǔ le): começou a chover.'
+  WHEN 13 THEN 'Comboio de alta velocidade 和谐号 (Héxié Hào) a chegar a uma estação com neve. A estação é de Zibo, no norte da China.'
+  WHEN 14 THEN 'A entrada do 和平饭店 (Hépíng Fàndiàn, Peace Hotel) em Xangai. Mostra que 饭店 também quer dizer «hotel».'
+  WHEN 15 THEN 'O centro de Yangshuo, perto de Guilin, com os montes de calcário ao fundo, um pavilhão antigo e lojas modernas lado a lado.'
+  WHEN 16 THEN 'Farmácia de Hong Kong com o caractere 藥 em néon. É a forma tradicional de 药 (yào, medicamento), que se usa em Hong Kong e Taiwan.'
+  WHEN 17 THEN 'Plantação de chá Longjing (龙井, lóngjǐng) em Hangzhou, com um bule gigante ao centro e as montanhas na névoa.'
+  WHEN 18 THEN 'O canal de 乌镇 (Wūzhèn), uma vila de água perto de Hangzhou, com casas antigas e um barco de madeira.'
+  WHEN 19 THEN 'Esplanada de comida de rua em Xiamen, no sul da China, com a placa 沙茶面 (shāchá miàn): o lugar ideal para perguntar «o que achas?».'
+  WHEN 20 THEN 'Um estafeta da aplicação de compras 朴朴 numa rua de Fuzhou, com placas de rua em chinês e pinyin.'
+  WHEN 21 THEN 'Pátio de um 弄堂 (lòngtáng) de Xangai, com roupa a secar e a placa de uma costureira: 修改服装 (arranjos de roupa).'
+  WHEN 22 THEN 'Ilustração feita para o Chá: um e-mail do 王经理 (Wáng jīnglǐ, diretor Wang) a marcar uma reunião: 明天上午十点开会.'
+  WHEN 23 THEN 'Ilustração feita para o Chá: um currículo (简历, jiǎnlì) com 专业：计算机 (curso: informática) e as línguas que a Maria fala.'
+  WHEN 24 THEN 'Placas do metro de Xangai: 13号线 a 50 metros e, por baixo, as linhas 2 e 12.'
+END;
+
+-- Curiosidades de cultura de cada cidade (aparecem na página da cidade e na página da rota)
+INSERT INTO cultura (cidade_id, hanzi, pinyin, titulo, texto) VALUES
+  (1, '普通话', 'pǔtōnghuà', 'A língua comum', 'É o mandarim padrão que vais aprender. Na China falam-se muitos dialetos, mas o 普通话 é o que se ensina nas escolas e se ouve na televisão. A pronúncia vem de Pequim.'),
+  (1, '胡同', 'hútòng', 'Os hutongs', 'Ruelas antigas de Pequim com casas à volta de um pátio, as 四合院 (sìhéyuàn). Muitas foram demolidas, mas as que restam são das zonas mais vivas da cidade.'),
+  (1, '您', 'nín', 'O «tu» de respeito', 'Em Pequim usa-se muito 您 para falar com pessoas mais velhas ou que não conhecemos. É como dizer «o senhor» ou «a senhora».'),
+  (1, '鼓楼', 'gǔlóu', 'A Torre do Tambor', 'Durante séculos, os tambores desta torre marcavam as horas em Pequim. Hoje ainda se pode subir e ouvir uma demonstração.'),
+  (2, '丝绸之路', 'sīchóu zhī lù', 'A Rota da Seda', 'Começava em Xi''an e chegava ao Mediterrâneo. Por ela passaram seda, especiarias, papel e ideias durante mais de mil anos.'),
+  (2, '兵马俑', 'bīngmǎyǒng', 'Os Guerreiros de Terracota', 'Mais de 8000 soldados de barro, feitos há mais de 2200 anos para guardar o túmulo do primeiro imperador da China. Cada rosto é diferente.'),
+  (2, '肉夹馍', 'ròujiāmó', 'O «hambúrguer» de Xi''an', 'Pão achatado recheado com carne guisada. É uma das comidas de rua mais famosas do bairro muçulmano.'),
+  (2, '扫码', 'sǎo mǎ', 'Pagar com o telemóvel', 'Na China quase tudo se paga a ler um código QR com o WeChat Pay ou o Alipay, até numa banca de rua. Por isso 扫码 é uma palavra que vais ouvir todos os dias.'),
+  (3, '茶馆', 'cháguǎn', 'As casas de chá', 'Em Chengdu passa-se a tarde na casa de chá a conversar, a jogar às cartas ou a ouvir histórias. Foi daqui que veio a ideia do nome deste site: aprender mandarim com calma, como quem bebe um chá.'),
+  (3, '熊猫', 'xióngmāo', 'Os pandas', 'Chengdu tem um grande centro de investigação e reprodução de pandas gigantes. O panda é um dos símbolos da China.'),
+  (3, '麻辣', 'málà', 'Picante que adormece', 'A pimenta de Sichuan deixa a boca a formigar (麻) e a malagueta faz arder (辣). Juntos dão o sabor 麻辣 do hot pot de Chengdu.'),
+  (3, '麻将', 'májiàng', 'Mahjong', 'Um jogo de peças para quatro pessoas. Em Chengdu ouve-se o barulho das peças em parques, casas de chá e à porta das casas.'),
+  (4, '漓江', 'Lí Jiāng', 'O rio Li', 'Entre Guilin e Yangshuo, o rio passa por dezenas de montes de calcário. Esta paisagem aparece nas costas da nota de 20 yuan.'),
+  (4, '阳朔', 'Yángshuò', 'Yangshuo', 'Uma vila perto de Guilin, rodeada de montes e arrozais. A 西街 (Xī Jiē, Rua Oeste) junta casas antigas, lojas e muitos viajantes.'),
+  (4, '高铁', 'gāotiě', 'Comboios de alta velocidade', 'A China tem a maior rede de comboios de alta velocidade do mundo. Os comboios passam dos 300 km/h e ligam quase todas as grandes cidades.'),
+  (4, '桂林米粉', 'Guìlín mǐfěn', 'A massa de arroz de Guilin', 'Massa de arroz com caldo, amendoins e legumes em conserva. É o pequeno-almoço típico da cidade.'),
+  (5, '西湖', 'Xī Hú', 'O Lago do Oeste', 'Rodeado de jardins, pagodes e pontes, inspirou poetas e pintores durante séculos. É Património Mundial da UNESCO.'),
+  (5, '龙井茶', 'lóngjǐng chá', 'O chá Longjing', 'Um chá verde das colinas à volta do Lago do Oeste, colhido e seco à mão. É um dos chás mais famosos da China.'),
+  (5, '水乡', 'shuǐxiāng', 'As vilas de água', 'Perto de Hangzhou há vilas como 乌镇 (Wūzhèn), com canais em vez de ruas e barcos em vez de carros.'),
+  (5, '网购', 'wǎnggòu', 'Compras online', 'Hangzhou é a cidade de algumas das maiores empresas de comércio online da China. Comprar pelo telemóvel e receber em casa no mesmo dia é normal.'),
+  (6, '外滩', 'Wàitān', 'O Bund', 'A avenida à beira do rio Huangpu, com edifícios de bancos e hotéis de estilo europeu do início do século XX.'),
+  (6, '浦东', 'Pǔdōng', 'Pudong', 'Do outro lado do rio, onde há 40 anos havia campos, estão hoje alguns dos edifícios mais altos do mundo, como a Torre de Xangai.'),
+  (6, '弄堂', 'lòngtáng', 'Os lòngtáng', 'Ruelas com casas de pedra 石库门 (shíkùmén), onde os vizinhos secam a roupa à janela e conversam à porta.'),
+  (6, '上海话', 'Shànghǎihuà', 'O dialeto de Xangai', 'Muitos habitantes falam entre si o dialeto de Xangai, muito diferente do mandarim. No trabalho e com quem vem de fora, fala-se 普通话.');
 
 -- As 72 lições da rota (3 por unidade)
 INSERT INTO licoes (id, unidade_id, ordem, titulo, minutos, explicacao) VALUES

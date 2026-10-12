@@ -103,5 +103,5 @@ require 'includes/topo.php';
     <?php endforeach; ?>
   </section>
 
-  <p class="voltar"><a href="index.php#rota">← Voltar à rota</a></p>
+  <p class="voltar"><a href="rota.php"><i class="i i-anterior" aria-hidden="true"></i> Voltar à rota</a></p>
 <?php require 'includes/fim.php'; ?>

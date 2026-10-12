@@ -50,6 +50,19 @@ function setPotd(){const t=new Date().toDateString();const idx=Math.abs(t.split(
 
 // ═══ VOZ ═══
 let voices=[];window.speechSynthesis.onvoiceschanged=()=>{voices=speechSynthesis.getVoices();};
+// As duas velocidades da voz: normal e devagar (os botões «Ouvir» e «Devagar»)
+const VELOCIDADE_NORMAL = 0.9, VELOCIDADE_DEVAGAR = 0.55;
+
+// Os mesmos dois botões que a função botoes_ouvir() do PHP, para o HTML feito em JavaScript.
+// esc() protege o texto (js/utils.js).
+function botoesOuvir(hanzi, rotulo) {
+  const f = esc(hanzi), r = esc(rotulo || hanzi);
+  return `<span class="ouvir-par">`
+    + `<button type="button" class="ouvir-btn" data-falar="${f}" onclick="speakText(this.dataset.falar, VELOCIDADE_NORMAL)" aria-label="Ouvir ${r}"><i class="i i-ouvir" aria-hidden="true"></i> Ouvir</button>`
+    + `<button type="button" class="ouvir-btn ouvir-btn--devagar" data-falar="${f}" onclick="speakText(this.dataset.falar, VELOCIDADE_DEVAGAR)" aria-label="Ouvir devagar ${r}"><i class="i i-devagar" aria-hidden="true"></i> Devagar</button>`
+    + `</span>`;
+}
+
 function speakText(text,rate){
   if(!text)return;speechSynthesis.cancel();
   const utt=new SpeechSynthesisUtterance(text);

@@ -38,7 +38,7 @@ $pasta = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
 
   <div class="erro__botoes">
     <a class="botao-cha" href="index.php">Voltar ao início</a>
-    <a class="botao-cha erro__botao-claro" href="index.php#rota">Ver a rota</a>
+    <a class="botao-cha erro__botao-claro" href="rota.php">Ver a rota</a>
   </div>
 </main>
 </body>

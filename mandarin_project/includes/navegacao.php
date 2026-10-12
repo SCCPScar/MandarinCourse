@@ -50,6 +50,7 @@
   <nav class="site-nav__menu" id="site-menu" aria-label="Principal">
     <ul class="site-nav__links">
         <li><a class="site-nav__link" href="index.php">Início</a></li>
+        <li><a class="site-nav__link" href="rota.php">A rota</a></li>
         <li><a class="site-nav__link" href="introducao.php">Introdução</a></li>
         <li><a class="site-nav__link" href="sons.php">Sons</a></li>
         <li><a class="site-nav__link" href="basico.php">Básico</a></li>

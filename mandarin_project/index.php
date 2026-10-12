@@ -1,58 +1,64 @@
 <?php
 // index.php
-// Aqui eu mostro a página inicial do Chá:
-// 1) o hero com o texto e a imagem da mesa de chá num cartão;
-// 2) o painel do aluno (ou o convite para criar conta);
-// 3) a rota das 6 cidades, com o progresso de cada uma.
+// Aqui eu mostro a página inicial do Chá. Ela explica o site a quem chega:
+// 1) o topo, com a imagem da mesa de chá e o botão para começar (ou continuar);
+// 2) o painel do aluno, se tiver sessão iniciada;
+// 3) porque é que o site se chama Chá;
+// 4) porque é que o site existe e em que princípios assenta;
+// 5) se o mandarim é difícil;
+// 6) porque escolher o Chá.
+// A rota das cidades tem a sua própria página: rota.php.
 
 require 'includes/sessao.php';
 require 'includes/ligacao.php';
 
-// Se houver sessão, eu vou buscar o nome e os dias seguidos do aluno
+// Se houver sessão, eu vou buscar o nome do aluno, os dias seguidos e as lições feitas
 $aluno = null;
+$proxima = null;
 if (id_utilizador() !== null) {
-    $consulta = $pdo->prepare('SELECT nome, sequencia_dias FROM utilizadores WHERE id = ?');
+    $consulta = $pdo->prepare('
+        SELECT u.nome, u.sequencia_dias,
+               (SELECT COUNT(*) FROM progresso p WHERE p.utilizador_id = u.id) AS feitas
+        FROM utilizadores u
+        WHERE u.id = ?
+    ');
     $consulta->execute([id_utilizador()]);
     $aluno = $consulta->fetch();
+
+    // A próxima lição: a primeira, pela ordem da rota, que o aluno ainda não fez
+    $consulta = $pdo->prepare('
+        SELECT l.id, l.titulo
+        FROM licoes l
+        JOIN unidades u ON u.id = l.unidade_id
+        WHERE l.id NOT IN (SELECT licao_id FROM progresso WHERE utilizador_id = ?)
+        ORDER BY u.cidade_id, u.codigo, l.ordem
+        LIMIT 1
+    ');
+    $consulta->execute([id_utilizador()]);
+    $proxima = $consulta->fetch();
 }
 
-// Para cada cidade eu conto quantas lições existem e quantas o aluno já fez.
-// LEFT JOIN: a cidade aparece mesmo que ainda não tenha lições.
-// Sem sessão, o id é null e a contagem das feitas fica a 0.
-$consulta = $pdo->prepare('
-    SELECT c.id, c.nome, c.nome_zh, c.meses, c.tema, c.capa,
-           COUNT(l.id) AS total,
-           COUNT(p.licao_id) AS feitas
-    FROM cidades c
-    LEFT JOIN unidades u ON u.cidade_id = c.id
-    LEFT JOIN licoes l ON l.unidade_id = u.id
-    LEFT JOIN progresso p ON p.licao_id = l.id AND p.utilizador_id = ?
-    GROUP BY c.id
-    ORDER BY c.ordem
-');
-$consulta->execute([id_utilizador()]);
-$cidades = $consulta->fetchAll();
-
-// Total de lições feitas em toda a rota (para o painel)
-$feitas_total = array_sum(array_column($cidades, 'feitas'));
-
-$titulo = 'Aprende mandarim';
+$titulo = 'Aprende mandarim na hora do chá';
 $pagina = 'inicio';
 $css_extra = ['inicio'];
 require 'includes/topo.php';
 ?>
 
-  <!-- 1. HERO -->
+  <!-- 1. TOPO -->
   <!-- O texto fica à esquerda e a imagem num cartão à direita. No telemóvel o cartão passa para baixo. -->
   <section class="hero-cha hero-cha--cartao">
     <div class="hero-cha__texto">
-      <h1>Aprende mandarim ao teu ritmo</h1>
-      <p>Uma rota de 12 meses por 6 cidades da China, com lições curtas todos os dias. Gratuito, para sempre.</p>
-      <?php if ($aluno): ?>
-        <a class="botao-cha" href="#rota">Continuar a rota</a>
+      <p class="hero-cha__antes">Curso de mandarim gratuito, em português de Portugal</p>
+      <h1>Aprende chinês na hora do chá</h1>
+      <p>Cada lição demora cerca de 15 minutos: o tempo de beber uma chávena de chá. Lição a lição, segues uma rota de 12 meses por 6 cidades da China, do primeiro 你好 (nǐ hǎo) até ao nível 3 do HSK.</p>
+      <?php if ($aluno && $proxima): ?>
+        <a class="botao-cha" href="licao.php?id=<?= (int) $proxima['id'] ?>">Continuar: <?= e($proxima['titulo']) ?></a>
+        <a class="botao-cha botao-cha--claro" href="rota.php">Ver a rota</a>
+      <?php elseif ($aluno): ?>
+        <a class="botao-cha" href="rota.php">Ver a rota</a>
       <?php else: ?>
-        <a class="botao-cha" href="registo.php">Criar conta grátis</a>
-        <a class="botao-cha botao-cha--claro" href="#rota">Ver a rota</a>
+        <a class="botao-cha" href="cidade.php?id=1">Começar em Pequim</a>
+        <a class="botao-cha botao-cha--claro" href="rota.php">Ver a rota</a>
       <?php endif; ?>
     </div>
 
@@ -66,69 +72,114 @@ require 'includes/topo.php';
     </figure>
   </section>
 
-  <!-- 2. PAINEL DO ALUNO -->
-  <section class="painel">
-    <?php if ($aluno): ?>
+  <!-- 2. PAINEL DO ALUNO (só com sessão iniciada) -->
+  <?php if ($aluno): ?>
+    <section class="painel">
       <p class="painel__ola">Olá, <?= e($aluno['nome']) ?>!</p>
       <ul class="painel__numeros">
-        <li><strong><?= (int) $aluno['sequencia_dias'] ?></strong> dias seguidos</li>
-        <li><strong><?= (int) $feitas_total ?></strong> lições feitas</li>
+        <li><i class="i i-dias" aria-hidden="true"></i> <strong><?= (int) $aluno['sequencia_dias'] ?></strong> dias seguidos</li>
+        <li><i class="i i-certo" aria-hidden="true"></i> <strong><?= (int) $aluno['feitas'] ?></strong> lições feitas</li>
       </ul>
       <a href="conta.php">A minha conta</a>
-    <?php else: ?>
-      <p class="painel__ola">Guarda o teu progresso</p>
-      <p>Com uma conta, as lições que fazes ficam guardadas e podes continuar noutro dispositivo.</p>
-      <a href="entrar.php">Já tenho conta</a>
-    <?php endif; ?>
+    </section>
+  <?php endif; ?>
+
+  <!-- 3. PORQUÊ «CHÁ» -->
+  <section class="sobre sobre--nome">
+    <div class="sobre__dentro sobre__dentro--duas">
+      <div class="sobre__carimbo">
+        <span class="sobre__zh zh-ex" lang="zh-CN">茶</span>
+        <span class="sobre__py">chá</span>
+        <?= botoes_ouvir('茶', 'chá') ?>
+      </div>
+      <div>
+        <h2>Porquê «Chá»?</h2>
+        <p>Porque a ideia do site é aprender um pouco todos os dias, no tempo de um chá. Não precisas de horas seguidas: precisas de voltar amanhã.</p>
+        <p>E porque o chá liga as duas línguas. A palavra portuguesa «chá» veio do chinês 茶 (chá), trazida de Macau pelos portugueses no século XVI. Por isso dizemos «chá», como em Pequim, enquanto os ingleses dizem «tea», de «te», a forma usada na província de Fujian, no sul da China.</p>
+        <p>Na rota vais passar por Chengdu, a cidade das casas de chá (茶馆, cháguǎn), onde as pessoas passam a tarde a conversar sem pressa. É esse o ritmo que queremos para ti.</p>
+      </div>
+    </div>
   </section>
 
-  <!-- 3. A ROTA DAS 6 CIDADES -->
-  <section class="rota" id="rota">
-    <h2>A tua rota</h2>
-    <p class="rota__intro">Cada cidade dura cerca de 2 meses e tem 4 unidades. No fim, recebes o carimbo da cidade.</p>
+  <!-- 4. PORQUE É QUE O SITE EXISTE -->
+  <section class="sobre">
+    <div class="sobre__dentro">
+      <h2>Porque é que o Chá existe</h2>
+      <p class="sobre__intro">Quase todos os cursos de mandarim estão em inglês ou em português do Brasil, e muitos são pagos ou estão cheios de anúncios. Quem vive em Portugal e quer começar acaba a saltar entre aplicações, vídeos e listas soltas, sem saber o que estudar a seguir. O Chá junta tudo num caminho só, gratuito e na nossa língua.</p>
 
-    <ol class="rota__lista">
-      <?php foreach ($cidades as $cidade): ?>
-        <li class="cidade">
-          <!-- O cartão inteiro é um link para a página da cidade -->
-          <a class="cidade__link" href="cidade.php?id=<?= (int) $cidade['id'] ?>">
-          <?php if ($cidade['capa']): ?>
-            <picture>
-              <source type="image/avif" srcset="img/fotos/<?= e($cidade['capa']) ?>-capa-desktop-960.avif">
-              <img class="cidade__foto" src="img/fotos/<?= e($cidade['capa']) ?>-capa-desktop-960.webp" alt="" loading="lazy">
-            </picture>
-          <?php else: ?>
-            <!-- Sem foto: eu mostro o nome em chinês em grande -->
-            <div class="cidade__foto cidade__foto--vazia" aria-hidden="true"><?= e($cidade['nome_zh']) ?></div>
-          <?php endif; ?>
-
-          <?php if ($aluno && $cidade['total'] > 0 && $cidade['feitas'] == $cidade['total']): ?>
-            <!-- O aluno fez todas as lições: eu mostro o carimbo da cidade (完成 = concluído) -->
-            <span class="carimbo" lang="zh-CN" title="Cidade concluída"><?= e($cidade['nome_zh']) ?><br>完成</span>
-          <?php endif; ?>
-
-          <div class="cidade__texto">
-            <p class="cidade__meses">Meses <?= e($cidade['meses']) ?></p>
-            <h3><?= e($cidade['nome']) ?> <span lang="zh-CN"><?= e($cidade['nome_zh']) ?></span></h3>
-            <p><?= e($cidade['tema']) ?></p>
-
-            <?php if ($aluno && $cidade['total'] > 0): ?>
-              <?php $percentagem = round($cidade['feitas'] / $cidade['total'] * 100); ?>
-              <div class="progresso" role="progressbar" aria-valuenow="<?= $percentagem ?>" aria-valuemin="0" aria-valuemax="100"
-                   aria-label="Progresso em <?= e($cidade['nome']) ?>">
-                <div class="progresso__barra" style="width: <?= $percentagem ?>%"></div>
-              </div>
-              <p class="cidade__feitas"><?= (int) $cidade['feitas'] ?> de <?= (int) $cidade['total'] ?> lições</p>
-            <?php elseif ($cidade['total'] > 0): ?>
-              <p class="cidade__feitas"><?= (int) $cidade['total'] ?> lições disponíveis</p>
-            <?php else: ?>
-              <p class="cidade__feitas">Lições em preparação</p>
-            <?php endif; ?>
-          </div>
-          </a>
+      <ul class="principios">
+        <li class="principio">
+          <i class="i i-relogio" aria-hidden="true"></i>
+          <h3>Pouco, mas todos os dias</h3>
+          <p>Lições de 15 minutos e revisões curtas. A memória trabalha melhor com repetição espaçada do que com maratonas.</p>
         </li>
-      <?php endforeach; ?>
-    </ol>
+        <li class="principio">
+          <i class="i i-ouvir" aria-hidden="true"></i>
+          <h3>Ouvir antes de escrever</h3>
+          <p>Todo o chinês do site se pode ouvir, à velocidade normal ou devagar. Primeiro os sons e os tons, depois os caracteres.</p>
+        </li>
+        <li class="principio">
+          <i class="i i-mapa" aria-hidden="true"></i>
+          <h3>Situações reais</h3>
+          <p>Cada cidade da rota ensina o que farias lá: pedir comida em Xi'an, apanhar o comboio em Guilin, ir a uma entrevista em Xangai.</p>
+        </li>
+        <li class="principio">
+          <i class="i i-conta" aria-hidden="true"></i>
+          <h3>Gratuito e sem anúncios</h3>
+          <p>Não pagas nada e não há publicidade. Só pedimos o nome e o e-mail se quiseres guardar o progresso, e podes apagar a conta quando quiseres.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5. É DIFÍCIL? -->
+  <section class="sobre sobre--escuro">
+    <div class="sobre__dentro">
+      <h2>O mandarim é difícil?</h2>
+      <p class="sobre__intro">Sejamos honestos: é uma das línguas que mais tempo leva a aprender para quem fala português. O Instituto do Serviço Exterior dos EUA (FSI), que forma diplomatas, põe o mandarim no grupo mais difícil, com cerca de 2200 horas de aulas para chegar a um nível profissional. Mas nem tudo é difícil.</p>
+      <div class="dificil">
+        <div class="dificil__coluna dificil__coluna--facil">
+          <h3>O que é mais fácil do que parece</h3>
+          <ul>
+            <li>Os verbos não se conjugam: 我去 (wǒ qù), 你去 (nǐ qù), 他去 (tā qù): eu vou, tu vais, ele vai.</li>
+            <li>Não há masculino nem feminino, nem plural nas palavras.</li>
+            <li>O pinyin usa o nosso alfabeto, por isso lês desde o primeiro dia.</li>
+            <li>Muitas palavras juntam outras que já sabes: 电 (diàn, eletricidade) + 脑 (nǎo, cérebro) = 电脑 (diànnǎo), computador.</li>
+          </ul>
+        </div>
+        <div class="dificil__coluna dificil__coluna--dificil">
+          <h3>O que pede mais treino</h3>
+          <ul>
+            <li>Os 4 tons: 妈 mā (mãe) e 马 mǎ (cavalo) só se distinguem pelo tom.</li>
+            <li>Os caracteres: é preciso conhecer cerca de 900 para ler textos simples.</li>
+            <li>Ouvir pessoas reais, que falam depressa e juntam as palavras.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="sobre__nota">Por isso a rota começa pelos sons, repete as palavras em revisões e chega aos caracteres aos poucos. Para fazeres a rota em 12 meses, conta com cerca de 1 hora por dia: a lição, as revisões e a prática.</p>
+    </div>
+  </section>
+
+  <!-- 6. PORQUÊ ESCOLHER O CHÁ -->
+  <section class="sobre">
+    <div class="sobre__dentro">
+      <h2>Porquê escolher o Chá</h2>
+      <ul class="vantagens">
+        <li><strong>Em português de Portugal.</strong> As explicações, os exemplos e as traduções são escritos para quem fala como tu.</li>
+        <li><strong>Um caminho com objetivo.</strong> A rota segue a norma oficial HSK 3.0: sabes sempre em que nível estás e o que falta.</li>
+        <li><strong>Som em todo o lado.</strong> Cada palavra e cada frase em chinês tem um botão para ouvir, também devagar.</li>
+        <li><strong>Tudo num só sítio.</strong> Lições, sons, gramática, vocabulário, caracteres, exercícios e uma biblioteca de recursos gratuitos.</li>
+        <li><strong>Funciona sem conta.</strong> Podes estudar à vontade; a conta serve só para guardar o progresso.</li>
+        <li><strong>Feito com cuidado com os teus dados.</strong> Guardamos o mínimo e cumprimos o RGPD.</li>
+      </ul>
+
+      <div class="convite">
+        <p class="convite__zh" lang="zh-CN">我们开始吧！</p>
+        <p class="convite__py">wǒmen kāishǐ ba! · Vamos começar!</p>
+        <a class="botao-cha" href="<?= $proxima ? 'licao.php?id=' . (int) $proxima['id'] : 'cidade.php?id=1' ?>"><?= $aluno ? 'Continuar a rota' : 'Começar em Pequim' ?></a>
+        <a class="botao-cha botao-cha--claro" href="introducao.php">Ler a introdução</a>
+      </div>
+    </div>
   </section>
 
 <?php require 'includes/fim.php'; ?>

@@ -417,3 +417,19 @@ body.dark .pode-ouvir:hover, body.dark .pode-ouvir:focus-visible { background: v
 .card:nth-child(4n+2), .palavra:nth-child(4n+2) { --cor-cartao: var(--seal); }
 .card:nth-child(4n+3), .palavra:nth-child(4n+3) { --cor-cartao: var(--gold); }
 .card:nth-child(4n+4), .palavra:nth-child(4n+4) { --cor-cartao: var(--blue); }
+
+/* ═══ BOTÕES OUVIR / DEVAGAR ═══
+   Feitos pela função botoes_ouvir() (PHP) ou botoesOuvir() (JavaScript). */
+.ouvir-par { display: inline-flex; gap: 6px; flex-wrap: wrap; }
+.ouvir-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 20px;
+  border: 1.5px solid var(--jade); background: var(--white); color: var(--jade);
+  font-family: var(--font-main); font-size: 0.8125rem; font-weight: 600; cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.ouvir-btn:hover, .ouvir-btn:focus-visible { background: var(--jade); color: #fff; }
+.ouvir-btn--devagar { border-color: var(--gold-dark); color: var(--gold-dark); }
+.ouvir-btn--devagar:hover, .ouvir-btn--devagar:focus-visible { background: var(--gold-dark); color: #fff; }
+body.dark .ouvir-btn:hover, body.dark .ouvir-btn:focus-visible { color: #0F1519; }
+  .rodape .rodape__lema .zh-ex { color: #F2B83A; }   /* dourado nos dois modos (o .zh-ex normal é vermelho) */
