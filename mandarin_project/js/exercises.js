@@ -13,9 +13,9 @@ function nextCG(){
   if(cgMode==='choice'){
     const wrong=allVocab.filter(w=>w.py!==cgCur.py).sort(()=>Math.random()-.5).slice(0,3);
     const opts=[...wrong,cgCur].sort(()=>Math.random()-.5);
-    a.innerHTML=`<div style="font-size:12px;color:var(--ink-light);text-align:center">⏱ ${cgTime}s</div><div class="cg-timer-bar"><div class="cg-tfill" id="cg-fill" style="width:100%"></div></div><div class="cg-big-zh">${cgCur.zh}</div><p style="text-align:center;font-size:12px;color:var(--ink-light);margin-bottom:6px">Escolhe o pinyin certo:</p><div class="cg-opts">${opts.map(o=>`<div class="cg-opt" onclick="cgAns('${o.py}')">${o.py}<br><span style="font-size:11px;color:var(--ink-light)">${o.en}</span></div>`).join('')}</div>`;
+    a.innerHTML=`<div style="font-size:0.75rem;color:var(--ink-light);text-align:center">⏱ ${cgTime}s</div><div class="cg-timer-bar"><div class="cg-tfill" id="cg-fill" style="width:100%"></div></div><div class="cg-big-zh">${cgCur.zh}</div><p style="text-align:center;font-size:0.75rem;color:var(--ink-light);margin-bottom:6px">Escolhe o pinyin certo:</p><div class="cg-opts">${opts.map(o=>`<div class="cg-opt" onclick="cgAns('${o.py}')">${o.py}<br><span style="font-size:0.6875rem;color:var(--ink-light)">${o.en}</span></div>`).join('')}</div>`;
   }else{
-    a.innerHTML=`<div style="font-size:12px;color:var(--ink-light);text-align:center">⏱ ${cgTime}s</div><div class="cg-timer-bar"><div class="cg-tfill" id="cg-fill" style="width:100%"></div></div><div class="cg-big-zh">${cgCur.zh}</div><p style="text-align:center;font-size:12px;color:var(--ink-light)">Escreve o pinyin (sem acentos dos tons):</p><input class="cg-input-field" id="cg-inp" type="text" placeholder="ex.: wo" onkeydown="if(event.key==='Enter')cgCheckTyped()"><button onclick="cgCheckTyped()" style="display:block;margin:7px auto;background:var(--blue);color:#fff;border:none;padding:7px 18px;border-radius:10px;font-size:13px;cursor:pointer;font-family:var(--font-main)">Verificar</button>`;
+    a.innerHTML=`<div style="font-size:0.75rem;color:var(--ink-light);text-align:center">⏱ ${cgTime}s</div><div class="cg-timer-bar"><div class="cg-tfill" id="cg-fill" style="width:100%"></div></div><div class="cg-big-zh">${cgCur.zh}</div><p style="text-align:center;font-size:0.75rem;color:var(--ink-light)">Escreve o pinyin (sem acentos dos tons):</p><input class="cg-input-field" id="cg-inp" type="text" placeholder="ex.: wo" onkeydown="if(event.key==='Enter')cgCheckTyped()"><button onclick="cgCheckTyped()" style="display:block;margin:7px auto;background:var(--blue);color:#fff;border:none;padding:7px 18px;border-radius:10px;font-size:0.8125rem;cursor:pointer;font-family:var(--font-main)">Verificar</button>`;
     setTimeout(()=>document.getElementById('cg-inp')?.focus(),80);
   }
   speakText(cgCur.zh,0.7);
@@ -35,7 +35,7 @@ function pararCG(){
   if(cgTimer)clearInterval(cgTimer);
   if('speechSynthesis' in window)speechSynthesis.cancel();
   document.getElementById('cg-parar').style.display='none';
-  document.getElementById('cg-area').innerHTML=`<div style="text-align:center;padding:2rem;color:var(--ink-light);font-size:14px">Jogo parado. Fizeste ${cgScore} ponto${cgScore!==1?'s':''}. Escolhe um modo para jogar outra vez! 🎮</div>`;
+  document.getElementById('cg-area').innerHTML=`<div style="text-align:center;padding:2rem;color:var(--ink-light);font-size:0.875rem">Jogo parado. Fizeste ${cgScore} ponto${cgScore!==1?'s':''}. Escolhe um modo para jogar outra vez! 🎮</div>`;
 }
 
 // Ao sair da página, o jogo também para

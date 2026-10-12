@@ -139,18 +139,18 @@ function openDailyModal() {
     { icon:'🔥', title:`Dias seguidos: ${streak}`, desc: streak>0 ? `Continua assim! Já estudas há ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}.` : 'Começa hoje e soma o teu primeiro dia!', action: null },
     { icon:'📚', title:'Revisão espaçada', desc: dueWords.length > 0 ? `Tens ${dueWords.length} palavra${dueWords.length!==1?'s':''} para rever hoje:` : 'Hoje não tens palavras para rever. Aprende primeiro algumas palavras novas.', words: dueWords },
     { icon:'✨', title:'Palavras novas', desc: newWords.length > 0 ? `Aprende ${newWords.length} palavra${newWords.length!==1?'s':''} nova${newWords.length!==1?'s':''} hoje:` : 'Excelente! Já aprendeste todas as palavras disponíveis.', words: newWords },
-    { icon:'🎤', title:'Praticar a pronúncia', desc: 'Vai a Praticar, abre o separador Pronúncia e grava 2 ou 3 frases.', action: 'praticar.html#features' },
-    { icon:'📓', title:'Caderno', desc: 'Procura uma palavra no Dicionário, guarda-a no Caderno e escreve-a três vezes à mão.', action: 'praticar.html#features' },
+    { icon:'🎤', title:'Praticar a pronúncia', desc: 'Vai a Praticar, abre o separador Pronúncia e grava 2 ou 3 frases.', action: 'praticar.php#features' },
+    { icon:'📓', title:'Caderno', desc: 'Procura uma palavra no Dicionário, guarda-a no Caderno e escreve-a três vezes à mão.', action: 'praticar.php#features' },
   ];
 
   const html = steps.map((s,i) => `
     <div style="display:flex;gap:12px;padding:12px;border-radius:12px;background:var(--paper-mid);margin-bottom:8px;">
-      <div style="font-size:28px;flex-shrink:0">${s.icon}</div>
+      <div style="font-size:1.75rem;flex-shrink:0">${s.icon}</div>
       <div>
         <div style="font-weight:700;margin-bottom:2px">${s.title}</div>
-        <div style="font-size:13px;color:var(--ink-light)">${s.desc}</div>
-        ${s.words && s.words.length ? s.words.map(w=>`<span style="display:inline-block;margin:4px 4px 0 0;padding:3px 8px;background:var(--paper-dark);border-radius:8px;font-size:13px"><span style="font-family:var(--font-chinese);color:var(--red)">${w.zh}</span> <span style="color:var(--ink-light)">${w.py}</span> <span>${w.en}</span></span>`).join('') : ''}
-        ${s.action ? `<a href="${s.action}" onclick="closeDailyModal()" style="display:inline-block;margin-top:6px;color:var(--jade);font-size:13px;font-weight:600">Ir agora</a>` : ''}
+        <div style="font-size:0.8125rem;color:var(--ink-light)">${s.desc}</div>
+        ${s.words && s.words.length ? s.words.map(w=>`<span style="display:inline-block;margin:4px 4px 0 0;padding:3px 8px;background:var(--paper-dark);border-radius:8px;font-size:0.8125rem"><span style="font-family:var(--font-chinese);color:var(--red)">${w.zh}</span> <span style="color:var(--ink-light)">${w.py}</span> <span>${w.en}</span></span>`).join('') : ''}
+        ${s.action ? `<a href="${s.action}" onclick="closeDailyModal()" style="display:inline-block;margin-top:6px;color:var(--jade);font-size:0.8125rem;font-weight:600">Ir agora</a>` : ''}
       </div>
     </div>
   `).join('');
@@ -239,7 +239,7 @@ function generateShareCard() {
     <div class="sc-zh">茶</div>
     <div class="sc-stat">${count} palavras</div>
     <p>Aprendi ${count} palavras em mandarim e estudei ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}! 🇨🇳</p>
-    <p style="font-size:12px;opacity:.7">Chá · Curso gratuito de mandarim</p>
+    <p style="font-size:0.75rem;opacity:.7">Chá · Curso gratuito de mandarim</p>
   `;
   const text = `Aprendi ${count} palavras em mandarim! 🇨🇳🔥 ${streak} dias de estudo seguidos. #Mandarim #Chá`;
   if (navigator.share) {

@@ -10,7 +10,7 @@ ChaPage.onInit(() => {
     const shareDiv = document.createElement('div');
     shareDiv.style.cssText = 'margin-top:16px;text-align:center';
     shareDiv.innerHTML = `
-      <button onclick="generateShareCard()" style="background:var(--red);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:14px;cursor:pointer;font-family:var(--font-main)">📤 Partilhar progresso</button>
+      <button onclick="generateShareCard()" style="background:var(--red);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:0.875rem;cursor:pointer;font-family:var(--font-main)">📤 Partilhar progresso</button>
       <div id="share-card"></div>
     `;
     nb.appendChild(shareDiv);
@@ -38,7 +38,7 @@ ChaPage.onInit(() => {
   if (flashTab && !flashTab.querySelector('.fc-shortcuts')) {
     const hint = document.createElement('div');
     hint.className = 'fc-shortcuts';
-    hint.style.cssText = 'font-size:12px;color:var(--ink-light);text-align:center;margin-top:8px;';
+    hint.style.cssText = 'font-size:0.75rem;color:var(--ink-light);text-align:center;margin-top:8px;';
     hint.innerHTML = 'Atalhos: <span class="kbd">Espaço</span> virar o cartão · <span class="kbd">1</span> Difícil · <span class="kbd">2</span> Razoável · <span class="kbd">3</span> Fácil';
     flashTab.appendChild(hint);
   }
@@ -437,7 +437,7 @@ function analyzeToneResult() {
   const fb = document.getElementById('tone-feedback');
   fb.innerHTML = `
     <div class="feedback-badge ${cls}">${feedbackText}</div>
-    <div style="margin-top:6px;font-size:12px;color:var(--ink-light)">Altura da voz: ${Math.round(Math.min(...validPitches))} a ${Math.round(Math.max(...validPitches))} Hz &nbsp;|&nbsp; Pontuação: ${score}/100</div>
+    <div style="margin-top:6px;font-size:0.75rem;color:var(--ink-light)">Altura da voz: ${Math.round(Math.min(...validPitches))} a ${Math.round(Math.max(...validPitches))} Hz &nbsp;|&nbsp; Pontuação: ${score}/100</div>
   `;
 
   // Save score
@@ -500,9 +500,9 @@ function loadRepeatWords() {
     <div class="repeat-word" id="rw-${i}">
       <div class="rw-zh">${w.zh}</div>
       <div class="rw-py">${w.py}</div>
-      <div style="font-size:12px;color:var(--ink-light);flex:1">${w.en}</div>
+      <div style="font-size:0.75rem;color:var(--ink-light);flex:1">${w.en}</div>
       <button class="speak-btn" onclick="speakText('${w.zh}',0.7)">🔊</button>
-      <button onclick="startRepeatWord(${i})" style="background:var(--red);color:#fff;border:none;padding:5px 12px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font-main)">Praticar</button>
+      <button onclick="startRepeatWord(${i})" style="background:var(--red);color:#fff;border:none;padding:5px 12px;border-radius:8px;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Praticar</button>
       <div class="rw-result" id="rwr-${i}"></div>
     </div>`).join('');
   document.getElementById('repeat-active-wrap').style.display = 'none';
@@ -593,7 +593,7 @@ let recogRecording = false, recogRecognizer = null, recogPromptText = '';
 
 function setRecogPrompt(el) {
   recogPromptText = el.textContent;
-  document.getElementById('recog-target-display').innerHTML = `<span style="font-family:var(--font-chinese);font-size:22px;color:var(--ink)">Diz: </span><span style="font-family:var(--font-chinese);font-size:22px;color:var(--red);font-weight:700">${el.textContent}</span>`;
+  document.getElementById('recog-target-display').innerHTML = `<span style="font-family:var(--font-chinese);font-size:1.375rem;color:var(--ink)">Diz: </span><span style="font-family:var(--font-chinese);font-size:1.375rem;color:var(--red);font-weight:700">${el.textContent}</span>`;
 }
 
 async function toggleRecogRecording() {
@@ -615,7 +615,7 @@ async function toggleRecogRecording() {
   recogRecognizer.maxAlternatives = 5;
   recogRecording = true;
   btn.className = 'mic-btn recording'; btn.textContent = '⏹ Parar';
-  document.getElementById('recog-result').innerHTML = '<p style="color:var(--ink-light);font-size:13px">🎤 A ouvir… Fala devagar e com clareza, em mandarim.</p>';
+  document.getElementById('recog-result').innerHTML = '<p style="color:var(--ink-light);font-size:0.8125rem">🎤 A ouvir… Fala devagar e com clareza, em mandarim.</p>';
   document.getElementById('recog-feedback').innerHTML = '';
 
   recogRecognizer.onresult = e => {
@@ -623,7 +623,7 @@ async function toggleRecogRecording() {
     const finals = Array.from(e.results).filter(r => r.isFinal).map(r => r[0].transcript).join('');
     const display = finals || interim;
     document.getElementById('recog-result').innerHTML = `
-      <div style="margin-bottom:6px;font-size:12px;color:var(--ink-light)">${e.results[0]?.isFinal ? '✓ Transcrição final' : '⏳ Transcrição provisória'}:</div>
+      <div style="margin-bottom:6px;font-size:0.75rem;color:var(--ink-light)">${e.results[0]?.isFinal ? '✓ Transcrição final' : '⏳ Transcrição provisória'}:</div>
       <div class="recog-zh">${esc(display)}</div>
     `;
     if (e.results[e.results.length - 1]?.isFinal) {
@@ -654,7 +654,7 @@ function mostrarRecogFeedback(target, heard) {
     : `Querias dizer <span class="recog-zh">${esc(target)}</span>, mas ouvi <span class="recog-zh">${esc(heard)}</span>. Ouve a frase outra vez com o 🔊 e repete devagar, com atenção aos tons.`;
   fb.innerHTML = `
     <div style="background:${match ? 'var(--green-light)' : 'var(--blue-light)'};border-radius:10px;padding:12px 16px;border-left:4px solid ${match ? 'var(--green)' : 'var(--blue)'}">
-      <div style="font-size:13px;color:var(--ink-mid)">${texto}</div>
+      <div style="font-size:0.8125rem;color:var(--ink-mid)">${texto}</div>
     </div>`;
   savePronunAttempt({ type: 'recog', target, heard, correct: match });
 }
@@ -685,12 +685,12 @@ function updatePronunScores() {
   if (el('ps-pct')) el('ps-pct').textContent = pct + '%';
   const hist = el('ps-history');
   if (!hist) return;
-  if (!s.history.length) { hist.innerHTML = '<p style="color:var(--ink-light);font-size:13px">Ainda não há tentativas.</p>'; return; }
+  if (!s.history.length) { hist.innerHTML = '<p style="color:var(--ink-light);font-size:0.8125rem">Ainda não há tentativas.</p>'; return; }
   hist.innerHTML = s.history.slice(0, 15).map(h => {
     const d = new Date(h.ts);
     const time = d.toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' });
     const label = h.type === 'tone' ? `Tom ${h.tone}` : h.type === 'repeat' ? `"${h.word}"` : `"${h.target}"`;
-    return `<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--paper-dark);font-size:12px">
+    return `<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--paper-dark);font-size:0.75rem">
       <span style="color:${h.correct ? 'var(--green)' : 'var(--red)'};font-weight:700">${h.correct ? '✓' : '✗'}</span>
       <span style="flex:1;color:var(--ink-mid)">${label}</span>
       <span style="color:var(--ink-light)">${time}</span>

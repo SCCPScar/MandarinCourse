@@ -41,7 +41,7 @@
   line-height: 1.05;
   margin-bottom: 16px;
 }
-.hero-cha p { font-size: 17px; line-height: 1.55; opacity: 0.9; margin-bottom: 24px; }
+.hero-cha p { font-size: 1.0625rem; line-height: 1.55; opacity: 0.9; margin-bottom: 24px; }
 
 /* Crédito do fotógrafo, pequeno, no canto */
 .credito {
@@ -49,7 +49,7 @@
   z-index: 1;
   left: 12px;
   bottom: 8px;
-  font-size: 11px;
+  font-size: 0.6875rem;
   color: rgba(255, 255, 255, 0.8);
 }
 .credito--telemovel { display: none; }
@@ -70,10 +70,10 @@
   box-shadow: var(--shadow);
   width: calc(100% - 2 * var(--page-gutter));
 }
-.painel__ola { font-family: var(--font-titulos); font-size: 20px; font-weight: 800; color: var(--ink); }
+.painel__ola { font-family: var(--font-titulos); font-size: 1.25rem; font-weight: 800; color: var(--ink); }
 .painel p { color: var(--ink-light); flex: 1 1 320px; }
 .painel__numeros { display: flex; gap: 20px; list-style: none; color: var(--ink-light); }
-.painel__numeros strong { color: var(--ink); font-size: 20px; margin-right: 4px; }
+.painel__numeros strong { color: var(--ink); font-size: 1.25rem; margin-right: 4px; }
 .painel a { margin-left: auto; color: var(--jade); font-weight: 600; }
 
 /* ═══ 3. ROTA DAS CIDADES ═══ */
@@ -82,7 +82,7 @@
   margin: 0 auto;
   padding: 56px var(--page-gutter) 72px;
 }
-.rota h2 { font-size: 32px; color: var(--ink); }
+.rota h2 { font-size: 2rem; color: var(--ink); }
 .rota__intro { color: var(--ink-light); margin: 4px 0 24px; }
 
 /* 3 colunas no computador, 2 no tablet, 1 no telemóvel */
@@ -115,15 +115,15 @@
   background: var(--paper-mid);
   color: var(--paper-dark);
   font-family: var(--font-chinese);
-  font-size: 64px;
+  font-size: 4rem;
   font-weight: 700;
 }
 .cidade__texto { padding: 16px 18px 20px; }
-.cidade__meses { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--jade); }
-.cidade h3 { font-family: var(--font-titulos); font-size: 22px; font-weight: 800; color: var(--ink); margin: 2px 0; }
+.cidade__meses { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--jade); }
+.cidade h3 { font-family: var(--font-titulos); font-size: 1.375rem; font-weight: 800; color: var(--ink); margin: 2px 0; }
 .cidade h3 span { font-family: var(--font-chinese); font-weight: 500; color: var(--ink-light); margin-left: 4px; }
-.cidade p { color: var(--ink-light); font-size: 15px; }
-.cidade__feitas { margin-top: 6px; font-size: 13px !important; }
+.cidade p { color: var(--ink-light); font-size: 0.9375rem; }
+.cidade__feitas { margin-top: 6px; font-size: 0.8125rem !important; }
 
 /* Barra de progresso de cada cidade */
 .progresso { height: 6px; margin-top: 12px; border-radius: 3px; background: var(--paper-dark); overflow: hidden; }
@@ -164,7 +164,7 @@
   background: var(--seal, #E0442E);
   color: #FFFFFF;
   font-family: var(--font-chinese);
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 700;
   line-height: 1.2;
   text-align: center;
@@ -200,7 +200,7 @@
   border-radius: 20px;
   box-shadow: 0 24px 50px rgba(24, 33, 43, 0.22);
 }
-.hero-cha__cartao figcaption { margin-top: 8px; font-size: 11px; color: var(--ink-light); text-align: right; }
+.hero-cha__cartao figcaption { margin-top: 8px; font-size: 0.6875rem; color: var(--ink-light); text-align: right; }
 
 @media (max-width: 900px) {
   .hero-cha--cartao { grid-template-columns: 1fr; justify-items: center; gap: 28px; padding-top: 32px; }

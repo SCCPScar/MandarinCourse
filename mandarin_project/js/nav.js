@@ -158,7 +158,7 @@ const ChaNav = (() => {
   });
 
   // ═══ 6. NAVEGAR POR CÓDIGO ═══
-  // Ex.: ChaNav.go('sons.html#tones'). Na mesma página, só rola até a seção.
+  // Ex.: ChaNav.go('sons.php#tones'). Na mesma página, só rola até a seção.
   function go(url) {
     const target = new URL(url, window.location.href);
     const samePage = normalizePath(target.pathname) === normalizePath(window.location.pathname);

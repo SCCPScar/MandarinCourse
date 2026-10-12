@@ -30,7 +30,7 @@
   margin: 0 auto;
   padding: 32px var(--page-gutter);
 }
-.capa__meses { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; }
+.capa__meses { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; }
 .capa h1 { font-size: clamp(36px, 5vw, 56px); line-height: 1.1; }
 .capa h1 span { font-family: var(--font-chinese); font-weight: 500; opacity: 0.85; }
 
@@ -58,8 +58,8 @@
 .unidade { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
 .unidade__foto { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
 .unidade__texto { padding: 16px 20px 20px; }
-.unidade__codigo { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--jade); }
-.unidade h2 { font-size: 22px; color: var(--ink); margin: 2px 0 12px; }
+.unidade__codigo { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--jade); }
+.unidade h2 { font-size: 1.375rem; color: var(--ink); margin: 2px 0 12px; }
 .unidade__vazia { color: var(--ink-light); }
 
 /* Lista das lições: cada uma é uma linha clicável */
@@ -77,7 +77,7 @@
   text-decoration: none;
 }
 .licoes a:hover { border-color: var(--jade); }
-.licoes__estado { font-size: 13px; color: var(--ink-light); white-space: nowrap; }
+.licoes__estado { font-size: 0.8125rem; color: var(--ink-light); white-space: nowrap; }
 .licoes a.feita { background: var(--green-light); border-color: transparent; }
 .licoes a.feita .licoes__estado { color: var(--jade); font-weight: 600; }
 
@@ -85,11 +85,11 @@
 .voltar a, .licao a { color: var(--jade); font-weight: 600; }
 
 /* ═══ PÁGINA DA LIÇÃO ═══ */
-.licao { max-width: 760px; margin: 0 auto; padding: 32px var(--page-gutter) 64px; }
-.licao__caminho { font-size: 14px; color: var(--ink-light); }
+.licao { max-width: 920px; margin: 0 auto; padding: 32px var(--page-gutter) 64px; }
+.licao__caminho { font-size: 0.875rem; color: var(--ink-light); }
 .licao h1 { font-size: clamp(30px, 4vw, 42px); color: var(--ink); margin: 6px 0 2px; }
 .licao__tempo { color: var(--ink-light); margin-bottom: 28px; }
-.licao h2 { font-size: 22px; color: var(--ink); margin-bottom: 12px; }
+.licao h2 { font-size: 1.375rem; color: var(--ink); margin-bottom: 12px; }
 
 /* Cada palavra: caractere grande, pinyin, tradução e botão de ouvir */
 .palavras { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
@@ -103,9 +103,9 @@
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
-.palavra__hanzi { font-family: var(--font-chinese); font-size: 32px; font-weight: 700; color: var(--ink); }
+.palavra__hanzi { font-family: var(--font-chinese); font-size: 2rem; font-weight: 700; color: var(--ink); }
 .palavra__pinyin { color: var(--jade); font-weight: 600; }
-.palavra__traducao { color: var(--ink-light); font-size: 15px; }
+.palavra__traducao { color: var(--ink-light); font-size: 0.9375rem; }
 .palavra__ouvir {
   position: absolute;
   top: 12px;
@@ -142,9 +142,9 @@
   box-shadow: var(--shadow);
 }
 .frase .palavra__ouvir { position: static; grid-row: span 3; align-self: center; }
-.frase__hanzi { font-family: var(--font-chinese); font-size: 22px; color: var(--ink); }
+.frase__hanzi { font-family: var(--font-chinese); font-size: 1.375rem; color: var(--ink); }
 .frase__pinyin { color: var(--jade); font-weight: 600; }
-.frase__traducao { color: var(--ink-light); font-size: 15px; }
+.frase__traducao { color: var(--ink-light); font-size: 0.9375rem; }
 
 .licao__fim { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
 .licao__fim .aviso-feita { margin: 0; width: auto; }

@@ -59,14 +59,14 @@ function renderQuestion() {
     const pct = Math.round((score / currentQuestions.length) * 100);
     LS.set('quizDone',true); if(pct===100) LS.set('quizPerfect',true); if(typeof checkAchievements==='function') checkAchievements();
     const msg = pct >= 80 ? '🎉 Excelente! Estás pronto para o nível seguinte.' : pct >= 60 ? '👍 Bom trabalho! Revê as partes em que erraste.' : '📚 Continua a estudar e volta à gramática e ao vocabulário.';
-    qa.innerHTML = `<div class="quiz-score">${score}/${currentQuestions.length} · ${pct}%</div><div class="quiz-feedback ${pct>=80?'good':'bad'}" style="text-align:center;font-size:16px">${msg}</div>`;
+    qa.innerHTML = `<div class="quiz-score">${score}/${currentQuestions.length} · ${pct}%</div><div class="quiz-feedback ${pct>=80?'good':'bad'}" style="text-align:center;font-size:1rem">${msg}</div>`;
     document.querySelector('#quiz-container button').textContent = 'Tentar outra vez';
     return;
   }
   const q = currentQuestions[currentQ];
   answered = false;
   qa.innerHTML = `
-    <div style="color:var(--ink-light);font-size:13px;margin-bottom:8px">Pergunta ${currentQ+1} de ${currentQuestions.length}</div>
+    <div style="color:var(--ink-light);font-size:0.8125rem;margin-bottom:8px">Pergunta ${currentQ+1} de ${currentQuestions.length}</div>
     <div class="progress-bar-wrap"><div class="progress-bar" style="width:${(currentQ/currentQuestions.length)*100}%"></div></div>
     <div class="quiz-question" style="margin-top:1rem"><strong>${q.q}</strong></div>
     <div class="big-chinese">${q.zh}</div>

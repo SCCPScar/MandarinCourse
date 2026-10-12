@@ -34,11 +34,11 @@
 <!-- JANELA DA SESSÃO DE HOJE -->
 <div id="daily-modal">
   <div id="daily-box">
-    <button onclick="closeDailyModal()" aria-label="Fechar" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink-light)">✕</button>
+    <button onclick="closeDailyModal()" aria-label="Fechar" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.25rem;cursor:pointer;color:var(--ink-light)">✕</button>
     <h2>📅 Sessão de hoje</h2>
-    <p style="color:var(--ink-light);font-size:14px;margin-bottom:16px">A tua sessão diária, com cerca de 10 minutos.</p>
+    <p style="color:var(--ink-light);font-size:0.875rem;margin-bottom:16px">A tua sessão diária, com cerca de 10 minutos.</p>
     <div id="daily-steps"></div>
-    <button onclick="closeDailyModal()" style="margin-top:16px;background:var(--jade);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:15px;cursor:pointer;font-family:var(--font-main)">✓ Marcar como concluída</button>
+    <button onclick="closeDailyModal()" style="margin-top:16px;background:var(--jade);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:0.9375rem;cursor:pointer;font-family:var(--font-main)">✓ Marcar como concluída</button>
   </div>
 </div>
 
@@ -49,13 +49,13 @@
   <nav class="site-nav__menu" id="site-menu" aria-label="Principal">
     <ul class="site-nav__links">
         <li><a class="site-nav__link" href="index.php">Início</a></li>
-        <li><a class="site-nav__link" href="introducao.html">Introdução</a></li>
-        <li><a class="site-nav__link" href="sons.html">Sons</a></li>
-        <li><a class="site-nav__link" href="basico.html">Básico</a></li>
-        <li><a class="site-nav__link" href="vocabulario.html">Vocabulário</a></li>
-        <li><a class="site-nav__link" href="caracteres.html">Caracteres</a></li>
-        <li><a class="site-nav__link" href="praticar.html">Praticar</a></li>
-        <li><a class="site-nav__link" href="biblioteca.html">Biblioteca</a></li>
+        <li><a class="site-nav__link" href="introducao.php">Introdução</a></li>
+        <li><a class="site-nav__link" href="sons.php">Sons</a></li>
+        <li><a class="site-nav__link" href="basico.php">Básico</a></li>
+        <li><a class="site-nav__link" href="vocabulario.php">Vocabulário</a></li>
+        <li><a class="site-nav__link" href="caracteres.php">Caracteres</a></li>
+        <li><a class="site-nav__link" href="praticar.php">Praticar</a></li>
+        <li><a class="site-nav__link" href="biblioteca.php">Biblioteca</a></li>
     </ul>
     <div class="site-nav__tools">
       <button type="button" class="site-nav__tool" onclick="openDailyModal()">📅 Hoje</button>

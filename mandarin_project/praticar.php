@@ -1,91 +1,15 @@
-<!DOCTYPE html>
-<html lang="pt-PT">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Praticar · Chá</title>
+<?php
+// praticar.php
+// Aqui eu escrevo o conteúdo da página «Praticar».
+// O início (head e navegação) vem de includes/topo.php e o fim (rodapé e scripts) de includes/fim.php.
 
-  <!-- Ícone do separador: o carimbo 茶 -->
-  <link rel="icon" href="img/logo-cha.svg" type="image/svg+xml">
+require 'includes/sessao.php';
 
-  <!-- Fontes da marca, guardadas no próprio site -->
-  <link rel="stylesheet" href="css/fontes.css">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/dark.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/transitions.css">
-
-  <!-- HanziWriter -->
-  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
-</head>
-<body>
-<div id="read-bar"></div>
-<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
-<div id="toast"></div>
-
-<!-- JANELA DE BOAS-VINDAS (só aparece na primeira visita) -->
-<div id="onboard-overlay" style="display:none">
-  <div id="onboard-box" role="dialog" aria-modal="true" aria-labelledby="onboard-titulo">
-    <!-- No computador a foto fica ao lado; no telemóvel fica em cima -->
-    <picture class="onboard-foto">
-      <source media="(max-width: 767.98px)" type="image/avif" srcset="img/fotos/g2-onboarding-mobile-390.avif 390w, img/fotos/g2-onboarding-mobile-780.avif 780w" sizes="100vw">
-      <source media="(max-width: 767.98px)" type="image/webp" srcset="img/fotos/g2-onboarding-mobile-390.webp 390w, img/fotos/g2-onboarding-mobile-780.webp 780w" sizes="100vw">
-      <source type="image/avif" srcset="img/fotos/g2-onboarding-desktop-340.avif 340w, img/fotos/g2-onboarding-desktop-680.avif 680w" sizes="340px">
-      <img src="img/fotos/g2-onboarding-desktop-340.webp" srcset="img/fotos/g2-onboarding-desktop-340.webp 340w, img/fotos/g2-onboarding-desktop-680.webp 680w" sizes="340px" alt="Rua antiga de Xangai à chuva, com lanternas vermelhas">
-    </picture>
-    <div class="onboard-texto">
-      <img src="img/logo-cha.svg" alt="" width="40" height="40">
-      <h2 id="onboard-titulo">Boas-vindas ao Chá!</h2>
-      <p>Qual é o teu nível de mandarim? Assim sei por onde começar.</p>
-      <button class="onboard-btn" onclick="selectLevel(this,'zero')"><strong>Nunca estudei mandarim</strong><span>Começas em Pequim, pelos sons e pelos tons</span></button>
-      <button class="onboard-btn" onclick="selectLevel(this,'basic')"><strong>Sei algumas palavras e o pinyin</strong><span>Começas em Xi'an</span></button>
-      <button class="onboard-btn" onclick="selectLevel(this,'inter')"><strong>Consigo ter conversas simples</strong><span>Começas em Chengdu</span></button>
-      <button class="onboard-btn" onclick="selectLevel(this,'adv')"><strong>Quero aperfeiçoar o que já sei</strong><span>Começas em Hangzhou</span></button>
-      <button id="onboard-start" onclick="finishOnboard()" style="display:none">Começar a aprender</button>
-      <p class="onboard-credito">Foto: Nuno Alberto, Unsplash</p>
-    </div>
-  </div>
-</div>
-
-<!-- JANELA DA SESSÃO DE HOJE -->
-<div id="daily-modal">
-  <div id="daily-box">
-    <button onclick="closeDailyModal()" aria-label="Fechar" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink-light)">✕</button>
-    <h2>📅 Sessão de hoje</h2>
-    <p style="color:var(--ink-light);font-size:14px;margin-bottom:16px">A tua sessão diária, com cerca de 10 minutos.</p>
-    <div id="daily-steps"></div>
-    <button onclick="closeDailyModal()" style="margin-top:16px;background:var(--jade);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:15px;cursor:pointer;font-family:var(--font-main)">✓ Marcar como concluída</button>
-  </div>
-</div>
-
-<header class="site-nav" data-site-nav>
-  <a class="site-nav__logo" href="index.php" aria-label="Chá, página inicial">
-    <img class="site-nav__mark" src="img/logo-cha.svg" alt="" width="30" height="30">
-  </a>
-  <nav class="site-nav__menu" id="site-menu" aria-label="Principal">
-    <ul class="site-nav__links">
-        <li><a class="site-nav__link" href="index.php">Início</a></li>
-        <li><a class="site-nav__link" href="introducao.html">Introdução</a></li>
-        <li><a class="site-nav__link" href="sons.html">Sons</a></li>
-        <li><a class="site-nav__link" href="basico.html">Básico</a></li>
-        <li><a class="site-nav__link" href="vocabulario.html">Vocabulário</a></li>
-        <li><a class="site-nav__link" href="caracteres.html">Caracteres</a></li>
-        <li><a class="site-nav__link" href="praticar.html">Praticar</a></li>
-        <li><a class="site-nav__link" href="biblioteca.html">Biblioteca</a></li>
-    </ul>
-    <div class="site-nav__tools">
-      <button type="button" class="site-nav__tool" onclick="openDailyModal()">📅 Hoje</button>
-      <button type="button" class="site-nav__tool" id="dark-toggle" onclick="toggleDark()">🌙 Escuro</button>
-      <a class="site-nav__tool" href="conta.php">👤 Conta</a>
-    </div>
-  </nav>
-  <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-menu">Menu</button>
-</header>
-
-<main class="page" data-page="praticar">
+$titulo = 'Praticar';
+$pagina = 'praticar';
+$usa_hanzi = true;
+require 'includes/topo.php';
+?>
 <div class="container">
 
 <!-- ============================================================ -->
@@ -96,7 +20,7 @@
   <h2>Diálogos reais para praticar <span class="zh">对话练习</span></h2>
 </div>
 
-<h3 style="margin: 1rem 0 0.75rem; font-size: 17px; color: var(--ink);">Situação 1: primeiro dia no escritório</h3>
+<h3 style="margin: 1rem 0 0.75rem; font-size: 1.0625rem; color: var(--ink);">Situação 1: primeiro dia no escritório</h3>
 <div class="dialogue">
   <div class="dialogue-line">
     <div class="speaker">同</div>
@@ -132,7 +56,7 @@
   </div>
 </div>
 
-<h3 style="margin: 1.5rem 0 0.75rem; font-size: 17px; color: var(--ink);">Situação 2: apanhar um táxi</h3>
+<h3 style="margin: 1.5rem 0 0.75rem; font-size: 1.0625rem; color: var(--ink);">Situação 2: apanhar um táxi</h3>
 <div class="dialogue">
   <div class="dialogue-line">
     <div class="speaker">司</div>
@@ -189,7 +113,7 @@
   <h3>Teste rápido</h3>
   <div id="quiz-area"></div>
   <div style="text-align:center;margin-top:1rem">
-    <button onclick="startQuiz()" style="background:var(--red);color:white;border:none;padding:12px 32px;border-radius:10px;font-size:16px;font-family:var(--font-main);cursor:pointer;font-weight:600;">Começar o quiz</button>
+    <button onclick="startQuiz()" style="background:var(--red);color:white;border:none;padding:12px 32px;border-radius:10px;font-size:1rem;font-family:var(--font-main);cursor:pointer;font-weight:600;">Começar o quiz</button>
   </div>
 </div>
 
@@ -236,7 +160,7 @@
         </div>
       </div>
     </div>
-    <div style="text-align:center;font-size:13px;color:var(--ink-light);margin:6px 0" id="fc-prog">Toca no cartão para começar</div>
+    <div style="text-align:center;font-size:0.8125rem;color:var(--ink-light);margin:6px 0" id="fc-prog">Toca no cartão para começar</div>
     <div class="fc-controls" id="fc-controls" style="display:none">
       <button class="fc-btn hard" onclick="rateCard('hard')">😓 Difícil</button>
       <button class="fc-btn ok" onclick="rateCard('ok')">😐 Razoável</button>
@@ -260,9 +184,9 @@
     <div class="sb-slot-row" id="sb-slots"></div>
     <div class="sb-pool" id="sb-pool"></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <button onclick="checkSentence()" style="background:var(--red);color:#fff;border:none;padding:8px 18px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-main)">Verificar ✓</button>
-      <button onclick="resetSb()" style="background:var(--paper-dark);color:var(--ink);border:none;padding:8px 18px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-main)">Recomeçar ↺</button>
-      <button onclick="newSbQ()" style="background:var(--blue);color:#fff;border:none;padding:8px 18px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-main)">Seguinte</button>
+      <button onclick="checkSentence()" style="background:var(--red);color:#fff;border:none;padding:8px 18px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Verificar ✓</button>
+      <button onclick="resetSb()" style="background:var(--paper-dark);color:var(--ink);border:none;padding:8px 18px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Recomeçar ↺</button>
+      <button onclick="newSbQ()" style="background:var(--blue);color:#fff;border:none;padding:8px 18px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Seguinte</button>
     </div>
     <div class="sb-result" id="sb-result"></div>
   </div>
@@ -273,12 +197,12 @@
   <div class="info" style="margin-bottom:.8rem">🎮 <strong>Jogo de reconhecer caracteres</strong>. Vês um caractere e adivinhas o pinyin, contra o relógio. Há dois modos.</div>
   <div id="cg-box">
     <div style="display:flex;gap:10px;margin-bottom:1rem;flex-wrap:wrap;align-items:center">
-      <button onclick="startCG('choice')" style="background:var(--red);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-main)">▶ Escolha múltipla</button>
-      <button onclick="startCG('type')" style="background:var(--blue);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-main)">⌨️ Escrever o pinyin</button>
-      <button id="cg-parar" onclick="pararCG()" style="display:none;background:var(--paper-dark);color:var(--ink);border:none;padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-main)">⏹ Parar o jogo</button>
-      <span id="cg-score-label" style="font-size:13px;font-weight:600;color:var(--ink-light)">Pontos: 0 | Recorde: 0</span>
+      <button onclick="startCG('choice')" style="background:var(--red);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">▶ Escolha múltipla</button>
+      <button onclick="startCG('type')" style="background:var(--blue);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">⌨️ Escrever o pinyin</button>
+      <button id="cg-parar" onclick="pararCG()" style="display:none;background:var(--paper-dark);color:var(--ink);border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">⏹ Parar o jogo</button>
+      <span id="cg-score-label" style="font-size:0.8125rem;font-weight:600;color:var(--ink-light)">Pontos: 0 | Recorde: 0</span>
     </div>
-    <div id="cg-area"><div style="text-align:center;padding:2rem;color:var(--ink-light);font-size:14px">Escolhe um modo para começar! 🎮</div></div>
+    <div id="cg-area"><div style="text-align:center;padding:2rem;color:var(--ink-light);font-size:0.875rem">Escolhe um modo para começar! 🎮</div></div>
   </div>
 </div>
 
@@ -287,22 +211,22 @@
   <div class="info" style="margin-bottom:.8rem">🔊 <strong>Ouvir em chinês</strong>. Escreve qualquer frase em chinês e ouve-a em mandarim. Usa a voz do teu browser.</div>
   <div style="background:var(--white);border-radius:var(--radius);border:1.5px solid var(--paper-dark);padding:1.3rem">
     <div style="display:flex;gap:8px;margin-bottom:.8rem;flex-wrap:wrap">
-      <input id="speak-input" type="text" value="你好，我叫李明，很高兴认识你！" style="flex:1;min-width:160px;padding:9px 12px;border-radius:10px;border:1.5px solid var(--paper-dark);font-size:18px;font-family:var(--font-chinese);background:var(--paper-mid);outline:none;color:var(--ink)">
-      <button onclick="speakText(document.getElementById('speak-input').value)" style="padding:9px 16px;background:var(--red);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-main)">🔊 Ouvir</button>
+      <input id="speak-input" type="text" value="你好，我叫李明，很高兴认识你！" style="flex:1;min-width:160px;padding:9px 12px;border-radius:10px;border:1.5px solid var(--paper-dark);font-size:1.125rem;font-family:var(--font-chinese);background:var(--paper-mid);outline:none;color:var(--ink)">
+      <button onclick="speakText(document.getElementById('speak-input').value)" style="padding:9px 16px;background:var(--red);color:#fff;border:none;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">🔊 Ouvir</button>
     </div>
     <div style="margin-bottom:.8rem">
-      <label style="font-size:12px;color:var(--ink-light);margin-right:8px">Velocidade:</label>
+      <label style="font-size:0.75rem;color:var(--ink-light);margin-right:8px">Velocidade:</label>
       <input type="range" id="speak-rate" min="0.5" max="1.5" step="0.1" value="0.8" style="vertical-align:middle;width:100px">
-      <span id="speak-rate-label" style="font-size:12px;color:var(--ink-light);margin-left:6px">0.8×</span>
+      <span id="speak-rate-label" style="font-size:0.75rem;color:var(--ink-light);margin-left:6px">0.8×</span>
     </div>
     <div style="display:flex;gap:7px;flex-wrap:wrap">
-      <button class="preset-char" style="font-size:12px;padding:5px 10px" onclick="speakText('你好！早上好！')">你好！早上好！</button>
-      <button class="preset-char" style="font-size:12px;padding:5px 10px" onclick="speakText('这个多少钱？')">这个多少钱？</button>
-      <button class="preset-char" style="font-size:12px;padding:5px 10px" onclick="speakText('我是葡萄牙人，我在学中文。')">我是葡萄牙人</button>
-      <button class="preset-char" style="font-size:12px;padding:5px 10px" onclick="speakText('请再说一遍，慢一点。')">请再说一遍</button>
-      <button class="preset-char" style="font-size:12px;padding:5px 10px" onclick="speakText('对不起，我不明白。')">对不起，我不明白</button>
+      <button class="preset-char" style="font-size:0.75rem;padding:5px 10px" onclick="speakText('你好！早上好！')">你好！早上好！</button>
+      <button class="preset-char" style="font-size:0.75rem;padding:5px 10px" onclick="speakText('这个多少钱？')">这个多少钱？</button>
+      <button class="preset-char" style="font-size:0.75rem;padding:5px 10px" onclick="speakText('我是葡萄牙人，我在学中文。')">我是葡萄牙人</button>
+      <button class="preset-char" style="font-size:0.75rem;padding:5px 10px" onclick="speakText('请再说一遍，慢一点。')">请再说一遍</button>
+      <button class="preset-char" style="font-size:0.75rem;padding:5px 10px" onclick="speakText('对不起，我不明白。')">对不起，我不明白</button>
     </div>
-    <div id="speak-status" style="font-size:12px;color:var(--green);min-height:18px;margin-top:6px"></div>
+    <div id="speak-status" style="font-size:0.75rem;color:var(--green);min-height:18px;margin-top:6px"></div>
   </div>
 </div>
 
@@ -314,7 +238,7 @@
       <input id="dict-input" type="text" placeholder="Escreve em chinês ou em português… ex.: 朋友 ou amigo" onkeydown="if(event.key==='Enter')lookupWord()">
       <button id="dict-btn" onclick="lookupWord()">Procurar 🔍</button>
     </div>
-    <div id="dict-result"><p style="color:var(--ink-light);font-size:13px">Experimenta: 朋友 · gōngzuò · casa · 学习 · caro</p></div>
+    <div id="dict-result"><p style="color:var(--ink-light);font-size:0.8125rem">Experimenta: 朋友 · gōngzuò · casa · 学习 · caro</p></div>
   </div>
 </div>
 
@@ -326,16 +250,16 @@
       <input id="hanzi-input" type="text" maxlength="1" placeholder="字" value="中">
       <button class="hanzi-action-btn" id="hanzi-animate-btn" onclick="animateHanzi()">▶ Animar</button>
       <button class="hanzi-action-btn" id="hanzi-quiz-btn" onclick="quizHanzi()">✏️ Praticar</button>
-      <button class="speak-btn" style="padding:7px 12px;font-size:12px" onclick="speakText(document.getElementById('hanzi-input').value)">🔊 Ouvir</button>
+      <button class="speak-btn" style="padding:7px 12px;font-size:0.75rem" onclick="speakText(document.getElementById('hanzi-input').value)">🔊 Ouvir</button>
     </div>
     <div id="hanzi-canvas-wrap">
-      <div><svg id="hanzi-target" width="200" height="200"></svg><div style="text-align:center;font-size:11px;color:var(--ink-light);margin-top:3px" id="hanzi-hint"></div></div>
+      <div><svg id="hanzi-target" width="200" height="200"></svg><div style="text-align:center;font-size:0.6875rem;color:var(--ink-light);margin-top:3px" id="hanzi-hint"></div></div>
       <div id="hanzi-info">
         <h4>Prática rápida:</h4>
         <div id="hanzi-presets">
           <span class="preset-char" onclick="loadChar('人')">人</span><span class="preset-char" onclick="loadChar('大')">大</span><span class="preset-char" onclick="loadChar('中')">中</span><span class="preset-char" onclick="loadChar('好')">好</span><span class="preset-char" onclick="loadChar('我')">我</span><span class="preset-char" onclick="loadChar('你')">你</span><span class="preset-char" onclick="loadChar('是')">是</span><span class="preset-char" onclick="loadChar('不')">不</span><span class="preset-char" onclick="loadChar('有')">有</span><span class="preset-char" onclick="loadChar('爱')">爱</span><span class="preset-char" onclick="loadChar('国')">国</span><span class="preset-char" onclick="loadChar('学')">学</span><span class="preset-char" onclick="loadChar('日')">日</span><span class="preset-char" onclick="loadChar('月')">月</span><span class="preset-char" onclick="loadChar('山')">山</span><span class="preset-char" onclick="loadChar('水')">水</span><span class="preset-char" onclick="loadChar('火')">火</span><span class="preset-char" onclick="loadChar('心')">心</span>
         </div>
-        <div class="tip" style="margin-top:8px;font-size:12px">💡 Escolhe um caractere, carrega em Animar para ver os traços e depois em Praticar para o desenhar!</div>
+        <div class="tip" style="margin-top:8px;font-size:0.75rem">💡 Escolhe um caractere, carrega em Animar para ver os traços e depois em Praticar para o desenhar!</div>
       </div>
     </div>
   </div>
@@ -346,8 +270,8 @@
   <div class="info" style="margin-bottom:.8rem">📓 <strong>O meu caderno de vocabulário</strong>. As palavras que guardas no Dicionário aparecem aqui e ficam guardadas no teu browser.</div>
   <div id="nb-box">
     <div style="display:flex;gap:7px;margin-bottom:.9rem;flex-wrap:wrap">
-      <button onclick="clearNotebook()" style="background:#FBE3DE;color:#A32A18;border:1.5px solid #FBE3DE;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:12px;font-family:var(--font-main)">Apagar tudo</button>
-      <button onclick="exportNotebook()" style="background:var(--paper-dark);color:var(--ink);border:none;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:12px;font-family:var(--font-main)">Exportar como texto</button>
+      <button onclick="clearNotebook()" style="background:#FBE3DE;color:#A32A18;border:1.5px solid #FBE3DE;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:0.75rem;font-family:var(--font-main)">Apagar tudo</button>
+      <button onclick="exportNotebook()" style="background:var(--paper-dark);color:var(--ink);border:none;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:0.75rem;font-family:var(--font-main)">Exportar como texto</button>
     </div>
     <div id="nb-list"></div>
   </div>
@@ -369,7 +293,7 @@
       <div class="s-item"><div class="sn" id="total-mins">0</div><div class="sl">⏱️ Total de minutos</div></div>
     </div>
     <div style="margin-top:1rem">
-      <p style="font-size:12px;font-weight:700;color:var(--ink-light);margin-bottom:7px">ESTA SEMANA:</p>
+      <p style="font-size:0.75rem;font-weight:700;color:var(--ink-light);margin-bottom:7px">ESTA SEMANA:</p>
       <div id="week-grid" style="display:flex;gap:6px;flex-wrap:wrap"></div>
     </div>
   </div>
@@ -445,7 +369,7 @@
 
   <!-- VISUALIZADOR DE TONS -->
   <div id="mictab-tone" class="mic-tab-content active">
-    <p style="font-size:13px;color:var(--ink-light);margin-bottom:10px">Escolhe um tom, carrega em Gravar e fala. O gráfico mostra a altura da tua voz em tempo real: tenta imitar a forma do tom!</p>
+    <p style="font-size:0.8125rem;color:var(--ink-light);margin-bottom:10px">Escolhe um tom, carrega em Gravar e fala. O gráfico mostra a altura da tua voz em tempo real: tenta imitar a forma do tom!</p>
 
     <div class="tone-practice-grid" id="tone-target-grid">
       <div class="tone-target-card selected" onclick="selectTone(this,1)" data-tone="1">
@@ -475,76 +399,76 @@
 
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px">
       <button class="mic-btn idle" id="tone-mic-btn" onclick="toggleToneRecording()">🎤 Começar a gravar</button>
-      <button onclick="playTargetTone()" style="background:var(--gold);color:#fff;border:none;padding:10px 18px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font-main)">🔊 Ouvir o modelo</button>
-      <button onclick="clearToneCanvas()" style="background:var(--paper-dark);color:var(--ink);border:none;padding:10px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-main)">✕ Limpar</button>
+      <button onclick="playTargetTone()" style="background:var(--gold);color:#fff;border:none;padding:10px 18px;border-radius:20px;font-size:0.8125rem;font-weight:700;cursor:pointer;font-family:var(--font-main)">🔊 Ouvir o modelo</button>
+      <button onclick="clearToneCanvas()" style="background:var(--paper-dark);color:var(--ink);border:none;padding:10px 18px;border-radius:20px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">✕ Limpar</button>
     </div>
     <div id="tone-feedback" style="margin-top:10px"></div>
 
     <div style="margin-top:8px;display:flex;align-items:center;gap:8px;">
-      <label style="font-size:13px;color:var(--ink-mid);display:flex;align-items:center;gap:6px;cursor:pointer;">
+      <label style="font-size:0.8125rem;color:var(--ink-mid);display:flex;align-items:center;gap:6px;cursor:pointer;">
         <input type="checkbox" id="show-pinyin-toggle" onchange="togglePinyinDisplay()" checked style="cursor:pointer;">
         <span>Mostrar Pinyin nos caracteres</span>
       </label>
     </div>
-    <div class="tip" style="margin-top:12px;font-size:12px">
+    <div class="tip" style="margin-top:12px;font-size:0.75rem">
       <strong>💡 Como ler o gráfico:</strong> A <span style="color:var(--gold);font-weight:700">linha dourada tracejada</span> mostra a forma ideal do tom. A tua voz aparece como uma <span style="color:var(--red);font-weight:700">linha vermelha</span>. Tenta imitar a forma e fala claramente durante 1 ou 2 segundos.
     </div>
   </div>
 
   <!-- REPETIR PALAVRAS -->
   <div id="mictab-repeat" class="mic-tab-content">
-    <p style="font-size:13px;color:var(--ink-light);margin-bottom:10px">Carrega em 🔊 para ouvir a palavra, depois em 🎤 e diz a palavra. O reconhecimento de voz verifica se a disseste bem.</p>
+    <p style="font-size:0.8125rem;color:var(--ink-light);margin-bottom:10px">Carrega em 🔊 para ouvir a palavra, depois em 🎤 e diz a palavra. O reconhecimento de voz verifica se a disseste bem.</p>
 
     <div style="display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap;align-items:center">
-      <select id="repeat-category" onchange="loadRepeatWords()" style="padding:8px 12px;border-radius:10px;border:1.5px solid var(--paper-dark);font-size:13px;font-family:var(--font-main);background:var(--paper-mid);outline:none;color:var(--ink)">
+      <select id="repeat-category" onchange="loadRepeatWords()" style="padding:8px 12px;border-radius:10px;border:1.5px solid var(--paper-dark);font-size:0.8125rem;font-family:var(--font-main);background:var(--paper-mid);outline:none;color:var(--ink)">
         <option value="greetings">Cumprimentos</option>
         <option value="numbers">Números</option>
         <option value="food">Comida</option>
         <option value="work">Frases de trabalho</option>
         <option value="tones">Pares de tons (os mais difíceis!)</option>
       </select>
-      <button onclick="loadRepeatWords()" style="background:var(--paper-dark);color:var(--ink);border:none;padding:8px 14px;border-radius:10px;font-size:13px;cursor:pointer;font-family:var(--font-main)">Recarregar ↺</button>
+      <button onclick="loadRepeatWords()" style="background:var(--paper-dark);color:var(--ink);border:none;padding:8px 14px;border-radius:10px;font-size:0.8125rem;cursor:pointer;font-family:var(--font-main)">Recarregar ↺</button>
     </div>
 
     <div id="repeat-word-list"></div>
 
     <div style="margin-top:1rem;padding:12px;background:var(--paper-mid);border-radius:10px" id="repeat-active-wrap" style="display:none">
       <div style="text-align:center">
-        <div id="repeat-target-zh" style="font-family:var(--font-chinese);font-size:52px;font-weight:700;color:var(--red)"></div>
-        <div id="repeat-target-py" style="font-style:italic;color:var(--ink-light);font-size:15px;margin:2px 0"></div>
-        <div id="repeat-target-en" style="font-size:14px;color:var(--ink)"></div>
+        <div id="repeat-target-zh" style="font-family:var(--font-chinese);font-size:3.25rem;font-weight:700;color:var(--red)"></div>
+        <div id="repeat-target-py" style="font-style:italic;color:var(--ink-light);font-size:0.9375rem;margin:2px 0"></div>
+        <div id="repeat-target-en" style="font-size:0.875rem;color:var(--ink)"></div>
       </div>
       <div style="display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap">
-        <button onclick="hearRepeatTarget()" style="background:var(--gold);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--font-main)">🔊 Ouvir</button>
+        <button onclick="hearRepeatTarget()" style="background:var(--gold);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-size:0.875rem;font-weight:700;cursor:pointer;font-family:var(--font-main)">🔊 Ouvir</button>
         <button class="mic-btn idle" id="repeat-mic-btn" onclick="toggleRepeatRecording()" style="padding:10px 20px">🎤 Dizer</button>
       </div>
-      <div id="repeat-result" style="text-align:center;margin-top:10px;font-size:14px;min-height:30px"></div>
+      <div id="repeat-result" style="text-align:center;margin-top:10px;font-size:0.875rem;min-height:30px"></div>
     </div>
   </div>
 
   <!-- RECONHECIMENTO DE VOZ (FALA LIVRE) -->
   <div id="mictab-recog" class="mic-tab-content">
-    <p style="font-size:13px;color:var(--ink-light);margin-bottom:10px">Diz livremente qualquer frase em chinês. O reconhecimento de voz escreve o que disseste e compara com a frase que escolheste.</p>
+    <p style="font-size:0.8125rem;color:var(--ink-light);margin-bottom:10px">Diz livremente qualquer frase em chinês. O reconhecimento de voz escreve o que disseste e compara com a frase que escolheste.</p>
 
     <div style="background:var(--paper-mid);border-radius:10px;padding:12px 16px;margin-bottom:10px">
-      <p style="font-size:12px;font-weight:700;color:var(--ink-light);margin-bottom:6px">Experimenta dizer uma destas:</p>
+      <p style="font-size:0.75rem;font-weight:700;color:var(--ink-light);margin-bottom:6px">Experimenta dizer uma destas:</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap" id="recog-prompts">
-        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:16px;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">你好</span>
-        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:16px;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">谢谢你</span>
-        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:16px;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">我爱学中文</span>
-        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:16px;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">今天天气很好</span>
-        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:16px;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">我是葡萄牙人</span>
-        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:16px;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">请问厕所在哪里</span>
+        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">你好</span>
+        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">谢谢你</span>
+        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">我爱学中文</span>
+        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">今天天气很好</span>
+        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">我是葡萄牙人</span>
+        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">请问厕所在哪里</span>
       </div>
     </div>
 
     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-      <div id="recog-target-display" style="flex:1;min-width:160px;background:var(--white);border:1.5px solid var(--paper-dark);border-radius:10px;padding:10px 14px;font-family:var(--font-chinese);font-size:20px;color:var(--ink);min-height:44px">Carrega numa frase acima ou fala livremente…</div>
+      <div id="recog-target-display" style="flex:1;min-width:160px;background:var(--white);border:1.5px solid var(--paper-dark);border-radius:10px;padding:10px 14px;font-family:var(--font-chinese);font-size:1.25rem;color:var(--ink);min-height:44px">Carrega numa frase acima ou fala livremente…</div>
       <button class="mic-btn idle" id="recog-mic-btn" onclick="toggleRecogRecording()" style="white-space:nowrap">🎤 Gravar</button>
     </div>
 
     <div id="recog-result" style="margin-top:10px">
-      <p style="color:var(--ink-light);font-size:13px">O que disseres vai aparecer aqui…</p>
+      <p style="color:var(--ink-light);font-size:0.8125rem">O que disseres vai aparecer aqui…</p>
     </div>
 
     <div id="recog-feedback" style="margin-top:10px"></div>
@@ -552,7 +476,7 @@
 
   <!-- PONTUAÇÕES -->
   <div id="mictab-score" class="mic-tab-content">
-    <p style="font-size:13px;color:var(--ink-light);margin-bottom:12px">O teu histórico de pronúncia. Continua a praticar: mais vale sempre do que perfeito!</p>
+    <p style="font-size:0.8125rem;color:var(--ink-light);margin-bottom:12px">O teu histórico de pronúncia. Continua a praticar: mais vale sempre do que perfeito!</p>
     <div class="pronun-score-row" id="pronun-score-row">
       <div class="pronun-score-item"><div class="psn" id="ps-attempts">0</div><div class="psl">Tentativas</div></div>
       <div class="pronun-score-item"><div class="psn" id="ps-correct" style="color:var(--green)">0</div><div class="psl">Certas</div></div>
@@ -560,35 +484,14 @@
       <div class="pronun-score-item"><div class="psn" id="ps-pct" style="color:var(--gold)">0%</div><div class="psl">Acerto</div></div>
     </div>
     <div style="margin-top:1.2rem">
-      <p style="font-size:12px;font-weight:700;color:var(--ink-light);margin-bottom:8px">ÚLTIMAS TENTATIVAS:</p>
+      <p style="font-size:0.75rem;font-weight:700;color:var(--ink-light);margin-bottom:8px">ÚLTIMAS TENTATIVAS:</p>
       <div id="ps-history"></div>
     </div>
-    <button onclick="clearPronunScores()" style="margin-top:1rem;background:var(--red-light);color:var(--red-dark);border:1.5px solid var(--red-light);border-radius:8px;padding:6px 14px;cursor:pointer;font-size:12px;font-family:var(--font-main)">Apagar o histórico</button>
+    <button onclick="clearPronunScores()" style="margin-top:1rem;background:var(--red-light);color:var(--red-dark);border:1.5px solid var(--red-light);border-radius:8px;padding:6px 14px;cursor:pointer;font-size:0.75rem;font-family:var(--font-main)">Apagar o histórico</button>
   </div>
 
 </div>
 
 </div><!-- /container -->
 
-<footer>
-  <div class="footer-zh">加油！继续学习！</div>
-  <p>加油！ Continua a aprender todos os dias. • 茶 Chá</p>
-  <p style="margin-top: 8px; font-size: 12px;">Este guia gratuito cobre o pinyin, os tons, a gramática, o vocabulário, os caracteres, o chinês para o trabalho e muito mais.</p>
-  <p class="footer-links"><a href="privacidade.php">Política de Privacidade</a> · <a href="creditos.php">Créditos</a></p>
-</footer>
-</main>
-
-<!-- JavaScript do site — carregar nesta ordem -->
-<script src="js/utils.js"></script>
-<script src="js/page.js"></script>
-<script src="js/hanzi.js"></script>
-<script src="js/data.js"></script>
-<script src="js/exercises.js"></script>
-<script src="js/dictionary.js"></script>
-<script src="js/tools.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/init.js"></script>
-<script src="js/ouvir.js"></script>
-<script src="js/nav.js"></script>
-</body>
-</html>
+<?php require 'includes/fim.php'; ?>

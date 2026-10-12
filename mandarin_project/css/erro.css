@@ -28,10 +28,10 @@ body { background: var(--paper); color: var(--ink); }
   line-height: 1;
   color: var(--seal);
 }
-.erro .erro__zh { color: var(--ink); margin-top: 12px; font-family: var(--font-chinese); font-size: 32px; font-weight: 700; }
+.erro .erro__zh { color: var(--ink); margin-top: 12px; font-family: var(--font-chinese); font-size: 2rem; font-weight: 700; }
 .erro .erro__py { color: var(--jade); font-weight: 600; margin-bottom: 24px; }
 
-.erro h1 { font-size: 26px; margin-bottom: 12px; }
+.erro h1 { font-size: 1.625rem; margin-bottom: 12px; }
 .erro p { line-height: 1.6; color: var(--ink-light); }
 .erro strong { color: var(--ink); }
 

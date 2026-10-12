@@ -90,7 +90,7 @@ if (id_utilizador() !== null) {
       <?php endforeach; ?>
     </ul>
   <?php else: ?>
-    <p>Esta lição é sobre os sons do mandarim. Pratica-os na página <a href="sons.html">Sons</a> e depois volta aqui para a concluir.</p>
+    <p>Esta lição é sobre os sons do mandarim. Pratica-os na página <a href="sons.php">Sons</a> e depois volta aqui para a concluir.</p>
   <?php endif; ?>
 
   <?php if ($frases): ?>

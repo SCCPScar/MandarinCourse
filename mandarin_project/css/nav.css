@@ -8,7 +8,7 @@
 
 :root {
   --nav-height: 44px;
-  --page-max: 1100px;       /* igual ao .container */
+  --page-max: 1240px;       /* largura máxima do conteúdo (igual ao .container) */
   --page-gutter: 2rem;      /* igual ao padding do .container */
   --ease-nav: cubic-bezier(0.625, 0.05, 0, 1);
 }
@@ -78,7 +78,7 @@ body { padding-top: var(--nav-height); }
 .site-nav__link,
 .site-nav__tool {
   font-family: inherit;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--ink);
@@ -171,7 +171,7 @@ body { padding-top: var(--nav-height); }
   border: none;
   padding: 6px 0;
   font-family: inherit;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--ink);
@@ -221,7 +221,7 @@ body { padding-top: var(--nav-height); }
   }
   .site-nav__link[aria-current="page"]::after { height: 2px; bottom: -2px; }
   .site-nav__tools { flex-wrap: wrap; gap: 20px; }
-  .site-nav__tool { font-size: 14px; opacity: 0.75; }
+  .site-nav__tool { font-size: 0.875rem; opacity: 0.75; }
 }
 
 @media (prefers-reduced-motion: reduce) {

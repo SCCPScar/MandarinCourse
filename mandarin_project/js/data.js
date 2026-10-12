@@ -104,7 +104,7 @@ function loadSbPattern(){const k=document.getElementById('sb-pattern').value;if(
 function newSbQ(){const k=document.getElementById('sb-pattern').value;if(!k)return;const arr=sbP[k];sbCur=arr[Math.floor(Math.random()*arr.length)];sbSel=new Array(sbCur.slots.length).fill(null);renderSb();}
 function renderSb(){
   if(!sbCur)return;
-  document.getElementById('sb-slots').innerHTML=sbCur.slots.map((s,i)=>{if(sbCur.fx&&sbCur.fx[i]===1)return`<div class="sb-slot fixed">${sbCur.correct[i]}</div>`;const f=sbSel[i];return`<div class="sb-slot${f?' filled':''}" onclick="clearSlot(${i})">${f||s}</div>`;}).join('<span style="font-size:18px;color:var(--ink-light);padding:0 2px">→</span>');
+  document.getElementById('sb-slots').innerHTML=sbCur.slots.map((s,i)=>{if(sbCur.fx&&sbCur.fx[i]===1)return`<div class="sb-slot fixed">${sbCur.correct[i]}</div>`;const f=sbSel[i];return`<div class="sb-slot${f?' filled':''}" onclick="clearSlot(${i})">${f||s}</div>`;}).join('<span style="font-size:1.125rem;color:var(--ink-light);padding:0 2px">→</span>');
   const used=sbSel.filter(Boolean);
   document.getElementById('sb-pool').innerHTML=sbCur.pool.map(w=>`<div class="sb-word${used.includes(w)?' used':''}" onclick="selWord('${w}')">${w}</div>`).join('');
   const r=document.getElementById('sb-result');r.style.display='none';

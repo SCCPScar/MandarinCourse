@@ -18,7 +18,7 @@
     /* Nomes antigos, agora com as cores novas */
     --red: var(--seal-text); --red-light: #FBE3DE; --red-dark: #A32A18;
     --gold: var(--gold-brand); --gold-light: #FDF3DC; --gold-dark: #7A5406;
-    --ink: #18212B; --ink-mid: #2E3A46; --ink-light: #5B6873;
+    --ink: #18212B; --ink-mid: #26323D; --ink-light: #46535D;   /* mais escuras: no modo claro o texto estava muito apagado */
     --paper: #F4F7F6; --paper-mid: #EAF0EE; --paper-dark: #D5DEDB;
     --white: #FFFFFF; --green: var(--jade); --green-light: #D8EEE8;
     --blue: #2F6FD0; --blue-light: #DCE8F8; --blue-dark: #1F4E8C;
@@ -41,12 +41,17 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  /* A letra base do site: 112,5% de 16 px = 18 px. Todos os tamanhos estão em rem
+     (múltiplos desta letra), por isso para aumentar ou diminuir o site todo basta mudar este número. */
+  html { font-size: 112.5%; }
+  @media (max-width: 700px) { html { font-size: 106.25%; } }   /* 17 px no telemóvel */
+
   body {
     font-family: var(--font-main);
     background: var(--paper);
     color: var(--ink);
     line-height: 1.6;
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   /* A barra de navegação está em css/nav.css */

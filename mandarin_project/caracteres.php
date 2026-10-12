@@ -1,91 +1,15 @@
-<!DOCTYPE html>
-<html lang="pt-PT">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Caracteres · Chá</title>
+<?php
+// caracteres.php
+// Aqui eu escrevo o conteúdo da página «Caracteres».
+// O início (head e navegação) vem de includes/topo.php e o fim (rodapé e scripts) de includes/fim.php.
 
-  <!-- Ícone do separador: o carimbo 茶 -->
-  <link rel="icon" href="img/logo-cha.svg" type="image/svg+xml">
+require 'includes/sessao.php';
 
-  <!-- Fontes da marca, guardadas no próprio site -->
-  <link rel="stylesheet" href="css/fontes.css">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/dark.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/transitions.css">
-
-  <!-- HanziWriter -->
-  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
-</head>
-<body>
-<div id="read-bar"></div>
-<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
-<div id="toast"></div>
-
-<!-- JANELA DE BOAS-VINDAS (só aparece na primeira visita) -->
-<div id="onboard-overlay" style="display:none">
-  <div id="onboard-box" role="dialog" aria-modal="true" aria-labelledby="onboard-titulo">
-    <!-- No computador a foto fica ao lado; no telemóvel fica em cima -->
-    <picture class="onboard-foto">
-      <source media="(max-width: 767.98px)" type="image/avif" srcset="img/fotos/g2-onboarding-mobile-390.avif 390w, img/fotos/g2-onboarding-mobile-780.avif 780w" sizes="100vw">
-      <source media="(max-width: 767.98px)" type="image/webp" srcset="img/fotos/g2-onboarding-mobile-390.webp 390w, img/fotos/g2-onboarding-mobile-780.webp 780w" sizes="100vw">
-      <source type="image/avif" srcset="img/fotos/g2-onboarding-desktop-340.avif 340w, img/fotos/g2-onboarding-desktop-680.avif 680w" sizes="340px">
-      <img src="img/fotos/g2-onboarding-desktop-340.webp" srcset="img/fotos/g2-onboarding-desktop-340.webp 340w, img/fotos/g2-onboarding-desktop-680.webp 680w" sizes="340px" alt="Rua antiga de Xangai à chuva, com lanternas vermelhas">
-    </picture>
-    <div class="onboard-texto">
-      <img src="img/logo-cha.svg" alt="" width="40" height="40">
-      <h2 id="onboard-titulo">Boas-vindas ao Chá!</h2>
-      <p>Qual é o teu nível de mandarim? Assim sei por onde começar.</p>
-      <button class="onboard-btn" onclick="selectLevel(this,'zero')"><strong>Nunca estudei mandarim</strong><span>Começas em Pequim, pelos sons e pelos tons</span></button>
-      <button class="onboard-btn" onclick="selectLevel(this,'basic')"><strong>Sei algumas palavras e o pinyin</strong><span>Começas em Xi'an</span></button>
-      <button class="onboard-btn" onclick="selectLevel(this,'inter')"><strong>Consigo ter conversas simples</strong><span>Começas em Chengdu</span></button>
-      <button class="onboard-btn" onclick="selectLevel(this,'adv')"><strong>Quero aperfeiçoar o que já sei</strong><span>Começas em Hangzhou</span></button>
-      <button id="onboard-start" onclick="finishOnboard()" style="display:none">Começar a aprender</button>
-      <p class="onboard-credito">Foto: Nuno Alberto, Unsplash</p>
-    </div>
-  </div>
-</div>
-
-<!-- JANELA DA SESSÃO DE HOJE -->
-<div id="daily-modal">
-  <div id="daily-box">
-    <button onclick="closeDailyModal()" aria-label="Fechar" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink-light)">✕</button>
-    <h2>📅 Sessão de hoje</h2>
-    <p style="color:var(--ink-light);font-size:14px;margin-bottom:16px">A tua sessão diária, com cerca de 10 minutos.</p>
-    <div id="daily-steps"></div>
-    <button onclick="closeDailyModal()" style="margin-top:16px;background:var(--jade);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:15px;cursor:pointer;font-family:var(--font-main)">✓ Marcar como concluída</button>
-  </div>
-</div>
-
-<header class="site-nav" data-site-nav>
-  <a class="site-nav__logo" href="index.php" aria-label="Chá, página inicial">
-    <img class="site-nav__mark" src="img/logo-cha.svg" alt="" width="30" height="30">
-  </a>
-  <nav class="site-nav__menu" id="site-menu" aria-label="Principal">
-    <ul class="site-nav__links">
-        <li><a class="site-nav__link" href="index.php">Início</a></li>
-        <li><a class="site-nav__link" href="introducao.html">Introdução</a></li>
-        <li><a class="site-nav__link" href="sons.html">Sons</a></li>
-        <li><a class="site-nav__link" href="basico.html">Básico</a></li>
-        <li><a class="site-nav__link" href="vocabulario.html">Vocabulário</a></li>
-        <li><a class="site-nav__link" href="caracteres.html">Caracteres</a></li>
-        <li><a class="site-nav__link" href="praticar.html">Praticar</a></li>
-        <li><a class="site-nav__link" href="biblioteca.html">Biblioteca</a></li>
-    </ul>
-    <div class="site-nav__tools">
-      <button type="button" class="site-nav__tool" onclick="openDailyModal()">📅 Hoje</button>
-      <button type="button" class="site-nav__tool" id="dark-toggle" onclick="toggleDark()">🌙 Escuro</button>
-      <a class="site-nav__tool" href="conta.php">👤 Conta</a>
-    </div>
-  </nav>
-  <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-menu">Menu</button>
-</header>
-
-<main class="page" data-page="caracteres">
+$titulo = 'Caracteres';
+$pagina = 'caracteres';
+$usa_hanzi = true;
+require 'includes/topo.php';
+?>
 <div class="container">
 
 <!-- ============================================================ -->
@@ -191,13 +115,13 @@
     <div class="table-wrap">
     <table class="phrase-table">
       <tr><th>Simplificado</th><th>Tradicional</th><th>Pinyin</th><th>Significado</th></tr>
-      <tr><td class="zh-cell">爱</td><td class="zh-cell" style="font-size:18px">愛</td><td class="py-cell">ài</td><td>amor</td></tr>
-      <tr><td class="zh-cell">书</td><td class="zh-cell" style="font-size:18px">書</td><td class="py-cell">shū</td><td>livro</td></tr>
-      <tr><td class="zh-cell">说</td><td class="zh-cell" style="font-size:18px">說</td><td class="py-cell">shuō</td><td>falar</td></tr>
-      <tr><td class="zh-cell">国</td><td class="zh-cell" style="font-size:18px">國</td><td class="py-cell">guó</td><td>país</td></tr>
-      <tr><td class="zh-cell">车</td><td class="zh-cell" style="font-size:18px">車</td><td class="py-cell">chē</td><td>carro / veículo</td></tr>
-      <tr><td class="zh-cell">门</td><td class="zh-cell" style="font-size:18px">門</td><td class="py-cell">mén</td><td>porta / portão</td></tr>
-      <tr><td class="zh-cell">长</td><td class="zh-cell" style="font-size:18px">長</td><td class="py-cell">cháng/zhǎng</td><td>comprido / crescer</td></tr>
+      <tr><td class="zh-cell">爱</td><td class="zh-cell" style="font-size:1.125rem">愛</td><td class="py-cell">ài</td><td>amor</td></tr>
+      <tr><td class="zh-cell">书</td><td class="zh-cell" style="font-size:1.125rem">書</td><td class="py-cell">shū</td><td>livro</td></tr>
+      <tr><td class="zh-cell">说</td><td class="zh-cell" style="font-size:1.125rem">說</td><td class="py-cell">shuō</td><td>falar</td></tr>
+      <tr><td class="zh-cell">国</td><td class="zh-cell" style="font-size:1.125rem">國</td><td class="py-cell">guó</td><td>país</td></tr>
+      <tr><td class="zh-cell">车</td><td class="zh-cell" style="font-size:1.125rem">車</td><td class="py-cell">chē</td><td>carro / veículo</td></tr>
+      <tr><td class="zh-cell">门</td><td class="zh-cell" style="font-size:1.125rem">門</td><td class="py-cell">mén</td><td>porta / portão</td></tr>
+      <tr><td class="zh-cell">长</td><td class="zh-cell" style="font-size:1.125rem">長</td><td class="py-cell">cháng/zhǎng</td><td>comprido / crescer</td></tr>
     </table>
     </div>
   </div>
@@ -206,25 +130,4 @@
 
 </div><!-- /container -->
 
-<footer>
-  <div class="footer-zh">加油！继续学习！</div>
-  <p>加油！ Continua a aprender todos os dias. • 茶 Chá</p>
-  <p style="margin-top: 8px; font-size: 12px;">Este guia gratuito cobre o pinyin, os tons, a gramática, o vocabulário, os caracteres, o chinês para o trabalho e muito mais.</p>
-  <p class="footer-links"><a href="privacidade.php">Política de Privacidade</a> · <a href="creditos.php">Créditos</a></p>
-</footer>
-</main>
-
-<!-- JavaScript do site — carregar nesta ordem -->
-<script src="js/utils.js"></script>
-<script src="js/page.js"></script>
-<script src="js/hanzi.js"></script>
-<script src="js/data.js"></script>
-<script src="js/exercises.js"></script>
-<script src="js/dictionary.js"></script>
-<script src="js/tools.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/init.js"></script>
-<script src="js/ouvir.js"></script>
-<script src="js/nav.js"></script>
-</body>
-</html>
+<?php require 'includes/fim.php'; ?>
