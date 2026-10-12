@@ -367,3 +367,43 @@
   .poi-bar { background: var(--jade); }
   /* Links dentro do conteúdo: na cor do site, em vez do azul do browser */
   .container a:not(.botao-cha):not(.lib-btn) { color: var(--jade); font-weight: 600; }
+
+  /* CARTÕES: maiores, e legíveis nos dois modos.
+     A frente usava var(--ink), que no modo escuro passa a ser clara: o caractere dourado deixava de se ver.
+     Agora a frente usa --fundo-escuro, que é escuro nos dois modos. */
+  .fc-card-wrap { width: min(360px, 100%); height: 230px; }
+  .fc-front { background: linear-gradient(135deg, var(--fundo-escuro), #2E3A46); }
+  .fc-zh-big { font-size: 4rem; color: #F2B83A; }
+  .fc-hint-txt { font-size: 0.875rem; color: rgba(255, 255, 255, 0.8); }
+  .fc-back { border: 2px solid var(--paper-dark); }
+  .fc-zh-sm { font-size: 2.25rem; }
+  .fc-py { font-size: 1.125rem; color: var(--jade); }
+  .fc-en-txt { font-size: 1.0625rem; }
+  .fc-btn { padding: 10px 18px; font-size: 0.9375rem; }
+  .fc-stat .fsl { font-size: 0.8125rem; }
+
+  /* TECLADO: retângulos da largura toda (como as Situações dos diálogos), em vez de caixinhas.
+     O título fica à esquerda e os passos seguem lado a lado, com uma seta entre eles. */
+  .kb-grid { grid-template-columns: 1fr; gap: 14px; }
+  .kb-card { display: grid; grid-template-columns: 220px 1fr; gap: 12px 20px; align-items: center; padding: 18px 22px; border-left: 5px solid var(--cor-kb, var(--jade)); }
+  .kb-card:nth-child(2) { --cor-kb: var(--blue); }
+  .kb-card:nth-child(3) { --cor-kb: var(--seal); }
+  .kb-card:nth-child(4) { --cor-kb: var(--gold); }
+  .kb-card:nth-child(5) { --cor-kb: var(--plum); }
+  .kb-card h3 { grid-row: span 9; font-size: 1.125rem; margin: 0; }
+  .kb-step { font-size: 0.9375rem; padding: 10px 14px; margin: 0; border-radius: 10px; }
+  @media (min-width: 900px) {
+    /* No computador os passos ficam em linha */
+    .kb-card { grid-template-columns: 200px repeat(auto-fit, minmax(160px, 1fr)); }
+    .kb-card h3 { grid-row: auto; }
+  }
+  @media (max-width: 640px) { .kb-card { grid-template-columns: 1fr; } .kb-card h3 { grid-row: auto; } }
+
+  /* CULTURA DO DIA A DIA: cartões maiores e mais legíveis */
+  .culture-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; }
+  .culture-card { padding: 20px 22px; }
+  .culture-card:nth-child(4n+2) { border-top-color: var(--seal); }
+  .culture-card:nth-child(4n+3) { border-top-color: var(--jade); }
+  .culture-card:nth-child(4n+4) { border-top-color: var(--blue); }
+  .culture-card h3 { font-size: 1.125rem; margin-bottom: 10px; }
+  .culture-card ul li { font-size: 0.9375rem; padding: 7px 0; line-height: 1.5; }

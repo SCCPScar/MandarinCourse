@@ -42,14 +42,18 @@ window.addEventListener('scroll', () => {
 // ═══════════════════════════════════════════════════════
 document.addEventListener('keydown', e => {
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-  if (e.code === 'Space') {
-    e.preventDefault();
-    const fc = document.querySelector('#tab-flash.active .flashcard');
-    if (fc) fc.click();
+  // Os atalhos dos cartões só funcionam com o separador «Cartões» aberto
+  const cartoesAbertos = document.querySelector('#tab-flash.active');
+  if (cartoesAbertos && e.code === 'Space' && !e.target.closest('button, a')) {
+    e.preventDefault();          // sem isto, o Espaço também fazia a página descer
+    flipCard();                  // antes procurava ".flashcard", que não existe, por isso não fazia nada
   }
-  if (e.code === 'Digit1') { const b = document.querySelector('#tab-flash.active .fc-btn.hard'); if(b) b.click(); }
-  if (e.code === 'Digit2') { const b = document.querySelector('#tab-flash.active .fc-btn.ok'); if(b) b.click(); }
-  if (e.code === 'Digit3') { const b = document.querySelector('#tab-flash.active .fc-btn.easy'); if(b) b.click(); }
+  // 1, 2 e 3 só avaliam depois de o cartão estar virado (antes avaliavam sem o aluno ver a resposta)
+  if (cartoesAbertos && typeof fcFlipped !== 'undefined' && fcFlipped) {
+    if (e.code === 'Digit1' || e.code === 'Numpad1') rateCard('hard');
+    if (e.code === 'Digit2' || e.code === 'Numpad2') rateCard('ok');
+    if (e.code === 'Digit3' || e.code === 'Numpad3') rateCard('easy');
+  }
   if (e.code === 'Escape') closeDailyModal();
 });
 

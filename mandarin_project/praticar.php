@@ -114,7 +114,7 @@ require 'includes/topo.php';
   <h3>Teste rápido</h3>
   <div id="quiz-area"></div>
   <div style="text-align:center;margin-top:1rem">
-    <button onclick="startQuiz()" style="background:var(--red);color:white;border:none;padding:12px 32px;border-radius:10px;font-size:1rem;font-family:var(--font-main);cursor:pointer;font-weight:600;">Começar o quiz</button>
+    <button type="button" id="quiz-comecar" class="botao-cha" onclick="startQuiz()"><i class="i i-jogar" aria-hidden="true"></i> Começar o quiz</button>
   </div>
 </div>
 
@@ -136,7 +136,6 @@ require 'includes/topo.php';
   <button class="api-tab-btn" onclick="switchApiTab(event,'tab-hanzi')">Traços</button>
   <button class="api-tab-btn" onclick="switchApiTab(event,'tab-notebook')">Caderno</button>
   <button class="api-tab-btn" onclick="switchApiTab(event,'tab-timer')">Temporizador</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-culture')">Cultura</button>
   <button class="api-tab-btn" onclick="switchApiTab(event,'tab-keyboard')">Teclado</button>
   <button class="api-tab-btn" onclick="switchApiTab(event,'tab-mic')">Pronúncia</button>
 </div>
@@ -157,7 +156,10 @@ require 'includes/topo.php';
           <div class="fc-zh-sm" id="fc-zh-back"></div>
           <div class="fc-py" id="fc-py-back"></div>
           <div class="fc-en-txt" id="fc-en-back"></div>
-          <button class="speak-btn" id="fc-speak" style="margin-top:4px"><i class="i i-ouvir" aria-hidden="true"></i> Ouvir</button>
+          <div style="display:flex;gap:6px;margin-top:4px">
+            <button class="speak-btn" id="fc-speak"><i class="i i-ouvir" aria-hidden="true"></i> Ouvir</button>
+            <button class="speak-btn" id="fc-speak-devagar"><i class="i i-devagar" aria-hidden="true"></i> Devagar</button>
+          </div>
         </div>
       </div>
     </div>
@@ -256,11 +258,17 @@ require 'includes/topo.php';
     <div id="hanzi-canvas-wrap">
       <div><svg id="hanzi-target" width="200" height="200"></svg><div style="text-align:center;font-size:0.6875rem;color:var(--ink-light);margin-top:3px" id="hanzi-hint"></div></div>
       <div id="hanzi-info">
-        <h4>Prática rápida:</h4>
-        <div id="hanzi-presets">
-          <span class="preset-char" onclick="loadChar('人')">人</span><span class="preset-char" onclick="loadChar('大')">大</span><span class="preset-char" onclick="loadChar('中')">中</span><span class="preset-char" onclick="loadChar('好')">好</span><span class="preset-char" onclick="loadChar('我')">我</span><span class="preset-char" onclick="loadChar('你')">你</span><span class="preset-char" onclick="loadChar('是')">是</span><span class="preset-char" onclick="loadChar('不')">不</span><span class="preset-char" onclick="loadChar('有')">有</span><span class="preset-char" onclick="loadChar('爱')">爱</span><span class="preset-char" onclick="loadChar('国')">国</span><span class="preset-char" onclick="loadChar('学')">学</span><span class="preset-char" onclick="loadChar('日')">日</span><span class="preset-char" onclick="loadChar('月')">月</span><span class="preset-char" onclick="loadChar('山')">山</span><span class="preset-char" onclick="loadChar('水')">水</span><span class="preset-char" onclick="loadChar('火')">火</span><span class="preset-char" onclick="loadChar('心')">心</span>
+        <h4>Escolhe um caractere para treinar</h4>
+        <div id="hanzi-presets"><!-- o js/hanzi.js mostra aqui os conjuntos de caracteres --></div>
+        <!-- Folha de treino com os caracteres que o aluno quiser -->
+        <div class="folha-propria">
+          <label for="hanzi-folha">Folha de treino com outros caracteres:</label>
+          <div class="folha-propria__linha">
+            <input id="hanzi-folha" type="text" maxlength="30" placeholder="ex.: 你好谢谢" lang="zh-CN">
+            <button type="button" class="botao-cha" onclick="imprimirFolhaTracos()"><i class="i i-imprimir" aria-hidden="true"></i> Criar folha</button>
+          </div>
         </div>
-        <div class="tip" style="margin-top:8px;font-size:0.75rem">Escolhe um caractere, carrega em Animar para ver os traços e depois em Praticar para o desenhar!</div>
+        <div class="tip" style="margin-top:8px">Escolhe um caractere, carrega em Animar para ver a ordem dos traços e depois em Praticar para o desenhar com o rato ou com o dedo. Para treinar no papel, imprime uma folha.</div>
       </div>
     </div>
   </div>
@@ -300,19 +308,6 @@ require 'includes/topo.php';
   </div>
 </div>
 
-<!-- GUIA DE CULTURA -->
-<div id="tab-culture" class="api-tab-content" style="padding-top:1.2rem">
-  <div class="info" style="margin-bottom:.8rem"><strong>A cultura de trabalho na China</strong>. O essencial para trabalhar na China. Conhecer a cultura ajuda muito no trabalho.</div>
-  <div class="culture-grid">
-    <div class="culture-card"><h3>Cartões de visita (名片 míngpiàn)</h3><ul><li>Dá e recebe com as DUAS mãos</li><li>Olha para o cartão uns segundos e nunca escrevas nele</li><li>Nunca o ponhas no bolso de trás</li><li>Tem cartões com o verso em chinês</li><li>Nas reuniões, deixa os cartões em cima da mesa</li></ul></div>
-    <div class="culture-card"><h3>Regras à mesa (餐桌礼仪)</h3><ul><li>Espera que o anfitrião se sente e comece</li><li>Quem convida paga, não discutas a conta</li><li>Brinde: 干杯 (gānbēi) = Saúde!</li><li>Prova um pouco de tudo o que te oferecem</li><li>Deixar um pouco de comida = já estás satisfeito (é educado)</li></ul></div>
-    <div class="culture-card"><h3>Oferecer presentes (送礼)</h3><ul><li>Nunca ofereças relógios de parede: soa a «ir a um funeral»</li><li>Nunca ofereças peras: 梨 soa a «separação»</li><li>Oferece em números pares, dá sorte</li><li>Envelopes vermelhos (红包) com dinheiro são sempre boa ideia</li><li>Não abras o presente logo à frente de quem o deu</li></ul></div>
-    <div class="culture-card"><h3>Relações (关系 guānxi)</h3><ul><li>关系 = contactos. Nos negócios são tudo</li><li>Cria confiança antes de fazer negócio</li><li>O WeChat é a principal ferramenta de trabalho</li><li>Dirige-te sempre primeiro às pessoas mais velhas ou com cargo mais alto</li><li>A harmonia (和谐) vale mais do que o confronto</li></ul></div>
-    <div class="culture-card"><h3>Tecnologia e pagamentos</h3><ul><li>Usa-se WeChat Pay e Alipay em todo o lado</li><li>扫一扫 (sǎo yī sǎo) = ler o QR code</li><li>Precisas de VPN para o Google, o WhatsApp e o Instagram</li><li>Baidu = o Google chinês; Didi = a Uber chinesa</li><li>Configura o WeChat ANTES de chegares à China</li></ul></div>
-    <div class="culture-card"><h3>Cultura de escritório</h3><ul><li>Fazer horas extra (加班 jiābān) é comum</li><li>Não recuses convites dos colegas</li><li>给面子 (gěi miànzi) = «dar face», não envergonhar ninguém. É essencial</li><li>Nunca critiques ninguém em público</li><li>Tratamento: 王总 (Wáng zǒng) = Diretor Wang</li></ul></div>
-  </div>
-</div>
-
 <!-- CONFIGURAR O TECLADO -->
 <div id="tab-keyboard" class="api-tab-content" style="padding-top:1.2rem">
   <div class="info" style="margin-bottom:.8rem"><strong>Configurar o teclado chinês</strong>. Como escrever em chinês em todos os teus aparelhos. Essencial para o WeChat, os e-mails e o dia a dia na China.</div>
@@ -343,15 +338,15 @@ require 'includes/topo.php';
       <div class="kb-step"><strong>4.</strong> Ou instala o <strong>Sogou Pinyin</strong> (o mais usado na China)</div>
     </div>
     <div class="kb-card"><h3>Como funciona o teclado de pinyin</h3>
-      <div class="kb-step">Escreve <strong>n-i-h-a-o</strong> e aparece 你好</div>
+      <div class="kb-step">Escreve <strong>n-i-h-a-o</strong> e aparece 你好 (nǐ hǎo)</div>
       <div class="kb-step">Carrega em <strong>Space</strong> para escolher o primeiro da lista</div>
       <div class="kb-step">Carrega em <strong>2-9</strong> para os outros</div>
       <div class="kb-step">O teclado aprende com o teu uso e vai melhorando</div>
     </div>
     <div class="kb-card"><h3>Aplicações essenciais na China</h3>
-      <div class="kb-step"><strong>WeChat (微信)</strong>: instala ANTES de ir!</div>
-      <div class="kb-step"><strong>Alipay (支付宝)</strong>: pagamentos em todo o lado</div>
-      <div class="kb-step"><strong>Didi (滴滴)</strong>: táxis e transporte</div>
+      <div class="kb-step"><strong>WeChat (微信, Wēixìn)</strong>: instala ANTES de ir!</div>
+      <div class="kb-step"><strong>Alipay (支付宝, Zhīfùbǎo)</strong>: pagamentos em todo o lado</div>
+      <div class="kb-step"><strong>Didi (滴滴, Dīdī)</strong>: táxis e transporte</div>
       <div class="kb-step"><strong>VPN</strong>: configura antes de chegar</div>
     </div>
   </div>

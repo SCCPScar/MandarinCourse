@@ -42,7 +42,7 @@ $praticar_mais = [
     ],
     '2.4' => [
         ['Gramática: 了 (le)', 'gramatica.php#estrutura-10', 'O 了 (le) de ação terminada.'],
-        ['Cultura de Xi\'an', 'rota.php#cultura', 'Pagar com o telemóvel e outras curiosidades.'],
+        ['Cultura de Xi\'an', 'cultura.php#cidade-2', 'Pagar com o telemóvel e outras curiosidades.'],
         ['Dicionário', 'praticar.php#tab-dict', 'Procura as palavras que te faltam.'],
     ],
     '3.1' => [
@@ -78,7 +78,7 @@ $praticar_mais = [
     '4.3' => [
         ['Adjetivos', 'vocabulario.php#adjectives', 'Bonito, antigo, calmo, cheio de gente…'],
         ['Gramática essencial', 'gramatica.php', 'O 得 (de) para dizer como se faz alguma coisa.'],
-        ['Cultura de Guilin', 'rota.php#cultura', 'O rio Li, Yangshuo e os comboios rápidos.'],
+        ['Cultura de Guilin', 'cultura.php#cidade-4', 'O rio Li, Yangshuo e os comboios rápidos.'],
     ],
     '4.4' => [
         ['Perguntas essenciais', 'basico.php#questions', 'Pedir ajuda e perguntar onde fica.'],
@@ -88,7 +88,7 @@ $praticar_mais = [
     '5.1' => [
         ['Gramática essencial', 'gramatica.php', 'Comparar com 比 (bǐ).'],
         ['Adjetivos', 'vocabulario.php#adjectives', 'Os adjetivos para comparar.'],
-        ['Cultura de Hangzhou', 'rota.php#cultura', 'O Lago do Oeste e o chá Longjing.'],
+        ['Cultura de Hangzhou', 'cultura.php#cidade-5', 'O Lago do Oeste e o chá Longjing.'],
     ],
     '5.2' => [
         ['Gramática: 了 (le) e 过 (guo)', 'gramatica.php#estrutura-10', '了 (le) e 过 (guo) para falar do passado.'],
@@ -108,7 +108,7 @@ $praticar_mais = [
     '6.1' => [
         ['Lugares', 'vocabulario.php#places', 'Banco, correios, casa.'],
         ['Dicionário', 'praticar.php#tab-dict', 'Procura as palavras de que precisas para alugar casa.'],
-        ['Cultura de Xangai', 'rota.php#cultura', 'Os lòngtáng e o dialeto de Xangai.'],
+        ['Cultura de Xangai', 'cultura.php#cidade-6', 'Os lòngtáng e o dialeto de Xangai.'],
     ],
     '6.2' => [
         ['Chinês para o trabalho', 'vocabulario.php#work', 'Reuniões, e-mails e vocabulário de negócios.'],

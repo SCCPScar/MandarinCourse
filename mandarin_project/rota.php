@@ -1,7 +1,7 @@
 <?php
 // rota.php
 // Aqui eu mostro a rota de 12 meses: o progresso geral, as 6 cidades (com o nível HSK de cada uma)
-// e, no fim, a cultura de cada cidade, com o chinês, o pinyin e o som.
+// e, no fim, um convite para a página da cultura.
 
 require 'includes/sessao.php';
 require 'includes/ligacao.php';
@@ -28,11 +28,6 @@ $total_licoes = array_sum(array_column($cidades, 'total'));
 $feitas_total = array_sum(array_column($cidades, 'feitas'));
 $percentagem_geral = $total_licoes > 0 ? round($feitas_total / $total_licoes * 100) : 0;
 
-// A cultura de todas as cidades, arrumada por cidade: $cultura[id_da_cidade] = [item, item, …]
-$cultura = [];
-foreach ($pdo->query('SELECT * FROM cultura ORDER BY cidade_id, id') as $item) {
-    $cultura[$item['cidade_id']][] = $item;
-}
 
 $titulo = 'A rota';
 $pagina = 'rota';
@@ -102,29 +97,15 @@ require 'includes/topo.php';
   </ol>
 </section>
 
-<!-- CULTURA: o que cada cidade tem de especial, com o chinês para ouvir -->
-<section class="cultura-secao" id="cultura">
-  <h2>A cultura de cada cidade</h2>
-  <p>Aprender uma língua é também conhecer quem a fala. Aqui ficam algumas coisas que vais encontrar em cada paragem da rota. Carrega em «Ouvir» para ouvires a palavra em chinês.</p>
-
-  <?php foreach ($cidades as $cidade): ?>
-    <div class="cultura-cidade">
-      <h3><a href="cidade.php?id=<?= (int) $cidade['id'] ?>"><?= e($cidade['nome']) ?> <span lang="zh-CN"><?= e($cidade['nome_zh']) ?></span></a></h3>
-      <ul class="cultura-lista">
-        <?php foreach ($cultura[$cidade['id']] ?? [] as $item): ?>
-          <li class="cultura-item">
-            <div class="cultura-item__topo">
-              <span class="cultura-item__zh" lang="zh-CN"><?= e($item['hanzi']) ?></span>
-              <span class="cultura-item__py"><?= e($item['pinyin']) ?></span>
-            </div>
-            <h4><?= e($item['titulo']) ?></h4>
-            <p><?= e($item['texto']) ?></p>
-            <?= botoes_ouvir($item['hanzi'], $item['pinyin']) ?>
-          </li>
-        <?php endforeach; ?>
-      </ul>
+<!-- CULTURA: tem uma página só sua (cultura.php) -->
+<section class="cultura-secao">
+  <div class="convite-cultura">
+    <div>
+      <h2>A cultura de cada cidade</h2>
+      <p>Os hutongs de Pequim, os guerreiros de Xi'an, as casas de chá de Chengdu… e as regras do dia a dia que te vão poupar alguns embaraços na China.</p>
     </div>
-  <?php endforeach; ?>
+    <a class="botao-cha" href="cultura.php">Ver a cultura <i class="i i-seguinte" aria-hidden="true"></i></a>
+  </div>
 </section>
 
 <?php require 'includes/fim.php'; ?>

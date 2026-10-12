@@ -84,3 +84,38 @@ if (LS.get('dark', false)) {
   mostrarBotaoEscuro(true);
 }
 
+
+// ═══ CONJUNTOS DE CARACTERES PARA TREINAR ═══
+// Os caracteres mais úteis do HSK 1 e 2, arrumados por temas, com o pinyin.
+// Antes havia só 10 caracteres soltos; os testers pediram mais.
+const CONJUNTOS_TRACOS = [
+  { nome: 'Números', chars: [['一','yī'],['二','èr'],['三','sān'],['四','sì'],['五','wǔ'],['六','liù'],['七','qī'],['八','bā'],['九','jiǔ'],['十','shí'],['百','bǎi'],['千','qiān']] },
+  { nome: 'Pessoas', chars: [['人','rén'],['我','wǒ'],['你','nǐ'],['他','tā'],['她','tā'],['们','men'],['女','nǚ'],['子','zǐ'],['父','fù'],['母','mǔ']] },
+  { nome: 'Natureza', chars: [['日','rì'],['月','yuè'],['水','shuǐ'],['火','huǒ'],['山','shān'],['木','mù'],['土','tǔ'],['天','tiān'],['雨','yǔ'],['花','huā']] },
+  { nome: 'Verbos', chars: [['吃','chī'],['喝','hē'],['说','shuō'],['看','kàn'],['听','tīng'],['写','xiě'],['学','xué'],['去','qù'],['来','lái'],['买','mǎi']] },
+  { nome: 'Lugares e coisas', chars: [['中','zhōng'],['国','guó'],['家','jiā'],['门','mén'],['车','chē'],['书','shū'],['茶','chá'],['饭','fàn'],['钱','qián'],['路','lù']] },
+  { nome: 'Palavras pequenas', chars: [['大','dà'],['小','xiǎo'],['好','hǎo'],['不','bù'],['是','shì'],['有','yǒu'],['的','de'],['在','zài'],['很','hěn'],['上','shàng'],['下','xià']] },
+];
+
+// Mostro os conjuntos no separador «Traços». Cada caractere é um botão com o pinyin por baixo.
+function mostrarConjuntosTracos() {
+  const caixa = document.getElementById('hanzi-presets');
+  if (!caixa) return;
+  caixa.innerHTML = CONJUNTOS_TRACOS.map((c, i) => `
+    <div class="conjunto-tracos">
+      <div class="conjunto-tracos__topo">
+        <h5>${c.nome}</h5>
+        <a class="conjunto-tracos__imprimir" href="folha.php?c=${encodeURIComponent(c.chars.map(x => x[0]).join(''))}" target="_blank" rel="noopener"><i class="i i-imprimir" aria-hidden="true"></i> Folha para imprimir</a>
+      </div>
+      <div class="conjunto-tracos__lista">
+        ${c.chars.map(([zh, py]) => `<button type="button" class="preset-char" onclick="loadChar('${zh}')"><span lang="zh-CN">${zh}</span><small>${py}</small></button>`).join('')}
+      </div>
+    </div>`).join('');
+}
+ChaPage.onInit(mostrarConjuntosTracos);
+
+// Abro a folha de treino com o caractere que está escrito na caixa (ou com vários, se o aluno escrever vários)
+function imprimirFolhaTracos() {
+  const valor = (document.getElementById('hanzi-folha')?.value || document.getElementById('hanzi-input')?.value || '').trim();
+  window.open('folha.php?c=' + encodeURIComponent(valor), '_blank', 'noopener');
+}

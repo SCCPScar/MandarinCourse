@@ -21,8 +21,10 @@ let learned=LS.get('learned',{});
 function markLearned(zh,btn){if(learned[zh]){delete learned[zh];btn.classList.remove('done');}else{learned[zh]=true;btn.classList.add('done');}LS.set('learned',learned);updateProgress();}
 function updateProgress(){
   const cats=[{l:'Pessoas',d:vocabData.people},{l:'Verbos',d:vocabData.verbs},{l:'Adjetivos',d:vocabData.adj},{l:'Lugares',d:vocabData.places},{l:'Comida',d:vocabData.food},{l:'Tempo',d:vocabData.time}];
-  const g=document.getElementById('po-grid');if(!g)return;
-  g.innerHTML=cats.map(c=>{const done=c.d.filter(w=>learned[w.zh]).length;const pct=Math.round(done/c.d.length*100);return`<div class="po-item"><div class="poi-label">${c.l}: ${done}/${c.d.length}</div><div class="poi-bar-wrap"><div class="poi-bar" style="width:${pct}%"></div></div><div class="poi-pct">${pct}%</div></div>`;}).join('');
+  // O painel «O teu progresso» só existe na Introdução. Antes, sem ele, a função saía logo
+  // e os números dos cartões (na Praticar) ficavam a 0. Agora só salto esta parte.
+  const g=document.getElementById('po-grid');
+  if(g)g.innerHTML=cats.map(c=>{const done=c.d.filter(w=>learned[w.zh]).length;const pct=Math.round(done/c.d.length*100);return`<div class="po-item"><div class="poi-label">${c.l}: ${done}/${c.d.length}</div><div class="poi-bar-wrap"><div class="poi-bar" style="width:${pct}%"></div></div><div class="poi-pct">${pct}%</div></div>`;}).join('');
   const fl=document.getElementById('fc-learned');if(fl)fl.textContent=allVocab.filter(w=>learned[w.zh]).length;
   const ft=document.getElementById('fc-total');if(ft)ft.textContent=allVocab.length;
   const fd=document.getElementById('fc-due');if(fd)fd.textContent=allVocab.filter(w=>!learned[w.zh]).length;
@@ -85,7 +87,8 @@ function renderFC(){
   document.getElementById('fc-zh-back').textContent=w.zh;
   document.getElementById('fc-py-back').textContent=w.py;
   document.getElementById('fc-en-back').textContent=w.en;
-  document.getElementById('fc-speak').onclick=()=>speakText(w.zh);
+  document.getElementById('fc-speak').onclick=()=>speakText(w.zh, VELOCIDADE_NORMAL);
+  document.getElementById('fc-speak-devagar').onclick=()=>speakText(w.zh, VELOCIDADE_DEVAGAR);
   document.getElementById('fc-card').classList.remove('flipped');
   fcFlipped=false;
   document.getElementById('fc-controls').style.display='none';

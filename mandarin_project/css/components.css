@@ -500,3 +500,30 @@ body.dark .section-header .section-num { color: #0F1519; }
 .lib-grid > .lib-card:first-child::before { content: "Recomendado para começar"; align-self: flex-start; padding: 3px 10px; border-radius: 20px; background: var(--cor-nivel); color: #fff; font-size: 0.75rem; font-weight: 700; }
 body.dark .lib-grid > .lib-card:first-child::before { color: #0F1519; }
 .ouvir-na-tabela .ouvir-par { flex-wrap: nowrap; }
+
+/* ═══ QUIZ ═══ */
+.quiz-pinyin { text-align: center; font-style: italic; color: var(--jade); font-size: 1.125rem; margin-top: -0.5rem; }
+.quiz-ouvir { display: flex; justify-content: center; margin: 10px 0 4px; }
+.quiz-btn:disabled { cursor: default; }
+.quiz-seguinte { margin-top: 12px; }
+.quiz-erradas-titulo { margin: 1.5rem 0 0.5rem; font-size: 1.125rem; }
+.quiz-erradas { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 1rem; }
+.quiz-erradas li { padding: 10px 14px; border-radius: 10px; background: var(--paper-mid); border-left: 4px solid var(--plum); }
+.quiz-certa { display: block; color: var(--jade); font-weight: 600; margin-top: 2px; }
+
+/* ═══ TRAÇOS: CONJUNTOS DE CARACTERES ═══ */
+#hanzi-info { flex: 1; min-width: 280px; }
+.conjunto-tracos { margin-bottom: 14px; }
+.conjunto-tracos__topo { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; }
+.conjunto-tracos h5 { font-size: 0.9375rem; color: var(--ink); }
+.conjunto-tracos__imprimir { font-size: 0.8125rem; font-weight: 600; color: var(--jade); }
+.conjunto-tracos__lista { display: flex; flex-wrap: wrap; gap: 6px; }
+.conjunto-tracos .preset-char { display: inline-flex; flex-direction: column; align-items: center; min-width: 52px; padding: 6px 8px; line-height: 1.1; border: 1.5px solid var(--paper-dark); border-radius: 10px; background: var(--white); cursor: pointer; }
+.conjunto-tracos .preset-char small { font-family: var(--font-main); font-size: 0.75rem; font-weight: 400; font-style: italic; color: var(--ink-light); }
+.conjunto-tracos .preset-char:hover small { color: inherit; }
+.folha-propria { margin-top: 16px; padding: 14px; border-radius: var(--radius); background: var(--paper-mid); }
+.folha-propria label { font-weight: 600; font-size: 0.9375rem; }
+.folha-propria__linha { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.folha-propria input { flex: 1; min-width: 160px; padding: 10px 12px; border: 1.5px solid var(--paper-dark); border-radius: 10px; font-size: 1.125rem; font-family: var(--font-chinese); background: var(--white); color: var(--ink); }
+.folha-propria .botao-cha { margin: 0; min-height: 44px; }
+.bubble.pode-ouvir { padding-right: 34px; }   /* espaço para o ícone de som não ficar por cima do texto */
