@@ -538,3 +538,23 @@ body.dark .lib-grid > .lib-card:first-child::before { color: #0F1519; }
    As margens de cima e de baixo entre irmãos não se somam: fica a maior. */
 .table-wrap, .card-grid, .num-grid { margin-top: 1.5rem; margin-bottom: 2.25rem; }
 .example-list { margin-top: 1rem; }
+
+/* ═══ CARTÕES DOS TONS (página Sons) ═══
+   Aqui eu corrijo os botões Ouvir/Devagar que saíam da caixa do exemplo:
+   - auto-fit faz os 5 cartões ocuparem a largura toda (antes sobravam colunas vazias);
+   - cada cartão é uma coluna e o exemplo vai sempre para o fundo, por isso ficam todos alinhados;
+   - os dois botões ficam um por baixo do outro, com a largura da caixa, e nunca saem dela. */
+.tones-grid { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.tone-card { display: flex; flex-direction: column; align-items: center; }
+.tone-card .example { margin-top: auto; width: 100%; padding: 12px 10px; }
+.tone-card p { margin-bottom: 14px; }
+.tone-card .ouvir-na-tabela { margin-top: 10px; }
+.tone-card .ouvir-na-tabela .ouvir-par { display: flex; flex-direction: column; gap: 6px; }
+.tone-card .ouvir-btn { justify-content: center; width: 100%; }
+/* Com flex e justify-content: center, quando os cartões não cabem numa só linha
+   a linha de baixo fica centrada (por exemplo 4 + 1 ou 3 + 2), em vez de encostada à esquerda. */
+.tones-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+.tone-card { flex: 0 1 220px; }
+/* O significado ocupa sempre 2 linhas de altura, para as caixas cinzentas ficarem todas iguais */
+.tone-card .example > div:not(.zh):not(.ouvir-na-tabela) { min-height: 3.2em; display: flex; align-items: center; justify-content: center; }
+@media (max-width: 600px) { .tone-card { flex-basis: 100%; } }
