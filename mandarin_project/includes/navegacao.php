@@ -54,6 +54,7 @@
         <li><a class="site-nav__link" href="introducao.php">Introdução</a></li>
         <li><a class="site-nav__link" href="sons.php">Sons</a></li>
         <li><a class="site-nav__link" href="basico.php">Básico</a></li>
+        <li><a class="site-nav__link" href="gramatica.php">Gramática</a></li>
         <li><a class="site-nav__link" href="vocabulario.php">Vocabulário</a></li>
         <li><a class="site-nav__link" href="caracteres.php">Caracteres</a></li>
         <li><a class="site-nav__link" href="praticar.php">Praticar</a></li>

@@ -10,14 +10,15 @@ $pagina = 'caracteres';
 $usa_hanzi = true;
 require 'includes/topo.php';
 ?>
+<?= cabeca_pagina('Caracteres', '汉字', 'hànzì', 'Como funcionam os caracteres chineses: os radicais, a ordem dos traços e a diferença entre simplificados e tradicionais.', 'jade') ?>
 <div class="container">
 
 <!-- ============================================================ -->
 <!-- MÓDULO 9: CARACTERES -->
 <!-- ============================================================ -->
 <div class="section-header anchor" id="characters">
-  <div class="section-num">9</div>
-  <h2>Caracteres chineses: como os aprender <span class="zh">汉字</span></h2>
+  <div class="section-num">1</div>
+  <h2>Caracteres chineses: como os aprender <span class="zh">汉字</span> <span class="section-header__py">hànzì</span></h2>
 </div>
 <p class="section-intro">Os caracteres parecem assustadores, mas seguem padrões. Existem cerca de 50 000, mas bastam uns 2000 para ler jornais e uns 3500 para o dia a dia. A maioria junta peças mais simples.</p>
 
@@ -33,24 +34,24 @@ require 'includes/topo.php';
   <div class="table-wrap">
   <table class="phrase-table">
     <tr><th>Radical</th><th>Pista do significado</th><th>Exemplos</th></tr>
-    <tr><td class="zh-cell">氵(水)</td><td>água</td><td>河 rio, 海 mar, 洗 lavar, 游 nadar, 泳 nadar</td></tr>
-    <tr><td class="zh-cell">火 (灬)</td><td>fogo</td><td>热 quente, 烧 queimar, 炒 saltear, 煮 cozer</td></tr>
-    <tr><td class="zh-cell">木</td><td>madeira / árvore</td><td>树 árvore, 桌 mesa, 椅 cadeira, 林 floresta</td></tr>
-    <tr><td class="zh-cell">口</td><td>boca / abertura</td><td>吃 comer, 喝 beber, 说 falar, 唱 cantar, 叫 chamar</td></tr>
-    <tr><td class="zh-cell">人 (亻)</td><td>pessoa</td><td>他 ele, 你 tu, 做 fazer, 们 marca de plural</td></tr>
-    <tr><td class="zh-cell">心 (忄)</td><td>coração / mente</td><td>想 pensar, 忘 esquecer, 爱 amar, 怕 ter medo</td></tr>
-    <tr><td class="zh-cell">女</td><td>mulher</td><td>妈 mãe, 姐 irmã, 她 ela, 好 bom</td></tr>
-    <tr><td class="zh-cell">手 (扌)</td><td>mão</td><td>打 bater / fazer, 拿 segurar, 找 procurar, 推 empurrar</td></tr>
-    <tr><td class="zh-cell">目</td><td>olho</td><td>看 olhar, 睡 dormir, 睁 abrir os olhos, 盲 cego</td></tr>
-    <tr><td class="zh-cell">言 (讠)</td><td>fala</td><td>说 falar, 话 fala, 谢 agradecer, 请 convidar</td></tr>
-    <tr><td class="zh-cell">金 (钅)</td><td>metal / dinheiro</td><td>钱 dinheiro, 银 prata, 铁 ferro, 钟 relógio</td></tr>
-    <tr><td class="zh-cell">土</td><td>terra / chão</td><td>地 chão, 城 cidade, 坐 sentar, 在 em / estar</td></tr>
-    <tr><td class="zh-cell">日</td><td>sol / dia</td><td>明 claro, 晴 soalheiro, 时 tempo, 是 ser</td></tr>
-    <tr><td class="zh-cell">月</td><td>lua / mês</td><td>期 período, 朋 amigo (duas luas!), 脸 cara</td></tr>
-    <tr><td class="zh-cell">走</td><td>andar / ir</td><td>跑 correr, 跳 saltar, 路 estrada, 跟 seguir</td></tr>
+    <tr><td class="zh-cell">氵(水)</td><td>água</td><td>河 (hé) rio, 海 (hǎi) mar, 洗 (xǐ) lavar, 游 (yóu) nadar, 泳 (yǒng) nadar</td></tr>
+    <tr><td class="zh-cell">火 (灬)</td><td>fogo</td><td>热 (rè) quente, 烧 (shāo) queimar, 炒 (chǎo) saltear, 煮 (zhǔ) cozer</td></tr>
+    <tr><td class="zh-cell">木</td><td>madeira / árvore</td><td>树 árvore, 桌 (zhuō) mesa, 椅 (yǐ) cadeira, 林 (lín) floresta</td></tr>
+    <tr><td class="zh-cell">口</td><td>boca / abertura</td><td>吃 (chī) comer, 喝 (hē) beber, 说 (shuō) falar, 唱 (chàng) cantar, 叫 (jiào) chamar</td></tr>
+    <tr><td class="zh-cell">人 (亻)</td><td>pessoa</td><td>他 (tā) ele, 你 (nǐ) tu, 做 (zuò) fazer, 们 (men) marca de plural</td></tr>
+    <tr><td class="zh-cell">心 (忄)</td><td>coração / mente</td><td>想 (xiǎng) pensar, 忘 (wàng) esquecer, 爱 (ài) amar, 怕 (pà) ter medo</td></tr>
+    <tr><td class="zh-cell">女</td><td>mulher</td><td>妈 (mā) mãe, 姐 (jiě) irmã, 她 (tā) ela, 好 (hǎo) bom</td></tr>
+    <tr><td class="zh-cell">手 (扌)</td><td>mão</td><td>打 (dǎ) bater / fazer, 拿 (ná) segurar, 找 (zhǎo) procurar, 推 (tuī) empurrar</td></tr>
+    <tr><td class="zh-cell">目</td><td>olho</td><td>看 (kàn) olhar, 睡 (shuì) dormir, 睁 (zhēng) abrir os olhos, 盲 (máng) cego</td></tr>
+    <tr><td class="zh-cell">言 (讠)</td><td>fala</td><td>说 (shuō) falar, 话 (huà) fala, 谢 (xiè) agradecer, 请 (qǐng) convidar</td></tr>
+    <tr><td class="zh-cell">金 (钅)</td><td>metal / dinheiro</td><td>钱 (qián) dinheiro, 银 (yín) prata, 铁 (tiě) ferro, 钟 relógio</td></tr>
+    <tr><td class="zh-cell">土</td><td>terra / chão</td><td>地 (dì) chão, 城 (chéng) cidade, 坐 (zuò) sentar, 在 (zài) em / estar</td></tr>
+    <tr><td class="zh-cell">日</td><td>sol / dia</td><td>明 (míng) claro, 晴 (qíng) soalheiro, 时 (shí) tempo, 是 (shì) ser</td></tr>
+    <tr><td class="zh-cell">月</td><td>lua / mês</td><td>期 período, 朋 (péng) amigo (duas luas!), 脸 (liǎn) cara</td></tr>
+    <tr><td class="zh-cell">走</td><td>andar / ir</td><td>跑 (pǎo) correr, 跳 (tiào) saltar, 路 (lù) estrada, 跟 (gēn) seguir</td></tr>
   </table>
   </div>
-  <div class="tip"><strong>Truque para memorizar:</strong> 好 (hǎo, bom) = mulher 女 + criança 子. Uma mulher com uma criança = bom! Muitos caracteres têm histórias assim.</div>
+  <div class="tip"><strong>Truque para memorizar:</strong> 好 (hǎo, bom) = mulher 女 (nǚ) + criança 子 (zǐ). Uma mulher com uma criança = bom! Muitos caracteres têm histórias assim.</div>
 </div>
 
 <div id="stroke-order" class="tab-content">
@@ -110,7 +111,7 @@ require 'includes/topo.php';
 
 <div id="simplified" class="tab-content">
   <div class="grammar-box">
-    <h3>Simplificado (简体) ou tradicional (繁體)</h3>
+    <h3>Simplificado (简体 (jiǎntǐ)) ou tradicional (繁體 (fántǐ))</h3>
     <p style="margin-bottom:12px; color:var(--ink-light);">Para a China continental, aprende o simplificado. O tradicional usa-se em Taiwan, Hong Kong e Macau.</p>
     <div class="table-wrap">
     <table class="phrase-table">

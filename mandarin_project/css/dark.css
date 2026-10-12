@@ -284,9 +284,15 @@
   }
 
   /* CONQUISTAS */
-  #achievements-bar { background:var(--paper-mid);border-bottom:1px solid var(--paper-dark);padding:8px 2rem;display:flex;gap:8px;flex-wrap:wrap;align-items:center; }
+  /* As conquistas: um cartão com título e explicação (antes era uma faixa cinzenta que parecia um menu) */
+  #achievements-bar { max-width: calc(var(--page-max) - 2 * var(--page-gutter)); margin: 32px auto 0; padding: 22px 24px; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); border-top: 4px solid var(--gold); display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .ach-topo { flex-basis: 100%; margin-bottom: 6px; }
+  .ach-titulo { display: flex; align-items: center; gap: 8px; font-size: 1.375rem; color: var(--ink); }
+  .ach-titulo .i { color: var(--gold-dark); }
+  .ach-texto { color: var(--ink-light); margin-top: 4px; }
+  .ach-contagem { margin-left: auto; font-weight: 700; color: var(--gold-dark); }
   #achievements-bar .ach-label { font-size:0.75rem;font-weight:700;color:var(--ink-light);margin-right:4px; }
-  .badge { display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:0.75rem;font-weight:700;background:var(--paper-dark);color:var(--ink-mid);border:1.5px solid var(--paper-dark);transition:all .3s; }
+  .badge { display:inline-flex;align-items:center;gap:4px;padding:8px 14px;border-radius:20px;font-size:0.875rem;font-weight:700;background:var(--paper-dark);color:var(--ink-mid);border:1.5px solid var(--paper-dark);transition:all .3s; }
   .badge.earned { background:#FDF3DC;color:#7A5406;border-color:#E8A317; }
   .badge.earned.new { animation:badgePop .5s ease; }
   @keyframes badgePop { 0%{transform:scale(1)} 50%{transform:scale(1.3)} 100%{transform:scale(1)} }
@@ -351,3 +357,13 @@
   body.dark .lib-btn.secondary { color: #fff; }
   /* O botão de som das lições herdava letra preta */
   body.dark .palavra__ouvir { color: var(--ink); }
+
+  /* «O teu progresso»: o mesmo cartão das conquistas (antes era uma faixa pequena e cinzenta) */
+  #progress-overview { max-width: calc(var(--page-max) - 2 * var(--page-gutter)); margin: 32px auto 0; padding: 22px 24px; border-radius: var(--radius); box-shadow: var(--shadow); border: 0; border-top: 4px solid var(--jade); }
+  #progress-overview .po-grid { margin-top: 14px; }
+  .poi-label { font-size: 0.875rem; }
+  .poi-pct { font-size: 0.75rem; }
+  .poi-bar-wrap, .poi-bar { height: 8px; border-radius: 4px; }
+  .poi-bar { background: var(--jade); }
+  /* Links dentro do conteúdo: na cor do site, em vez do azul do browser */
+  .container a:not(.botao-cha):not(.lib-btn) { color: var(--jade); font-weight: 600; }

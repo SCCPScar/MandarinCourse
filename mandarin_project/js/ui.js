@@ -61,7 +61,7 @@ const BADGES = [
   { id:'badge-10',     check: s => s.learnedCount>=10, label:'10 palavras' },
   { id:'badge-50',     check: s => s.learnedCount>=50, label:'50 palavras' },
   { id:'badge-100',    check: s => s.learnedCount>=100,label:'100 palavras'},
-  { id:'badge-streak3',check: s => s.streak>=3,        label:'<i class="i i-dias" aria-hidden="true"></i> 3 dias'      },
+  { id:'badge-streak3',check: s => s.streak>=3,        label:'3 dias'      },
   { id:'badge-streak7',check: s => s.streak>=7,        label:'7 dias'      },
   { id:'badge-streak30',check:s => s.streak>=30,       label:'30 dias'     },
   { id:'badge-quiz',   check: s => s.quizDone,         label:'Quiz'        },

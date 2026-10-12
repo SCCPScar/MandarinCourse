@@ -12,7 +12,7 @@ $praticar_mais = [
     ],
     '1.2' => [
         ['Cumprimentos', 'basico.php#greetings', 'As frases do primeiro dia, com som.'],
-        ['Gramática: 是 (shì) e 吗 (ma)', 'basico.php#grammar', 'Como dizer «ser» e fazer perguntas de sim ou não.'],
+        ['Gramática: 是 (shì) e 吗 (ma)', 'gramatica.php#estrutura-2', 'Como dizer «ser» e fazer perguntas de sim ou não.'],
         ['Diálogos', 'praticar.php', 'Lê e ouve uma conversa de apresentação.'],
     ],
     '1.3' => [
@@ -38,10 +38,10 @@ $praticar_mais = [
     '2.3' => [
         ['Lugares', 'vocabulario.php#places', 'Banco, estação, hospital e outros sítios.'],
         ['Perguntas essenciais', 'basico.php#questions', 'Onde fica…? Como se vai…?'],
-        ['Gramática essencial', 'basico.php#grammar', 'A ordem das palavras numa frase chinesa.'],
+        ['Gramática essencial', 'gramatica.php', 'A ordem das palavras numa frase chinesa.'],
     ],
     '2.4' => [
-        ['Gramática essencial', 'basico.php#grammar', 'O 了 (le) de ação terminada.'],
+        ['Gramática: 了 (le)', 'gramatica.php#estrutura-10', 'O 了 (le) de ação terminada.'],
         ['Cultura de Xi\'an', 'rota.php#cultura', 'Pagar com o telemóvel e outras curiosidades.'],
         ['Dicionário', 'praticar.php#tab-dict', 'Procura as palavras que te faltam.'],
     ],
@@ -52,7 +52,7 @@ $praticar_mais = [
     ],
     '3.2' => [
         ['Verbos do dia a dia', 'vocabulario.php#verbs', 'Os verbos dos passatempos.'],
-        ['Gramática essencial', 'basico.php#grammar', '会 (huì), 能 (néng) e 可以 (kěyǐ): saber, poder, ter licença.'],
+        ['Gramática essencial', 'gramatica.php', '会 (huì), 能 (néng) e 可以 (kěyǐ): saber, poder, ter licença.'],
         ['Cartões de memória', 'praticar.php#tab-flash', 'Revê as palavras novas.'],
     ],
     '3.3' => [
@@ -62,7 +62,7 @@ $praticar_mais = [
     ],
     '3.4' => [
         ['Teclado chinês', 'praticar.php#tab-keyboard', 'Configura o teclado para escreveres mensagens em chinês.'],
-        ['Gramática essencial', 'basico.php#grammar', '了 (le), 在 (zài) e 过 (guo).'],
+        ['Gramática essencial', 'gramatica.php', '了 (le), 在 (zài) e 过 (guo).'],
         ['Caderno', 'praticar.php#tab-notebook', 'Guarda as palavras do tempo e das mensagens.'],
     ],
     '4.1' => [
@@ -77,7 +77,7 @@ $praticar_mais = [
     ],
     '4.3' => [
         ['Adjetivos', 'vocabulario.php#adjectives', 'Bonito, antigo, calmo, cheio de gente…'],
-        ['Gramática essencial', 'basico.php#grammar', 'O 得 (de) para dizer como se faz alguma coisa.'],
+        ['Gramática essencial', 'gramatica.php', 'O 得 (de) para dizer como se faz alguma coisa.'],
         ['Cultura de Guilin', 'rota.php#cultura', 'O rio Li, Yangshuo e os comboios rápidos.'],
     ],
     '4.4' => [
@@ -86,12 +86,12 @@ $praticar_mais = [
         ['Treino de pronúncia', 'praticar.php#tab-mic', 'Treina as frases de emergência em voz alta.'],
     ],
     '5.1' => [
-        ['Gramática essencial', 'basico.php#grammar', 'Comparar com 比 (bǐ).'],
+        ['Gramática essencial', 'gramatica.php', 'Comparar com 比 (bǐ).'],
         ['Adjetivos', 'vocabulario.php#adjectives', 'Os adjetivos para comparar.'],
         ['Cultura de Hangzhou', 'rota.php#cultura', 'O Lago do Oeste e o chá Longjing.'],
     ],
     '5.2' => [
-        ['Gramática essencial', 'basico.php#grammar', '了 (le) e 过 (guo) para falar do passado.'],
+        ['Gramática: 了 (le) e 过 (guo)', 'gramatica.php#estrutura-10', '了 (le) e 过 (guo) para falar do passado.'],
         ['Tempo e frequência', 'vocabulario.php#time-words', 'Ontem, no ano passado, primeiro, depois.'],
         ['Construir frases', 'praticar.php#tab-sb', 'Conta o que fizeste por ordem.'],
     ],

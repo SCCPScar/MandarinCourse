@@ -63,16 +63,5 @@ function e($texto) {
     return htmlspecialchars($texto, ENT_QUOTES, 'UTF-8');
 }
 
-// Os dois botões para ouvir o chinês: à velocidade normal e devagar.
-// O texto a ler fica no data-falar; a função speakText (js/data.js) usa a voz do browser.
-// $rotulo é o que o leitor de ecrã diz, por exemplo o pinyin da palavra.
-function botoes_ouvir($hanzi, $rotulo = '') {
-    $falar  = e($hanzi);
-    $rotulo = e($rotulo !== '' ? $rotulo : $hanzi);
-    return '<span class="ouvir-par">'
-         . '<button type="button" class="ouvir-btn" data-falar="' . $falar . '" onclick="speakText(this.dataset.falar, VELOCIDADE_NORMAL)" aria-label="Ouvir ' . $rotulo . '">'
-         . '<i class="i i-ouvir" aria-hidden="true"></i> Ouvir</button>'
-         . '<button type="button" class="ouvir-btn ouvir-btn--devagar" data-falar="' . $falar . '" onclick="speakText(this.dataset.falar, VELOCIDADE_DEVAGAR)" aria-label="Ouvir devagar ' . $rotulo . '">'
-         . '<i class="i i-devagar" aria-hidden="true"></i> Devagar</button>'
-         . '</span>';
-}
+// As funções pequenas que as páginas usam para escrever HTML (botões de ouvir, cabeçalhos)
+require __DIR__ . '/funcoes.php';

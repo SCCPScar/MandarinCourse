@@ -433,3 +433,70 @@ body.dark .pode-ouvir:hover, body.dark .pode-ouvir:focus-visible { background: v
 .ouvir-btn--devagar:hover, .ouvir-btn--devagar:focus-visible { background: var(--gold-dark); color: #fff; }
 body.dark .ouvir-btn:hover, body.dark .ouvir-btn:focus-visible { color: #0F1519; }
   .rodape .rodape__lema .zh-ex { color: #F2B83A; }   /* dourado nos dois modos (o .zh-ex normal é vermelho) */
+
+/* ═══ CABEÇALHO COLORIDO DAS PÁGINAS ═══
+   Feito pela função cabeca_pagina() (includes/funcoes.php). Cada página tem a sua cor:
+   a cor forte (--cor) faz a linha de baixo e o chinês; a cor clara (--cor-fundo) é o fundo. */
+.cabeca-pagina { background: var(--cor-fundo); border-bottom: 4px solid var(--cor); padding: 48px var(--page-gutter) 40px; }
+.cabeca-pagina--jade   { --cor: var(--jade);  --cor-fundo: var(--green-light); }
+.cabeca-pagina--selo   { --cor: var(--seal);  --cor-fundo: var(--red-light); }
+.cabeca-pagina--ouro   { --cor: var(--gold);  --cor-fundo: var(--gold-light); }
+.cabeca-pagina--azul   { --cor: var(--blue);  --cor-fundo: var(--blue-light); }
+.cabeca-pagina--ameixa { --cor: var(--plum);  --cor-fundo: #F6E3EC; }
+body.dark .cabeca-pagina--ameixa { --cor-fundo: #2E1A24; }
+.cabeca-pagina__dentro { max-width: calc(var(--page-max) - 2 * var(--page-gutter)); margin: 0 auto; }
+.cabeca-pagina h1 { font-size: clamp(2.25rem, 5vw, 3.25rem); line-height: 1.05; color: var(--ink); }
+.cabeca-pagina__zh { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 10px 0 14px; }
+.cabeca-pagina__zh [lang="zh-CN"] { font-family: var(--font-chinese); font-size: 1.75rem; font-weight: 700; color: var(--ink); }
+.cabeca-pagina__py { font-size: 1.25rem; font-style: italic; color: var(--ink-mid); }
+.cabeca-pagina__texto { max-width: 760px; font-size: 1.125rem; line-height: 1.6; color: var(--ink-mid); }
+
+/* O pinyin ao lado do chinês nos títulos das secções */
+.section-header__py { font-style: italic; font-weight: 400; font-size: 1rem; color: var(--ink-light); margin-left: 6px; }
+
+/* Os números das secções mudam de cor: 1 vermelho, 2 jade, 3 azul */
+.section-header { margin-top: 3.5rem; }
+.container > .section-header:first-child { margin-top: 1rem; }
+.section-header:nth-of-type(3n+2) .section-num { background: var(--jade); }
+.section-header:nth-of-type(3n+3) .section-num { background: var(--blue); }
+body.dark .section-header .section-num { color: #0F1519; }
+
+/* Mais espaço entre blocos: tabelas, grelhas de cartões e caixas deixam de ficar coladas */
+.table-wrap, .card-grid, .grammar-box, .tones-grid, .dialogue, .tip, .info, .warning { margin-bottom: 2rem; }
+.tab-content > .card-grid + .card-grid, .tab-content > .table-wrap + .table-wrap { margin-top: 2rem; }
+.tab-content h3, .container > h3 { margin: 2.25rem 0 1rem; font-size: 1.25rem; }
+
+/* Índice (ex.: as 10 estruturas da gramática) */
+.indice { margin: 0 0 2.5rem; padding: 20px 24px; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); border-left: 4px solid var(--plum); }
+.indice ol { columns: 2 320px; column-gap: 32px; padding-left: 22px; line-height: 2; }
+.indice a { color: var(--ink); font-weight: 600; }
+.indice a:hover { color: var(--plum); }
+.grammar-box.anchor { scroll-margin-top: calc(var(--nav-height) + 16px); }
+.ouvir-na-tabela { margin-top: 6px; }
+.ouvir-na-tabela .ouvir-btn { padding: 4px 10px; font-size: 0.75rem; }
+.py-inline { font-style: italic; font-weight: 400; color: var(--jade); font-size: 0.875em; }
+
+/* ═══ BIBLIOTECA MAIS VARIADA ═══
+   Cada nível tem a sua cor (--cor-nivel). O título do nível é uma faixa colorida,
+   cada cartão mostra um ícone conforme o tipo e o primeiro de cada nível fica em destaque. */
+.lib-section--iniciante   { --cor-nivel: var(--seal);  --cor-nivel-fundo: var(--red-light); }
+.lib-section--intermedio  { --cor-nivel: var(--gold);  --cor-nivel-fundo: var(--gold-light); }
+.lib-section--avancado    { --cor-nivel: var(--blue);  --cor-nivel-fundo: var(--blue-light); }
+.lib-section--ferramentas { --cor-nivel: var(--jade);  --cor-nivel-fundo: var(--green-light); }
+.lib-section { margin-bottom: 3.5rem; }
+.lib-section h3 { font-size: 1.375rem; padding: 14px 20px; border-left: 6px solid var(--cor-nivel, var(--jade)); background: var(--cor-nivel-fundo, var(--paper-mid)); border-radius: 0 var(--radius) var(--radius) 0; color: var(--ink); }
+.lib-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+.lib-card { border-top: 4px solid var(--cor-nivel, var(--jade)); padding: 22px; gap: 10px; }
+.lib-icone { width: 2rem; height: 2rem; color: var(--cor-nivel, var(--jade)); }
+.lib-title { font-size: 1.125rem; }
+.lib-desc { font-size: 1rem; line-height: 1.6; }
+.lib-tag { font-size: 0.8125rem; padding: 3px 10px; }
+.lib-btn { font-size: 0.9375rem; padding: 10px 16px; }
+/* O primeiro recurso de cada nível é o recomendado: ocupa duas colunas e tem o fundo da cor do nível */
+@media (min-width: 900px) {
+  .lib-grid > .lib-card:first-child { grid-column: span 2; background: var(--cor-nivel-fundo); }
+  .lib-grid > .lib-card:first-child .lib-title { font-size: 1.375rem; }
+}
+.lib-grid > .lib-card:first-child::before { content: "Recomendado para começar"; align-self: flex-start; padding: 3px 10px; border-radius: 20px; background: var(--cor-nivel); color: #fff; font-size: 0.75rem; font-weight: 700; }
+body.dark .lib-grid > .lib-card:first-child::before { color: #0F1519; }
+.ouvir-na-tabela .ouvir-par { flex-wrap: nowrap; }

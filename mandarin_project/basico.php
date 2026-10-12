@@ -9,14 +9,15 @@ $titulo = 'Frases, números e gramática';
 $pagina = 'basico';
 require 'includes/topo.php';
 ?>
+<?= cabeca_pagina('Básico', '基础', 'jīchǔ', 'As frases do primeiro dia, os números e as horas. Decora-as antes de tudo o resto e repete-as em voz alta.', 'selo') ?>
 <div class="container">
 
 <!-- ============================================================ -->
 <!-- MÓDULO 4: BÁSICO -->
 <!-- ============================================================ -->
 <div class="section-header anchor" id="tools-basics">
-  <div class="section-num">4</div>
-  <h2>Frases essenciais para o primeiro dia <span class="zh">基础用语</span></h2>
+  <div class="section-num">1</div>
+  <h2>Frases essenciais para o primeiro dia <span class="zh">基础用语</span> <span class="section-header__py">jīchǔ yòngyǔ</span></h2>
 </div>
 <p class="section-intro">Estas são as frases que vais usar todos os dias. Decora-as antes de tudo o resto e pratica até saírem sem pensar.</p>
 
@@ -71,17 +72,17 @@ require 'includes/topo.php';
 <div class="table-wrap">
 <table class="phrase-table">
   <tr><th>Chinês</th><th>Pinyin</th><th>Português</th><th>Estrutura</th></tr>
-  <tr><td class="zh-cell">这是什么?</td><td class="py-cell">zhè shì shénme?</td><td>O que é isto?</td><td class="use-cell">什么 = o quê</td></tr>
-  <tr><td class="zh-cell">你叫什么名字?</td><td class="py-cell">nǐ jiào shénme míngzi?</td><td>Como te chamas?</td><td class="use-cell">叫 = chamar-se</td></tr>
-  <tr><td class="zh-cell">你是哪里人?</td><td class="py-cell">nǐ shì nǎlǐ rén?</td><td>De onde és?</td><td class="use-cell">哪里 = onde</td></tr>
-  <tr><td class="zh-cell">厕所在哪里?</td><td class="py-cell">cèsuǒ zài nǎlǐ?</td><td>Onde é a casa de banho?</td><td class="use-cell">在哪里 = onde fica</td></tr>
-  <tr><td class="zh-cell">这个多少钱?</td><td class="py-cell">zhège duōshao qián?</td><td>Quanto custa isto?</td><td class="use-cell">多少钱 = quanto dinheiro</td></tr>
-  <tr><td class="zh-cell">现在几点?</td><td class="py-cell">xiànzài jǐ diǎn?</td><td>Que horas são?</td><td class="use-cell">几点 = que horas</td></tr>
-  <tr><td class="zh-cell">为什么?</td><td class="py-cell">wèi shénme?</td><td>Porquê?</td><td class="use-cell">为什么 = por que razão</td></tr>
-  <tr><td class="zh-cell">怎么去…?</td><td class="py-cell">zěnme qù…?</td><td>Como vou para…?</td><td class="use-cell">怎么 = como</td></tr>
-  <tr><td class="zh-cell">你会说中文吗?</td><td class="py-cell">nǐ huì shuō Zhōngwén ma?</td><td>Falas chinês?</td><td class="use-cell">吗 = partícula de pergunta</td></tr>
+  <tr><td class="zh-cell">这是什么?</td><td class="py-cell">zhè shì shénme?</td><td>O que é isto?</td><td class="use-cell">什么 (shénme) = o quê</td></tr>
+  <tr><td class="zh-cell">你叫什么名字?</td><td class="py-cell">nǐ jiào shénme míngzi?</td><td>Como te chamas?</td><td class="use-cell">叫 (jiào) = chamar-se</td></tr>
+  <tr><td class="zh-cell">你是哪里人?</td><td class="py-cell">nǐ shì nǎlǐ rén?</td><td>De onde és?</td><td class="use-cell">哪里 (nǎlǐ) = onde</td></tr>
+  <tr><td class="zh-cell">厕所在哪里?</td><td class="py-cell">cèsuǒ zài nǎlǐ?</td><td>Onde é a casa de banho?</td><td class="use-cell">在哪里 (zài nǎlǐ) = onde fica</td></tr>
+  <tr><td class="zh-cell">这个多少钱?</td><td class="py-cell">zhège duōshao qián?</td><td>Quanto custa isto?</td><td class="use-cell">多少钱 (duōshao qián) = quanto dinheiro</td></tr>
+  <tr><td class="zh-cell">现在几点?</td><td class="py-cell">xiànzài jǐ diǎn?</td><td>Que horas são?</td><td class="use-cell">几点 (jǐ diǎn) = que horas</td></tr>
+  <tr><td class="zh-cell">为什么?</td><td class="py-cell">wèi shénme?</td><td>Porquê?</td><td class="use-cell">为什么 (wèishénme) = por que razão</td></tr>
+  <tr><td class="zh-cell">怎么去…?</td><td class="py-cell">zěnme qù…?</td><td>Como vou para…?</td><td class="use-cell">怎么 (zěnme) = como</td></tr>
+  <tr><td class="zh-cell">你会说中文吗?</td><td class="py-cell">nǐ huì shuō Zhōngwén ma?</td><td>Falas chinês?</td><td class="use-cell">吗 (ma) = partícula de pergunta</td></tr>
   <tr><td class="zh-cell">能说慢一点吗?</td><td class="py-cell">néng shuō màn yīdiǎn ma?</td><td>Podes falar mais devagar?</td><td class="use-cell">Essencial para quem aprende!</td></tr>
-  <tr><td class="zh-cell">能再说一遍吗?</td><td class="py-cell">néng zài shuō yī biàn ma?</td><td>Podes repetir?</td><td class="use-cell">再 = outra vez</td></tr>
+  <tr><td class="zh-cell">能再说一遍吗?</td><td class="py-cell">néng zài shuō yī biàn ma?</td><td>Podes repetir?</td><td class="use-cell">再 (zài) = outra vez</td></tr>
 </table>
 </div>
 </div>
@@ -108,8 +109,8 @@ require 'includes/topo.php';
 <!-- MÓDULO 5: NÚMEROS -->
 <!-- ============================================================ -->
 <div class="section-header anchor" id="basics">
-  <div class="section-num">5</div>
-  <h2>Números e horas <span class="zh">数字和时间</span></h2>
+  <div class="section-num">2</div>
+  <h2>Números e horas <span class="zh">数字和时间</span> <span class="section-header__py">shùzì hé shíjiān</span></h2>
 </div>
 
 <div class="num-grid">
@@ -131,12 +132,12 @@ require 'includes/topo.php';
 </div>
 
 <div class="tip"><strong>A lógica dos números:</strong> Os números de 11 a 99 são perfeitamente lógicos: 十一 (shíyī) = 10 + 1 = 11, 二十五 (èrshíwǔ) = 2 × 10 + 5 = 25, 三百六十五 (sānbǎi liùshíwǔ) = 365. Não há formas irregulares!</div>
-<div class="warning"><strong>两 ou 二:</strong> Os dois querem dizer «dois», mas 两 (liǎng) usa-se para contar coisas (两个人 = 2 pessoas). 二 (èr) usa-se nos números (第二 = segundo, 二十 = 20).</div>
+<div class="warning"><strong>两 (liǎng) ou 二 (èr):</strong> Os dois querem dizer «dois», mas 两 (liǎng) usa-se para contar coisas (两个人 (liǎng ge rén) = 2 pessoas). 二 (èr) usa-se nos números (第二 (dì-èr) = segundo, 二十 (èrshí) = 20).</div>
 
 <div class="grammar-box" style="margin-top:1.5rem">
   <h3>Dizer as horas</h3>
   <div class="formula">
-    <span class="placeholder">[hora]</span> 点 <span class="placeholder">[minutos]</span> 分 → [hora] horas e [minutos] minutos
+    <span class="placeholder">[hora]</span> 点 (diǎn) <span class="placeholder">[minutos]</span> 分 (fēn) → [hora] horas e [minutos] minutos
   </div>
   <ul class="example-list">
     <li><span class="zh-ex">三点</span><span class="py-ex">sān diǎn</span><span class="en-ex">3 horas</span></li>
@@ -144,135 +145,6 @@ require 'includes/topo.php';
     <li><span class="zh-ex">三点十五分</span><span class="py-ex">sān diǎn shíwǔ fēn</span><span class="en-ex">3:15</span></li>
     <li><span class="zh-ex">下午五点</span><span class="py-ex">xiàwǔ wǔ diǎn</span><span class="en-ex">17h (5 da tarde)</span></li>
     <li><span class="zh-ex">早上九点半</span><span class="py-ex">zǎoshang jiǔ diǎn bàn</span><span class="en-ex">9h30 (da manhã)</span></li>
-  </ul>
-</div>
-
-<!-- ============================================================ -->
-<!-- MÓDULO 6: GRAMÁTICA -->
-<!-- ============================================================ -->
-<div class="section-header anchor" id="grammar">
-  <div class="section-num">6</div>
-  <h2>As estruturas de gramática essenciais <span class="zh">语法</span></h2>
-</div>
-<p class="section-intro">Com estas estruturas consegues dizer milhares de coisas. A gramática do mandarim segue regras de ordem das palavras muito fixas: quando conheces as estruturas, basta trocar o vocabulário.</p>
-
-<div class="grammar-box">
-  <h3>Estrutura 1: a frase básica (sujeito + verbo + objeto)</h3>
-  <div class="formula"><span class="placeholder">Sujeito</span> + <span class="placeholder">Verbo</span> + <span class="placeholder">Objeto</span></div>
-  <ul class="example-list">
-    <li><span class="zh-ex">我爱你</span><span class="py-ex">wǒ ài nǐ</span><span class="en-ex">Amo-te</span></li>
-    <li><span class="zh-ex">他喝茶</span><span class="py-ex">tā hē chá</span><span class="en-ex">Ele bebe chá</span></li>
-    <li><span class="zh-ex">我们学中文</span><span class="py-ex">wǒmen xué Zhōngwén</span><span class="en-ex">Nós estudamos chinês</span></li>
-    <li><span class="zh-ex">她吃米饭</span><span class="py-ex">tā chī mǐfàn</span><span class="en-ex">Ela come arroz</span></li>
-  </ul>
-</div>
-
-<div class="grammar-box">
-  <h3>Estrutura 2: 是 (shì), o «ser» com nomes</h3>
-  <div class="formula"><span class="placeholder">Sujeito</span> + 是 + <span class="placeholder">Nome / identidade</span></div>
-  <div class="tip" style="margin:8px 0">Não uses 是 com adjetivos! «Ela é bonita» = 她很漂亮 (e não 她是漂亮)</div>
-  <ul class="example-list">
-    <li><span class="zh-ex">我是学生</span><span class="py-ex">wǒ shì xuésheng</span><span class="en-ex">Sou estudante</span></li>
-    <li><span class="zh-ex">他是老师</span><span class="py-ex">tā shì lǎoshī</span><span class="en-ex">Ele é professor</span></li>
-    <li><span class="zh-ex">我是葡萄牙人</span><span class="py-ex">wǒ shì Pútáoyárén</span><span class="en-ex">Sou português</span></li>
-    <li><span class="zh-ex">这是我的书</span><span class="py-ex">zhè shì wǒ de shū</span><span class="en-ex">Este é o meu livro</span></li>
-  </ul>
-</div>
-
-<div class="grammar-box">
-  <h3>Estrutura 3: 有 (yǒu), «ter» e «haver»</h3>
-  <div class="formula"><span class="placeholder">Sujeito</span> + 有 + <span class="placeholder">Objeto</span></div>
-  <ul class="example-list">
-    <li><span class="zh-ex">我有一个哥哥</span><span class="py-ex">wǒ yǒu yīgè gēge</span><span class="en-ex">Tenho um irmão mais velho</span></li>
-    <li><span class="zh-ex">这里有厕所吗?</span><span class="py-ex">zhèlǐ yǒu cèsuǒ ma?</span><span class="en-ex">Há uma casa de banho aqui?</span></li>
-    <li><span class="zh-ex">我没有钱</span><span class="py-ex">wǒ méiyǒu qián</span><span class="en-ex">Não tenho dinheiro</span></li>
-    <li><span class="zh-ex">桌子上有书</span><span class="py-ex">zhuōzi shàng yǒu shū</span><span class="en-ex">Há livros em cima da mesa</span></li>
-  </ul>
-</div>
-
-<div class="grammar-box">
-  <h3>Estrutura 4: negar com 不 (bù) e 没 (méi)</h3>
-  <div class="formula">不 bù = nega hábitos, estados e o futuro | 没 méi = nega o passado e ações terminadas</div>
-  <ul class="example-list">
-    <li><span class="zh-ex">我不喜欢</span><span class="py-ex">wǒ bù xǐhuān</span><span class="en-ex">Não gosto (em geral)</span></li>
-    <li><span class="zh-ex">我不去</span><span class="py-ex">wǒ bú qù</span><span class="en-ex">Não vou (é uma decisão)</span></li>
-    <li><span class="zh-ex">我没去</span><span class="py-ex">wǒ méi qù</span><span class="en-ex">Não fui (facto passado)</span></li>
-    <li><span class="zh-ex">我没吃饭</span><span class="py-ex">wǒ méi chī fàn</span><span class="en-ex">Ainda não comi</span></li>
-  </ul>
-</div>
-
-<div class="grammar-box">
-  <h3>Estrutura 5: perguntas com 吗 e 呢</h3>
-  <div class="formula">Frase + 吗? = pergunta de sim ou não | Frase + 呢? = «E…?»</div>
-  <ul class="example-list">
-    <li><span class="zh-ex">你是老师吗?</span><span class="py-ex">nǐ shì lǎoshī ma?</span><span class="en-ex">És professor?</span></li>
-    <li><span class="zh-ex">你去吗?</span><span class="py-ex">nǐ qù ma?</span><span class="en-ex">Vais?</span></li>
-    <li><span class="zh-ex">我很好，你呢?</span><span class="py-ex">wǒ hěn hǎo, nǐ ne?</span><span class="en-ex">Estou bem, e tu?</span></li>
-    <li><span class="zh-ex">这个呢?</span><span class="py-ex">zhège ne?</span><span class="en-ex">E este?</span></li>
-  </ul>
-</div>
-
-<div class="grammar-box">
-  <h3>Estrutura 6: 的 (de), posse e descrição</h3>
-  <div class="formula"><span class="placeholder">Dono / descrição</span> + 的 + <span class="placeholder">Coisa</span></div>
-  <ul class="example-list">
-    <li><span class="zh-ex">我的书</span><span class="py-ex">wǒ de shū</span><span class="en-ex">o meu livro</span></li>
-    <li><span class="zh-ex">中国的文化</span><span class="py-ex">Zhōngguó de wénhuà</span><span class="en-ex">a cultura chinesa</span></li>
-    <li><span class="zh-ex">漂亮的女孩</span><span class="py-ex">piàoliang de nǚhái</span><span class="en-ex">rapariga bonita</span></li>
-    <li><span class="zh-ex">他买的东西</span><span class="py-ex">tā mǎi de dōngxi</span><span class="en-ex">as coisas que ele comprou</span></li>
-  </ul>
-</div>
-
-<div class="grammar-box">
-  <h3>Estrutura 7: 想/要/会/能/可以, os verbos modais</h3>
-  <div class="formula"><span class="placeholder">Sujeito</span> + [modal] + <span class="placeholder">Verbo</span></div>
-  <ul class="example-list">
-    <li><span class="zh-ex">我想去</span><span class="py-ex">wǒ xiǎng qù</span><span class="en-ex">Quero ir (desejo)</span></li>
-    <li><span class="zh-ex">我要吃饭</span><span class="py-ex">wǒ yào chī fàn</span><span class="en-ex">Quero / preciso de comer (intenção)</span></li>
-    <li><span class="zh-ex">我会说中文</span><span class="py-ex">wǒ huì shuō Zhōngwén</span><span class="en-ex">Sei falar chinês (capacidade aprendida)</span></li>
-    <li><span class="zh-ex">我能来</span><span class="py-ex">wǒ néng lái</span><span class="en-ex">Posso vir (possibilidade ou autorização)</span></li>
-    <li><span class="zh-ex">你可以走了</span><span class="py-ex">nǐ kěyǐ zǒu le</span><span class="en-ex">Já podes sair (autorização)</span></li>
-  </ul>
-</div>
-
-<div class="grammar-box">
-  <h3>Estrutura 8: o tempo na frase</h3>
-  <div class="formula">Tempo → Sujeito → Lugar → Verbo → Objeto (o tempo também pode vir logo a seguir ao sujeito). Em português, o tempo e o lugar costumam ir para o fim da frase; em chinês vêm antes do verbo.</div>
-  <ul class="example-list">
-    <li><span class="zh-ex">昨天我在北京吃了北京烤鸭</span><span class="py-ex">Zuótiān wǒ zài Běijīng chī le Běijīng kǎoyā</span><span class="en-ex">Ontem comi pato à Pequim em Pequim</span></li>
-    <li><span class="zh-ex">下午两点开会</span><span class="py-ex">xiàwǔ liǎng diǎn kāihuì</span><span class="en-ex">Reunião às 14h</span></li>
-  </ul>
-  <div class="tip" style="margin-top:8px"><i class="i i-relogio" aria-hidden="true"></i> <strong>Palavras de tempo:</strong> 今天 jīntiān (hoje) | 明天 míngtiān (amanhã) | 昨天 zuótiān (ontem) | 现在 xiànzài (agora) | 以前 yǐqián (antes) | 以后 yǐhòu (depois)</div>
-</div>
-
-<div class="grammar-box">
-  <h3>Estrutura 9: os classificadores (量词)</h3>
-  <div class="formula"><span class="placeholder">Número</span> + <span class="placeholder">Classificador</span> + <span class="placeholder">Nome</span></div>
-  <div class="warning" style="margin:8px 0">Não podes dizer «um livro» diretamente: precisas de um classificador. Diz-se 一本书 (yī běn shū), e não 一书.</div>
-  <div class="table-wrap" style="margin-top:10px">
-  <table class="phrase-table">
-    <tr><th>Classificador</th><th>Pinyin</th><th>Usa-se para</th><th>Exemplo</th></tr>
-    <tr><td class="zh-cell">个</td><td class="py-cell">gè</td><td>Geral (pessoas e coisas)</td><td>一个人 (uma pessoa), 两个苹果 (duas maçãs)</td></tr>
-    <tr><td class="zh-cell">本</td><td class="py-cell">běn</td><td>Livros e cadernos</td><td>三本书 (três livros)</td></tr>
-    <tr><td class="zh-cell">张</td><td class="py-cell">zhāng</td><td>Coisas planas (papel, mesas, caras)</td><td>一张纸 (uma folha de papel)</td></tr>
-    <tr><td class="zh-cell">条</td><td class="py-cell">tiáo</td><td>Coisas compridas e flexíveis (peixes, rios, estradas)</td><td>两条鱼 (dois peixes)</td></tr>
-    <tr><td class="zh-cell">杯</td><td class="py-cell">bēi</td><td>Copos e chávenas de bebida</td><td>一杯水 (um copo de água)</td></tr>
-    <tr><td class="zh-cell">件</td><td class="py-cell">jiàn</td><td>Peças de roupa e assuntos</td><td>一件事 (um assunto)</td></tr>
-    <tr><td class="zh-cell">辆</td><td class="py-cell">liàng</td><td>Veículos</td><td>两辆车 (dois carros)</td></tr>
-    <tr><td class="zh-cell">只</td><td class="py-cell">zhī</td><td>Animais pequenos e uma peça de um par</td><td>三只猫 (três gatos)</td></tr>
-    <tr><td class="zh-cell">位</td><td class="py-cell">wèi</td><td>Pessoas (com respeito)</td><td>两位客人 (dois convidados)</td></tr>
-  </table>
-  </div>
-</div>
-
-<div class="grammar-box">
-  <h3>Estrutura 10: as partículas de aspeto 了, 过 e 着</h3>
-  <div class="formula">了 le = ação terminada ou mudança | 过 guò = experiência passada | 着 zhe = estado que continua</div>
-  <ul class="example-list">
-    <li><span class="zh-ex">我吃了</span><span class="py-ex">wǒ chī le</span><span class="en-ex">Comi / já comi (terminado)</span></li>
-    <li><span class="zh-ex">我去过北京</span><span class="py-ex">wǒ qù guò Běijīng</span><span class="en-ex">Já estive em Pequim (experiência de vida)</span></li>
-    <li><span class="zh-ex">他站着</span><span class="py-ex">tā zhàn zhe</span><span class="en-ex">Ele está de pé (posição que continua)</span></li>
-    <li><span class="zh-ex">天气变冷了</span><span class="py-ex">tiānqì biàn lěng le</span><span class="en-ex">O tempo arrefeceu (mudança)</span></li>
   </ul>
 </div>
 

@@ -9,14 +9,15 @@ $titulo = 'Vocabulário';
 $pagina = 'vocabulario';
 require 'includes/topo.php';
 ?>
+<?= cabeca_pagina('Vocabulário', '词汇', 'cíhuì', 'As palavras mais úteis, por temas, e o chinês para o trabalho. Carrega num cartão para ouvires a palavra.', 'ouro') ?>
 <div class="container">
 
 <!-- ============================================================ -->
 <!-- MÓDULO 7: VOCABULÁRIO -->
 <!-- ============================================================ -->
 <div class="section-header anchor" id="vocabulary">
-  <div class="section-num">7</div>
-  <h2>Vocabulário essencial <span class="zh">词汇</span></h2>
+  <div class="section-num">1</div>
+  <h2>Vocabulário essencial <span class="zh">词汇</span> <span class="section-header__py">cíhuì</span></h2>
 </div>
 <p class="section-intro">Estas são algumas das palavras mais usadas no dia a dia. Estuda-as com calma, um grupo de cada vez.</p>
 
@@ -84,7 +85,7 @@ require 'includes/topo.php';
 </div>
 
 <div id="adjectives" class="tab-content">
-<div class="tip"><strong>Regra:</strong> Os adjetivos ligam-se com 很 (hěn, «muito»): 我很好 = estou bem. Sem 很, a frase soa a comparação. Não uses 是!</div>
+<div class="tip"><strong>Regra:</strong> Os adjetivos ligam-se com 很 (hěn, «muito»): 我很好 (wǒ hěn hǎo) = estou bem. Sem 很 (hěn), a frase soa a comparação. Não uses 是 (shì)!</div>
 <div class="card-grid">
   <div class="card"><div class="zh">好</div><div class="pinyin">hǎo</div><div class="en">bom</div></div>
   <div class="card"><div class="zh">坏</div><div class="pinyin">huài</div><div class="en">mau</div></div>
@@ -187,8 +188,8 @@ require 'includes/topo.php';
 <!-- MÓDULO 8: CHINÊS PARA O TRABALHO -->
 <!-- ============================================================ -->
 <div class="section-header anchor" id="work">
-  <div class="section-num">8</div>
-  <h2>Chinês para o trabalho <span class="zh">职场中文</span></h2>
+  <div class="section-num">2</div>
+  <h2>Chinês para o trabalho <span class="zh">职场中文</span> <span class="section-header__py">zhíchǎng zhōngwén</span></h2>
 </div>
 <p class="section-intro">Se fores trabalhar para a China, estas frases são essenciais para reuniões, e-mails, contactos profissionais e o dia a dia no escritório.</p>
 
@@ -224,7 +225,7 @@ require 'includes/topo.php';
 
 <div class="table-wrap">
 <table class="phrase-table">
-  <tr><th colspan="3" style="background:var(--red-dark)">Frases para reuniões · 开会用语</th></tr>
+  <tr><th colspan="3" style="background:var(--red-dark)">Frases para reuniões · 开会用语 (kāihuì yòngyǔ)</th></tr>
   <tr><th>Chinês</th><th>Pinyin</th><th>Significado</th></tr>
   <tr><td class="zh-cell">我们开始吧</td><td class="py-cell">wǒmen kāishǐ ba</td><td>Vamos começar</td></tr>
   <tr><td class="zh-cell">请大家注意</td><td class="py-cell">qǐng dàjiā zhùyì</td><td>Peço a atenção de todos</td></tr>
@@ -243,7 +244,7 @@ require 'includes/topo.php';
 
 <div style="margin-top: 1.5rem;" class="table-wrap">
 <table class="phrase-table">
-  <tr><th colspan="3" style="background:var(--red-dark)">Frases para e-mail e WeChat · 邮件和微信</th></tr>
+  <tr><th colspan="3" style="background:var(--red-dark)">Frases para e-mail e WeChat · 邮件和微信 (yóujiàn hé Wēixìn)</th></tr>
   <tr><th>Chinês</th><th>Pinyin</th><th>Significado</th></tr>
   <tr><td class="zh-cell">您好</td><td class="py-cell">nín hǎo</td><td>Caro(a) / Olá (início de e-mail)</td></tr>
   <tr><td class="zh-cell">请问……</td><td class="py-cell">qǐngwèn…</td><td>Posso perguntar… (para começar uma pergunta com educação)</td></tr>
@@ -259,7 +260,7 @@ require 'includes/topo.php';
 
 <div style="margin-top: 1.5rem;" class="table-wrap">
 <table class="phrase-table">
-  <tr><th colspan="3" style="background:var(--red-dark)">Vocabulário de negócios · 商务词汇</th></tr>
+  <tr><th colspan="3" style="background:var(--red-dark)">Vocabulário de negócios · 商务词汇 (shāngwù cíhuì)</th></tr>
   <tr><th>Chinês</th><th>Pinyin</th><th>Significado</th></tr>
   <tr><td class="zh-cell">合同</td><td class="py-cell">hétong</td><td>contrato</td></tr>
   <tr><td class="zh-cell">项目</td><td class="py-cell">xiàngmù</td><td>projeto</td></tr>

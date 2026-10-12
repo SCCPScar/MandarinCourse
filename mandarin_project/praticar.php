@@ -10,14 +10,15 @@ $pagina = 'praticar';
 $usa_hanzi = true;
 require 'includes/topo.php';
 ?>
+<?= cabeca_pagina('Praticar', '练习', 'liànxí', 'Diálogos, testes e ferramentas para treinares o que aprendeste: cartões, jogos, dicionário, traços e pronúncia.', 'selo') ?>
 <div class="container">
 
 <!-- ============================================================ -->
 <!-- MÓDULO 10: DIÁLOGOS -->
 <!-- ============================================================ -->
 <div class="section-header">
-  <div class="section-num">10</div>
-  <h2>Diálogos reais para praticar <span class="zh">对话练习</span></h2>
+  <div class="section-num">1</div>
+  <h2>Diálogos reais para praticar <span class="zh">对话练习</span> <span class="section-header__py">duìhuà liànxí</span></h2>
 </div>
 
 <h3 style="margin: 1rem 0 0.75rem; font-size: 1.0625rem; color: var(--ink);">Situação 1: primeiro dia no escritório</h3>
@@ -104,8 +105,8 @@ require 'includes/topo.php';
 <!-- MÓDULO 11: QUIZ -->
 <!-- ============================================================ -->
 <div class="section-header anchor" id="quiz">
-  <div class="section-num">✓</div>
-  <h2>Testa-te <span class="zh">测验</span></h2>
+  <div class="section-num">2</div>
+  <h2>Testa-te <span class="zh">测验</span> <span class="section-header__py">cèyàn</span></h2>
 </div>
 <p class="section-intro">Põe à prova o que sabes. As perguntas mudam sempre. Tenta chegar aos 80% antes de passar ao nível seguinte.</p>
 
@@ -121,8 +122,8 @@ require 'includes/topo.php';
 <!-- FERRAMENTAS -->
 <!-- ============================================================ -->
 <div class="section-header anchor" id="features">
-  <div class="section-num"></div>
-  <h2>Ferramentas para praticar <span class="zh">互动工具</span></h2>
+  <div class="section-num">3</div>
+  <h2>Ferramentas para praticar <span class="zh">互动工具</span> <span class="section-header__py">hùdòng gōngjù</span></h2>
 </div>
 <p class="section-intro">11 ferramentas para praticar: cartões de memória, jogos, dicionário, temporizador, cultura, pronúncia e mais.</p>
 
@@ -238,7 +239,7 @@ require 'includes/topo.php';
       <input id="dict-input" type="text" placeholder="Escreve em chinês ou em português… ex.: 朋友 ou amigo" onkeydown="if(event.key==='Enter')lookupWord()">
       <button id="dict-btn" onclick="lookupWord()">Procurar <i class="i i-procurar" aria-hidden="true"></i></button>
     </div>
-    <div id="dict-result"><p style="color:var(--ink-light);font-size:0.8125rem">Experimenta: 朋友 · gōngzuò · casa · 学习 · caro</p></div>
+    <div id="dict-result"><p style="color:var(--ink-light);font-size:0.8125rem">Experimenta: 朋友 (péngyou) · gōngzuò · casa · 学习 (xuéxí) · caro</p></div>
   </div>
 </div>
 

@@ -9,20 +9,6 @@ $titulo = 'Introdução';
 $pagina = 'introducao';
 require 'includes/topo.php';
 ?>
-<div id="achievements-bar">
-  <span class="ach-label"><i class="i i-trofeu" aria-hidden="true"></i></span>
-  <span class="badge" id="badge-start" title="Começou o curso">Início</span>
-  <span class="badge" id="badge-10" title="10 palavras aprendidas">10 palavras</span>
-  <span class="badge" id="badge-50" title="50 palavras aprendidas">50 palavras</span>
-  <span class="badge" id="badge-100" title="100 palavras aprendidas">100 palavras</span>
-  <span class="badge" id="badge-streak3" title="3 dias seguidos"><i class="i i-dias" aria-hidden="true"></i> 3 dias</span>
-  <span class="badge" id="badge-streak7" title="7 dias seguidos">7 dias</span>
-  <span class="badge" id="badge-quiz" title="Completou um quiz">Quiz</span>
-  <span class="badge" id="badge-perfect" title="Quiz perfeito">Perfeito</span>
-  <span class="badge" id="badge-streak30" title="30 dias seguidos">30 dias</span>
-  <span style="margin-left:auto;font-size:0.75rem;color:var(--ink-light)" id="ach-count"></span>
-</div>
-
 <!-- TOPO (HERO) -->
 
 <div id="streak-banner"><span id="streak-text"></span></div>
@@ -57,8 +43,27 @@ require 'includes/topo.php';
 </section>
 
 <div id="progress-overview">
-  <h3>O TEU PROGRESSO</h3>
+  <h2 class="ach-titulo"><i class="i i-certo" aria-hidden="true"></i> O teu progresso no vocabulário</h2>
+  <p class="ach-texto">Quantas palavras de cada tema da página Vocabulário já marcaste como aprendidas.</p>
   <div class="po-grid" id="po-grid"></div>
+</div>
+
+<!-- AS CONQUISTAS: medalhas que o aluno ganha ao estudar (o js/ui.js marca as que já ganhou) -->
+<div id="achievements-bar">
+  <div class="ach-topo">
+    <h2 class="ach-titulo"><i class="i i-medalha" aria-hidden="true"></i> As tuas conquistas</h2>
+    <p class="ach-texto">Ganhas uma medalha ao aprender palavras, fazer testes e estudar vários dias seguidos. As que já tens ficam douradas.</p>
+  </div>
+  <span class="badge" id="badge-start" title="Começou o curso">Início</span>
+  <span class="badge" id="badge-10" title="10 palavras aprendidas">10 palavras</span>
+  <span class="badge" id="badge-50" title="50 palavras aprendidas">50 palavras</span>
+  <span class="badge" id="badge-100" title="100 palavras aprendidas">100 palavras</span>
+  <span class="badge" id="badge-streak3" title="3 dias seguidos"><i class="i i-dias" aria-hidden="true"></i> 3 dias</span>
+  <span class="badge" id="badge-streak7" title="7 dias seguidos">7 dias</span>
+  <span class="badge" id="badge-quiz" title="Completou um quiz">Quiz</span>
+  <span class="badge" id="badge-perfect" title="Quiz perfeito">Perfeito</span>
+  <span class="badge" id="badge-streak30" title="30 dias seguidos">30 dias</span>
+  <span class="ach-contagem" id="ach-count"></span>
 </div>
 
 <div class="container">
@@ -68,7 +73,7 @@ require 'includes/topo.php';
 <!-- ============================================================ -->
 <div class="section-header anchor" id="foundations">
   <div class="section-num">1</div>
-  <h2>Porquê mandarim? Uma visão geral <span class="zh">为什么学中文?</span></h2>
+  <h2>Porquê mandarim? Uma visão geral <span class="zh">为什么学中文?</span> <span class="section-header__py">wèishénme xué zhōngwén?</span></h2>
 </div>
 <p class="section-intro">Antes de começar, vale a pena perceber como a língua funciona. O mandarim é lógico e regular: os verbos não se conjugam e não há género nem plural. As partes mais difíceis são os tons e os caracteres, mas as duas aprendem-se com o método certo.</p>
 
@@ -105,14 +110,14 @@ require 'includes/topo.php';
 <!-- MÓDULO 12: PLANO DE ESTUDO -->
 <!-- ============================================================ -->
 <div class="section-header anchor" id="plan">
-  <div class="section-num">★</div>
-  <h2>O teu plano de 12 meses <span class="zh">学习计划</span></h2>
+  <div class="section-num">2</div>
+  <h2>O teu plano de 12 meses <span class="zh">学习计划</span> <span class="section-header__py">xuéxí jìhuà</span></h2>
 </div>
 <p class="section-intro">Com 1 hora por dia, 6 dias por semana, a rota leva cerca de 12 meses. Com menos tempo por dia demora mais, e está tudo bem: estudar todos os dias vale mais do que estudar muito de uma vez.</p>
 
 <div class="plan-grid">
   <div class="plan-card" style="border-top-color:var(--seal)">
-    <h3>Meses 1 e 2 · Pequim 北京</h3>
+    <h3>Meses 1 e 2 · Pequim 北京 <span class="py-inline">Běijīng</span></h3>
     <ul>
       <li>Os sons do pinyin e os 4 tons</li>
       <li>Cumprimentos, nome e nacionalidade</li>
@@ -122,7 +127,7 @@ require 'includes/topo.php';
     </ul>
   </div>
   <div class="plan-card" style="border-top-color:var(--gold)">
-    <h3>Meses 3 e 4 · Xi'an 西安</h3>
+    <h3>Meses 3 e 4 · Xi'an 西安 <span class="py-inline">Xī'ān</span></h3>
     <ul>
       <li>Pedir comida numa banca</li>
       <li>Perguntar preços e regatear</li>
@@ -132,7 +137,7 @@ require 'includes/topo.php';
     </ul>
   </div>
   <div class="plan-card" style="border-top-color:var(--jade)">
-    <h3>Meses 5 e 6 · Chengdu 成都</h3>
+    <h3>Meses 5 e 6 · Chengdu 成都 <span class="py-inline">Chéngdū</span></h3>
     <ul>
       <li>Falar da tua rotina</li>
       <li>Gostos e tempo livre</li>
@@ -142,7 +147,7 @@ require 'includes/topo.php';
     </ul>
   </div>
   <div class="plan-card" style="border-top-color:var(--blue)">
-    <h3>Meses 7 e 8 · Guilin 桂林</h3>
+    <h3>Meses 7 e 8 · Guilin 桂林 <span class="py-inline">Guìlín</span></h3>
     <ul>
       <li>Comprar bilhetes de comboio</li>
       <li>Fazer o check-in no hotel</li>
@@ -152,7 +157,7 @@ require 'includes/topo.php';
     </ul>
   </div>
   <div class="plan-card" style="border-top-color:var(--plum)">
-    <h3>Meses 9 e 10 · Hangzhou 杭州</h3>
+    <h3>Meses 9 e 10 · Hangzhou 杭州 <span class="py-inline">Hángzhōu</span></h3>
     <ul>
       <li>Comparar coisas</li>
       <li>Contar o que aconteceu</li>
@@ -162,7 +167,7 @@ require 'includes/topo.php';
     </ul>
   </div>
   <div class="plan-card" style="border-top-color:var(--ink)">
-    <h3>Meses 11 e 12 · Xangai 上海</h3>
+    <h3>Meses 11 e 12 · Xangai 上海 <span class="py-inline">Shànghǎi</span></h3>
     <ul>
       <li>Casa, banco e serviços</li>
       <li>O vocabulário do trabalho</li>
@@ -185,19 +190,20 @@ require 'includes/topo.php';
 
 <div class="grammar-box" style="margin-top: 2rem; border-left-color: var(--gold)">
   <h3>Recursos gratuitos</h3>
+  <p style="color:var(--ink-light);margin-bottom:8px">Carrega no nome para abrires o site ou a aplicação (abre num separador novo). Há mais recursos na <a href="biblioteca.php">Biblioteca</a>.</p>
   <ul style="padding-left:1.5rem; line-height:2.2; color:var(--ink-mid);">
-    <li><strong>HelloChinese</strong> (aplicação): a melhor aplicação gratuita para começar, com ótimo treino de pinyin</li>
-    <li><strong>Duolingo Chinese</strong> (aplicação): boa para criar o hábito diário e rever vocabulário</li>
-    <li><strong>Anki</strong> (aplicação e site): cartões de memória gratuitos; há baralhos do HSK no AnkiWeb</li>
-    <li><strong>Coffee Break Chinese</strong> (podcast): lições em áudio gratuitas para iniciantes</li>
-    <li><strong>Mandarin Corner</strong> (YouTube): ótimo para treinar a escuta nos níveis intermédio e avançado</li>
-    <li><strong>HSK Online</strong> (hsk.academy): testes de treino do HSK gratuitos</li>
-    <li><strong>Pleco</strong> (aplicação): o melhor dicionário de chinês gratuito, com pesquisa de caracteres</li>
-    <li><strong>Tandem / HelloTalk</strong> (aplicação): encontra falantes nativos para trocar conversas</li>
-    <li><strong>CCTV 新闻</strong>: notícias da televisão chinesa online, gratuitas (avançado)</li>
-    <li><strong>Skritter</strong> (skritter.com): treino da ordem dos traços (tem versão gratuita)</li>
-    <li><strong>Chinese Grammar Wiki</strong> (resources.allsetlearning.com): referência de gramática gratuita</li>
-    <li><strong>Bilibili</strong> (bilibili.com): plataforma de vídeos chinesa, parecida com o YouTube. Ótima para imersão!</li>
+    <li><strong><a href="https://www.hellochinese.cc/" target="_blank" rel="noopener">HelloChinese</a></strong> (aplicação): a melhor aplicação gratuita para começar, com ótimo treino de pinyin</li>
+    <li><strong><a href="https://www.duolingo.com/" target="_blank" rel="noopener">Duolingo Chinese</a></strong> (aplicação): boa para criar o hábito diário e rever vocabulário</li>
+    <li><strong><a href="https://apps.ankiweb.net/" target="_blank" rel="noopener">Anki</a></strong> (aplicação e site): cartões de memória gratuitos; há baralhos do HSK no AnkiWeb</li>
+    <li><strong><a href="https://coffeebreaklanguages.com/coffeebreakchinese/" target="_blank" rel="noopener">Coffee Break Chinese</a></strong> (podcast): lições em áudio gratuitas para iniciantes</li>
+    <li><strong><a href="https://www.youtube.com/@MandarinCorner" target="_blank" rel="noopener">Mandarin Corner</a></strong> (YouTube): ótimo para treinar a escuta nos níveis intermédio e avançado</li>
+    <li><strong><a href="https://hsk.academy/" target="_blank" rel="noopener">HSK Online</a></strong> (hsk.academy): testes de treino do HSK gratuitos</li>
+    <li><strong><a href="https://www.pleco.com/" target="_blank" rel="noopener">Pleco</a></strong> (aplicação): o melhor dicionário de chinês gratuito, com pesquisa de caracteres</li>
+    <li><strong><a href="https://www.tandem.net/" target="_blank" rel="noopener">Tandem</a> / <a href="https://www.hellotalk.com/" target="_blank" rel="noopener">HelloTalk</a></strong> (aplicação): encontra falantes nativos para trocar conversas</li>
+    <li><strong><a href="https://news.cctv.com/" target="_blank" rel="noopener">CCTV 新闻 (xīnwén)</a></strong>: notícias da televisão chinesa online, gratuitas (avançado)</li>
+    <li><strong><a href="https://skritter.com/" target="_blank" rel="noopener">Skritter</a></strong> (skritter.com): treino da ordem dos traços (tem versão gratuita)</li>
+    <li><strong><a href="https://resources.allsetlearning.com/chinese/grammar/" target="_blank" rel="noopener">Chinese Grammar Wiki</a></strong> (resources.allsetlearning.com): referência de gramática gratuita</li>
+    <li><strong><a href="https://www.bilibili.com/" target="_blank" rel="noopener">Bilibili</a></strong> (bilibili.com): plataforma de vídeos chinesa, parecida com o YouTube. Ótima para imersão!</li>
   </ul>
 </div>
 

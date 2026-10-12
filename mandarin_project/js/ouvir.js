@@ -32,6 +32,17 @@ ChaPage.onInit(container => {
   });
 });
 
+// Na página Sons, os exemplos das tabelas e dos cartões dos tons ganham os botões «Ouvir» e «Devagar».
+// Assim fica claro que tudo se pode ouvir (antes era preciso adivinhar que se podia carregar no texto).
+ChaPage.onInit(container => {
+  if (container.dataset.page !== 'sons') return;
+  container.querySelectorAll('td, .tone-card .example').forEach(el => {
+    const texto = soChines(el.textContent);
+    if (!texto || el.querySelector('.ouvir-par')) return;
+    el.insertAdjacentHTML('beforeend', `<div class="ouvir-na-tabela">${botoesOuvir(texto)}</div>`);
+  });
+});
+
 // Um só "ouvinte" para a página inteira (delegação de eventos):
 // quando se carrega num elemento .pode-ouvir, eu leio o chinês dele.
 document.addEventListener('click', e => {

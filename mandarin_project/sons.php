@@ -9,14 +9,15 @@ $titulo = 'Sons e tons';
 $pagina = 'sons';
 require 'includes/topo.php';
 ?>
+<?= cabeca_pagina('Sons e tons', '声调', 'shēngdiào', 'Os quatro tons e o pinyin. Todos os exemplos se podem ouvir: carrega em «Ouvir», ou em «Devagar» para ouvires com calma.', 'azul') ?>
 <div class="container">
 
 <!-- ============================================================ -->
 <!-- MÓDULO 2: TONS -->
 <!-- ============================================================ -->
 <div class="section-header anchor" id="tones">
-  <div class="section-num">2</div>
-  <h2>Os 4 tons (e o tom neutro) <span class="zh">四声</span></h2>
+  <div class="section-num">1</div>
+  <h2>Os 4 tons (e o tom neutro) <span class="zh">四声</span> <span class="section-header__py">sìshēng</span></h2>
 </div>
 <p class="section-intro">Em mandarim, cada sílaba tem um tom. O mesmo som com tons diferentes dá palavras completamente diferentes. Aprende isto primeiro, porque é a base de tudo.</p>
 
@@ -78,8 +79,8 @@ require 'includes/topo.php';
 <!-- MÓDULO 3: PINYIN -->
 <!-- ============================================================ -->
 <div class="section-header anchor" id="pinyin">
-  <div class="section-num">3</div>
-  <h2>Pinyin: o sistema de romanização <span class="zh">拼音</span></h2>
+  <div class="section-num">2</div>
+  <h2>Pinyin: o sistema de romanização <span class="zh">拼音</span> <span class="section-header__py">pīnyīn</span></h2>
 </div>
 <p class="section-intro">O pinyin escreve os sons do mandarim com o alfabeto latino e as marcas dos tons. É como as rodinhas de uma bicicleta: aprende-o bem e consegues ler qualquer palavra nova. Atenção: NÃO se lê como o português!</p>
 
@@ -164,7 +165,7 @@ require 'includes/topo.php';
     </ul>
     <div class="formula" style="margin-top:12px;">Regra: primeiro a ou e; depois o o de «ou»; senão, a última vogal</div>
   </div>
-  <div class="tip"><strong>Dica para escrever em chinês:</strong> no telemóvel ou no computador, instala um teclado de pinyin. Escreve a sílaba sem acentos e escolhe o caractere certo na lista. Exemplo: escreves «ni» e escolhes 你, 妮, 尼…</div>
+  <div class="tip"><strong>Dica para escrever em chinês:</strong> no telemóvel ou no computador, instala um teclado de pinyin. Escreve a sílaba sem acentos e escolhe o caractere certo na lista. Exemplo: escreves «ni» e escolhes 你 (nǐ), 妮 (nī), 尼 (ní)…</div>
 </div>
 
 </div><!-- /container -->
