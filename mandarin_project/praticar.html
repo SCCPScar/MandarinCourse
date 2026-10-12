@@ -275,6 +275,7 @@
     <div style="display:flex;gap:10px;margin-bottom:1rem;flex-wrap:wrap;align-items:center">
       <button onclick="startCG('choice')" style="background:var(--red);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-main)">▶ Escolha múltipla</button>
       <button onclick="startCG('type')" style="background:var(--blue);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-main)">⌨️ Escrever o pinyin</button>
+      <button id="cg-parar" onclick="pararCG()" style="display:none;background:var(--paper-dark);color:var(--ink);border:none;padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-main)">⏹ Parar o jogo</button>
       <span id="cg-score-label" style="font-size:13px;font-weight:600;color:var(--ink-light)">Pontos: 0 | Recorde: 0</span>
     </div>
     <div id="cg-area"><div style="text-align:center;padding:2rem;color:var(--ink-light);font-size:14px">Escolhe um modo para começar! 🎮</div></div>
@@ -467,7 +468,6 @@
 
     <div id="tone-canvas-wrap" style="position:relative">
       <canvas id="tone-canvas" height="140"></canvas>
-      <div id="pitch-indicator"></div>
       <!-- as linhas-guia dos tons são desenhadas pelo JavaScript -->
     </div>
 

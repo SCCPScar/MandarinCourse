@@ -104,6 +104,8 @@ function switchApiTab(e, id) {
   btn.classList.add('active');
   const target = container.querySelector('#' + id);
   if (target) target.classList.add('active');
+  // Se saio do separador do jogo de caracteres, o jogo para (senão continuava a falar escondido)
+  if (id !== 'tab-chargame' && typeof pararCG === 'function') pararCG();
 }
 
 

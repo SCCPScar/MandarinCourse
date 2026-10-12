@@ -1,7 +1,6 @@
 <?php
 // privacidade.php
 // Aqui eu explico que dados o site guarda e porquê (RGPD).
-// ATENÇÃO: antes de publicar, eu tenho de trocar o nome e o e-mail entre [ ] pelos dados verdadeiros.
 
 require 'includes/sessao.php';
 
@@ -10,10 +9,10 @@ require 'includes/cabecalho.php';
 ?>
 <section class="conta-caixa">
   <h1>Política de Privacidade</h1>
-  <p>Última atualização: 29 de setembro de 2026</p>
+  <p>Última atualização: 12 de outubro de 2026</p>
 
   <h2>Quem é o responsável</h2>
-  <p>[Nome do responsável], [e-mail de contacto]. O Chá é um projeto escolar e gratuito.</p>
+  <p>Scarllett Pena, <a href="mailto:scarllettsabrinapena@gmail.com">scarllettsabrinapena@gmail.com</a>. O Chá é um projeto escolar e gratuito.</p>
 
   <h2>Que dados eu guardo</h2>
   <p>O teu nome, o teu e-mail, a tua palavra-passe (só em forma cifrada, nunca em texto), a data em que aceitaste esta política e o teu progresso no curso (lições, revisões e caderno).</p>

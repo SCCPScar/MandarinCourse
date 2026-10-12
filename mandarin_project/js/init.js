@@ -156,22 +156,68 @@ function clearToneCanvas() {
   if (fb) fb.innerHTML = '';
 }
 
+// Aqui eu acerto o tamanho interno do canvas com o tamanho que ele tem no ecrã.
+// Se não fizer isto, o CSS estica o desenho e ele fica achatado e desfocado.
+// O devicePixelRatio é 2 nos ecrãs de alta resolução: desenho com o dobro dos pontos para ficar nítido.
+function ajustarCanvas(canvas, altura) {
+  const dpr = window.devicePixelRatio || 1;
+  const largura = canvas.clientWidth;
+  canvas.width = Math.round(largura * dpr);
+  canvas.height = Math.round(altura * dpr);
+  canvas.larguraCss = largura;
+  canvas.alturaCss = altura;
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);   // assim continuo a desenhar em píxeis normais
+  return ctx;
+}
+
+// Vigia o tamanho dos dois canvas: quando o separador aparece ou a janela muda, eu volto a desenhar
+let observadorCanvas = null;
+
+// À esquerda do gráfico fica uma margem só para as legendas (Alto, Médio...), para não ficarem por cima das linhas
+const MARGEM_GRAFICO = 100;
+
+// Converte um nível (0 = alto, 1 = muito baixo) na altura dentro do gráfico.
+// Os primeiros 24 px ficam livres para o título do tom e para «Alvo».
+function alturaNoGrafico(nivel, H) {
+  const topo = 30, fundo = H - 10;
+  return topo + nivel * (fundo - topo);
+}
+
 function initToneCanvas() {
   toneCanvas = document.getElementById('tone-canvas');
   waveCanvas = document.getElementById('wave-canvas');
   if (!toneCanvas || !waveCanvas) return;
-  toneCanvas.width = toneCanvas.parentElement.clientWidth || 600;
-  toneCanvas.height = 140;
-  waveCanvas.width = waveCanvas.parentElement?.clientWidth || 600;
-  waveCanvas.height = 80;
-  toneCtx = toneCanvas.getContext('2d');
-  waveCtx = waveCanvas.getContext('2d');
-  drawToneGuide();
+  redesenharCanvas();
+  if (observadorCanvas) observadorCanvas.disconnect();
+  observadorCanvas = new ResizeObserver(redesenharCanvas);
+  observadorCanvas.observe(toneCanvas);
+}
+
+function redesenharCanvas() {
+  // Com o separador escondido a largura é 0: espero que ele apareça
+  if (!toneCanvas || toneCanvas.clientWidth === 0) return;
+  toneCtx = ajustarCanvas(toneCanvas, 140);
+  waveCtx = ajustarCanvas(waveCanvas, 80);
+  if (toneRecording) return;                 // a gravar, o próximo quadro já desenha tudo
+  if (pitchHistory.length > 1) drawPitchLine(); else drawToneGuide();
+  desenharOndaParada();
+}
+
+// Antes de gravar, a caixa da onda mostra uma linha parada e uma dica
+function desenharOndaParada() {
+  if (!waveCtx) return;
+  drawWaveform(new Array(64).fill(128));     // 128 é o "silêncio": a linha fica a meio
+  waveCtx.fillStyle = 'rgba(255,255,255,.6)';
+  waveCtx.font = '12px Lexend, sans-serif';
+  waveCtx.textAlign = 'center';
+  waveCtx.fillText('A onda da tua voz aparece aqui quando gravares', waveCanvas.larguraCss / 2, 26);
+  waveCtx.textAlign = 'start';
 }
 
 function drawToneGuide() {
   if (!toneCtx) return;
-  const W = toneCanvas.width, H = toneCanvas.height;
+  const W = toneCanvas.larguraCss, H = toneCanvas.alturaCss;
   toneCtx.clearRect(0, 0, W, H);
 
   // Background gradient
@@ -181,39 +227,41 @@ function drawToneGuide() {
   toneCtx.fillStyle = bg;
   toneCtx.fillRect(0, 0, W, H);
 
-  // Horizontal guide lines
+  // As cinco linhas-guia. A posição vem de alturaNoGrafico(), a mesma conta que uso para o tom e para a voz,
+  // assim o tom desenhado fica mesmo em cima das linhas certas.
   const levels = [
-    { y: 0.1, label: 'Alto (5)', color: 'rgba(192,57,43,.2)' },
-    { y: 0.32, label: 'Médio-alto (4)', color: 'rgba(212,172,13,.15)' },
-    { y: 0.54, label: 'Médio (3)', color: 'rgba(30,132,73,.15)' },
-    { y: 0.76, label: 'Baixo (2)', color: 'rgba(26,82,118,.15)' },
-    { y: 0.92, label: 'Muito baixo (1)', color: 'rgba(100,100,100,.1)' },
+    { v: 0,    label: 'Alto (5)', color: 'rgba(192,57,43,.2)' },
+    { v: 0.25, label: 'Médio-alto (4)', color: 'rgba(212,172,13,.15)' },
+    { v: 0.5,  label: 'Médio (3)', color: 'rgba(30,132,73,.15)' },
+    { v: 0.75, label: 'Baixo (2)', color: 'rgba(26,82,118,.15)' },
+    { v: 1,    label: 'Muito baixo (1)', color: 'rgba(100,100,100,.1)' },
   ];
   levels.forEach(l => {
     toneCtx.strokeStyle = l.color;
     toneCtx.lineWidth = 1;
     toneCtx.setLineDash([4, 4]);
     toneCtx.beginPath();
-    toneCtx.moveTo(40, H * l.y);
-    toneCtx.lineTo(W - 10, H * l.y);
+    const ly = alturaNoGrafico(l.v, H);
+    toneCtx.moveTo(MARGEM_GRAFICO, ly);
+    toneCtx.lineTo(W - 10, ly);
     toneCtx.stroke();
     toneCtx.setLineDash([]);
     toneCtx.fillStyle = 'rgba(86,101,115,.7)';
-    toneCtx.font = '9px Lexend, sans-serif';
-    toneCtx.fillText(l.label, 2, H * l.y + 4);
+    toneCtx.font = '11px Lexend, sans-serif';
+    toneCtx.fillText(l.label, 4, ly + 4);
   });
 
   // Aqui eu desenho a dourado o caminho ideal do tom
   const path = TONE_PATHS[selectedTone];
   const col = TONE_COLORS[selectedTone];
-  const stepW = (W - 60) / (path.length - 1);
+  const stepW = (W - MARGEM_GRAFICO - 20) / (path.length - 1);
   toneCtx.strokeStyle = '#E8A317';
   toneCtx.lineWidth = 2.5;
   toneCtx.setLineDash([6, 4]);
   toneCtx.beginPath();
   path.forEach((v, i) => {
-    const x = 50 + i * stepW;
-    const y = H * (0.05 + v * 0.88);
+    const x = MARGEM_GRAFICO + 10 + i * stepW;
+    const y = alturaNoGrafico(v, H);
     i === 0 ? toneCtx.moveTo(x, y) : toneCtx.lineTo(x, y);
   });
   toneCtx.stroke();
@@ -222,14 +270,14 @@ function drawToneGuide() {
   // Label
   toneCtx.fillStyle = col;
   toneCtx.font = 'bold 12px Lexend, sans-serif';
-  toneCtx.fillText(TONE_NAMES[selectedTone], 50, 14);
+  toneCtx.fillText(TONE_NAMES[selectedTone], MARGEM_GRAFICO + 10, 16);
   toneCtx.fillStyle = '#E8A317';
-  toneCtx.fillText('── Alvo', W - 90, 14);
+  toneCtx.fillText('── Alvo', W - 80, 16);
 }
 
 function drawPitchLine() {
   if (!toneCtx || pitchHistory.length < 2) return;
-  const W = toneCanvas.width, H = toneCanvas.height;
+  const W = toneCanvas.larguraCss, H = toneCanvas.alturaCss;
   // Primeiro volto a desenhar o guia
   drawToneGuide();
 
@@ -248,13 +296,13 @@ function drawPitchLine() {
   toneCtx.shadowBlur = 6;
   toneCtx.beginPath();
 
-  const stepW = (W - 60) / Math.max(pitchHistory.length - 1, 1);
+  const stepW = (W - MARGEM_GRAFICO - 20) / Math.max(pitchHistory.length - 1, 1);
   let started = false;
   pitchHistory.forEach((hz, i) => {
     if (hz <= 0) return;
-    const x = 50 + i * stepW;
+    const x = MARGEM_GRAFICO + 10 + i * stepW;
     const norm = 1 - (hz - minHz) / range;
-    const y = H * (0.05 + norm * 0.88);
+    const y = alturaNoGrafico(norm, H);
     if (!started) { toneCtx.moveTo(x, y); started = true; }
     else toneCtx.lineTo(x, y);
   });
@@ -264,13 +312,14 @@ function drawPitchLine() {
 
 function drawWaveform(dataArray) {
   if (!waveCtx) return;
-  const W = waveCanvas.width, H = waveCanvas.height;
-  waveCtx.fillStyle = '#18212B';
+  const W = waveCanvas.larguraCss, H = waveCanvas.alturaCss;
+  // A cor de fundo vem do tema (é mais clara no modo escuro, para a caixa não desaparecer)
+  waveCtx.fillStyle = getComputedStyle(document.body).getPropertyValue('--fundo-escuro').trim() || '#18212B';
   waveCtx.fillRect(0, 0, W, H);
   waveCtx.strokeStyle = '#C8361F';
   waveCtx.lineWidth = 1.5;
   waveCtx.beginPath();
-  const sliceW = W / dataArray.length;
+  const sliceW = W / (dataArray.length - 1);   // -1 para o último ponto chegar mesmo à borda direita
   let x = 0;
   dataArray.forEach((v, i) => {
     const y = (v / 255) * H;
@@ -479,7 +528,7 @@ async function toggleRepeatRecording() {
   if (repeatRecording) {
     repeatRecording = false;
     document.getElementById('repeat-mic-btn').className = 'mic-btn idle';
-    document.getElementById('repeat-mic-btn').textContent = '🎤 Say It';
+    document.getElementById('repeat-mic-btn').textContent = '🎤 Dizer';
     if (repeatRecognizer) { try { repeatRecognizer.stop(); } catch(e){} }
     return;
   }
@@ -495,13 +544,13 @@ async function toggleRepeatRecording() {
   repeatRecognizer.maxAlternatives = 3;
   repeatRecording = true;
   document.getElementById('repeat-mic-btn').className = 'mic-btn recording';
-  document.getElementById('repeat-mic-btn').textContent = '⏹ Stop';
-  document.getElementById('repeat-result').textContent = '🎤 Listening…';
+  document.getElementById('repeat-mic-btn').textContent = '⏹ Parar';
+  document.getElementById('repeat-result').textContent = '🎤 A ouvir…';
 
   repeatRecognizer.onresult = e => {
     repeatRecording = false;
     document.getElementById('repeat-mic-btn').className = 'mic-btn idle';
-    document.getElementById('repeat-mic-btn').textContent = '🎤 Say It';
+    document.getElementById('repeat-mic-btn').textContent = '🎤 Dizer';
     const alts = Array.from(e.results[0]).map(a => a.transcript.trim());
     const heard = alts[0];
     const target = repeatTarget.zh;
@@ -526,13 +575,13 @@ async function toggleRepeatRecording() {
   repeatRecognizer.onerror = e => {
     repeatRecording = false;
     document.getElementById('repeat-mic-btn').className = 'mic-btn idle';
-    document.getElementById('repeat-mic-btn').textContent = '🎤 Say It';
+    document.getElementById('repeat-mic-btn').textContent = '🎤 Dizer';
     document.getElementById('repeat-result').innerHTML = `<span style="color:var(--red)">⚠️ Erro: ${esc(e.error)}. Confirma se o microfone está autorizado.</span>`;
   };
   repeatRecognizer.onend = () => {
     repeatRecording = false;
     document.getElementById('repeat-mic-btn').className = 'mic-btn idle';
-    document.getElementById('repeat-mic-btn').textContent = '🎤 Say It';
+    document.getElementById('repeat-mic-btn').textContent = '🎤 Dizer';
   };
   repeatRecognizer.start();
 }
@@ -544,7 +593,7 @@ let recogRecording = false, recogRecognizer = null, recogPromptText = '';
 
 function setRecogPrompt(el) {
   recogPromptText = el.textContent;
-  document.getElementById('recog-target-display').innerHTML = `<span style="font-family:var(--font-chinese);font-size:22px;color:var(--ink)">Say: </span><span style="font-family:var(--font-chinese);font-size:22px;color:var(--red);font-weight:700">${el.textContent}</span>`;
+  document.getElementById('recog-target-display').innerHTML = `<span style="font-family:var(--font-chinese);font-size:22px;color:var(--ink)">Diz: </span><span style="font-family:var(--font-chinese);font-size:22px;color:var(--red);font-weight:700">${el.textContent}</span>`;
 }
 
 async function toggleRecogRecording() {
@@ -673,9 +722,6 @@ ChaPage.onInit(() => {
   if (!document.getElementById('tone-canvas')) return;
   setTimeout(() => { initToneCanvas(); loadRepeatWords(); updatePronunScores(); }, 200);
 });
-window.addEventListener('resize', () => {
-  if (toneCanvas && toneCanvas.isConnected) { toneCanvas.width = toneCanvas.parentElement.clientWidth; drawToneGuide(); }
-});
 
 // Ao sair de uma página: desligar o microfone, a voz e os temporizadores dessa página
 ChaPage.onCleanup(() => {
@@ -686,6 +732,7 @@ ChaPage.onCleanup(() => {
   recogRecording = false; repeatRecording = false;
   if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
   if (audioCtx) { try { audioCtx.close(); } catch(e){} audioCtx = null; }
+  if (observadorCanvas) { observadorCanvas.disconnect(); observadorCanvas = null; }
   toneCanvas = null; waveCanvas = null;
   if (typeof cgTimer !== 'undefined' && cgTimer) clearInterval(cgTimer);
   if (typeof timerOn !== 'undefined' && timerOn) { try { stopTimer(); } catch(e){ clearInterval(timerInt); timerOn = false; } } // guarda os minutos estudados
