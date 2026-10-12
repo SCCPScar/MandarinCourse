@@ -3,11 +3,11 @@
  * Aqui eu dou estilo à barra de navegação:
  * - fica fixa no topo, esconde-se quando desço e volta quando subo;
  * - as letras rolam quando passo o rato por cima (só com rato);
- * - no telemóvel (menos de 768px) o menu abre em ecrã inteiro.
+ * - em ecrãs com menos de 1200px (telemóvel e tablet) o menu abre em ecrã inteiro.
  */
 
 :root {
-  --nav-height: 44px;
+  --nav-height: 64px;
   --page-max: 1240px;       /* largura máxima do conteúdo (igual ao .container) */
   --page-gutter: 2rem;      /* igual ao padding do .container */
   --ease-nav: cubic-bezier(0.625, 0.05, 0, 1);
@@ -33,10 +33,11 @@ body { padding-top: var(--nav-height); }
   /* alinha o logo e os links com as margens do conteúdo */
   padding-inline: max(var(--page-gutter), calc((100% - var(--page-max)) / 2 + var(--page-gutter)));
   background: var(--paper);
+  border-bottom: 1px solid var(--paper-dark);
   color: var(--ink);
   font-family: var(--font-main);
   /* "none" e não translateY(0): um transform no pai faria o menu de ecrã inteiro
-     (position: fixed) ficar preso dentro da barra de 44px */
+     (position: fixed) ficar preso dentro da barra */
   transform: none;
   transition: transform 0.35s var(--ease-nav);
 }
@@ -52,14 +53,24 @@ body { padding-top: var(--nav-height); }
 /* ═══ LOGO ═══ */
 .site-nav__logo {
   display: inline-flex;
+  align-items: center;
+  gap: 10px;
   flex-shrink: 0;
   text-decoration: none;
+  color: var(--ink);
   border-radius: 7px;
 }
 .site-nav__mark {
   display: block;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
+}
+/* O nome do site ao lado do carimbo */
+.site-nav__nome {
+  font-family: var(--font-titulos);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 /* ═══ LINKS (desktop) ═══ */
@@ -71,19 +82,18 @@ body { padding-top: var(--nav-height); }
 .site-nav__links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 20px;
   list-style: none;
   margin: 0; padding: 0;
 }
 .site-nav__link,
 .site-nav__tool {
   font-family: inherit;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-size: 0.8125rem;
+  font-weight: 600;
   color: var(--ink);
   text-decoration: none;
-  opacity: 0.72;              /* 0.72 e não menos: abaixo disto o texto fica sem contraste suficiente */
+  opacity: 0.8;               /* não menos: abaixo disto o texto fica sem contraste suficiente */
   transition: opacity 0.2s;
 }
 .site-nav__link:hover,
@@ -99,8 +109,8 @@ body { padding-top: var(--nav-height); }
   content: "";
   position: absolute;
   left: 0; right: 0; bottom: -4px;
-  height: 1px;
-  background: currentColor;
+  height: 2px;
+  background: var(--seal);   /* a página atual fica sublinhada a vermelho-carimbo */
 }
 
 .site-nav__tools {
@@ -109,17 +119,15 @@ body { padding-top: var(--nav-height); }
   gap: 14px;
 }
 
-/* Links ao centro: o menu ocupa o espaço que sobra depois do logótipo,
-   os links ficam no meio e as ferramentas (Hoje, Escuro, Conta) ficam à direita. */
-@media (min-width: 768px) {
+/* No computador: o menu ocupa o espaço que sobra depois do logótipo,
+   os links ficam no meio e as ferramentas (Hoje, Escuro, Conta) ficam à direita, só com o ícone. */
+@media (min-width: 1200px) {
   .site-nav__menu { flex: 1; }
   .site-nav__links { margin-inline: auto; }
   .site-nav__tools { margin-left: auto; }   /* empurra as ferramentas para a direita */
-}
-/* Em ecrãs largos centro os links na página inteira, e não só no espaço que sobra.
-   Uso position: absolute com left: 50%; o translateX(-50%) puxa-os metade da largura para trás. */
-@media (min-width: 1180px) {
-  .site-nav__links { position: absolute; left: 50%; transform: translateX(-50%); gap: 22px; }
+  .site-nav__tool .i { width: 1.35rem; height: 1.35rem; }
+  /* O texto das ferramentas fica escondido, mas o leitor de ecrã continua a lê-lo */
+  .site-nav__texto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 }
 .site-nav__tool {
   background: none;
@@ -164,22 +172,22 @@ body { padding-top: var(--nav-height); }
   }
 }
 
-/* ═══ BOTÃO "MENU" (só no telemóvel) ═══ */
+/* ═══ BOTÃO "MENU" (telemóvel e tablet) ═══ */
 .site-nav__toggle {
   display: none;
   background: none;
   border: none;
   padding: 6px 0;
   font-family: inherit;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.9375rem;
+  font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--ink);
   cursor: pointer;
 }
 
-/* ═══ TELEMÓVEL (< 768px) ═══ */
-@media (max-width: 767.98px) {
+/* ═══ TELEMÓVEL E TABLET (< 1200px) ═══ */
+@media (max-width: 1199.98px) {
   .site-nav__toggle { display: inline-block; }
 
   /* O menu vira um painel em ecrã inteiro, por baixo da barra */
@@ -214,14 +222,14 @@ body { padding-top: var(--nav-height); }
   }
   .site-nav__link {
     font-family: var(--font-main);
-    font-size: clamp(32px, 9vw, 44px);
+    font-size: clamp(24px, 6vw, 36px);
     font-weight: 700;
     letter-spacing: -0.01em;
     line-height: 1.25;
   }
   .site-nav__link[aria-current="page"]::after { height: 2px; bottom: -2px; }
   .site-nav__tools { flex-wrap: wrap; gap: 20px; }
-  .site-nav__tool { font-size: 0.875rem; opacity: 0.75; }
+  .site-nav__tool { font-size: 1rem; opacity: 0.85; display: inline-flex; align-items: center; gap: 6px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

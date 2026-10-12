@@ -46,7 +46,7 @@ const potdList=[
   {zh:'入乡随俗',py:'rù xiāng suí sú',en:'Em Roma, sê romano',ex:'到了中国，入乡随俗！'},
   {zh:'活到老学到老',py:'huó dào lǎo xué dào lǎo',en:'Nunca é tarde para aprender',ex:'学中文永远不晚！'},
 ];
-function setPotd(){const t=new Date().toDateString();const idx=Math.abs(t.split('').reduce((a,c)=>a+c.charCodeAt(0),0))%potdList.length;const p=potdList[idx];document.getElementById('potd-zh').textContent=p.zh;document.getElementById('potd-py').textContent=p.py;document.getElementById('potd-en').textContent=p.en;document.getElementById('potd-ex').textContent='📝 '+p.ex;}
+function setPotd(){const t=new Date().toDateString();const idx=Math.abs(t.split('').reduce((a,c)=>a+c.charCodeAt(0),0))%potdList.length;const p=potdList[idx];document.getElementById('potd-zh').textContent=p.zh;document.getElementById('potd-py').textContent=p.py;document.getElementById('potd-en').textContent=p.en;document.getElementById('potd-ex').textContent=''+p.ex;}
 
 // ═══ VOZ ═══
 let voices=[];window.speechSynthesis.onvoiceschanged=()=>{voices=speechSynthesis.getVoices();};
@@ -58,7 +58,7 @@ function speakText(text,rate){
   if(v)utt.voice=v;utt.lang='zh-CN';
   utt.rate=rate||parseFloat(document.getElementById('speak-rate')?.value||0.85);
   speechSynthesis.speak(utt);
-  const st=document.getElementById('speak-status');if(st){st.textContent='🔊 A falar…';utt.onend=()=>{st.textContent='';};}
+  const st=document.getElementById('speak-status');if(st){st.innerHTML='<i class="i i-ouvir" aria-hidden="true"></i> A falar…';utt.onend=()=>{st.textContent='';};}
 }
 document.getElementById('speak-rate')?.addEventListener('input',function(){const l=document.getElementById('speak-rate-label');if(l)l.textContent=this.value+'×';});
 

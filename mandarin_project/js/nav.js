@@ -14,7 +14,7 @@ const ChaNav = (() => {
   const header = document.querySelector('[data-site-nav]');
   const menu = document.getElementById('site-menu');
   const toggle = header?.querySelector('.site-nav__toggle');
-  const mobileQuery = window.matchMedia('(max-width: 767.98px)');
+  const mobileQuery = window.matchMedia('(max-width: 1199.98px)');   // igual ao css/nav.css
 
   let fontsReady = false;
   let pageTitle = document.title;

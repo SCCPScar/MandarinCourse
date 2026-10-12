@@ -41,26 +41,12 @@ $licoes = [];
 foreach ($consulta->fetchAll() as $licao) {
     $licoes[$licao['unidade_id']][] = $licao;
 }
-?>
-<!DOCTYPE html>
-<html lang="pt-PT">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?= e($cidade['nome']) ?> · Chá</title>
-  <link rel="icon" href="img/logo-cha.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/fontes.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/dark.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/transitions.css">
-  <link rel="stylesheet" href="css/cidade.css">
-</head>
-<body>
-<?php require 'includes/navegacao.php'; ?>
 
-<main class="page" data-page="cidade">
+$titulo = $cidade['nome'];
+$pagina = 'cidade';
+$css_extra = ['cidade'];
+require 'includes/topo.php';
+?>
 
   <!-- CAPA DA CIDADE -->
   <header class="capa">
@@ -118,9 +104,4 @@ foreach ($consulta->fetchAll() as $licao) {
   </section>
 
   <p class="voltar"><a href="index.php#rota">← Voltar à rota</a></p>
-  <?php require 'includes/rodape-site.php'; ?>
-</main>
-
-<?php require 'includes/scripts.php'; ?>
-</body>
-</html>
+<?php require 'includes/fim.php'; ?>

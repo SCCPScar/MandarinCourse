@@ -22,6 +22,7 @@ $pasta = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
   <link rel="icon" href="img/logo-cha.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/fontes.css">
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/icones.css">
   <link rel="stylesheet" href="css/erro.css">
 </head>
 <body>

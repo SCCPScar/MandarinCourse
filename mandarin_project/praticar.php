@@ -121,23 +121,23 @@ require 'includes/topo.php';
 <!-- FERRAMENTAS -->
 <!-- ============================================================ -->
 <div class="section-header anchor" id="features">
-  <div class="section-num">⚡</div>
+  <div class="section-num"></div>
   <h2>Ferramentas para praticar <span class="zh">互动工具</span></h2>
 </div>
 <p class="section-intro">11 ferramentas para praticar: cartões de memória, jogos, dicionário, temporizador, cultura, pronúncia e mais.</p>
 
 <div id="api-tabs" style="display:flex;gap:3px;border-bottom:2px solid var(--paper-dark);flex-wrap:wrap;margin-bottom:0">
   <button class="api-tab-btn active" onclick="switchApiTab(event,'tab-flash')">🃏 Cartões</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-sb')">🔧 Construir frases</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-chargame')">🎮 Jogo de caracteres</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-speak')">🔊 Ouvir</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-dict')">🔤 Dicionário</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-hanzi')">✍️ Traços</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-notebook')">📓 Caderno</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-timer')">⏱️ Temporizador</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-culture')">🏮 Cultura</button>
+  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-sb')">Construir frases</button>
+  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-chargame')">Jogo de caracteres</button>
+  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-speak')">Ouvir</button>
+  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-dict')">Dicionário</button>
+  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-hanzi')">Traços</button>
+  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-notebook')">Caderno</button>
+  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-timer')">Temporizador</button>
+  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-culture')">Cultura</button>
   <button class="api-tab-btn" onclick="switchApiTab(event,'tab-keyboard')">⌨️ Teclado</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-mic')">🎤 Pronúncia</button>
+  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-mic')">Pronúncia</button>
 </div>
 
 <!-- CARTÕES DE MEMÓRIA -->
@@ -156,22 +156,22 @@ require 'includes/topo.php';
           <div class="fc-zh-sm" id="fc-zh-back"></div>
           <div class="fc-py" id="fc-py-back"></div>
           <div class="fc-en-txt" id="fc-en-back"></div>
-          <button class="speak-btn" id="fc-speak" style="margin-top:4px">🔊 Ouvir</button>
+          <button class="speak-btn" id="fc-speak" style="margin-top:4px"><i class="i i-ouvir" aria-hidden="true"></i> Ouvir</button>
         </div>
       </div>
     </div>
     <div style="text-align:center;font-size:0.8125rem;color:var(--ink-light);margin:6px 0" id="fc-prog">Toca no cartão para começar</div>
     <div class="fc-controls" id="fc-controls" style="display:none">
-      <button class="fc-btn hard" onclick="rateCard('hard')">😓 Difícil</button>
-      <button class="fc-btn ok" onclick="rateCard('ok')">😐 Razoável</button>
-      <button class="fc-btn easy" onclick="rateCard('easy')">😊 Fácil</button>
+      <button class="fc-btn hard" onclick="rateCard('hard')">Difícil</button>
+      <button class="fc-btn ok" onclick="rateCard('ok')">Razoável</button>
+      <button class="fc-btn easy" onclick="rateCard('easy')">Fácil</button>
     </div>
   </div>
 </div>
 
 <!-- CONSTRUTOR DE FRASES -->
 <div id="tab-sb" class="api-tab-content" style="padding-top:1.2rem">
-  <div class="info" style="margin-bottom:.8rem">🔧 <strong>Construir frases</strong>. Escolhe uma estrutura e toca nas palavras para as pôr no sítio certo. O site verifica a tua resposta!</div>
+  <div class="info" style="margin-bottom:.8rem"><strong>Construir frases</strong>. Escolhe uma estrutura e toca nas palavras para as pôr no sítio certo. O site verifica a tua resposta!</div>
   <div id="sb-box">
     <select class="sb-select" id="sb-pattern" onchange="loadSbPattern()">
       <option value="">Escolhe uma estrutura…</option>
@@ -185,7 +185,7 @@ require 'includes/topo.php';
     <div class="sb-pool" id="sb-pool"></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
       <button onclick="checkSentence()" style="background:var(--red);color:#fff;border:none;padding:8px 18px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Verificar ✓</button>
-      <button onclick="resetSb()" style="background:var(--paper-dark);color:var(--ink);border:none;padding:8px 18px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Recomeçar ↺</button>
+      <button onclick="resetSb()" style="background:var(--paper-dark);color:var(--ink);border:none;padding:8px 18px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Recomeçar <i class="i i-repetir" aria-hidden="true"></i></button>
       <button onclick="newSbQ()" style="background:var(--blue);color:#fff;border:none;padding:8px 18px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Seguinte</button>
     </div>
     <div class="sb-result" id="sb-result"></div>
@@ -194,25 +194,25 @@ require 'includes/topo.php';
 
 <!-- JOGO DE CARACTERES -->
 <div id="tab-chargame" class="api-tab-content" style="padding-top:1.2rem">
-  <div class="info" style="margin-bottom:.8rem">🎮 <strong>Jogo de reconhecer caracteres</strong>. Vês um caractere e adivinhas o pinyin, contra o relógio. Há dois modos.</div>
+  <div class="info" style="margin-bottom:.8rem"><strong>Jogo de reconhecer caracteres</strong>. Vês um caractere e adivinhas o pinyin, contra o relógio. Há dois modos.</div>
   <div id="cg-box">
     <div style="display:flex;gap:10px;margin-bottom:1rem;flex-wrap:wrap;align-items:center">
       <button onclick="startCG('choice')" style="background:var(--red);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">▶ Escolha múltipla</button>
       <button onclick="startCG('type')" style="background:var(--blue);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">⌨️ Escrever o pinyin</button>
-      <button id="cg-parar" onclick="pararCG()" style="display:none;background:var(--paper-dark);color:var(--ink);border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">⏹ Parar o jogo</button>
+      <button id="cg-parar" onclick="pararCG()" style="display:none;background:var(--paper-dark);color:var(--ink);border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)"><i class="i i-parar" aria-hidden="true"></i> Parar o jogo</button>
       <span id="cg-score-label" style="font-size:0.8125rem;font-weight:600;color:var(--ink-light)">Pontos: 0 | Recorde: 0</span>
     </div>
-    <div id="cg-area"><div style="text-align:center;padding:2rem;color:var(--ink-light);font-size:0.875rem">Escolhe um modo para começar! 🎮</div></div>
+    <div id="cg-area"><div style="text-align:center;padding:2rem;color:var(--ink-light);font-size:0.875rem">Escolhe um modo para começar! </div></div>
   </div>
 </div>
 
 <!-- OUVIR -->
 <div id="tab-speak" class="api-tab-content" style="padding-top:1.2rem">
-  <div class="info" style="margin-bottom:.8rem">🔊 <strong>Ouvir em chinês</strong>. Escreve qualquer frase em chinês e ouve-a em mandarim. Usa a voz do teu browser.</div>
+  <div class="info" style="margin-bottom:.8rem"><i class="i i-ouvir" aria-hidden="true"></i> <strong>Ouvir em chinês</strong>. Escreve qualquer frase em chinês e ouve-a em mandarim. Usa a voz do teu browser.</div>
   <div style="background:var(--white);border-radius:var(--radius);border:1.5px solid var(--paper-dark);padding:1.3rem">
     <div style="display:flex;gap:8px;margin-bottom:.8rem;flex-wrap:wrap">
       <input id="speak-input" type="text" value="你好，我叫李明，很高兴认识你！" style="flex:1;min-width:160px;padding:9px 12px;border-radius:10px;border:1.5px solid var(--paper-dark);font-size:1.125rem;font-family:var(--font-chinese);background:var(--paper-mid);outline:none;color:var(--ink)">
-      <button onclick="speakText(document.getElementById('speak-input').value)" style="padding:9px 16px;background:var(--red);color:#fff;border:none;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">🔊 Ouvir</button>
+      <button onclick="speakText(document.getElementById('speak-input').value)" style="padding:9px 16px;background:var(--red);color:#fff;border:none;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)"><i class="i i-ouvir" aria-hidden="true"></i> Ouvir</button>
     </div>
     <div style="margin-bottom:.8rem">
       <label style="font-size:0.75rem;color:var(--ink-light);margin-right:8px">Velocidade:</label>
@@ -232,11 +232,11 @@ require 'includes/topo.php';
 
 <!-- DICIONÁRIO -->
 <div id="tab-dict" class="api-tab-content" style="padding-top:1.2rem">
-  <div class="info" style="margin-bottom:.8rem">🔤 <strong>Dicionário</strong>. Procura uma palavra do vocabulário do curso em chinês, em pinyin ou em português. Carrega em «+ Guardar» para a pôr no caderno.</div>
+  <div class="info" style="margin-bottom:.8rem"><strong>Dicionário</strong>. Procura uma palavra do vocabulário do curso em chinês, em pinyin ou em português. Carrega em «+ Guardar» para a pôr no caderno.</div>
   <div id="dict-section">
     <div id="dict-input-row">
       <input id="dict-input" type="text" placeholder="Escreve em chinês ou em português… ex.: 朋友 ou amigo" onkeydown="if(event.key==='Enter')lookupWord()">
-      <button id="dict-btn" onclick="lookupWord()">Procurar 🔍</button>
+      <button id="dict-btn" onclick="lookupWord()">Procurar <i class="i i-procurar" aria-hidden="true"></i></button>
     </div>
     <div id="dict-result"><p style="color:var(--ink-light);font-size:0.8125rem">Experimenta: 朋友 · gōngzuò · casa · 学习 · caro</p></div>
   </div>
@@ -244,13 +244,13 @@ require 'includes/topo.php';
 
 <!-- ORDEM DOS TRAÇOS -->
 <div id="tab-hanzi" class="api-tab-content" style="padding-top:1.2rem">
-  <div class="info" style="margin-bottom:.8rem">✍️ <strong>HanziWriter</strong>. Vê a animação da ordem dos traços de qualquer caractere ou treina a desenhá-lo.</div>
+  <div class="info" style="margin-bottom:.8rem"><i class="i i-escrever" aria-hidden="true"></i> <strong>HanziWriter</strong>. Vê a animação da ordem dos traços de qualquer caractere ou treina a desenhá-lo.</div>
   <div id="hanzi-section">
     <div id="hanzi-input-row">
       <input id="hanzi-input" type="text" maxlength="1" placeholder="字" value="中">
       <button class="hanzi-action-btn" id="hanzi-animate-btn" onclick="animateHanzi()">▶ Animar</button>
-      <button class="hanzi-action-btn" id="hanzi-quiz-btn" onclick="quizHanzi()">✏️ Praticar</button>
-      <button class="speak-btn" style="padding:7px 12px;font-size:0.75rem" onclick="speakText(document.getElementById('hanzi-input').value)">🔊 Ouvir</button>
+      <button class="hanzi-action-btn" id="hanzi-quiz-btn" onclick="quizHanzi()"><i class="i i-escrever" aria-hidden="true"></i> Praticar</button>
+      <button class="speak-btn" style="padding:7px 12px;font-size:0.75rem" onclick="speakText(document.getElementById('hanzi-input').value)"><i class="i i-ouvir" aria-hidden="true"></i> Ouvir</button>
     </div>
     <div id="hanzi-canvas-wrap">
       <div><svg id="hanzi-target" width="200" height="200"></svg><div style="text-align:center;font-size:0.6875rem;color:var(--ink-light);margin-top:3px" id="hanzi-hint"></div></div>
@@ -259,7 +259,7 @@ require 'includes/topo.php';
         <div id="hanzi-presets">
           <span class="preset-char" onclick="loadChar('人')">人</span><span class="preset-char" onclick="loadChar('大')">大</span><span class="preset-char" onclick="loadChar('中')">中</span><span class="preset-char" onclick="loadChar('好')">好</span><span class="preset-char" onclick="loadChar('我')">我</span><span class="preset-char" onclick="loadChar('你')">你</span><span class="preset-char" onclick="loadChar('是')">是</span><span class="preset-char" onclick="loadChar('不')">不</span><span class="preset-char" onclick="loadChar('有')">有</span><span class="preset-char" onclick="loadChar('爱')">爱</span><span class="preset-char" onclick="loadChar('国')">国</span><span class="preset-char" onclick="loadChar('学')">学</span><span class="preset-char" onclick="loadChar('日')">日</span><span class="preset-char" onclick="loadChar('月')">月</span><span class="preset-char" onclick="loadChar('山')">山</span><span class="preset-char" onclick="loadChar('水')">水</span><span class="preset-char" onclick="loadChar('火')">火</span><span class="preset-char" onclick="loadChar('心')">心</span>
         </div>
-        <div class="tip" style="margin-top:8px;font-size:0.75rem">💡 Escolhe um caractere, carrega em Animar para ver os traços e depois em Praticar para o desenhar!</div>
+        <div class="tip" style="margin-top:8px;font-size:0.75rem">Escolhe um caractere, carrega em Animar para ver os traços e depois em Praticar para o desenhar!</div>
       </div>
     </div>
   </div>
@@ -267,7 +267,7 @@ require 'includes/topo.php';
 
 <!-- CADERNO DE VOCABULÁRIO -->
 <div id="tab-notebook" class="api-tab-content" style="padding-top:1.2rem">
-  <div class="info" style="margin-bottom:.8rem">📓 <strong>O meu caderno de vocabulário</strong>. As palavras que guardas no Dicionário aparecem aqui e ficam guardadas no teu browser.</div>
+  <div class="info" style="margin-bottom:.8rem"><i class="i i-caderno" aria-hidden="true"></i> <strong>O meu caderno de vocabulário</strong>. As palavras que guardas no Dicionário aparecem aqui e ficam guardadas no teu browser.</div>
   <div id="nb-box">
     <div style="display:flex;gap:7px;margin-bottom:.9rem;flex-wrap:wrap">
       <button onclick="clearNotebook()" style="background:#FBE3DE;color:#A32A18;border:1.5px solid #FBE3DE;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:0.75rem;font-family:var(--font-main)">Apagar tudo</button>
@@ -279,18 +279,18 @@ require 'includes/topo.php';
 
 <!-- TEMPORIZADOR DE ESTUDO -->
 <div id="tab-timer" class="api-tab-content" style="padding-top:1.2rem">
-  <div class="info" style="margin-bottom:.8rem">⏱️ <strong>Temporizador de estudo e dias seguidos</strong>. Regista as tuas sessões e os dias seguidos. Estudar sempre é o segredo!</div>
+  <div class="info" style="margin-bottom:.8rem"><i class="i i-relogio" aria-hidden="true"></i> <strong>Temporizador de estudo e dias seguidos</strong>. Regista as tuas sessões e os dias seguidos. Estudar sempre é o segredo!</div>
   <div id="timer-wrap">
     <div id="timer-display">00:00</div>
     <div class="timer-btns">
       <button class="timer-btn" id="t-start" onclick="startTimer()" style="background:#0E7C66;color:#fff">▶ Começar</button>
-      <button class="timer-btn" id="t-stop" onclick="stopTimer()" style="background:var(--red);color:#fff;display:none">⏸ Pausa</button>
-      <button class="timer-btn" id="t-reset" onclick="resetTimer()" style="background:var(--paper-dark);color:var(--ink)">↺ Recomeçar</button>
+      <button class="timer-btn" id="t-stop" onclick="stopTimer()" style="background:var(--red);color:#fff;display:none"><i class="i i-pausa" aria-hidden="true"></i> Pausa</button>
+      <button class="timer-btn" id="t-reset" onclick="resetTimer()" style="background:var(--paper-dark);color:var(--ink)"><i class="i i-repetir" aria-hidden="true"></i> Recomeçar</button>
     </div>
     <div class="streak-row">
-      <div class="s-item"><div class="sn" id="streak-num">0</div><div class="sl">🔥 Dias seguidos</div></div>
-      <div class="s-item"><div class="sn" id="total-days">0</div><div class="sl">📅 Total de dias</div></div>
-      <div class="s-item"><div class="sn" id="total-mins">0</div><div class="sl">⏱️ Total de minutos</div></div>
+      <div class="s-item"><div class="sn" id="streak-num">0</div><div class="sl"><i class="i i-dias" aria-hidden="true"></i> Dias seguidos</div></div>
+      <div class="s-item"><div class="sn" id="total-days">0</div><div class="sl"><i class="i i-hoje" aria-hidden="true"></i> Total de dias</div></div>
+      <div class="s-item"><div class="sn" id="total-mins">0</div><div class="sl"><i class="i i-relogio" aria-hidden="true"></i> Total de minutos</div></div>
     </div>
     <div style="margin-top:1rem">
       <p style="font-size:0.75rem;font-weight:700;color:var(--ink-light);margin-bottom:7px">ESTA SEMANA:</p>
@@ -301,14 +301,14 @@ require 'includes/topo.php';
 
 <!-- GUIA DE CULTURA -->
 <div id="tab-culture" class="api-tab-content" style="padding-top:1.2rem">
-  <div class="info" style="margin-bottom:.8rem">🏮 <strong>A cultura de trabalho na China</strong>. O essencial para trabalhar na China. Conhecer a cultura ajuda muito no trabalho.</div>
+  <div class="info" style="margin-bottom:.8rem"><strong>A cultura de trabalho na China</strong>. O essencial para trabalhar na China. Conhecer a cultura ajuda muito no trabalho.</div>
   <div class="culture-grid">
     <div class="culture-card"><h3>🃏 Cartões de visita (名片 míngpiàn)</h3><ul><li>Dá e recebe com as DUAS mãos</li><li>Olha para o cartão uns segundos e nunca escrevas nele</li><li>Nunca o ponhas no bolso de trás</li><li>Tem cartões com o verso em chinês</li><li>Nas reuniões, deixa os cartões em cima da mesa</li></ul></div>
-    <div class="culture-card"><h3>🍽️ Regras à mesa (餐桌礼仪)</h3><ul><li>Espera que o anfitrião se sente e comece</li><li>Quem convida paga, não discutas a conta</li><li>Brinde: 干杯 (gānbēi) = Saúde!</li><li>Prova um pouco de tudo o que te oferecem</li><li>Deixar um pouco de comida = já estás satisfeito (é educado)</li></ul></div>
-    <div class="culture-card"><h3>🎁 Oferecer presentes (送礼)</h3><ul><li>Nunca ofereças relógios de parede: soa a «ir a um funeral»</li><li>Nunca ofereças peras: 梨 soa a «separação»</li><li>Oferece em números pares, dá sorte</li><li>Envelopes vermelhos (红包) com dinheiro são sempre boa ideia</li><li>Não abras o presente logo à frente de quem o deu</li></ul></div>
-    <div class="culture-card"><h3>🤝 Relações (关系 guānxi)</h3><ul><li>关系 = contactos. Nos negócios são tudo</li><li>Cria confiança antes de fazer negócio</li><li>O WeChat é a principal ferramenta de trabalho</li><li>Dirige-te sempre primeiro às pessoas mais velhas ou com cargo mais alto</li><li>A harmonia (和谐) vale mais do que o confronto</li></ul></div>
-    <div class="culture-card"><h3>📱 Tecnologia e pagamentos</h3><ul><li>Usa-se WeChat Pay e Alipay em todo o lado</li><li>扫一扫 (sǎo yī sǎo) = ler o QR code</li><li>Precisas de VPN para o Google, o WhatsApp e o Instagram</li><li>Baidu = o Google chinês; Didi = a Uber chinesa</li><li>Configura o WeChat ANTES de chegares à China</li></ul></div>
-    <div class="culture-card"><h3>💼 Cultura de escritório</h3><ul><li>Fazer horas extra (加班 jiābān) é comum</li><li>Não recuses convites dos colegas</li><li>给面子 (gěi miànzi) = «dar face», não envergonhar ninguém. É essencial</li><li>Nunca critiques ninguém em público</li><li>Tratamento: 王总 (Wáng zǒng) = Diretor Wang</li></ul></div>
+    <div class="culture-card"><h3>Regras à mesa (餐桌礼仪)</h3><ul><li>Espera que o anfitrião se sente e comece</li><li>Quem convida paga, não discutas a conta</li><li>Brinde: 干杯 (gānbēi) = Saúde!</li><li>Prova um pouco de tudo o que te oferecem</li><li>Deixar um pouco de comida = já estás satisfeito (é educado)</li></ul></div>
+    <div class="culture-card"><h3>Oferecer presentes (送礼)</h3><ul><li>Nunca ofereças relógios de parede: soa a «ir a um funeral»</li><li>Nunca ofereças peras: 梨 soa a «separação»</li><li>Oferece em números pares, dá sorte</li><li>Envelopes vermelhos (红包) com dinheiro são sempre boa ideia</li><li>Não abras o presente logo à frente de quem o deu</li></ul></div>
+    <div class="culture-card"><h3>Relações (关系 guānxi)</h3><ul><li>关系 = contactos. Nos negócios são tudo</li><li>Cria confiança antes de fazer negócio</li><li>O WeChat é a principal ferramenta de trabalho</li><li>Dirige-te sempre primeiro às pessoas mais velhas ou com cargo mais alto</li><li>A harmonia (和谐) vale mais do que o confronto</li></ul></div>
+    <div class="culture-card"><h3>Tecnologia e pagamentos</h3><ul><li>Usa-se WeChat Pay e Alipay em todo o lado</li><li>扫一扫 (sǎo yī sǎo) = ler o QR code</li><li>Precisas de VPN para o Google, o WhatsApp e o Instagram</li><li>Baidu = o Google chinês; Didi = a Uber chinesa</li><li>Configura o WeChat ANTES de chegares à China</li></ul></div>
+    <div class="culture-card"><h3>Cultura de escritório</h3><ul><li>Fazer horas extra (加班 jiābān) é comum</li><li>Não recuses convites dos colegas</li><li>给面子 (gěi miànzi) = «dar face», não envergonhar ninguém. É essencial</li><li>Nunca critiques ninguém em público</li><li>Tratamento: 王总 (Wáng zǒng) = Diretor Wang</li></ul></div>
   </div>
 </div>
 
@@ -316,38 +316,38 @@ require 'includes/topo.php';
 <div id="tab-keyboard" class="api-tab-content" style="padding-top:1.2rem">
   <div class="info" style="margin-bottom:.8rem">⌨️ <strong>Configurar o teclado chinês</strong>. Como escrever em chinês em todos os teus aparelhos. Essencial para o WeChat, os e-mails e o dia a dia na China.</div>
   <div class="kb-grid">
-    <div class="kb-card"><h3>🪟 Windows</h3>
+    <div class="kb-card"><h3>Windows</h3>
       <div class="kb-step"><strong>1.</strong> Definições → Hora e idioma → Idioma</div>
       <div class="kb-step"><strong>2.</strong> Adicionar idioma → «Chinês (simplificado)»</div>
       <div class="kb-step"><strong>3.</strong> Instala o teclado Microsoft Pinyin</div>
       <div class="kb-step"><strong>4.</strong> Trocar: <kbd>Win</kbd> + <kbd>Space</kbd></div>
       <div class="kb-step"><strong>5.</strong> Escreve o pinyin e escolhe o caractere na lista</div>
     </div>
-    <div class="kb-card"><h3>🍎 macOS</h3>
+    <div class="kb-card"><h3>macOS</h3>
       <div class="kb-step"><strong>1.</strong> Definições do Sistema → Teclado → Fontes de entrada</div>
       <div class="kb-step"><strong>2.</strong> Carrega em + → Chinês simplificado → Pinyin</div>
       <div class="kb-step"><strong>3.</strong> Trocar: <kbd>Ctrl</kbd> + <kbd>Space</kbd></div>
       <div class="kb-step"><strong>4.</strong> Escreve o pinyin e escolhe na lista</div>
     </div>
-    <div class="kb-card"><h3>📱 iPhone</h3>
+    <div class="kb-card"><h3>iPhone</h3>
       <div class="kb-step"><strong>1.</strong> Definições → Geral → Teclado → Teclados</div>
       <div class="kb-step"><strong>2.</strong> Adicionar teclado → Chinês simplificado</div>
       <div class="kb-step"><strong>3.</strong> Escolhe: Pinyin</div>
-      <div class="kb-step"><strong>4.</strong> Trocar: mantém premido o botão 🌐</div>
+      <div class="kb-step"><strong>4.</strong> Trocar: mantém premido o botão </div>
     </div>
-    <div class="kb-card"><h3>🤖 Android</h3>
+    <div class="kb-card"><h3>Android</h3>
       <div class="kb-step"><strong>1.</strong> Definições → Idioma e introdução</div>
       <div class="kb-step"><strong>2.</strong> Gboard → Idiomas → Adicionar → Chinês simplificado</div>
       <div class="kb-step"><strong>3.</strong> Trocar: toca no botão de idioma do teclado</div>
       <div class="kb-step"><strong>4.</strong> Ou instala o <strong>Sogou Pinyin</strong> (o mais usado na China)</div>
     </div>
-    <div class="kb-card"><h3>💡 Como funciona o teclado de pinyin</h3>
+    <div class="kb-card"><h3>Como funciona o teclado de pinyin</h3>
       <div class="kb-step">Escreve <strong>n-i-h-a-o</strong> e aparece 你好</div>
       <div class="kb-step">Carrega em <strong>Space</strong> para escolher o primeiro da lista</div>
       <div class="kb-step">Carrega em <strong>2-9</strong> para os outros</div>
       <div class="kb-step">O teclado aprende com o teu uso e vai melhorando</div>
     </div>
-    <div class="kb-card"><h3>📲 Aplicações essenciais na China</h3>
+    <div class="kb-card"><h3>Aplicações essenciais na China</h3>
       <div class="kb-step"><strong>WeChat (微信)</strong>: instala ANTES de ir!</div>
       <div class="kb-step"><strong>Alipay (支付宝)</strong>: pagamentos em todo o lado</div>
       <div class="kb-step"><strong>Didi (滴滴)</strong>: táxis e transporte</div>
@@ -358,13 +358,13 @@ require 'includes/topo.php';
 
 <!-- SEPARADOR DE PRONÚNCIA E TONS -->
 <div id="tab-mic" class="api-tab-content" style="padding-top:1.2rem">
-  <div class="info" style="margin-bottom:.8rem">🎤 <strong>Treino de pronúncia e tons</strong>. Usa o teu microfone para analisar os tons e a pronúncia em tempo real. Funciona melhor no Chrome ou no Edge.</div>
+  <div class="info" style="margin-bottom:.8rem"><i class="i i-gravar" aria-hidden="true"></i> <strong>Treino de pronúncia e tons</strong>. Usa o teu microfone para analisar os tons e a pronúncia em tempo real. Funciona melhor no Chrome ou no Edge.</div>
 
   <div class="mic-tabs">
-    <button class="mic-tab active" onclick="switchMicTab(event,'mictab-tone')">🎵 Ver os tons</button>
-    <button class="mic-tab" onclick="switchMicTab(event,'mictab-repeat')">🔁 Repetir</button>
-    <button class="mic-tab" onclick="switchMicTab(event,'mictab-recog')">👂 Reconhecimento de voz</button>
-    <button class="mic-tab" onclick="switchMicTab(event,'mictab-score')">📊 Os meus resultados</button>
+    <button class="mic-tab active" onclick="switchMicTab(event,'mictab-tone')">Ver os tons</button>
+    <button class="mic-tab" onclick="switchMicTab(event,'mictab-repeat')">Repetir</button>
+    <button class="mic-tab" onclick="switchMicTab(event,'mictab-recog')">Reconhecimento de voz</button>
+    <button class="mic-tab" onclick="switchMicTab(event,'mictab-score')">Os meus resultados</button>
   </div>
 
   <!-- VISUALIZADOR DE TONS -->
@@ -398,8 +398,8 @@ require 'includes/topo.php';
     <canvas id="wave-canvas" height="80"></canvas>
 
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px">
-      <button class="mic-btn idle" id="tone-mic-btn" onclick="toggleToneRecording()">🎤 Começar a gravar</button>
-      <button onclick="playTargetTone()" style="background:var(--gold);color:#fff;border:none;padding:10px 18px;border-radius:20px;font-size:0.8125rem;font-weight:700;cursor:pointer;font-family:var(--font-main)">🔊 Ouvir o modelo</button>
+      <button class="mic-btn idle" id="tone-mic-btn" onclick="toggleToneRecording()"><i class="i i-gravar" aria-hidden="true"></i> Começar a gravar</button>
+      <button onclick="playTargetTone()" style="background:var(--gold);color:#fff;border:none;padding:10px 18px;border-radius:20px;font-size:0.8125rem;font-weight:700;cursor:pointer;font-family:var(--font-main)"><i class="i i-ouvir" aria-hidden="true"></i> Ouvir o modelo</button>
       <button onclick="clearToneCanvas()" style="background:var(--paper-dark);color:var(--ink);border:none;padding:10px 18px;border-radius:20px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">✕ Limpar</button>
     </div>
     <div id="tone-feedback" style="margin-top:10px"></div>
@@ -411,13 +411,13 @@ require 'includes/topo.php';
       </label>
     </div>
     <div class="tip" style="margin-top:12px;font-size:0.75rem">
-      <strong>💡 Como ler o gráfico:</strong> A <span style="color:var(--gold);font-weight:700">linha dourada tracejada</span> mostra a forma ideal do tom. A tua voz aparece como uma <span style="color:var(--red);font-weight:700">linha vermelha</span>. Tenta imitar a forma e fala claramente durante 1 ou 2 segundos.
+      <strong>Como ler o gráfico:</strong> A <span style="color:var(--gold);font-weight:700">linha dourada tracejada</span> mostra a forma ideal do tom. A tua voz aparece como uma <span style="color:var(--red);font-weight:700">linha vermelha</span>. Tenta imitar a forma e fala claramente durante 1 ou 2 segundos.
     </div>
   </div>
 
   <!-- REPETIR PALAVRAS -->
   <div id="mictab-repeat" class="mic-tab-content">
-    <p style="font-size:0.8125rem;color:var(--ink-light);margin-bottom:10px">Carrega em 🔊 para ouvir a palavra, depois em 🎤 e diz a palavra. O reconhecimento de voz verifica se a disseste bem.</p>
+    <p style="font-size:0.8125rem;color:var(--ink-light);margin-bottom:10px">Carrega em <i class="i i-ouvir" aria-hidden="true"></i> para ouvir a palavra, depois em <i class="i i-gravar" aria-hidden="true"></i> e diz a palavra. O reconhecimento de voz verifica se a disseste bem.</p>
 
     <div style="display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap;align-items:center">
       <select id="repeat-category" onchange="loadRepeatWords()" style="padding:8px 12px;border-radius:10px;border:1.5px solid var(--paper-dark);font-size:0.8125rem;font-family:var(--font-main);background:var(--paper-mid);outline:none;color:var(--ink)">
@@ -427,7 +427,7 @@ require 'includes/topo.php';
         <option value="work">Frases de trabalho</option>
         <option value="tones">Pares de tons (os mais difíceis!)</option>
       </select>
-      <button onclick="loadRepeatWords()" style="background:var(--paper-dark);color:var(--ink);border:none;padding:8px 14px;border-radius:10px;font-size:0.8125rem;cursor:pointer;font-family:var(--font-main)">Recarregar ↺</button>
+      <button onclick="loadRepeatWords()" style="background:var(--paper-dark);color:var(--ink);border:none;padding:8px 14px;border-radius:10px;font-size:0.8125rem;cursor:pointer;font-family:var(--font-main)">Recarregar <i class="i i-repetir" aria-hidden="true"></i></button>
     </div>
 
     <div id="repeat-word-list"></div>
@@ -439,8 +439,8 @@ require 'includes/topo.php';
         <div id="repeat-target-en" style="font-size:0.875rem;color:var(--ink)"></div>
       </div>
       <div style="display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap">
-        <button onclick="hearRepeatTarget()" style="background:var(--gold);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-size:0.875rem;font-weight:700;cursor:pointer;font-family:var(--font-main)">🔊 Ouvir</button>
-        <button class="mic-btn idle" id="repeat-mic-btn" onclick="toggleRepeatRecording()" style="padding:10px 20px">🎤 Dizer</button>
+        <button onclick="hearRepeatTarget()" style="background:var(--gold);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-size:0.875rem;font-weight:700;cursor:pointer;font-family:var(--font-main)"><i class="i i-ouvir" aria-hidden="true"></i> Ouvir</button>
+        <button class="mic-btn idle" id="repeat-mic-btn" onclick="toggleRepeatRecording()" style="padding:10px 20px"><i class="i i-gravar" aria-hidden="true"></i> Dizer</button>
       </div>
       <div id="repeat-result" style="text-align:center;margin-top:10px;font-size:0.875rem;min-height:30px"></div>
     </div>
@@ -464,7 +464,7 @@ require 'includes/topo.php';
 
     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
       <div id="recog-target-display" style="flex:1;min-width:160px;background:var(--white);border:1.5px solid var(--paper-dark);border-radius:10px;padding:10px 14px;font-family:var(--font-chinese);font-size:1.25rem;color:var(--ink);min-height:44px">Carrega numa frase acima ou fala livremente…</div>
-      <button class="mic-btn idle" id="recog-mic-btn" onclick="toggleRecogRecording()" style="white-space:nowrap">🎤 Gravar</button>
+      <button class="mic-btn idle" id="recog-mic-btn" onclick="toggleRecogRecording()" style="white-space:nowrap"><i class="i i-gravar" aria-hidden="true"></i> Gravar</button>
     </div>
 
     <div id="recog-result" style="margin-top:10px">

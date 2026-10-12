@@ -25,6 +25,8 @@
     /* Fundo escuro que continua escuro nos dois modos (cabeçalhos de tabelas, rodapé).
        Não uso var(--ink) como fundo, porque no modo escuro a tinta passa a ser clara. */
     --fundo-escuro: #18212B;
+    /* Cabeçalho das tabelas: jade no modo claro (com letra branca tem contraste de 5:1) */
+    --fundo-tabela: #0E7C66;
 
     /* Fontes (carregadas em css/fontes.css) */
     --font-titulos: 'Bricolage Grotesque', 'Lexend', system-ui, sans-serif;

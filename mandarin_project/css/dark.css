@@ -6,7 +6,7 @@
   /* MODO ESCURO */
   body.dark{--paper:#0F1519;--paper-mid:#172026;--paper-dark:#24323A;--white:#1B262D;--ink:#E6ECEA;--ink-mid:#B5C2C0;--ink-light:#8C9A98;--jade:#3DBE9C;--seal:#F0553D;--seal-text:#FF7A64;--gold-brand:#F2B83A;--plum:#E0679A;
     /* As cores das caixas de aviso também têm versão escura (antes ficavam claras com texto claro) */
-    --gold-light:#2E2512;--gold-dark:#F2B83A;--blue:#6FA2F0;--blue-light:#16243A;--blue-dark:#9CC0F5;--green-light:#10302A;--red-light:#3A1C17;--red-dark:#FF7A64;--fundo-escuro:#24323A;
+    --gold-light:#2E2512;--gold-dark:#F2B83A;--blue:#6FA2F0;--blue-light:#16243A;--blue-dark:#9CC0F5;--green-light:#10302A;--red-light:#3A1C17;--red-dark:#FF7A64;--fundo-escuro:#24323A;--fundo-tabela:#24323A;
     /* O --red do base.css copia o --seal-text logo no início, por isso tenho de o repetir aqui */
     --red:#FF7A64;}
   /* FAIXA DOS DIAS SEGUIDOS */
@@ -349,5 +349,5 @@
   body.dark [style*="background:var(--red)"] { color: #0F1519 !important; }
   /* O botão secundário da Biblioteca tem fundo escuro, por isso a letra continua branca */
   body.dark .lib-btn.secondary { color: #fff; }
-  /* O botão 🔊 das lições herdava letra preta */
+  /* O botão de som das lições herdava letra preta */
   body.dark .palavra__ouvir { color: var(--ink); }

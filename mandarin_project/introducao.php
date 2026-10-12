@@ -10,16 +10,16 @@ $pagina = 'introducao';
 require 'includes/topo.php';
 ?>
 <div id="achievements-bar">
-  <span class="ach-label">🏆</span>
-  <span class="badge" id="badge-start" title="Começou o curso">🌱 Início</span>
-  <span class="badge" id="badge-10" title="10 palavras aprendidas">📚 10 palavras</span>
-  <span class="badge" id="badge-50" title="50 palavras aprendidas">🎯 50 palavras</span>
-  <span class="badge" id="badge-100" title="100 palavras aprendidas">💯 100 palavras</span>
-  <span class="badge" id="badge-streak3" title="3 dias seguidos">🔥 3 dias</span>
-  <span class="badge" id="badge-streak7" title="7 dias seguidos">⚡ 7 dias</span>
-  <span class="badge" id="badge-quiz" title="Completou um quiz">🧠 Quiz</span>
-  <span class="badge" id="badge-perfect" title="Quiz perfeito">⭐ Perfeito</span>
-  <span class="badge" id="badge-streak30" title="30 dias seguidos">👑 30 dias</span>
+  <span class="ach-label"><i class="i i-trofeu" aria-hidden="true"></i></span>
+  <span class="badge" id="badge-start" title="Começou o curso">Início</span>
+  <span class="badge" id="badge-10" title="10 palavras aprendidas">10 palavras</span>
+  <span class="badge" id="badge-50" title="50 palavras aprendidas">50 palavras</span>
+  <span class="badge" id="badge-100" title="100 palavras aprendidas">100 palavras</span>
+  <span class="badge" id="badge-streak3" title="3 dias seguidos"><i class="i i-dias" aria-hidden="true"></i> 3 dias</span>
+  <span class="badge" id="badge-streak7" title="7 dias seguidos">7 dias</span>
+  <span class="badge" id="badge-quiz" title="Completou um quiz">Quiz</span>
+  <span class="badge" id="badge-perfect" title="Quiz perfeito">Perfeito</span>
+  <span class="badge" id="badge-streak30" title="30 dias seguidos">30 dias</span>
   <span style="margin-left:auto;font-size:0.75rem;color:var(--ink-light)" id="ach-count"></span>
 </div>
 
@@ -27,12 +27,12 @@ require 'includes/topo.php';
 
 <div id="streak-banner"><span id="streak-text"></span></div>
 <div id="potd">
-  <div class="potd-label">📅 Frase do dia</div>
+  <div class="potd-label"><i class="i i-hoje" aria-hidden="true"></i> Frase do dia</div>
   <div class="potd-zh" id="potd-zh">加油</div>
   <div class="potd-py" id="potd-py">jiā yóu</div>
   <div class="potd-en" id="potd-en">Força! Tu consegues!</div>
-  <div class="potd-ex" id="potd-ex">📝 考试加油！ Boa sorte no exame!</div>
-  <button id="speak-potd" onclick="speakText(document.getElementById('potd-zh').textContent)">🔊</button>
+  <div class="potd-ex" id="potd-ex">考试加油！ Boa sorte no exame!</div>
+  <button id="speak-potd" onclick="speakText(document.getElementById('potd-zh').textContent)"><i class="i i-ouvir" aria-hidden="true"></i></button>
 </div>
 
 <section class="hero hero--foto">
@@ -57,7 +57,7 @@ require 'includes/topo.php';
 </section>
 
 <div id="progress-overview">
-  <h3>📊 O TEU PROGRESSO</h3>
+  <h3>O TEU PROGRESSO</h3>
   <div class="po-grid" id="po-grid"></div>
 </div>
 
@@ -74,32 +74,32 @@ require 'includes/topo.php';
 
 <div class="hsk-grid">
   <div class="hsk-card">
-    <h3>🎯 HSK 1 e 2 (iniciante)</h3>
+    <h3>HSK 1 e 2 (iniciante)</h3>
     <p><strong>150 a 300 palavras</strong></p>
     <p>Cumprimentos, números e objetos do dia a dia</p>
     <p>Duração: 2 a 3 meses</p>
   </div>
   <div class="hsk-card">
-    <h3>🗣️ HSK 3 e 4 (intermédio)</h3>
+    <h3>HSK 3 e 4 (intermédio)</h3>
     <p><strong>600 a 1200 palavras</strong></p>
     <p>Manter conversas e falar do dia a dia</p>
     <p>Duração: 6 a 12 meses</p>
   </div>
   <div class="hsk-card">
-    <h3>💼 HSK 5 e 6 (avançado)</h3>
+    <h3>HSK 5 e 6 (avançado)</h3>
     <p><strong>2500 a 5000 palavras</strong></p>
     <p>Trabalhar, debater e ler jornais</p>
     <p>Duração: 1 ano e meio a 3 anos</p>
   </div>
   <div class="hsk-card">
-    <h3>🏆 Nível profissional</h3>
+    <h3><i class="i i-trofeu" aria-hidden="true"></i> Nível profissional</h3>
     <p><strong>Mais de 3000 palavras</strong></p>
     <p>Conversas de trabalho, e-mails e reuniões</p>
     <p>Objetivo a longo prazo: HSK 5</p>
   </div>
 </div>
 
-<div class="tip"><strong>💡 Ideia-chave:</strong> Em muitos pontos, a gramática do mandarim é mais simples do que a portuguesa: não há tempos verbais (o contexto e as palavras de tempo fazem esse trabalho), não há artigos («o», «a», «um») nem terminações de plural. O teu esforço vai sobretudo para os tons, o vocabulário e, mais tarde, os caracteres.</div>
+<div class="tip"><strong>Ideia-chave:</strong> Em muitos pontos, a gramática do mandarim é mais simples do que a portuguesa: não há tempos verbais (o contexto e as palavras de tempo fazem esse trabalho), não há artigos («o», «a», «um») nem terminações de plural. O teu esforço vai sobretudo para os tons, o vocabulário e, mais tarde, os caracteres.</div>
 
 <!-- ============================================================ -->
 <!-- MÓDULO 12: PLANO DE ESTUDO -->
@@ -202,7 +202,7 @@ require 'includes/topo.php';
 </div>
 
 <div class="tip" style="margin-top: 1.5rem">
-  <strong>🚀 A regra número 1:</strong> <em>Fala desde o primeiro dia.</em> Mesmo que erres os tons, mesmo que a gramática saia torta, fala. Os chineses valorizam muito qualquer esforço e vão ajudar-te. O maior erro de quem aprende é esperar até estar «pronto» para falar. Já estás pronto. 加油！(jiāyóu: à letra «pôr óleo», quer dizer «força, tu consegues!»)
+  <strong>A regra número 1:</strong> <em>Fala desde o primeiro dia.</em> Mesmo que erres os tons, mesmo que a gramática saia torta, fala. Os chineses valorizam muito qualquer esforço e vão ajudar-te. O maior erro de quem aprende é esperar até estar «pronto» para falar. Já estás pronto. 加油！(jiāyóu: à letra «pôr óleo», quer dizer «força, tu consegues!»)
 </div>
 
 </div><!-- /container -->

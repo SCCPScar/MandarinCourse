@@ -43,26 +43,13 @@ if (id_utilizador() !== null) {
     $consulta->execute([id_utilizador(), $id]);
     $feita = (bool) $consulta->fetch();
 }
-?>
-<!DOCTYPE html>
-<html lang="pt-PT">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?= e($licao['titulo']) ?> · Chá</title>
-  <link rel="icon" href="img/logo-cha.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/fontes.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/dark.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/transitions.css">
-  <link rel="stylesheet" href="css/cidade.css">
-</head>
-<body>
-<?php require 'includes/navegacao.php'; ?>
 
-<main class="page licao" data-page="licao">
+$titulo = $licao['titulo'];
+$pagina = 'licao';
+$css_extra = ['cidade'];
+require 'includes/topo.php';
+?>
+<div class="licao">
   <p class="licao__caminho">
     <a href="cidade.php?id=<?= (int) $licao['cidade_id'] ?>"><?= e($licao['cidade']) ?></a>
     · Unidade <?= e($licao['codigo']) ?> · <?= e($licao['unidade']) ?>
@@ -85,7 +72,7 @@ if (id_utilizador() !== null) {
           <span class="palavra__traducao"><?= e($palavra['traducao']) ?></span>
           <!-- O texto a ler fica no data-falar; a função speakText (js/data.js) usa a voz do browser -->
           <button type="button" class="palavra__ouvir" data-falar="<?= e($palavra['hanzi']) ?>"
-                  onclick="speakText(this.dataset.falar)" aria-label="Ouvir <?= e($palavra['pinyin']) ?>">🔊</button>
+                  onclick="speakText(this.dataset.falar)" aria-label="Ouvir <?= e($palavra['pinyin']) ?>"><i class="i i-ouvir" aria-hidden="true"></i></button>
         </li>
       <?php endforeach; ?>
     </ul>
@@ -99,7 +86,7 @@ if (id_utilizador() !== null) {
       <?php foreach ($frases as $frase): ?>
         <li class="frase">
           <button type="button" class="palavra__ouvir" data-falar="<?= e($frase['hanzi']) ?>"
-                  onclick="speakText(this.dataset.falar)" aria-label="Ouvir a frase">🔊</button>
+                  onclick="speakText(this.dataset.falar)" aria-label="Ouvir a frase"><i class="i i-ouvir" aria-hidden="true"></i></button>
           <span class="frase__hanzi" lang="zh-CN"><?= e($frase['hanzi']) ?></span>
           <span class="frase__pinyin"><?= e($frase['pinyin']) ?></span>
           <span class="frase__traducao"><?= e($frase['traducao']) ?></span>
@@ -122,9 +109,6 @@ if (id_utilizador() !== null) {
     <?php endif; ?>
     <p><a href="cidade.php?id=<?= (int) $licao['cidade_id'] ?>">← Voltar a <?= e($licao['cidade']) ?></a></p>
   </div>
-  <?php require 'includes/rodape-site.php'; ?>
-</main>
+</div>
 
-<?php require 'includes/scripts.php'; ?>
-</body>
-</html>
+<?php require 'includes/fim.php'; ?>

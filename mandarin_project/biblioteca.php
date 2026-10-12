@@ -15,7 +15,7 @@ require 'includes/topo.php';
 <!-- BIBLIOTECA GRATUITA -->
 <!-- ============================================================ -->
 <div class="section-header anchor" id="library">
-  <div class="section-num">📚</div>
+  <div class="section-num"></div>
   <h2>Biblioteca gratuita: manuais e materiais reais <span class="zh">免费资源库</span></h2>
 </div>
 <p class="section-intro">Todos estes recursos são gratuitos e legais. Carrega num link para abrir no browser ou descarregar. Estão organizados do nível iniciante ao avançado. As listas do HSK seguem o formato antigo (HSK 2.0).</p>
@@ -23,7 +23,7 @@ require 'includes/topo.php';
 <!-- Estilos dos cartões da biblioteca -->
 <!-- PRINCIPIANTE -->
 <div class="lib-section">
-  <h3>🟥 Iniciante: do zero ao HSK 2</h3>
+  <h3>Iniciante: do zero ao HSK 2</h3>
   <div class="lib-grid">
 
     <div class="lib-card">
@@ -89,7 +89,7 @@ require 'includes/topo.php';
 
 <!-- INTERMÉDIO -->
 <div class="lib-section">
-  <h3>🟨 Intermédio: HSK 3 e HSK 4</h3>
+  <h3>Intermédio: HSK 3 e HSK 4</h3>
   <div class="lib-grid">
 
     <div class="lib-card">
@@ -146,7 +146,7 @@ require 'includes/topo.php';
 
 <!-- AVANÇADO E TRABALHO -->
 <div class="lib-section">
-  <h3>🟦 Avançado e profissional: HSK 5 e HSK 6</h3>
+  <h3>Avançado e profissional: HSK 5 e HSK 6</h3>
   <div class="lib-grid">
 
     <div class="lib-card">
@@ -210,7 +210,7 @@ require 'includes/topo.php';
 
 <!-- FERRAMENTAS DE CONSULTA -->
 <div class="lib-section">
-  <h3>🛠️ Ferramentas para todos os dias</h3>
+  <h3>Ferramentas para todos os dias</h3>
   <div class="lib-grid">
 
     <div class="lib-card">
@@ -260,7 +260,7 @@ require 'includes/topo.php';
 
 <!-- PERCURSO RECOMENDADO -->
 <div class="grammar-box" style="border-left-color: var(--gold);">
-  <h3>📋 Um dia de estudo com estes recursos</h3>
+  <h3>Um dia de estudo com estes recursos</h3>
   <div class="table-wrap">
   <table class="phrase-table">
     <tr><th>Quando</th><th>Atividade</th><th>Recurso</th><th>Duração</th></tr>

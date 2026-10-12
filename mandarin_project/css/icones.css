@@ -1,0 +1,90 @@
+/*
+ * icones.css
+ * Aqui eu guardo os ícones do site. São do Lucide (lucide.dev), com licença livre ISC.
+ *
+ * Como funcionam: cada ícone é um desenho SVG usado como máscara (mask).
+ * A máscara recorta um quadrado pintado com currentColor, que é a cor do texto à volta.
+ * Por isso o ícone fica sempre da mesma cor do texto, também no modo escuro.
+ *
+ * Uso no HTML: <i class="i i-ouvir" aria-hidden="true"></i>
+ * (aria-hidden porque o ícone é só decoração: o leitor de ecrã lê o texto do botão)
+ */
+
+.i {
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  vertical-align: -0.2em;
+  flex-shrink: 0;
+  background: currentColor;
+  -webkit-mask: var(--icone) center / contain no-repeat;
+  mask: var(--icone) center / contain no-repeat;
+}
+
+/* Um pequeno movimento quando o rato passa no botão, como no lucide-animated */
+@media (prefers-reduced-motion: no-preference) {
+  button:hover .i, a:hover .i, .pode-ouvir:hover .i { animation: icone-mexe 0.45s ease; }
+}
+@keyframes icone-mexe {
+  0%, 100% { transform: none; }
+  30% { transform: scale(1.15) rotate(-8deg); }
+  60% { transform: scale(1.05) rotate(5deg); }
+}
+
+/* Os desenhos ficam em variáveis, para eu os poder usar também noutros CSS (ex.: ::after) */
+:root {
+  --icone-ouvir: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z' /%3E %3Cpath d='M16 9a5 5 0 0 1 0 6' /%3E %3Cpath d='M19.364 18.364a9 9 0 0 0 0-12.728' /%3E %3C/svg%3E ");
+  --icone-sem-som: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z' /%3E %3Cline x1='22' x2='16' y1='9' y2='15' /%3E %3Cline x1='16' x2='22' y1='9' y2='15' /%3E %3C/svg%3E ");
+  --icone-gravar: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z' /%3E %3Cpath d='M19 10v2a7 7 0 0 1-14 0v-2' /%3E %3Cline x1='12' x2='12' y1='19' y2='22' /%3E %3C/svg%3E ");
+  --icone-parar: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Crect width='18' height='18' x='3' y='3' rx='2' /%3E %3C/svg%3E ");
+  --icone-jogar: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpolygon points='6 3 20 12 6 21 6 3' /%3E %3C/svg%3E ");
+  --icone-pausa: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Crect x='14' y='4' width='4' height='16' rx='1' /%3E %3Crect x='6' y='4' width='4' height='16' rx='1' /%3E %3C/svg%3E ");
+  --icone-hoje: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M8 2v4' /%3E %3Cpath d='M16 2v4' /%3E %3Crect width='18' height='18' x='3' y='4' rx='2' /%3E %3Cpath d='M3 10h18' /%3E %3Cpath d='M8 14h.01' /%3E %3Cpath d='M12 14h.01' /%3E %3Cpath d='M16 14h.01' /%3E %3Cpath d='M8 18h.01' /%3E %3Cpath d='M12 18h.01' /%3E %3Cpath d='M16 18h.01' /%3E %3C/svg%3E ");
+  --icone-escuro: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z' /%3E %3C/svg%3E ");
+  --icone-claro: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Ccircle cx='12' cy='12' r='4' /%3E %3Cpath d='M12 2v2' /%3E %3Cpath d='M12 20v2' /%3E %3Cpath d='m4.93 4.93 1.41 1.41' /%3E %3Cpath d='m17.66 17.66 1.41 1.41' /%3E %3Cpath d='M2 12h2' /%3E %3Cpath d='M20 12h2' /%3E %3Cpath d='m6.34 17.66-1.41 1.41' /%3E %3Cpath d='m19.07 4.93-1.41 1.41' /%3E %3C/svg%3E ");
+  --icone-conta: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2' /%3E %3Ccircle cx='12' cy='7' r='4' /%3E %3C/svg%3E ");
+  --icone-dias: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z' /%3E %3C/svg%3E ");
+  --icone-trofeu: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M6 9H4.5a2.5 2.5 0 0 1 0-5H6' /%3E %3Cpath d='M18 9h1.5a2.5 2.5 0 0 0 0-5H18' /%3E %3Cpath d='M4 22h16' /%3E %3Cpath d='M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22' /%3E %3Cpath d='M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22' /%3E %3Cpath d='M18 2H6v7a6 6 0 0 0 12 0V2Z' /%3E %3C/svg%3E ");
+  --icone-relogio: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cline x1='10' x2='14' y1='2' y2='2' /%3E %3Cline x1='12' x2='15' y1='14' y2='11' /%3E %3Ccircle cx='12' cy='14' r='8' /%3E %3C/svg%3E ");
+  --icone-repetir: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8' /%3E %3Cpath d='M3 3v5h5' /%3E %3C/svg%3E ");
+  --icone-procurar: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Ccircle cx='11' cy='11' r='8' /%3E %3Cpath d='m21 21-4.3-4.3' /%3E %3C/svg%3E ");
+  --icone-caderno: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4' /%3E %3Cpath d='M2 6h4' /%3E %3Cpath d='M2 10h4' /%3E %3Cpath d='M2 14h4' /%3E %3Cpath d='M2 18h4' /%3E %3Cpath d='M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z' /%3E %3C/svg%3E ");
+  --icone-escrever: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z' /%3E %3Cpath d='m15 5 4 4' /%3E %3C/svg%3E ");
+  --icone-certo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M20 6 9 17l-5-5' /%3E %3C/svg%3E ");
+  --icone-errado: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M18 6 6 18' /%3E %3Cpath d='m6 6 12 12' /%3E %3C/svg%3E ");
+  --icone-ideia: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5' /%3E %3Cpath d='M9 18h6' /%3E %3Cpath d='M10 22h4' /%3E %3C/svg%3E ");
+  --icone-livro: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M12 7v14' /%3E %3Cpath d='M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z' /%3E %3C/svg%3E ");
+  --icone-ouvidos: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3' /%3E %3C/svg%3E ");
+  --icone-jogo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cline x1='6' x2='10' y1='11' y2='11' /%3E %3Cline x1='8' x2='8' y1='9' y2='13' /%3E %3Cline x1='15' x2='15.01' y1='12' y2='12' /%3E %3Cline x1='18' x2='18.01' y1='10' y2='10' /%3E %3Cpath d='M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z' /%3E %3C/svg%3E ");
+  --icone-teclado: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M10 8h.01' /%3E %3Cpath d='M12 12h.01' /%3E %3Cpath d='M14 8h.01' /%3E %3Cpath d='M16 12h.01' /%3E %3Cpath d='M18 8h.01' /%3E %3Cpath d='M6 8h.01' /%3E %3Cpath d='M7 16h10' /%3E %3Cpath d='M8 12h.01' /%3E %3Crect width='20' height='16' x='2' y='4' rx='2' /%3E %3C/svg%3E ");
+  --icone-local: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0' /%3E %3Ccircle cx='12' cy='10' r='3' /%3E %3C/svg%3E ");
+  --icone-medalha: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E %3Cpath d='m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526' /%3E %3Ccircle cx='12' cy='8' r='6' /%3E %3C/svg%3E ");
+}
+
+/* Uma classe por ícone */
+.i-ouvir { --icone: var(--icone-ouvir); }
+.i-sem-som { --icone: var(--icone-sem-som); }
+.i-gravar { --icone: var(--icone-gravar); }
+.i-parar { --icone: var(--icone-parar); }
+.i-jogar { --icone: var(--icone-jogar); }
+.i-pausa { --icone: var(--icone-pausa); }
+.i-hoje { --icone: var(--icone-hoje); }
+.i-escuro { --icone: var(--icone-escuro); }
+.i-claro { --icone: var(--icone-claro); }
+.i-conta { --icone: var(--icone-conta); }
+.i-dias { --icone: var(--icone-dias); }
+.i-trofeu { --icone: var(--icone-trofeu); }
+.i-relogio { --icone: var(--icone-relogio); }
+.i-repetir { --icone: var(--icone-repetir); }
+.i-procurar { --icone: var(--icone-procurar); }
+.i-caderno { --icone: var(--icone-caderno); }
+.i-escrever { --icone: var(--icone-escrever); }
+.i-certo { --icone: var(--icone-certo); }
+.i-errado { --icone: var(--icone-errado); }
+.i-ideia { --icone: var(--icone-ideia); }
+.i-livro { --icone: var(--icone-livro); }
+.i-ouvidos { --icone: var(--icone-ouvidos); }
+.i-jogo { --icone: var(--icone-jogo); }
+.i-teclado { --icone: var(--icone-teclado); }
+.i-local { --icone: var(--icone-local); }
+.i-medalha { --icone: var(--icone-medalha); }

@@ -51,7 +51,7 @@ function avisarSemVozChinesa() {
   const temChines = vozes.some(v => v.lang.toLowerCase().startsWith('zh') || v.lang.toLowerCase().startsWith('cmn'));
   if (!temChines && !sessionStorage.getItem('aviso-voz')) {
     sessionStorage.setItem('aviso-voz', '1');
-    showToast('🔇 Este browser não tem voz chinesa. Para ouvires o chinês, usa o Chrome ou o Edge.', 6000);
+    showToast('Este browser não tem voz chinesa. Para ouvires o chinês, usa o Chrome ou o Edge.', 6000, 'sem-som');
   }
 }
 if ('speechSynthesis' in window) {

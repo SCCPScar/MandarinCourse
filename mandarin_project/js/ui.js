@@ -5,16 +5,18 @@
  * sessão de hoje, revisão espaçada, dias seguidos e partilha.
  */
 
-function showToast(msg, duration=2500) {
+function showToast(msg, duration=2500, icone='') {
   const t = document.getElementById('toast');
   if (!t) return;
-  t.textContent = msg;
+  t.textContent = msg;   // textContent: a mensagem nunca é lida como HTML
+  // O ícone (opcional) é posto à parte, com o nome de um ícone do css/icones.css
+  if (icone) t.insertAdjacentHTML('afterbegin', `<i class="i i-${icone}" aria-hidden="true"></i> `);
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), duration);
 }
 
 // ═══════════════════════════════════════════════════════
-// 📜 BARRA DE LEITURA E VOLTAR AO TOPO
+// BARRA DE LEITURA E VOLTAR AO TOPO
 // ═══════════════════════════════════════════════════════
 window.addEventListener('scroll', () => {
   const bar = document.getElementById('read-bar');
@@ -52,18 +54,18 @@ document.addEventListener('keydown', e => {
 });
 
 // ═══════════════════════════════════════════════════════
-// 🏆 CONQUISTAS
+// CONQUISTAS
 // ═══════════════════════════════════════════════════════
 const BADGES = [
-  { id:'badge-start',  check: s => true,              label:'🌱 Início'     },
-  { id:'badge-10',     check: s => s.learnedCount>=10, label:'📚 10 palavras' },
-  { id:'badge-50',     check: s => s.learnedCount>=50, label:'🎯 50 palavras' },
-  { id:'badge-100',    check: s => s.learnedCount>=100,label:'💯 100 palavras'},
-  { id:'badge-streak3',check: s => s.streak>=3,        label:'🔥 3 dias'      },
-  { id:'badge-streak7',check: s => s.streak>=7,        label:'⚡ 7 dias'      },
-  { id:'badge-streak30',check:s => s.streak>=30,       label:'👑 30 dias'     },
-  { id:'badge-quiz',   check: s => s.quizDone,         label:'🧠 Quiz'        },
-  { id:'badge-perfect',check: s => s.quizPerfect,      label:'⭐ Perfeito'    },
+  { id:'badge-start',  check: s => true,              label:'Início'     },
+  { id:'badge-10',     check: s => s.learnedCount>=10, label:'10 palavras' },
+  { id:'badge-50',     check: s => s.learnedCount>=50, label:'50 palavras' },
+  { id:'badge-100',    check: s => s.learnedCount>=100,label:'100 palavras'},
+  { id:'badge-streak3',check: s => s.streak>=3,        label:'<i class="i i-dias" aria-hidden="true"></i> 3 dias'      },
+  { id:'badge-streak7',check: s => s.streak>=7,        label:'7 dias'      },
+  { id:'badge-streak30',check:s => s.streak>=30,       label:'30 dias'     },
+  { id:'badge-quiz',   check: s => s.quizDone,         label:'Quiz'        },
+  { id:'badge-perfect',check: s => s.quizPerfect,      label:'Perfeito'    },
 ];
 let earnedBadges = LS.get('badges', []);
 
@@ -83,7 +85,7 @@ function checkAchievements() {
         earnedBadges.push(b.id);
         LS.set('badges', earnedBadges);
         el.classList.add('earned','new');
-        showToast('🏆 Conquista desbloqueada: ' + b.label);
+        showToast('Conquista desbloqueada: ' + b.label, 2500, 'trofeu');
         setTimeout(()=>el.classList.remove('new'), 600);
         newlyEarned = true;
       } else {
@@ -96,7 +98,7 @@ function checkAchievements() {
 }
 
 // ═══════════════════════════════════════════════════════
-// 🎓 BOAS-VINDAS
+// BOAS-VINDAS
 // ═══════════════════════════════════════════════════════
 let selectedLevel = null;
 function selectLevel(btn, level) {
@@ -110,7 +112,7 @@ function finishOnboard() {
   LS.set('level', selectedLevel || 'zero');
   document.getElementById('onboard-overlay').style.display = 'none';
   checkAchievements();
-  showToast('🎉 Vamos começar a aprender mandarim!');
+  showToast('Vamos começar a aprender mandarim!');
   // Eu levo o aluno à cidade certa para o nível dele
   const targets = { zero:'cidade.php?id=1', basic:'cidade.php?id=2', inter:'cidade.php?id=3', adv:'cidade.php?id=5' };
   const target = targets[selectedLevel] || targets.zero;
@@ -118,7 +120,7 @@ function finishOnboard() {
 }
 
 // ═══════════════════════════════════════════════════════
-// 📅 SESSÃO DE HOJE
+// SESSÃO DE HOJE
 // ═══════════════════════════════════════════════════════
 function openDailyModal() {
   const learned = LS.get('learned',{});
@@ -136,11 +138,11 @@ function openDailyModal() {
   const sessionWords = [...dueWords, ...newWords];
 
   const steps = [
-    { icon:'🔥', title:`Dias seguidos: ${streak}`, desc: streak>0 ? `Continua assim! Já estudas há ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}.` : 'Começa hoje e soma o teu primeiro dia!', action: null },
-    { icon:'📚', title:'Revisão espaçada', desc: dueWords.length > 0 ? `Tens ${dueWords.length} palavra${dueWords.length!==1?'s':''} para rever hoje:` : 'Hoje não tens palavras para rever. Aprende primeiro algumas palavras novas.', words: dueWords },
-    { icon:'✨', title:'Palavras novas', desc: newWords.length > 0 ? `Aprende ${newWords.length} palavra${newWords.length!==1?'s':''} nova${newWords.length!==1?'s':''} hoje:` : 'Excelente! Já aprendeste todas as palavras disponíveis.', words: newWords },
-    { icon:'🎤', title:'Praticar a pronúncia', desc: 'Vai a Praticar, abre o separador Pronúncia e grava 2 ou 3 frases.', action: 'praticar.php#features' },
-    { icon:'📓', title:'Caderno', desc: 'Procura uma palavra no Dicionário, guarda-a no Caderno e escreve-a três vezes à mão.', action: 'praticar.php#features' },
+    { icon:'<i class="i i-dias" aria-hidden="true"></i>', title:`Dias seguidos: ${streak}`, desc: streak>0 ? `Continua assim! Já estudas há ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}.` : 'Começa hoje e soma o teu primeiro dia!', action: null },
+    { icon:'', title:'Revisão espaçada', desc: dueWords.length > 0 ? `Tens ${dueWords.length} palavra${dueWords.length!==1?'s':''} para rever hoje:` : 'Hoje não tens palavras para rever. Aprende primeiro algumas palavras novas.', words: dueWords },
+    { icon:'', title:'Palavras novas', desc: newWords.length > 0 ? `Aprende ${newWords.length} palavra${newWords.length!==1?'s':''} nova${newWords.length!==1?'s':''} hoje:` : 'Excelente! Já aprendeste todas as palavras disponíveis.', words: newWords },
+    { icon:'<i class="i i-gravar" aria-hidden="true"></i>', title:'Praticar a pronúncia', desc: 'Vai a Praticar, abre o separador Pronúncia e grava 2 ou 3 frases.', action: 'praticar.php#features' },
+    { icon:'<i class="i i-caderno" aria-hidden="true"></i>', title:'Caderno', desc: 'Procura uma palavra no Dicionário, guarda-a no Caderno e escreve-a três vezes à mão.', action: 'praticar.php#features' },
   ];
 
   const html = steps.map((s,i) => `
@@ -193,7 +195,7 @@ function srsRate(word, quality) {
 // A função rateCard já foi juntada à original, mais acima
 
 // ═══════════════════════════════════════════════════════
-// 📊 DIAS SEGUIDOS
+// DIAS SEGUIDOS
 // ═══════════════════════════════════════════════════════
 function updateStreakReal() {
   const today = new Date().toDateString();
@@ -218,7 +220,7 @@ function updateStreakReal() {
   const banner = document.getElementById('streak-text');
   if (banner) {
     if (streak >= 1) {
-      banner.innerHTML = `<span class="streak-fire">🔥</span> ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}! Continua assim!`;
+      banner.innerHTML = `<span class="streak-fire"><i class="i i-dias" aria-hidden="true"></i></span> ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}! Continua assim!`;
       document.getElementById('streak-banner').style.display = '';
     }
   }
@@ -227,7 +229,7 @@ function updateStreakReal() {
 }
 
 // ═══════════════════════════════════════════════════════
-// 📤 CARTÃO PARA PARTILHAR O PROGRESSO
+// CARTÃO PARA PARTILHAR O PROGRESSO
 // ═══════════════════════════════════════════════════════
 function generateShareCard() {
   const count = Object.keys(LS.get('learned',{})).length;
@@ -238,15 +240,15 @@ function generateShareCard() {
   card.innerHTML = `
     <div class="sc-zh">茶</div>
     <div class="sc-stat">${count} palavras</div>
-    <p>Aprendi ${count} palavras em mandarim e estudei ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}! 🇨🇳</p>
+    <p>Aprendi ${count} palavras em mandarim e estudei ${streak} dia${streak!==1?'s':''} seguido${streak!==1?'s':''}! </p>
     <p style="font-size:0.75rem;opacity:.7">Chá · Curso gratuito de mandarim</p>
   `;
-  const text = `Aprendi ${count} palavras em mandarim! 🇨🇳🔥 ${streak} dias de estudo seguidos. #Mandarim #Chá`;
+  const text = `Aprendi ${count} palavras em mandarim! <i class="i i-dias" aria-hidden="true"></i> ${streak} dias de estudo seguidos. #Mandarim #Chá`;
   if (navigator.share) {
     navigator.share({ title:'O meu progresso em mandarim', text });
   } else {
     navigator.clipboard?.writeText(text);
-    showToast('📋 Texto copiado! Cola-o nas redes sociais.');
+    showToast('Texto copiado! Cola-o nas redes sociais.');
   }
 }
 

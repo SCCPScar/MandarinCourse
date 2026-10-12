@@ -37,7 +37,7 @@ function lookupWord() {
     <div class="dict-entry">
       <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap">
         <span class="dict-trad">${esc(p.zh)}</span>
-        <button class="speak-btn" onclick="speakText(dictEntries[${i}].zh)" aria-label="Ouvir">🔊</button>
+        <button class="speak-btn" onclick="speakText(dictEntries[${i}].zh)" aria-label="Ouvir"><i class="i i-ouvir" aria-hidden="true"></i></button>
         <button class="learn-btn" style="position:static;margin-left:0" onclick="saveDictEntry(${i},this)">+ Guardar</button>
       </div>
       <div class="dict-pin">${esc(p.py)}</div>

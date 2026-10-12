@@ -58,7 +58,7 @@ function renderQuestion() {
   if (currentQ >= currentQuestions.length) {
     const pct = Math.round((score / currentQuestions.length) * 100);
     LS.set('quizDone',true); if(pct===100) LS.set('quizPerfect',true); if(typeof checkAchievements==='function') checkAchievements();
-    const msg = pct >= 80 ? '🎉 Excelente! Estás pronto para o nível seguinte.' : pct >= 60 ? '👍 Bom trabalho! Revê as partes em que erraste.' : '📚 Continua a estudar e volta à gramática e ao vocabulário.';
+    const msg = pct >= 80 ? 'Excelente! Estás pronto para o nível seguinte.' : pct >= 60 ? 'Bom trabalho! Revê as partes em que erraste.' : 'Continua a estudar e volta à gramática e ao vocabulário.';
     qa.innerHTML = `<div class="quiz-score">${score}/${currentQuestions.length} · ${pct}%</div><div class="quiz-feedback ${pct>=80?'good':'bad'}" style="text-align:center;font-size:1rem">${msg}</div>`;
     document.querySelector('#quiz-container button').textContent = 'Tentar outra vez';
     return;

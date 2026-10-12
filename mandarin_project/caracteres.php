@@ -50,7 +50,7 @@ require 'includes/topo.php';
     <tr><td class="zh-cell">走</td><td>andar / ir</td><td>跑 correr, 跳 saltar, 路 estrada, 跟 seguir</td></tr>
   </table>
   </div>
-  <div class="tip"><strong>💡 Truque para memorizar:</strong> 好 (hǎo, bom) = mulher 女 + criança 子. Uma mulher com uma criança = bom! Muitos caracteres têm histórias assim.</div>
+  <div class="tip"><strong>Truque para memorizar:</strong> 好 (hǎo, bom) = mulher 女 + criança 子. Uma mulher com uma criança = bom! Muitos caracteres têm histórias assim.</div>
 </div>
 
 <div id="stroke-order" class="tab-content">
@@ -68,8 +68,8 @@ require 'includes/topo.php';
       <li><strong>Os traços que varrem da direita para a esquerda ficam para o fim</strong></li>
     </ol>
   </div>
-  <div class="stroke-info">📱 <strong>Para praticar:</strong> Instala a aplicação <strong>Skritter</strong> (skritter.com) para treinar a ordem dos traços. A versão gratuita chega para quem está a começar.</div>
-  <div class="tip"><strong>💡 Atalho moderno:</strong> No trabalho vais escrever sobretudo no telemóvel ou no computador, com o teclado de pinyin. Não precisas de uma letra perfeita, mas precisas de reconhecer os caracteres quando lês.</div>
+  <div class="stroke-info"><strong>Para praticar:</strong> Instala a aplicação <strong>Skritter</strong> (skritter.com) para treinar a ordem dos traços. A versão gratuita chega para quem está a começar.</div>
+  <div class="tip"><strong>Atalho moderno:</strong> No trabalho vais escrever sobretudo no telemóvel ou no computador, com o teclado de pinyin. Não precisas de uma letra perfeita, mas precisas de reconhecer os caracteres quando lês.</div>
 </div>
 
 <div id="top100" class="tab-content">
@@ -125,7 +125,7 @@ require 'includes/topo.php';
     </table>
     </div>
   </div>
-  <div class="tip">💡 <strong>Boa notícia:</strong> Se aprenderes primeiro o simplificado, cerca de 70% do tradicional vai parecer-te familiar. Muitos caracteres são iguais nos dois sistemas.</div>
+  <div class="tip"><strong>Boa notícia:</strong> Se aprenderes primeiro o simplificado, cerca de 70% do tradicional vai parecer-te familiar. Muitos caracteres são iguais nos dois sistemas.</div>
 </div>
 
 </div><!-- /container -->

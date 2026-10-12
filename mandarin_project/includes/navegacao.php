@@ -35,7 +35,7 @@
 <div id="daily-modal">
   <div id="daily-box">
     <button onclick="closeDailyModal()" aria-label="Fechar" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.25rem;cursor:pointer;color:var(--ink-light)">✕</button>
-    <h2>📅 Sessão de hoje</h2>
+    <h2><i class="i i-hoje" aria-hidden="true"></i> Sessão de hoje</h2>
     <p style="color:var(--ink-light);font-size:0.875rem;margin-bottom:16px">A tua sessão diária, com cerca de 10 minutos.</p>
     <div id="daily-steps"></div>
     <button onclick="closeDailyModal()" style="margin-top:16px;background:var(--jade);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:0.9375rem;cursor:pointer;font-family:var(--font-main)">✓ Marcar como concluída</button>
@@ -44,7 +44,8 @@
 
 <header class="site-nav" data-site-nav>
   <a class="site-nav__logo" href="index.php" aria-label="Chá, página inicial">
-    <img class="site-nav__mark" src="img/logo-cha.svg" alt="" width="30" height="30">
+    <img class="site-nav__mark" src="img/logo-cha.svg" alt="" width="40" height="40">
+    <span class="site-nav__nome">Chá</span>
   </a>
   <nav class="site-nav__menu" id="site-menu" aria-label="Principal">
     <ul class="site-nav__links">
@@ -58,9 +59,9 @@
         <li><a class="site-nav__link" href="biblioteca.php">Biblioteca</a></li>
     </ul>
     <div class="site-nav__tools">
-      <button type="button" class="site-nav__tool" onclick="openDailyModal()">📅 Hoje</button>
-      <button type="button" class="site-nav__tool" id="dark-toggle" onclick="toggleDark()">🌙 Escuro</button>
-      <a class="site-nav__tool" href="conta.php">👤 Conta</a>
+      <button type="button" class="site-nav__tool" onclick="openDailyModal()" title="Sessão de hoje"><i class="i i-hoje" aria-hidden="true"></i> <span class="site-nav__texto">Hoje</span></button>
+      <button type="button" class="site-nav__tool" id="dark-toggle" onclick="toggleDark()" title="Mudar para o modo escuro"><i class="i i-escuro" aria-hidden="true"></i> <span class="site-nav__texto">Escuro</span></button>
+      <a class="site-nav__tool" href="conta.php" title="A minha conta"><i class="i i-conta" aria-hidden="true"></i> <span class="site-nav__texto">Conta</span></a>
     </div>
   </nav>
   <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-menu">Menu</button>

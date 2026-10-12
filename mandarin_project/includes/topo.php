@@ -24,6 +24,7 @@
 
   <!-- CSS comum a todas as páginas -->
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/icones.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/dark.css">
   <link rel="stylesheet" href="css/nav.css">

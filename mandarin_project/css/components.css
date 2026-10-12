@@ -92,7 +92,7 @@
   /* TABELAS DE FRASES */
   .phrase-table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
   .phrase-table th {
-    background: var(--fundo-escuro); color: white;
+    background: var(--fundo-tabela); color: white;
     padding: 10px 14px; text-align: left; font-size: 0.8125rem; font-weight: 600;
   }
   .phrase-table tr:nth-child(even) { background: var(--paper-mid); }
@@ -211,13 +211,19 @@
   .hsk-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
   .hsk-card p { font-size: 0.8125rem; color: var(--ink-light); margin-bottom: 4px; }
 
-  /* RODAPÉ */
-  footer {
-    background: var(--fundo-escuro); color: rgba(255,255,255,0.75);
-    text-align: center; padding: 3rem 2rem; margin-top: 4rem;
-    font-size: 0.875rem;
-  }
-  footer .footer-zh { font-family: var(--font-chinese); font-size: 1.75rem; color: var(--gold); margin-bottom: 8px; }
+  /* RODAPÉ: uma faixa escura da largura toda; o conteúdo fica numa linha (em coluna no telemóvel) */
+  .rodape { background: var(--fundo-escuro); color: rgba(255,255,255,0.8); margin-top: 4rem; padding: 2.25rem var(--page-gutter) 1.25rem; font-size: 0.875rem; }
+  .rodape__dentro { max-width: calc(var(--page-max) - 2 * var(--page-gutter)); margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 48px; }
+  .rodape__marca { display: flex; align-items: center; gap: 12px; }
+  .rodape__marca strong { display: block; font-family: var(--font-titulos); font-size: 1.375rem; color: #fff; }
+  .rodape__lema { display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .rodape__lema .zh-ex { font-size: 1.5rem; color: var(--gold); }
+  .rodape__pinyin { font-style: italic; color: rgba(255,255,255,0.7); }
+  .rodape__links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .rodape__links a { color: #fff; }
+  .rodape__fim { max-width: calc(var(--page-max) - 2 * var(--page-gutter)); margin: 1.75rem auto 0; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.15); font-size: 0.75rem; color: rgba(255,255,255,0.6); text-align: center; }
+  @media (max-width: 760px) { .rodape__dentro { flex-direction: column; text-align: center; } }
+  .rodape .pode-ouvir:hover, .rodape .pode-ouvir:focus-visible { background: rgba(255,255,255,0.08); border-radius: 8px; }
 
   /* ECRÃS PEQUENOS */
   @media (max-width: 700px) {
@@ -341,9 +347,6 @@
 
 
 
-/* Links da privacidade e dos créditos, no fim do rodapé */
-footer .footer-links { margin-top: 10px; font-size: 0.8125rem; }
-footer .footer-links a { color: inherit; text-decoration: underline; }
 
 /* Hero da Introdução com a foto ao lado do texto.
    No computador são duas colunas; no telemóvel a foto passa para baixo. */
@@ -395,12 +398,22 @@ footer .footer-links a { color: inherit; text-decoration: underline; }
 body.dark .lib-btn { color: #0F1519; }
 
 /* ═══ CHINÊS QUE SE PODE OUVIR (js/ouvir.js) ═══
-   Mostro que o elemento se pode carregar: a mão do rato, um fundo suave e um 🔊 no canto. */
+   Mostro que o elemento se pode carregar: a mão do rato, um fundo suave e um ícone de som no canto. */
 .pode-ouvir { cursor: pointer; position: relative; transition: background 0.15s; }
 .pode-ouvir:hover, .pode-ouvir:focus-visible { background: var(--green-light); }
 .pode-ouvir:focus-visible { outline: 2px solid var(--jade); outline-offset: 2px; }
 .card.pode-ouvir::after, .num-card.pode-ouvir::after, .bubble.pode-ouvir::after {
-  content: "🔊"; position: absolute; top: 6px; right: 8px; font-size: 0.75rem; opacity: 0.45;
+  /* O ícone vem do css/icones.css, usado como máscara: fica da cor do texto */
+  content: ""; position: absolute; top: 8px; right: 8px; width: 1rem; height: 1rem; opacity: 0.45;
+  background: currentColor; -webkit-mask: var(--icone-ouvir) center / contain no-repeat; mask: var(--icone-ouvir) center / contain no-repeat;
 }
 .pode-ouvir:hover::after { opacity: 1; }
 body.dark .pode-ouvir:hover, body.dark .pode-ouvir:focus-visible { background: var(--paper-dark); }
+
+/* ═══ MAIS COR NOS CARTÕES ═══
+   Cada cartão tem uma faixa de cor no topo. As cores vão rodando entre as da marca,
+   para a página não ficar toda cinzenta. A cor vem da variável --cor-cartao. */
+.card, .palavra { border-top: 4px solid var(--cor-cartao, var(--jade)); }
+.card:nth-child(4n+2), .palavra:nth-child(4n+2) { --cor-cartao: var(--seal); }
+.card:nth-child(4n+3), .palavra:nth-child(4n+3) { --cor-cartao: var(--gold); }
+.card:nth-child(4n+4), .palavra:nth-child(4n+4) { --cor-cartao: var(--blue); }

@@ -10,7 +10,7 @@ ChaPage.onInit(() => {
     const shareDiv = document.createElement('div');
     shareDiv.style.cssText = 'margin-top:16px;text-align:center';
     shareDiv.innerHTML = `
-      <button onclick="generateShareCard()" style="background:var(--red);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:0.875rem;cursor:pointer;font-family:var(--font-main)">📤 Partilhar progresso</button>
+      <button onclick="generateShareCard()" style="background:var(--red);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:0.875rem;cursor:pointer;font-family:var(--font-main)">Partilhar progresso</button>
       <div id="share-card"></div>
     `;
     nb.appendChild(shareDiv);
@@ -18,7 +18,7 @@ ChaPage.onInit(() => {
 });
 
 // ═══════════════════════════════════════════════════════
-// 🎮 LIGAR AS FERRAMENTAS
+// LIGAR AS FERRAMENTAS
 // ═══════════════════════════════════════════════════════
 // ── Corre UMA vez, quando o site abre ──────────────────────
 // Onboarding na primeira visita (o modal fica fora do <main>, por isso não se repete)
@@ -54,7 +54,7 @@ ChaPage.onInit(() => {
 
 
 // ═══════════════════════════════════════════════════════════════
-// 🎤 TREINO DE PRONÚNCIA E TONS
+// TREINO DE PRONÚNCIA E TONS
 // ═══════════════════════════════════════════════════════════════
 
 // --- Mic Sub-tabs ---
@@ -337,7 +337,7 @@ async function toggleToneRecording() {
     toneRecording = false;
     if (toneAnimFrame) cancelAnimationFrame(toneAnimFrame);
     btn.className = 'mic-btn idle';
-    btn.textContent = '🎤 Começar a gravar';
+    btn.innerHTML = '<i class="i i-gravar" aria-hidden="true"></i> Começar a gravar';
     analyzeToneResult();
     return;
   }
@@ -347,7 +347,7 @@ async function toggleToneRecording() {
   toneRecording = true;
   pitchHistory = [];
   btn.className = 'mic-btn recording';
-  btn.textContent = '⏹ Parar a gravação';
+  btn.innerHTML = '<i class="i i-parar" aria-hidden="true"></i> Parar a gravação';
   document.getElementById('tone-feedback').innerHTML = '';
   clearToneCanvas();
 
@@ -379,7 +379,7 @@ async function toggleToneRecording() {
       toneRecording = false;
       if (toneAnimFrame) cancelAnimationFrame(toneAnimFrame);
       btn.className = 'mic-btn idle';
-      btn.textContent = '🎤 Começar a gravar';
+      btn.innerHTML = '<i class="i i-gravar" aria-hidden="true"></i> Começar a gravar';
       analyzeToneResult();
     }
   }, 3000);
@@ -388,7 +388,7 @@ async function toggleToneRecording() {
 function analyzeToneResult() {
   const validPitches = pitchHistory.filter(p => p > 0);
   if (validPitches.length < 4) {
-    document.getElementById('tone-feedback').innerHTML = '<div class="feedback-badge fb-try">😕 Foi muito curto. Tenta outra vez e fala claramente durante 1 ou 2 segundos.</div>';
+    document.getElementById('tone-feedback').innerHTML = '<div class="feedback-badge fb-try">Foi muito curto. Tenta outra vez e fala claramente durante 1 ou 2 segundos.</div>';
     return;
   }
   // Analyse shape
@@ -501,7 +501,7 @@ function loadRepeatWords() {
       <div class="rw-zh">${w.zh}</div>
       <div class="rw-py">${w.py}</div>
       <div style="font-size:0.75rem;color:var(--ink-light);flex:1">${w.en}</div>
-      <button class="speak-btn" onclick="speakText('${w.zh}',0.7)">🔊</button>
+      <button class="speak-btn" onclick="speakText('${w.zh}',0.7)"><i class="i i-ouvir" aria-hidden="true"></i></button>
       <button onclick="startRepeatWord(${i})" style="background:var(--red);color:#fff;border:none;padding:5px 12px;border-radius:8px;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Praticar</button>
       <div class="rw-result" id="rwr-${i}"></div>
     </div>`).join('');
@@ -528,14 +528,14 @@ async function toggleRepeatRecording() {
   if (repeatRecording) {
     repeatRecording = false;
     document.getElementById('repeat-mic-btn').className = 'mic-btn idle';
-    document.getElementById('repeat-mic-btn').textContent = '🎤 Dizer';
+    document.getElementById('repeat-mic-btn').innerHTML = '<i class="i i-gravar" aria-hidden="true"></i> Dizer';
     if (repeatRecognizer) { try { repeatRecognizer.stop(); } catch(e){} }
     return;
   }
   if (!repeatTarget) return;
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SR) {
-    document.getElementById('repeat-result').innerHTML = '<span style="color:var(--red)">⚠️ Este browser não reconhece a voz. Usa o Chrome ou o Edge.</span>';
+    document.getElementById('repeat-result').innerHTML = '<span style="color:var(--red)">Este browser não reconhece a voz. Usa o Chrome ou o Edge.</span>';
     return;
   }
   repeatRecognizer = new SR();
@@ -544,13 +544,13 @@ async function toggleRepeatRecording() {
   repeatRecognizer.maxAlternatives = 3;
   repeatRecording = true;
   document.getElementById('repeat-mic-btn').className = 'mic-btn recording';
-  document.getElementById('repeat-mic-btn').textContent = '⏹ Parar';
-  document.getElementById('repeat-result').textContent = '🎤 A ouvir…';
+  document.getElementById('repeat-mic-btn').innerHTML = '<i class="i i-parar" aria-hidden="true"></i> Parar';
+  document.getElementById('repeat-result').innerHTML = '<i class="i i-gravar" aria-hidden="true"></i> A ouvir…';
 
   repeatRecognizer.onresult = e => {
     repeatRecording = false;
     document.getElementById('repeat-mic-btn').className = 'mic-btn idle';
-    document.getElementById('repeat-mic-btn').textContent = '🎤 Dizer';
+    document.getElementById('repeat-mic-btn').innerHTML = '<i class="i i-gravar" aria-hidden="true"></i> Dizer';
     const alts = Array.from(e.results[0]).map(a => a.transcript.trim());
     const heard = alts[0];
     const target = repeatTarget.zh;
@@ -575,13 +575,13 @@ async function toggleRepeatRecording() {
   repeatRecognizer.onerror = e => {
     repeatRecording = false;
     document.getElementById('repeat-mic-btn').className = 'mic-btn idle';
-    document.getElementById('repeat-mic-btn').textContent = '🎤 Dizer';
-    document.getElementById('repeat-result').innerHTML = `<span style="color:var(--red)">⚠️ Erro: ${esc(e.error)}. Confirma se o microfone está autorizado.</span>`;
+    document.getElementById('repeat-mic-btn').innerHTML = '<i class="i i-gravar" aria-hidden="true"></i> Dizer';
+    document.getElementById('repeat-result').innerHTML = `<span style="color:var(--red)">Erro: ${esc(e.error)}. Confirma se o microfone está autorizado.</span>`;
   };
   repeatRecognizer.onend = () => {
     repeatRecording = false;
     document.getElementById('repeat-mic-btn').className = 'mic-btn idle';
-    document.getElementById('repeat-mic-btn').textContent = '🎤 Dizer';
+    document.getElementById('repeat-mic-btn').innerHTML = '<i class="i i-gravar" aria-hidden="true"></i> Dizer';
   };
   repeatRecognizer.start();
 }
@@ -600,13 +600,13 @@ async function toggleRecogRecording() {
   const btn = document.getElementById('recog-mic-btn');
   if (recogRecording) {
     recogRecording = false;
-    btn.className = 'mic-btn idle'; btn.textContent = '🎤 Gravar';
+    btn.className = 'mic-btn idle'; btn.innerHTML = '<i class="i i-gravar" aria-hidden="true"></i> Gravar';
     if (recogRecognizer) { try { recogRecognizer.stop(); } catch(e){} }
     return;
   }
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SR) {
-    document.getElementById('recog-result').innerHTML = '<p style="color:var(--red)">⚠️ Este browser não reconhece a voz. Usa o Chrome ou o Edge.</p>';
+    document.getElementById('recog-result').innerHTML = '<p style="color:var(--red)">Este browser não reconhece a voz. Usa o Chrome ou o Edge.</p>';
     return;
   }
   recogRecognizer = new SR();
@@ -614,8 +614,8 @@ async function toggleRecogRecording() {
   recogRecognizer.interimResults = true;
   recogRecognizer.maxAlternatives = 5;
   recogRecording = true;
-  btn.className = 'mic-btn recording'; btn.textContent = '⏹ Parar';
-  document.getElementById('recog-result').innerHTML = '<p style="color:var(--ink-light);font-size:0.8125rem">🎤 A ouvir… Fala devagar e com clareza, em mandarim.</p>';
+  btn.className = 'mic-btn recording'; btn.innerHTML = '<i class="i i-parar" aria-hidden="true"></i> Parar';
+  document.getElementById('recog-result').innerHTML = '<p style="color:var(--ink-light);font-size:0.8125rem"><i class="i i-gravar" aria-hidden="true"></i> A ouvir… Fala devagar e com clareza, em mandarim.</p>';
   document.getElementById('recog-feedback').innerHTML = '';
 
   recogRecognizer.onresult = e => {
@@ -623,23 +623,23 @@ async function toggleRecogRecording() {
     const finals = Array.from(e.results).filter(r => r.isFinal).map(r => r[0].transcript).join('');
     const display = finals || interim;
     document.getElementById('recog-result').innerHTML = `
-      <div style="margin-bottom:6px;font-size:0.75rem;color:var(--ink-light)">${e.results[0]?.isFinal ? '✓ Transcrição final' : '⏳ Transcrição provisória'}:</div>
+      <div style="margin-bottom:6px;font-size:0.75rem;color:var(--ink-light)">${e.results[0]?.isFinal ? '✓ Transcrição final' : '<i class="i i-relogio" aria-hidden="true"></i> Transcrição provisória'}:</div>
       <div class="recog-zh">${esc(display)}</div>
     `;
     if (e.results[e.results.length - 1]?.isFinal) {
       recogRecording = false;
-      btn.className = 'mic-btn idle'; btn.textContent = '🎤 Gravar';
+      btn.className = 'mic-btn idle'; btn.innerHTML = '<i class="i i-gravar" aria-hidden="true"></i> Gravar';
       if (recogPromptText) mostrarRecogFeedback(recogPromptText, finals || interim);
     }
   };
   recogRecognizer.onerror = e => {
     recogRecording = false;
-    btn.className = 'mic-btn idle'; btn.textContent = '🎤 Gravar';
-    document.getElementById('recog-result').innerHTML = `<p style="color:var(--red)">⚠️ ${e.error === 'not-allowed' ? 'O acesso ao microfone foi recusado.' : 'Erro: ' + esc(e.error)}</p>`;
+    btn.className = 'mic-btn idle'; btn.innerHTML = '<i class="i i-gravar" aria-hidden="true"></i> Gravar';
+    document.getElementById('recog-result').innerHTML = `<p style="color:var(--red)">${e.error === 'not-allowed' ? 'O acesso ao microfone foi recusado.' : 'Erro: ' + esc(e.error)}</p>`;
   };
   recogRecognizer.onend = () => {
     recogRecording = false;
-    btn.className = 'mic-btn idle'; btn.textContent = '🎤 Gravar';
+    btn.className = 'mic-btn idle'; btn.innerHTML = '<i class="i i-gravar" aria-hidden="true"></i> Gravar';
   };
   recogRecognizer.start();
 }
@@ -651,7 +651,7 @@ function mostrarRecogFeedback(target, heard) {
   const match = heard === target || similarity(heard, target) > 0.7;
   const texto = match
     ? '✓ Muito bem! Disseste a frase corretamente.'
-    : `Querias dizer <span class="recog-zh">${esc(target)}</span>, mas ouvi <span class="recog-zh">${esc(heard)}</span>. Ouve a frase outra vez com o 🔊 e repete devagar, com atenção aos tons.`;
+    : `Querias dizer <span class="recog-zh">${esc(target)}</span>, mas ouvi <span class="recog-zh">${esc(heard)}</span>. Ouve a frase outra vez com o <i class="i i-ouvir" aria-hidden="true"></i> e repete devagar, com atenção aos tons.`;
   fb.innerHTML = `
     <div style="background:${match ? 'var(--green-light)' : 'var(--blue-light)'};border-radius:10px;padding:12px 16px;border-left:4px solid ${match ? 'var(--green)' : 'var(--blue)'}">
       <div style="font-size:0.8125rem;color:var(--ink-mid)">${texto}</div>

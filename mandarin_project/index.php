@@ -35,26 +35,12 @@ $cidades = $consulta->fetchAll();
 
 // Total de lições feitas em toda a rota (para o painel)
 $feitas_total = array_sum(array_column($cidades, 'feitas'));
-?>
-<!DOCTYPE html>
-<html lang="pt-PT">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chá · Aprende mandarim</title>
-  <link rel="icon" href="img/logo-cha.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/fontes.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/dark.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/transitions.css">
-  <link rel="stylesheet" href="css/inicio.css">
-</head>
-<body>
-<?php require 'includes/navegacao.php'; ?>
 
-<main class="page" data-page="inicio">
+$titulo = 'Aprende mandarim';
+$pagina = 'inicio';
+$css_extra = ['inicio'];
+require 'includes/topo.php';
+?>
 
   <!-- 1. HERO -->
   <!-- O texto fica à esquerda e a imagem num cartão à direita. No telemóvel o cartão passa para baixo. -->
@@ -145,9 +131,4 @@ $feitas_total = array_sum(array_column($cidades, 'feitas'));
     </ol>
   </section>
 
-  <?php require 'includes/rodape-site.php'; ?>
-</main>
-
-<?php require 'includes/scripts.php'; ?>
-</body>
-</html>
+<?php require 'includes/fim.php'; ?>

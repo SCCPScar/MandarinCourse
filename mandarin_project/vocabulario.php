@@ -84,7 +84,7 @@ require 'includes/topo.php';
 </div>
 
 <div id="adjectives" class="tab-content">
-<div class="tip"><strong>💡 Regra:</strong> Os adjetivos ligam-se com 很 (hěn, «muito»): 我很好 = estou bem. Sem 很, a frase soa a comparação. Não uses 是!</div>
+<div class="tip"><strong>Regra:</strong> Os adjetivos ligam-se com 很 (hěn, «muito»): 我很好 = estou bem. Sem 很, a frase soa a comparação. Não uses 是!</div>
 <div class="card-grid">
   <div class="card"><div class="zh">好</div><div class="pinyin">hǎo</div><div class="en">bom</div></div>
   <div class="card"><div class="zh">坏</div><div class="pinyin">huài</div><div class="en">mau</div></div>

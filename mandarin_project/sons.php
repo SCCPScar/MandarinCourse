@@ -58,9 +58,9 @@ require 'includes/topo.php';
   </div>
 </div>
 
-<div class="warning">⚠️ <strong>Importante:</strong> 买 (mǎi, 3.º tom) = «comprar» | 卖 (mài, 4.º tom) = «vender». Errar o tom pode causar confusões a sério. Aprende cada palavra nova já com o tom, desde o primeiro dia.</div>
+<div class="warning"><strong>Importante:</strong> 买 (mǎi, 3.º tom) = «comprar» | 卖 (mài, 4.º tom) = «vender». Errar o tom pode causar confusões a sério. Aprende cada palavra nova já com o tom, desde o primeiro dia.</div>
 
-<div class="tip"><strong>💡 Truque dos tons:</strong> Quando aparecem dois 3.º tons seguidos (ex.: 你好 nǐhǎo), o primeiro passa a 2.º tom na fala. Por isso nǐhǎo soa como níhǎo. A esta regra chama-se sandhi tonal.</div>
+<div class="tip"><strong>Truque dos tons:</strong> Quando aparecem dois 3.º tons seguidos (ex.: 你好 nǐhǎo), o primeiro passa a 2.º tom na fala. Por isso nǐhǎo soa como níhǎo. A esta regra chama-se sandhi tonal.</div>
 
 <h3 style="margin: 1.5rem 0 1rem; font-size: 1.125rem;">Pares de tons para praticar</h3>
 <div class="table-wrap">
@@ -94,19 +94,19 @@ require 'includes/topo.php';
   <div class="info">ℹ️ Muitas consoantes do pinyin parecem-se com as portuguesas, mas várias são <strong>muito diferentes</strong>. Concentra-te nas que estão destacadas.</div>
   <div class="table-wrap">
   <table class="phrase-table">
-    <tr><th>Pinyin</th><th>Soa como</th><th>Exemplo</th><th>⚠️ Atenção</th></tr>
+    <tr><th>Pinyin</th><th>Soa como</th><th>Exemplo</th><th>Atenção</th></tr>
     <tr><td><strong>b, p, m, f</strong></td><td>Quase como em português. O b é mais seco e o p leva um sopro de ar</td><td>bā 八 (oito)</td><td></td></tr>
     <tr><td><strong>d, t, n, l</strong></td><td>Quase como em português. O d é mais seco e o t leva um sopro de ar</td><td>dà 大 (grande)</td><td></td></tr>
     <tr><td><strong>g, k, h</strong></td><td>O g é mais seco, o k leva um sopro de ar e o h soa como o «r» de «rato»</td><td>gāo 高 (alto)</td><td></td></tr>
-    <tr><td><strong style="color:var(--red)">j</strong></td><td>Como «dj» em «Djibuti», com a língua plana</td><td>jī 鸡 (galinha)</td><td>⚠️ Só aparece antes de i e ü</td></tr>
-    <tr><td><strong style="color:var(--red)">q</strong></td><td>Como o «tch» de «tchim-tchim», com a língua plana</td><td>qī 七 (sete)</td><td>⚠️ Nada a ver com o «q» português</td></tr>
-    <tr><td><strong style="color:var(--red)">x</strong></td><td>Como o «ch» de «chá», mais leve</td><td>xīn 心 (coração)</td><td>⚠️ A ponta da língua fica em baixo, sem enrolar</td></tr>
-    <tr><td><strong style="color:var(--red)">zh</strong></td><td>Como «dj», com a língua enrolada para trás</td><td>zhōng 中 (meio)</td><td>⚠️ Retroflexa: a língua enrola para trás</td></tr>
-    <tr><td><strong style="color:var(--red)">ch</strong></td><td>Como «tch», com a língua enrolada para trás</td><td>chī 吃 (comer)</td><td>⚠️ Retroflexa</td></tr>
-    <tr><td><strong style="color:var(--red)">sh</strong></td><td>Como o «ch» de «chave», com a língua enrolada para trás</td><td>shū 书 (livro)</td><td>⚠️ Retroflexa</td></tr>
-    <tr><td><strong style="color:var(--red)">r</strong></td><td>Entre o «j» de «já» e um «r» inglês. É único!</td><td>rén 人 (pessoa)</td><td>⚠️ Não existe em português</td></tr>
+    <tr><td><strong style="color:var(--red)">j</strong></td><td>Como «dj» em «Djibuti», com a língua plana</td><td>jī 鸡 (galinha)</td><td>Só aparece antes de i e ü</td></tr>
+    <tr><td><strong style="color:var(--red)">q</strong></td><td>Como o «tch» de «tchim-tchim», com a língua plana</td><td>qī 七 (sete)</td><td>Nada a ver com o «q» português</td></tr>
+    <tr><td><strong style="color:var(--red)">x</strong></td><td>Como o «ch» de «chá», mais leve</td><td>xīn 心 (coração)</td><td>A ponta da língua fica em baixo, sem enrolar</td></tr>
+    <tr><td><strong style="color:var(--red)">zh</strong></td><td>Como «dj», com a língua enrolada para trás</td><td>zhōng 中 (meio)</td><td>Retroflexa: a língua enrola para trás</td></tr>
+    <tr><td><strong style="color:var(--red)">ch</strong></td><td>Como «tch», com a língua enrolada para trás</td><td>chī 吃 (comer)</td><td>Retroflexa</td></tr>
+    <tr><td><strong style="color:var(--red)">sh</strong></td><td>Como o «ch» de «chave», com a língua enrolada para trás</td><td>shū 书 (livro)</td><td>Retroflexa</td></tr>
+    <tr><td><strong style="color:var(--red)">r</strong></td><td>Entre o «j» de «já» e um «r» inglês. É único!</td><td>rén 人 (pessoa)</td><td>Não existe em português</td></tr>
     <tr><td><strong>z</strong></td><td>Como «dz», com a língua nos dentes</td><td>zài 在 (em / estar)</td><td></td></tr>
-    <tr><td><strong>c</strong></td><td>Como o «ts» de «tsunami»</td><td>cǎo 草 (relva)</td><td>⚠️ Nada a ver com o «c» português</td></tr>
+    <tr><td><strong>c</strong></td><td>Como o «ts» de «tsunami»</td><td>cǎo 草 (relva)</td><td>Nada a ver com o «c» português</td></tr>
     <tr><td><strong>s</strong></td><td>Como o «s» de «sapo»</td><td>sān 三 (três)</td><td></td></tr>
     <tr><td><strong>y, w</strong></td><td>Como o «i» e o «u» de «iate» e «água»</td><td>yī 一 (um), wǒ 我 (eu)</td><td></td></tr>
   </table>
@@ -164,7 +164,7 @@ require 'includes/topo.php';
     </ul>
     <div class="formula" style="margin-top:12px;">Regra: primeiro a ou e; depois o o de «ou»; senão, a última vogal</div>
   </div>
-  <div class="tip">💡 <strong>Dica para escrever em chinês:</strong> no telemóvel ou no computador, instala um teclado de pinyin. Escreve a sílaba sem acentos e escolhe o caractere certo na lista. Exemplo: escreves «ni» e escolhes 你, 妮, 尼…</div>
+  <div class="tip"><strong>Dica para escrever em chinês:</strong> no telemóvel ou no computador, instala um teclado de pinyin. Escreve a sílaba sem acentos e escolhe o caractere certo na lista. Exemplo: escreves «ni» e escolhes 你, 妮, 尼…</div>
 </div>
 
 </div><!-- /container -->
