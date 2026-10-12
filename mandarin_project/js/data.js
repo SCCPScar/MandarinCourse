@@ -24,7 +24,7 @@ function updateProgress(){
   // O painel «O teu progresso» só existe na Introdução. Antes, sem ele, a função saía logo
   // e os números dos cartões (na Praticar) ficavam a 0. Agora só salto esta parte.
   const g=document.getElementById('po-grid');
-  if(g)g.innerHTML=cats.map(c=>{const done=c.d.filter(w=>learned[w.zh]).length;const pct=Math.round(done/c.d.length*100);return`<div class="po-item"><div class="poi-label">${c.l}: ${done}/${c.d.length}</div><div class="poi-bar-wrap"><div class="poi-bar" style="width:${pct}%"></div></div><div class="poi-pct">${pct}%</div></div>`;}).join('');
+  if(g)g.innerHTML=cats.map(c=>{const done=c.d.filter(w=>learned[w.zh]).length;const pct=Math.round(done/c.d.length*100);return`<div class="po-item"><div class="poi-topo"><span class="poi-label">${c.l}</span><span class="poi-num">${done} de ${c.d.length}</span></div><div class="poi-bar-wrap"><div class="poi-bar" style="width:${pct}%"></div></div><div class="poi-pct">${pct}%</div></div>`;}).join('');
   const fl=document.getElementById('fc-learned');if(fl)fl.textContent=allVocab.filter(w=>learned[w.zh]).length;
   const ft=document.getElementById('fc-total');if(ft)ft.textContent=allVocab.length;
   const fd=document.getElementById('fc-due');if(fd)fd.textContent=allVocab.filter(w=>!learned[w.zh]).length;

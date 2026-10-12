@@ -30,7 +30,7 @@ require 'includes/topo.php';
     <li><a href="#estrutura-6">的 (de), posse e descrição</a></li>
     <li><a href="#estrutura-7">想 (xiǎng), 要 (yào), 会 (huì), 能 (néng) e 可以 (kěyǐ), os verbos modais</a></li>
     <li><a href="#estrutura-8">o tempo na frase</a></li>
-    <li><a href="#estrutura-9">os classificadores (量词 (liàngcí), liàngcí)</a></li>
+    <li><a href="#estrutura-9">os classificadores (量词, liàngcí)</a></li>
     <li><a href="#estrutura-10">as partículas de aspeto 了 (le), 过 (guo) e 着 (zhe)</a></li>
   </ol>
 </nav>
@@ -125,7 +125,7 @@ require 'includes/topo.php';
 </div>
 
 <div class="grammar-box anchor" id="estrutura-9">
-  <h3>Estrutura 9: os classificadores (量词 (liàngcí), liàngcí)</h3>
+  <h3>Estrutura 9: os classificadores (量词, liàngcí)</h3>
   <div class="formula"><span class="placeholder">Número</span> + <span class="placeholder">Classificador</span> + <span class="placeholder">Nome</span></div>
   <div class="warning" style="margin:8px 0">Não podes dizer «um livro» diretamente: precisas de um classificador. Diz-se 一本书 (yī běn shū), e não 一书 (yì shū).</div>
   <div class="table-wrap" style="margin-top:10px">
@@ -146,7 +146,7 @@ require 'includes/topo.php';
 
 <div class="grammar-box anchor" id="estrutura-10">
   <h3>Estrutura 10: as partículas de aspeto 了 (le), 过 (guo) e 着 (zhe)</h3>
-  <div class="formula">了 (le) le = ação terminada ou mudança | 过 guò = experiência passada | 着 (zhe) zhe = estado que continua</div>
+  <div class="formula">了 (le) = ação terminada ou mudança | 过 (guo) = experiência passada | 着 (zhe) = estado que continua</div>
   <ul class="example-list">
     <li><span class="zh-ex">我吃了</span><span class="py-ex">wǒ chī le</span><span class="en-ex">Comi / já comi (terminado)</span></li>
     <li><span class="zh-ex">我去过北京</span><span class="py-ex">wǒ qùguo Běijīng</span><span class="en-ex">Já estive em Pequim (experiência de vida)</span></li>

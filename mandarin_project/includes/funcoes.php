@@ -28,3 +28,11 @@ function cabeca_pagina($titulo, $hanzi, $pinyin, $texto, $cor = 'jade') {
          . '<p class="cabeca-pagina__texto">' . e($texto) . '</p>'
          . '</div></header>';
 }
+
+// Devolve o endereço de um CSS ou JS com a data do ficheiro no fim, por exemplo "css/base.css?v=1760300000".
+// Quando eu mudo o ficheiro, a data muda e o endereço também: assim o browser é obrigado a ir buscar
+// a versão nova, em vez de usar a cópia antiga que tinha guardada (cache busting).
+function versao($caminho) {
+    $ficheiro = __DIR__ . '/../' . $caminho;
+    return $caminho . '?v=' . (is_file($ficheiro) ? filemtime($ficheiro) : '0');
+}

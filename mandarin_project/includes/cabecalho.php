@@ -10,11 +10,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= e($titulo) ?> · Chá</title>
   <link rel="icon" href="img/logo-cha.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/fontes.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/icones.css">
-  <link rel="stylesheet" href="css/transitions.css">
-  <link rel="stylesheet" href="css/conta.css">
+  <link rel="stylesheet" href="<?= versao('css/fontes.css') ?>">
+  <link rel="stylesheet" href="<?= versao('css/base.css') ?>">
+  <link rel="stylesheet" href="<?= versao('css/icones.css') ?>">
+  <link rel="stylesheet" href="<?= versao('css/transitions.css') ?>">
+  <link rel="stylesheet" href="<?= versao('css/conta.css') ?>">
 </head>
 <body>
 <header class="conta-topo">

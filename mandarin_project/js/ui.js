@@ -95,6 +95,9 @@ function checkAchievements() {
       } else {
         el.classList.add('earned');
       }
+      // A medalha diz por escrito que já foi ganha (não fica só a cor)
+      const estado = el.querySelector('.medalha__estado');
+      if (estado) estado.textContent = 'Conquistada';
     }
   });
   const cnt = document.getElementById('ach-count');

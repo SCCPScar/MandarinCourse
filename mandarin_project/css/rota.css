@@ -155,3 +155,9 @@
 .indice--cidades ol { columns: auto; display: flex; flex-wrap: wrap; gap: 6px 24px; list-style: none; padding: 0; }
 .cultura-cidade.anchor { scroll-margin-top: calc(var(--nav-height) + 16px); }
 .cultura-cidade h3 .py-inline { margin-left: 8px; }
+
+/* Barra de progresso grande, com a percentagem por baixo, e o botão bem afastado da barra */
+.rota-geral .progresso { height: 24px; border-radius: 12px; }
+.rota-geral .progresso__barra { border-radius: 12px; min-width: 24px; }
+.rota-geral__pct { margin: 10px 0 0 !important; font-weight: 700; color: var(--jade) !important; }
+.rota-geral .botao-cha { margin: 24px 0 0 !important; }

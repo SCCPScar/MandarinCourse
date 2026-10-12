@@ -48,6 +48,7 @@ require 'includes/topo.php';
     <div class="progresso" role="progressbar" aria-valuenow="<?= $percentagem_geral ?>" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso na rota">
       <div class="progresso__barra" style="width: <?= $percentagem_geral ?>%"></div>
     </div>
+    <p class="rota-geral__pct"><?= $percentagem_geral ?>% da rota concluída</p>
     <?php if (id_utilizador() === null): ?>
       <p><a href="registo.php">Cria uma conta</a> para o teu progresso ficar guardado.</p>
     <?php endif; ?>

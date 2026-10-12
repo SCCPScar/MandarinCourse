@@ -108,6 +108,7 @@ require 'includes/topo.php';
       <div class="progresso" role="progressbar" aria-valuenow="<?= $percentagem ?>" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso em <?= e($cidade['nome']) ?>">
         <div class="progresso__barra" style="width: <?= $percentagem ?>%"></div>
       </div>
+      <p class="rota-geral__pct"><?= $percentagem ?>% desta cidade concluída</p>
       <?php if ($primeira_por_fazer): ?>
         <a class="botao-cha" href="licao.php?id=<?= (int) $primeira_por_fazer['id'] ?>"><?= $feitas ? 'Continuar' : 'Começar' ?>: <?= e($primeira_por_fazer['titulo']) ?></a>
       <?php endif; ?>

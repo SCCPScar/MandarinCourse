@@ -527,3 +527,14 @@ body.dark .lib-grid > .lib-card:first-child::before { color: #0F1519; }
 .folha-propria input { flex: 1; min-width: 160px; padding: 10px 12px; border: 1.5px solid var(--paper-dark); border-radius: 10px; font-size: 1.125rem; font-family: var(--font-chinese); background: var(--white); color: var(--ink); }
 .folha-propria .botao-cha { margin: 0; min-height: 44px; }
 .bubble.pode-ouvir { padding-right: 34px; }   /* espaço para o ícone de som não ficar por cima do texto */
+
+/* Mais espaço entre as caixas de gramática e entre o índice e a primeira caixa */
+.indice { margin-bottom: 3rem; }
+.grammar-box { margin-bottom: 2.75rem; }
+.grammar-box .example-list, .grammar-box .tip, .grammar-box .warning, .grammar-box .formula { margin-top: 1rem; }
+
+/* Aqui eu garanto espaço à volta de todas as tabelas e grelhas de cartões,
+   para nunca ficarem coladas a uma dica, a um parágrafo ou umas às outras.
+   As margens de cima e de baixo entre irmãos não se somam: fica a maior. */
+.table-wrap, .card-grid, .num-grid { margin-top: 1.5rem; margin-bottom: 2.25rem; }
+.example-list { margin-top: 1rem; }

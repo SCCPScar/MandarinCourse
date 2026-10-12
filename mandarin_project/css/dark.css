@@ -407,3 +407,37 @@
   .culture-card:nth-child(4n+4) { border-top-color: var(--blue); }
   .culture-card h3 { font-size: 1.125rem; margin-bottom: 10px; }
   .culture-card ul li { font-size: 0.9375rem; padding: 7px 0; line-height: 1.5; }
+
+  /* ═══ PROGRESSO E CONQUISTAS (Introdução) ═══
+     Os dois cartões têm a mesma largura e usam a mesma grelha, com quadrados do mesmo tamanho,
+     para a parte de cima da Introdução ficar simétrica. */
+  #progress-overview, #achievements-bar { display: block; position: relative; max-width: calc(var(--page-max) - 2 * var(--page-gutter)); margin: 24px auto 0; padding: 24px; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); border: 0; }
+  #progress-overview { border-top: 4px solid var(--jade); }
+  #achievements-bar { border-top: 4px solid var(--gold); }
+  .ach-topo { margin-bottom: 16px; padding-right: 140px; }
+  .ach-contagem { position: absolute; top: 26px; right: 24px; padding: 4px 12px; border-radius: 20px; background: var(--gold-light); color: var(--gold-dark); font-weight: 700; font-size: 0.875rem; }
+  .po-grid, .medalhas { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; list-style: none; margin: 0; padding: 0; }
+  /* Cada tema do vocabulário */
+  .po-item { padding: 14px 16px; border-radius: 12px; background: var(--paper-mid); }
+  .poi-topo { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+  .poi-label { font-size: 0.9375rem; font-weight: 700; color: var(--ink); margin: 0; }
+  .poi-num { font-size: 0.875rem; color: var(--ink-light); }
+  .poi-bar-wrap { height: 10px; border-radius: 5px; background: var(--paper-dark); }
+  .poi-bar { height: 10px; border-radius: 5px; background: var(--jade); }
+  .poi-pct { margin-top: 6px; font-size: 0.8125rem; font-weight: 700; color: var(--ink); /* jade sobre o fundo cinzento ficava com 4.45:1, abaixo do mínimo */ text-align: right; }
+  /* Cada medalha: ícone, nome, o que é preciso fazer e o estado. Não parece um botão porque não é. */
+  .medalha { display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; border-radius: 12px; background: var(--paper-mid); border: 2px dashed var(--paper-dark); color: var(--ink-light); }
+  .medalha .i { width: 1.75rem; height: 1.75rem; opacity: 0.45; }
+  .medalha strong { color: var(--ink); font-size: 1rem; }
+  .medalha span { font-size: 0.875rem; line-height: 1.4; }
+  .medalha__estado { margin-top: auto; padding-top: 6px; font-style: normal; font-size: 0.8125rem; font-weight: 700; }
+  .medalha.earned { background: var(--gold-light); border: 2px solid var(--gold); color: var(--ink-mid); }
+  .medalha.earned .i, .medalha.earned .medalha__estado { color: var(--gold-dark); opacity: 1; }
+  .medalha.earned.new { animation: badgePop .5s ease; }
+  @media (max-width: 600px) { .ach-topo { padding-right: 0; } .ach-contagem { position: static; display: inline-block; margin-bottom: 12px; } }
+
+/* Aqui eu fixo 3 colunas: 6 temas ficam 3×2 e 9 medalhas ficam 3×3, sempre simétrico.
+   No telemóvel passam a 2 colunas e, em ecrãs muito estreitos, a 1. */
+.po-grid, .medalhas { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 700px) { .po-grid, .medalhas { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 420px) { .po-grid, .medalhas { grid-template-columns: 1fr; } }

@@ -54,15 +54,18 @@ require 'includes/topo.php';
     <h2 class="ach-titulo"><i class="i i-medalha" aria-hidden="true"></i> As tuas conquistas</h2>
     <p class="ach-texto">Ganhas uma medalha ao aprender palavras, fazer testes e estudar vários dias seguidos. As que já tens ficam douradas.</p>
   </div>
-  <span class="badge" id="badge-start" title="Começou o curso">Início</span>
-  <span class="badge" id="badge-10" title="10 palavras aprendidas">10 palavras</span>
-  <span class="badge" id="badge-50" title="50 palavras aprendidas">50 palavras</span>
-  <span class="badge" id="badge-100" title="100 palavras aprendidas">100 palavras</span>
-  <span class="badge" id="badge-streak3" title="3 dias seguidos"><i class="i i-dias" aria-hidden="true"></i> 3 dias</span>
-  <span class="badge" id="badge-streak7" title="7 dias seguidos">7 dias</span>
-  <span class="badge" id="badge-quiz" title="Completou um quiz">Quiz</span>
-  <span class="badge" id="badge-perfect" title="Quiz perfeito">Perfeito</span>
-  <span class="badge" id="badge-streak30" title="30 dias seguidos">30 dias</span>
+  <!-- Cada medalha diz o que é preciso fazer. Não são botões: só mudam de cor quando as ganhas. -->
+  <ul class="medalhas">
+    <li class="medalha" id="badge-start"><i class="i i-medalha" aria-hidden="true"></i><strong>Início</strong><span>Abriste o curso pela primeira vez</span><em class="medalha__estado">Por conquistar</em></li>
+    <li class="medalha" id="badge-10"><i class="i i-medalha" aria-hidden="true"></i><strong>10 palavras</strong><span>Marca 10 palavras como aprendidas</span><em class="medalha__estado">Por conquistar</em></li>
+    <li class="medalha" id="badge-50"><i class="i i-medalha" aria-hidden="true"></i><strong>50 palavras</strong><span>Marca 50 palavras como aprendidas</span><em class="medalha__estado">Por conquistar</em></li>
+    <li class="medalha" id="badge-100"><i class="i i-medalha" aria-hidden="true"></i><strong>100 palavras</strong><span>Marca 100 palavras como aprendidas</span><em class="medalha__estado">Por conquistar</em></li>
+    <li class="medalha" id="badge-streak3"><i class="i i-medalha" aria-hidden="true"></i><strong>3 dias</strong><span>Estuda 3 dias seguidos</span><em class="medalha__estado">Por conquistar</em></li>
+    <li class="medalha" id="badge-streak7"><i class="i i-medalha" aria-hidden="true"></i><strong>7 dias</strong><span>Estuda 7 dias seguidos</span><em class="medalha__estado">Por conquistar</em></li>
+    <li class="medalha" id="badge-streak30"><i class="i i-medalha" aria-hidden="true"></i><strong>30 dias</strong><span>Estuda 30 dias seguidos</span><em class="medalha__estado">Por conquistar</em></li>
+    <li class="medalha" id="badge-quiz"><i class="i i-medalha" aria-hidden="true"></i><strong>Quiz</strong><span>Faz um quiz até ao fim</span><em class="medalha__estado">Por conquistar</em></li>
+    <li class="medalha" id="badge-perfect"><i class="i i-medalha" aria-hidden="true"></i><strong>Perfeito</strong><span>Acerta todas as perguntas de um quiz</span><em class="medalha__estado">Por conquistar</em></li>
+  </ul>
   <span class="ach-contagem" id="ach-count"></span>
 </div>
 

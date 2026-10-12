@@ -20,10 +20,10 @@ $pasta = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
   <base href="<?= e($pasta) ?>">
   <title>Página não encontrada · Chá</title>
   <link rel="icon" href="img/logo-cha.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/fontes.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/icones.css">
-  <link rel="stylesheet" href="css/erro.css">
+  <link rel="stylesheet" href="<?= versao('css/fontes.css') ?>">
+  <link rel="stylesheet" href="<?= versao('css/base.css') ?>">
+  <link rel="stylesheet" href="<?= versao('css/icones.css') ?>">
+  <link rel="stylesheet" href="<?= versao('css/erro.css') ?>">
 </head>
 <body>
 <main class="erro">

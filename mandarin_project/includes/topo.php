@@ -20,17 +20,17 @@
   <link rel="icon" href="img/logo-cha.svg" type="image/svg+xml">
 
   <!-- Fontes da marca, guardadas no próprio site -->
-  <link rel="stylesheet" href="css/fontes.css">
+  <link rel="stylesheet" href="<?= versao('css/fontes.css') ?>">
 
   <!-- CSS comum a todas as páginas -->
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/icones.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/dark.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/transitions.css">
+  <link rel="stylesheet" href="<?= versao('css/base.css') ?>">
+  <link rel="stylesheet" href="<?= versao('css/icones.css') ?>">
+  <link rel="stylesheet" href="<?= versao('css/components.css') ?>">
+  <link rel="stylesheet" href="<?= versao('css/dark.css') ?>">
+  <link rel="stylesheet" href="<?= versao('css/nav.css') ?>">
+  <link rel="stylesheet" href="<?= versao('css/transitions.css') ?>">
   <?php foreach ($css_extra ?? [] as $css): ?>
-  <link rel="stylesheet" href="css/<?= e($css) ?>.css">
+  <link rel="stylesheet" href="<?= versao('css/' . $css . '.css') ?>">
   <?php endforeach; ?>
 
   <?php if (!empty($usa_hanzi)): ?>

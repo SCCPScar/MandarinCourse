@@ -236,3 +236,11 @@ body { padding-top: var(--nav-height); }
   .site-nav,
   .site-nav__menu { transition: none; }
 }
+
+/* Em portáteis com ecrãs de 1200 a 1400 px, o espaço entre os links encolhe um pouco,
+   para os 11 links nunca chegarem perto do logótipo nem das ferramentas.
+   clamp(mínimo, ideal, máximo): o espaço acompanha a largura do ecrã, entre 12 e 22 px. */
+@media (min-width: 1200px) {
+  .site-nav__links { gap: clamp(12px, 1.25vw, 22px); }
+  .site-nav__tools { gap: clamp(10px, 1vw, 14px); }
+}
