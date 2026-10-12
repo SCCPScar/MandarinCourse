@@ -76,3 +76,6 @@
   .botao-cha:hover { transform: translateY(-1px); }
   .botao-cha:active { transform: translateY(3px); box-shadow: 0 1px 0 #084C3F; }
   .botao-cha--claro { background: rgba(255, 255, 255, 0.14); box-shadow: none; }
+
+  /* Os <button> não herdam a letra da página como os links; aqui eu obrigo-os a herdar */
+  button.botao-cha { font-family: inherit; font-size: 1rem; border: 0; cursor: pointer; gap: 8px; }

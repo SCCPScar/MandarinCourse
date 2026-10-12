@@ -38,7 +38,7 @@ window.addEventListener('scroll', () => {
 // (O menu do telemóvel está em js/nav.js)
 
 // ═══════════════════════════════════════════════════════
-// ⌨️ ATALHOS DE TECLADO
+// ATALHOS DE TECLADO
 // ═══════════════════════════════════════════════════════
 document.addEventListener('keydown', e => {
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
@@ -167,7 +167,7 @@ function closeDailyModal() {
 }
 
 // ═══════════════════════════════════════════════════════
-// 🃏 REVISÃO ESPAÇADA (SM-2 SIMPLIFICADO)
+// REVISÃO ESPAÇADA (SM-2 SIMPLIFICADO)
 // ═══════════════════════════════════════════════════════
 let srsData = LS.get('srs', {});
 
@@ -253,3 +253,19 @@ function generateShareCard() {
 }
 
 // Ponho o botão de partilhar no separador do caderno, se ele existir
+
+// ═══ ABRIR UM SEPARADOR PELO ENDEREÇO ═══
+// Ex.: praticar.php#tab-dict abre logo o Dicionário; vocabulario.php#food abre a Comida.
+// Assim as lições podem ligar diretamente ao separador certo.
+ChaPage.onInit(() => {
+  const id = decodeURIComponent(location.hash.slice(1));
+  if (!/^[a-z0-9-]+$/.test(id)) return;            // só aceito nomes simples (letras, números e hífen)
+  const painel = document.getElementById(id);
+  if (!painel || !painel.matches('.tab-content, .api-tab-content')) return;
+  const botao = document.querySelector(`[onclick*="'${id}'"]`);
+  if (!botao) return;
+  botao.click();
+  // Rolo até aos botões dos separadores, descontando a barra de navegação fixa
+  const topo = botao.getBoundingClientRect().top + window.scrollY - 90;
+  window.scrollTo({ top: topo });
+});

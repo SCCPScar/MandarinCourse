@@ -91,7 +91,7 @@ require 'includes/topo.php';
 </div>
 
 <div id="initials" class="tab-content active">
-  <div class="info">ℹ️ Muitas consoantes do pinyin parecem-se com as portuguesas, mas várias são <strong>muito diferentes</strong>. Concentra-te nas que estão destacadas.</div>
+  <div class="info">Muitas consoantes do pinyin parecem-se com as portuguesas, mas várias são <strong>muito diferentes</strong>. Concentra-te nas que estão destacadas.</div>
   <div class="table-wrap">
   <table class="phrase-table">
     <tr><th>Pinyin</th><th>Soa como</th><th>Exemplo</th><th>Atenção</th></tr>
@@ -114,7 +114,7 @@ require 'includes/topo.php';
 </div>
 
 <div id="finals" class="tab-content">
-  <div class="info">ℹ️ As finais são a parte das vogais de cada sílaba. Algumas parecem conhecidas, mas soam diferente do português.</div>
+  <div class="info">As finais são a parte das vogais de cada sílaba. Algumas parecem conhecidas, mas soam diferente do português.</div>
   <div class="table-wrap">
   <table class="phrase-table">
     <tr><th>Final</th><th>Soa como</th><th>Exemplo</th></tr>

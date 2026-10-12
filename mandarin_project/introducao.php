@@ -184,7 +184,7 @@ require 'includes/topo.php';
 </div>
 
 <div class="grammar-box" style="margin-top: 2rem; border-left-color: var(--gold)">
-  <h3>🆓 Recursos gratuitos</h3>
+  <h3>Recursos gratuitos</h3>
   <ul style="padding-left:1.5rem; line-height:2.2; color:var(--ink-mid);">
     <li><strong>HelloChinese</strong> (aplicação): a melhor aplicação gratuita para começar, com ótimo treino de pinyin</li>
     <li><strong>Duolingo Chinese</strong> (aplicação): boa para criar o hábito diário e rever vocabulário</li>

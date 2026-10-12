@@ -23,7 +23,7 @@ function loadChar(char) {
       outlineColor:'#D5DEDB', showOutline:true,
       strokeAnimationSpeed:1, delayBetweenStrokes:200, rendererType:'svg'
     });
-    if (hint) hint.innerHTML = 'Carrega em ▶ Animar ou <i class="i i-escrever" aria-hidden="true"></i> Praticar';
+    if (hint) hint.innerHTML = 'Carrega em <i class="i i-jogar" aria-hidden="true"></i> Animar ou <i class="i i-escrever" aria-hidden="true"></i> Praticar';
   } catch(e) { if (hint) hint.textContent = 'Caractere não encontrado.'; }
 }
 

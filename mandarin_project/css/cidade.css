@@ -92,7 +92,7 @@
 .licao h2 { font-size: 1.375rem; color: var(--ink); margin-bottom: 12px; }
 
 /* Cada palavra: caractere grande, pinyin, tradução e botão de ouvir */
-.palavras { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.palavras { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
 .palavra {
   position: relative;
   display: flex;
@@ -133,15 +133,14 @@
 .frases { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
 .licao .palavras + h2 { margin-top: 32px; }
 .frase {
-  display: grid;
-  grid-template-columns: 40px 1fr;
-  column-gap: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   padding: 14px 16px;
   background: var(--white);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
-.frase .palavra__ouvir { position: static; grid-row: span 3; align-self: center; }
 .frase__hanzi { font-family: var(--font-chinese); font-size: 1.375rem; color: var(--ink); }
 .frase__pinyin { color: var(--jade); font-weight: 600; }
 .frase__traducao { color: var(--ink-light); font-size: 0.9375rem; }
@@ -155,3 +154,90 @@
   .unidades { grid-template-columns: 1fr; }
   .capa { min-height: 300px; }
 }
+
+/* ═══ LIÇÃO: PARTES NOVAS ═══ */
+/* Os botões Ouvir / Devagar ficam por baixo do texto de cada palavra e de cada frase */
+.palavra .ouvir-par, .frase .ouvir-par { margin-top: 10px; }
+
+/* O caminho: cidade com chinês, pinyin e som, e a unidade */
+.licao__caminho { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; font-size: 0.9375rem; }
+.licao__caminho > a { font-size: 1.0625rem; }
+.licao__caminho-py { font-style: italic; color: var(--jade); }
+.licao__unidade { flex-basis: 100%; color: var(--ink-light); }
+
+/* As etiquetas: nível HSK, número da lição e tempo */
+.licao__etiquetas { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 24px; }
+.etiqueta { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 20px; background: var(--paper-mid); color: var(--ink-mid); font-size: 0.875rem; font-weight: 600; }
+.etiqueta--hsk { background: var(--gold-light); color: var(--gold-dark); }
+
+/* Os títulos das partes da lição, com um número num círculo */
+.licao h2 { display: flex; align-items: center; gap: 10px; margin-top: 40px; }
+.licao__passo { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--jade); color: #fff; font-size: 1rem; }
+body.dark .licao__passo { color: #0F1519; }
+.licao__dica { color: var(--ink-light); margin: -4px 0 14px; }
+
+/* ═══ EXERCÍCIO ═══ */
+.exercicio { padding: 24px; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); border-top: 4px solid var(--gold); }
+.exercicio .botao-cha--claro { background: var(--white); color: var(--ink); border: 1.5px solid var(--paper-dark); }
+.ex__contador { font-size: 0.875rem; font-weight: 700; color: var(--gold-dark); margin-bottom: 6px; }
+.ex__pergunta { font-size: 1.125rem; font-weight: 600; margin-bottom: 10px; }
+.ex__grande { font-size: 1.5rem; margin-bottom: 10px; }
+.ex__grande [lang="zh-CN"], .ex__zh { font-family: var(--font-chinese); font-weight: 700; }
+.ex__py { font-style: italic; color: var(--jade); }
+.ex__opcoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin: 16px 0; }
+.ex__opcao { padding: 14px; border: 2px solid var(--paper-dark); border-radius: var(--radius); background: var(--paper); color: var(--ink); font: inherit; font-size: 1rem; cursor: pointer; text-align: center; }
+.ex__opcao .ex__zh { font-size: 1.75rem; }
+.ex__opcao:hover:not(:disabled) { border-color: var(--jade); }
+.ex__opcao:disabled { cursor: default; }
+.ex__opcao--certa { border-color: var(--jade); background: var(--green-light); }
+.ex__opcao--errada { border-color: var(--plum); background: var(--red-light); }
+.ex__certo { color: var(--jade); font-weight: 600; margin-bottom: 12px; }
+.ex__errado { color: var(--red-dark); font-weight: 600; margin-bottom: 12px; }
+.ex__pontos { font-family: var(--font-titulos); font-size: 2rem; font-weight: 800; color: var(--ink); }
+.ex__erradas { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 12px 0 18px; }
+.ex__erradas li { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 10px 14px; background: var(--paper); border-radius: 10px; }
+
+/* ═══ CONTINUA A PRATICAR ═══ */
+.mais-pratica { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.mais-pratica a { display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 16px 18px; border-radius: var(--radius); background: var(--white); box-shadow: var(--shadow); border-left: 4px solid var(--blue); text-decoration: none; color: var(--ink); font-weight: 400; transition: transform 0.15s; }
+.mais-pratica a:hover { transform: translateY(-2px); }
+.mais-pratica strong { color: var(--blue-dark); }
+.mais-pratica span { color: var(--ink-light); font-size: 0.9375rem; }
+
+/* ═══ ANTERIOR / SEGUINTE ═══ */
+.licao__navegacao { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.licao__nav { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; border-radius: var(--radius); border: 2px solid var(--paper-dark); text-decoration: none; background: var(--white); }
+.licao__nav span { color: var(--ink-light); font-size: 0.875rem; font-weight: 600; }
+.licao__nav strong { color: var(--ink); font-size: 1.0625rem; }
+.licao__nav--seguinte { grid-column: 2; text-align: right; border-color: var(--jade); }
+.licao__nav--cidade { background: var(--jade); }
+.licao__nav--cidade span, .licao__nav--cidade strong { color: #fff; }
+body.dark .licao__nav--cidade span, body.dark .licao__nav--cidade strong { color: #0F1519; }
+@media (max-width: 600px) {
+  .licao__navegacao { grid-template-columns: 1fr; }
+  .licao__nav--seguinte { grid-column: 1; }
+}
+
+/* ═══ CIDADE: PARTES NOVAS ═══ */
+.capa__pinyin { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 1.25rem; font-style: italic; margin-bottom: 6px; }
+.capa__pinyin .ouvir-par { font-style: normal; }
+
+/* Porquê esta cidade: o texto à esquerda e o progresso à direita */
+.sobre-cidade { display: grid; grid-template-columns: 1fr 360px; gap: 32px; align-items: start; max-width: var(--page-max); margin: 0 auto; padding: 40px var(--page-gutter) 8px; }
+.sobre-cidade h2 { font-size: 1.75rem; margin-bottom: 10px; }
+.sobre-cidade__texto p { line-height: 1.75; color: var(--ink-mid); margin-bottom: 14px; }
+.sobre-cidade__meta { padding: 14px 18px; border-radius: var(--radius); background: var(--green-light); }
+.sobre-cidade__meta strong { display: block; color: var(--ink); }
+.sobre-cidade__meta { border-left: 4px solid var(--jade); }
+.sobre-cidade__progresso { margin: 0; }
+.sobre-cidade__progresso .botao-cha { margin: 16px 0 0; }
+@media (max-width: 860px) { .sobre-cidade { grid-template-columns: 1fr; } }
+
+/* A legenda de cada foto das unidades */
+.unidade__figura { margin: 0; }
+.unidade__figura figcaption { padding: 10px 16px 0; font-size: 0.875rem; line-height: 1.5; color: var(--ink-light); }
+
+/* A cultura e a navegação entre cidades ficam na largura da página */
+.cultura-secao { padding-top: 24px; }
+.cidades-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: var(--page-max); margin: 0 auto; padding: 0 var(--page-gutter) 24px; }
+@media (max-width: 600px) { .cidades-nav { grid-template-columns: 1fr; } .cidades-nav .licao__nav--seguinte { grid-column: 1; } }

@@ -127,7 +127,7 @@ require 'includes/topo.php';
 <p class="section-intro">11 ferramentas para praticar: cartões de memória, jogos, dicionário, temporizador, cultura, pronúncia e mais.</p>
 
 <div id="api-tabs" style="display:flex;gap:3px;border-bottom:2px solid var(--paper-dark);flex-wrap:wrap;margin-bottom:0">
-  <button class="api-tab-btn active" onclick="switchApiTab(event,'tab-flash')">🃏 Cartões</button>
+  <button class="api-tab-btn active" onclick="switchApiTab(event,'tab-flash')">Cartões</button>
   <button class="api-tab-btn" onclick="switchApiTab(event,'tab-sb')">Construir frases</button>
   <button class="api-tab-btn" onclick="switchApiTab(event,'tab-chargame')">Jogo de caracteres</button>
   <button class="api-tab-btn" onclick="switchApiTab(event,'tab-speak')">Ouvir</button>
@@ -136,13 +136,13 @@ require 'includes/topo.php';
   <button class="api-tab-btn" onclick="switchApiTab(event,'tab-notebook')">Caderno</button>
   <button class="api-tab-btn" onclick="switchApiTab(event,'tab-timer')">Temporizador</button>
   <button class="api-tab-btn" onclick="switchApiTab(event,'tab-culture')">Cultura</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-keyboard')">⌨️ Teclado</button>
+  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-keyboard')">Teclado</button>
   <button class="api-tab-btn" onclick="switchApiTab(event,'tab-mic')">Pronúncia</button>
 </div>
 
 <!-- CARTÕES DE MEMÓRIA -->
 <div id="tab-flash" class="api-tab-content active" style="padding-top:1.2rem">
-  <div class="info" style="margin-bottom:.8rem">🃏 <strong>Cartões com revisão espaçada</strong>. Toca para virar e avalia-te. Os cartões difíceis voltam mais cedo. O progresso fica guardado sozinho.</div>
+  <div class="info" style="margin-bottom:.8rem"><strong>Cartões com revisão espaçada</strong>. Toca para virar e avalia-te. Os cartões difíceis voltam mais cedo. O progresso fica guardado sozinho.</div>
   <div id="fc-box">
     <div class="fc-stats-row">
       <div class="fc-stat"><div class="fsn" id="fc-total">0</div><div class="fsl">Total</div></div>
@@ -197,8 +197,8 @@ require 'includes/topo.php';
   <div class="info" style="margin-bottom:.8rem"><strong>Jogo de reconhecer caracteres</strong>. Vês um caractere e adivinhas o pinyin, contra o relógio. Há dois modos.</div>
   <div id="cg-box">
     <div style="display:flex;gap:10px;margin-bottom:1rem;flex-wrap:wrap;align-items:center">
-      <button onclick="startCG('choice')" style="background:var(--red);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">▶ Escolha múltipla</button>
-      <button onclick="startCG('type')" style="background:var(--blue);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">⌨️ Escrever o pinyin</button>
+      <button onclick="startCG('choice')" style="background:var(--red);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)"><i class="i i-jogar" aria-hidden="true"></i> Escolha múltipla</button>
+      <button onclick="startCG('type')" style="background:var(--blue);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Escrever o pinyin</button>
       <button id="cg-parar" onclick="pararCG()" style="display:none;background:var(--paper-dark);color:var(--ink);border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)"><i class="i i-parar" aria-hidden="true"></i> Parar o jogo</button>
       <span id="cg-score-label" style="font-size:0.8125rem;font-weight:600;color:var(--ink-light)">Pontos: 0 | Recorde: 0</span>
     </div>
@@ -248,7 +248,7 @@ require 'includes/topo.php';
   <div id="hanzi-section">
     <div id="hanzi-input-row">
       <input id="hanzi-input" type="text" maxlength="1" placeholder="字" value="中">
-      <button class="hanzi-action-btn" id="hanzi-animate-btn" onclick="animateHanzi()">▶ Animar</button>
+      <button class="hanzi-action-btn" id="hanzi-animate-btn" onclick="animateHanzi()"><i class="i i-jogar" aria-hidden="true"></i> Animar</button>
       <button class="hanzi-action-btn" id="hanzi-quiz-btn" onclick="quizHanzi()"><i class="i i-escrever" aria-hidden="true"></i> Praticar</button>
       <button class="speak-btn" style="padding:7px 12px;font-size:0.75rem" onclick="speakText(document.getElementById('hanzi-input').value)"><i class="i i-ouvir" aria-hidden="true"></i> Ouvir</button>
     </div>
@@ -283,7 +283,7 @@ require 'includes/topo.php';
   <div id="timer-wrap">
     <div id="timer-display">00:00</div>
     <div class="timer-btns">
-      <button class="timer-btn" id="t-start" onclick="startTimer()" style="background:#0E7C66;color:#fff">▶ Começar</button>
+      <button class="timer-btn" id="t-start" onclick="startTimer()" style="background:#0E7C66;color:#fff"><i class="i i-jogar" aria-hidden="true"></i> Começar</button>
       <button class="timer-btn" id="t-stop" onclick="stopTimer()" style="background:var(--red);color:#fff;display:none"><i class="i i-pausa" aria-hidden="true"></i> Pausa</button>
       <button class="timer-btn" id="t-reset" onclick="resetTimer()" style="background:var(--paper-dark);color:var(--ink)"><i class="i i-repetir" aria-hidden="true"></i> Recomeçar</button>
     </div>
@@ -303,7 +303,7 @@ require 'includes/topo.php';
 <div id="tab-culture" class="api-tab-content" style="padding-top:1.2rem">
   <div class="info" style="margin-bottom:.8rem"><strong>A cultura de trabalho na China</strong>. O essencial para trabalhar na China. Conhecer a cultura ajuda muito no trabalho.</div>
   <div class="culture-grid">
-    <div class="culture-card"><h3>🃏 Cartões de visita (名片 míngpiàn)</h3><ul><li>Dá e recebe com as DUAS mãos</li><li>Olha para o cartão uns segundos e nunca escrevas nele</li><li>Nunca o ponhas no bolso de trás</li><li>Tem cartões com o verso em chinês</li><li>Nas reuniões, deixa os cartões em cima da mesa</li></ul></div>
+    <div class="culture-card"><h3>Cartões de visita (名片 míngpiàn)</h3><ul><li>Dá e recebe com as DUAS mãos</li><li>Olha para o cartão uns segundos e nunca escrevas nele</li><li>Nunca o ponhas no bolso de trás</li><li>Tem cartões com o verso em chinês</li><li>Nas reuniões, deixa os cartões em cima da mesa</li></ul></div>
     <div class="culture-card"><h3>Regras à mesa (餐桌礼仪)</h3><ul><li>Espera que o anfitrião se sente e comece</li><li>Quem convida paga, não discutas a conta</li><li>Brinde: 干杯 (gānbēi) = Saúde!</li><li>Prova um pouco de tudo o que te oferecem</li><li>Deixar um pouco de comida = já estás satisfeito (é educado)</li></ul></div>
     <div class="culture-card"><h3>Oferecer presentes (送礼)</h3><ul><li>Nunca ofereças relógios de parede: soa a «ir a um funeral»</li><li>Nunca ofereças peras: 梨 soa a «separação»</li><li>Oferece em números pares, dá sorte</li><li>Envelopes vermelhos (红包) com dinheiro são sempre boa ideia</li><li>Não abras o presente logo à frente de quem o deu</li></ul></div>
     <div class="culture-card"><h3>Relações (关系 guānxi)</h3><ul><li>关系 = contactos. Nos negócios são tudo</li><li>Cria confiança antes de fazer negócio</li><li>O WeChat é a principal ferramenta de trabalho</li><li>Dirige-te sempre primeiro às pessoas mais velhas ou com cargo mais alto</li><li>A harmonia (和谐) vale mais do que o confronto</li></ul></div>
@@ -314,7 +314,7 @@ require 'includes/topo.php';
 
 <!-- CONFIGURAR O TECLADO -->
 <div id="tab-keyboard" class="api-tab-content" style="padding-top:1.2rem">
-  <div class="info" style="margin-bottom:.8rem">⌨️ <strong>Configurar o teclado chinês</strong>. Como escrever em chinês em todos os teus aparelhos. Essencial para o WeChat, os e-mails e o dia a dia na China.</div>
+  <div class="info" style="margin-bottom:.8rem"><strong>Configurar o teclado chinês</strong>. Como escrever em chinês em todos os teus aparelhos. Essencial para o WeChat, os e-mails e o dia a dia na China.</div>
   <div class="kb-grid">
     <div class="kb-card"><h3>Windows</h3>
       <div class="kb-step"><strong>1.</strong> Definições → Hora e idioma → Idioma</div>

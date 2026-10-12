@@ -64,5 +64,6 @@ if ($aluno['ultimo_estudo'] === $hoje) {
 $atualizar = $pdo->prepare('UPDATE utilizadores SET sequencia_dias = ?, ultimo_estudo = ? WHERE id = ?');
 $atualizar->execute([$sequencia, $hoje, $aluno_id]);
 
-header('Location: cidade.php?id=' . $cidade_id . '&feita=1');
+// Volto à lição, que mostra «Lição concluída» e o botão para a próxima
+header('Location: licao.php?id=' . $licao_id . '&feita=1');
 exit;

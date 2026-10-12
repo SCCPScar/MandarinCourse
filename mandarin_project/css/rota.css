@@ -142,4 +142,4 @@
 
 .rota h1 { font-size: clamp(2rem, 4vw, 2.75rem); color: var(--ink); }
 .cultura-item p { margin-bottom: 12px; }
-.rota-geral a, .cultura-cidade h3 a:hover { color: var(--jade); font-weight: 600; }
+.rota-geral a:not(.botao-cha), .cultura-cidade h3 a:hover { color: var(--jade); font-weight: 600; }
