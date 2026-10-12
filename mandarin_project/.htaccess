@@ -23,4 +23,10 @@ RedirectMatch 403 ^/cha/(includes|dados)/
     Header set X-Frame-Options "DENY"
     # Quando o aluno segue um link para fora, o outro site não fica a saber a página exata de onde veio
     Header set Referrer-Policy "strict-origin-when-cross-origin"
+    # Antes de usar um CSS, JS ou HTML guardado, o browser pergunta se há versão nova.
+    # Se não houver, o Apache responde só "igual" (código 304) e não envia o ficheiro outra vez.
+    # Sem isto, depois de eu mudar um ficheiro o browser podia continuar a mostrar a versão antiga.
+    <FilesMatch "\.(css|js|html)$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
 </IfModule>
