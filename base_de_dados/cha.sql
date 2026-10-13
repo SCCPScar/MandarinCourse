@@ -1,7 +1,7 @@
 -- =====================================================================
 -- Chá · Base de dados
 -- Eu importo este ficheiro no phpMyAdmin (separador "Importar").
--- Ele cria a base "cha", as 11 tabelas e alguns dados de exemplo.
+-- Ele cria a base "cha", as 9 tabelas e alguns dados de exemplo.
 -- =====================================================================
 
 -- Eu aviso o MySQL de que este ficheiro está em UTF-8.
@@ -30,9 +30,7 @@ CREATE TABLE utilizadores (
   nome            VARCHAR(80)  NOT NULL,
   email           VARCHAR(120) NOT NULL UNIQUE,
   palavra_passe   VARCHAR(255) NOT NULL,  -- só o hash
-  nivel           ENUM('zero', 'basico', 'intermedio', 'avancado') NOT NULL DEFAULT 'zero',
-  minutos_por_dia TINYINT UNSIGNED NOT NULL DEFAULT 60,
-  sequencia_dias  SMALLINT UNSIGNED NOT NULL DEFAULT 0,  -- dias seguidos a estudar
+  sequencia_dias  SMALLINT UNSIGNED NOT NULL DEFAULT 0,  -- dias seguidos a concluir lições
   ultimo_estudo   DATE NULL,
   consentimento   DATETIME NOT NULL,  -- quando aceitou a política de privacidade (RGPD)
   criado_em       DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -73,7 +71,7 @@ CREATE TABLE unidades (
 ) ENGINE=InnoDB;
 
 -- ---------------------------------------------------------------------
--- 3B. CULTURA
+-- 4. CULTURA
 -- Curiosidades sobre cada cidade. Cada uma tem a palavra em chinês e o pinyin,
 -- para o aluno também a poder ouvir e aprender.
 -- ---------------------------------------------------------------------
@@ -89,7 +87,7 @@ CREATE TABLE cultura (
 
 
 -- ---------------------------------------------------------------------
--- 4. LIÇÕES
+-- 5. LIÇÕES
 -- Cada unidade tem várias lições curtas.
 -- ---------------------------------------------------------------------
 CREATE TABLE licoes (
@@ -104,7 +102,7 @@ CREATE TABLE licoes (
 
 
 -- ---------------------------------------------------------------------
--- 5. PALAVRAS
+-- 6. PALAVRAS
 -- O vocabulário. Cada palavra aparece pela primeira vez numa lição.
 -- ---------------------------------------------------------------------
 CREATE TABLE palavras (
@@ -118,7 +116,7 @@ CREATE TABLE palavras (
 
 
 -- ---------------------------------------------------------------------
--- 5B. FRASES
+-- 7. FRASES
 -- Frases de exemplo de cada lição, para o aluno ouvir as palavras em contexto.
 -- ---------------------------------------------------------------------
 CREATE TABLE frases (
@@ -132,7 +130,7 @@ CREATE TABLE frases (
 
 
 -- ---------------------------------------------------------------------
--- 6. PROGRESSO
+-- 8. PROGRESSO
 -- Que lições cada utilizador já terminou (relação N:N entre utilizadores e lições).
 -- A chave primária tem duas colunas: o mesmo utilizador não termina a mesma lição duas vezes.
 -- ON DELETE CASCADE: se eu eliminar o utilizador, o progresso dele também é eliminado (RGPD).
@@ -145,38 +143,6 @@ CREATE TABLE progresso (
   PRIMARY KEY (utilizador_id, licao_id),
   FOREIGN KEY (utilizador_id) REFERENCES utilizadores(id) ON DELETE CASCADE,
   FOREIGN KEY (licao_id)   REFERENCES licoes(id)
-) ENGINE=InnoDB;
-
-
--- ---------------------------------------------------------------------
--- 7. REVISÕES (revisão espaçada / SRS)
--- Para cada palavra que o utilizador já estudou, eu guardo quando a deve rever.
--- Se ele acerta, o intervalo aumenta; se erra, volta a 1 dia.
--- ---------------------------------------------------------------------
-CREATE TABLE revisoes (
-  utilizador_id       INT UNSIGNED NOT NULL,
-  palavra_id       INT UNSIGNED NOT NULL,
-  intervalo_dias   SMALLINT UNSIGNED NOT NULL DEFAULT 1,
-  proxima_revisao  DATE NOT NULL,
-  acertos          SMALLINT UNSIGNED NOT NULL DEFAULT 0,
-  PRIMARY KEY (utilizador_id, palavra_id),
-  FOREIGN KEY (utilizador_id) REFERENCES utilizadores(id) ON DELETE CASCADE,
-  FOREIGN KEY (palavra_id) REFERENCES palavras(id)
-) ENGINE=InnoDB;
-
-
--- ---------------------------------------------------------------------
--- 8. CADERNO
--- As palavras que o utilizador guardou no caderno pessoal.
--- ---------------------------------------------------------------------
-CREATE TABLE caderno (
-  id          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  utilizador_id  INT UNSIGNED NOT NULL,
-  hanzi       VARCHAR(20)  NOT NULL,
-  pinyin      VARCHAR(40)  NOT NULL,
-  traducao    VARCHAR(100) NOT NULL,
-  criado_em   DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (utilizador_id) REFERENCES utilizadores(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 

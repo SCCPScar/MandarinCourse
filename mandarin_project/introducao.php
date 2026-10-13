@@ -48,7 +48,7 @@ require 'includes/topo.php';
   <div class="po-grid" id="po-grid"></div>
 </div>
 
-<!-- AS CONQUISTAS: medalhas que o aluno ganha ao estudar (o js/ui.js marca as que já ganhou) -->
+<!-- AS CONQUISTAS: medalhas que o aluno ganha ao estudar (o js/conquistas.js marca as que já ganhou) -->
 <div id="achievements-bar">
   <div class="ach-topo">
     <h2 class="ach-titulo"><i class="i i-medalha" aria-hidden="true"></i> As tuas conquistas</h2>

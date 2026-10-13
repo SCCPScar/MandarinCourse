@@ -15,7 +15,7 @@ require 'includes/cabecalho.php';
   <p>Scarllett Pena, <a href="mailto:scarllettsabrinapena@gmail.com">scarllettsabrinapena@gmail.com</a>. O Chá é um projeto escolar e gratuito.</p>
 
   <h2>Que dados eu guardo</h2>
-  <p>O teu nome, o teu e-mail, a tua palavra-passe (só em forma cifrada, nunca em texto), a data em que aceitaste esta política e o teu progresso no curso (lições, revisões e caderno).</p>
+  <p>O teu nome, o teu e-mail, a tua palavra-passe (só em forma cifrada, nunca em texto), a data em que aceitaste esta política e o teu progresso no curso (as lições que concluíste e os dias seguidos em que concluíste lições).</p>
 
   <h2>Para quê</h2>
   <p>Só para guardar a tua conta e o teu progresso. Eu não vendo nem partilho os teus dados, não mostro publicidade e não uso cookies de rastreio. Uso apenas um cookie de sessão, necessário para manter a sessão iniciada.</p>

@@ -77,7 +77,7 @@ require 'includes/topo.php';
     <section class="painel">
       <p class="painel__ola">Olá, <?= e($aluno['nome']) ?>!</p>
       <ul class="painel__numeros">
-        <li><i class="i i-dias" aria-hidden="true"></i> <strong><?= (int) $aluno['sequencia_dias'] ?></strong> dias seguidos</li>
+        <li><i class="i i-dias" aria-hidden="true"></i> <strong><?= (int) $aluno['sequencia_dias'] ?></strong> dias seguidos a concluir lições</li>
         <li><i class="i i-certo" aria-hidden="true"></i> <strong><?= (int) $aluno['feitas'] ?></strong> lições feitas</li>
       </ul>
       <a href="conta.php">A minha conta</a>

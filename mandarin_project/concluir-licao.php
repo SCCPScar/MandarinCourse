@@ -1,9 +1,8 @@
 <?php
 // concluir-licao.php
-// Aqui eu guardo que o aluno terminou uma lição. Faço três coisas:
+// Aqui eu guardo que o aluno terminou uma lição. Faço duas coisas:
 // 1) registo a lição no progresso;
-// 2) ponho as palavras da lição nas revisões, para amanhã;
-// 3) atualizo os dias seguidos a estudar.
+// 2) atualizo os dias seguidos a concluir lições.
 
 require 'includes/sessao.php';
 require 'includes/ligacao.php';
@@ -33,21 +32,13 @@ if (!$cidade_id) {
 
 $hoje = date('Y-m-d');
 $ontem = date('Y-m-d', strtotime('-1 day'));
-$amanha = date('Y-m-d', strtotime('+1 day'));
 
 // 1) Progresso. INSERT IGNORE: se a lição já estava feita, a chave primária impede
 //    a linha repetida e o MySQL simplesmente ignora, sem dar erro.
 $inserir = $pdo->prepare('INSERT IGNORE INTO progresso (utilizador_id, licao_id, pontuacao) VALUES (?, ?, 100)');
 $inserir->execute([$aluno_id, $licao_id]);
 
-// 2) Revisões. Eu copio todas as palavras da lição de uma vez, com INSERT ... SELECT.
-$inserir = $pdo->prepare('
-    INSERT IGNORE INTO revisoes (utilizador_id, palavra_id, proxima_revisao)
-    SELECT ?, id, ? FROM palavras WHERE licao_id = ?
-');
-$inserir->execute([$aluno_id, $amanha, $licao_id]);
-
-// 3) Dias seguidos.
+// 2) Dias seguidos (a concluir lições).
 //    Se já estudou hoje, fica igual. Se estudou ontem, soma 1. Senão, recomeça em 1.
 $consulta = $pdo->prepare('SELECT sequencia_dias, ultimo_estudo FROM utilizadores WHERE id = ?');
 $consulta->execute([$aluno_id]);

@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['confirmo'])) {
 validar_csrf();
 
 // Basta apagar o utilizador: o ON DELETE CASCADE da base de dados
-// apaga também o progresso, as revisões e o caderno dele.
+// apaga também o progresso dele.
 $apagar = $pdo->prepare('DELETE FROM utilizadores WHERE id = ?');
 $apagar->execute([id_utilizador()]);
 

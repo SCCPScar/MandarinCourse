@@ -4,7 +4,7 @@
 // O sessao.php inclui este ficheiro, por isso estão disponíveis em todas as páginas.
 
 // Os dois botões para ouvir o chinês: à velocidade normal e devagar.
-// O texto a ler fica no data-falar; a função falar (js/data.js) usa a voz do browser.
+// O texto a ler fica no data-falar; a função falar() (js/ouvir.js) usa a voz do browser.
 // $rotulo é o que o leitor de ecrã diz, por exemplo o pinyin da palavra.
 function botoes_ouvir($hanzi, $rotulo = '') {
     $falar  = e($hanzi);

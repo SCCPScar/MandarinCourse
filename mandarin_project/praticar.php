@@ -152,7 +152,7 @@ require 'includes/topo.php';
     </div>
     <div class="fc-card-wrap" onclick="virarCartao()">
       <div class="fc-card" id="fc-card">
-        <div class="fc-front"><div class="fc-zh-big" id="fc-zh-front">—</div><div class="fc-hint-txt">Toca para ver</div></div>
+        <div class="fc-front"><div class="fc-zh-big" id="fc-zh-front">…</div><div class="fc-hint-txt">Toca para ver</div></div>
         <div class="fc-back">
           <div class="fc-zh-sm" id="fc-zh-back"></div>
           <div class="fc-py" id="fc-py-back"></div>

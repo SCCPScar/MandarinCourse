@@ -37,7 +37,7 @@ require 'includes/cabecalho.php';
 
   <div class="zona-perigo">
     <h2>Eliminar conta</h2>
-    <p>Isto apaga para sempre a tua conta, o teu progresso, as tuas revisões e o teu caderno.</p>
+    <p>Isto apaga para sempre a tua conta e o teu progresso.</p>
     <form method="post" action="eliminar-conta.php">
       <input type="hidden" name="csrf" value="<?= e(token_csrf()) ?>">
       <label class="confirmar">
