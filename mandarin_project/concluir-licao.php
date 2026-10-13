@@ -18,14 +18,11 @@ validar_csrf();
 $licao_id = (int) ($_POST['licao_id'] ?? 0);
 $aluno_id = id_utilizador();
 
-// Eu confirmo que a lição existe e descubro a cidade dela (para voltar lá no fim)
-$consulta = $pdo->prepare('
-    SELECT u.cidade_id FROM licoes l JOIN unidades u ON u.id = l.unidade_id WHERE l.id = ?
-');
+// Eu confirmo que a lição existe (alguém podia mudar o número no formulário)
+$consulta = $pdo->prepare('SELECT id FROM licoes WHERE id = ?');
 $consulta->execute([$licao_id]);
-$cidade_id = $consulta->fetchColumn();
 
-if (!$cidade_id) {
+if (!$consulta->fetchColumn()) {
     header('Location: index.php');
     exit;
 }

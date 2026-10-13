@@ -60,8 +60,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (!$erros) {
-        // password_hash transforma a palavra-passe num código que não se consegue reverter
-        $hash = password_hash($palavra_passe, PASSWORD_DEFAULT);
+        // password_hash transforma a palavra-passe num código que não se consegue reverter (bcrypt).
+        // O "custo" 12 diz quantas vezes o cálculo se repete: quanto maior, mais difícil de adivinhar.
+        // Escrevo-o aqui porque o valor por omissão muda conforme a versão do PHP.
+        $hash = password_hash($palavra_passe, PASSWORD_BCRYPT, ['cost' => 12]);
 
         // Eu uso "?" em vez de juntar o texto ao SQL: assim ninguém consegue fazer SQL injection
         $inserir = $pdo->prepare(
@@ -80,7 +82,7 @@ require 'includes/cabecalho.php';
 ?>
 <section class="conta-caixa">
   <h1>Criar conta</h1>
-  <p>Guarda o teu progresso e continua a estudar em qualquer dispositivo.</p>
+  <p>Guarda as lições que concluíste e continua a rota noutro computador ou no telemóvel.</p>
 
   <?php if ($erros): ?>
     <div class="aviso aviso--erro" role="alert">
