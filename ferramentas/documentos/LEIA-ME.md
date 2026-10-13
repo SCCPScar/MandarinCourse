@@ -6,6 +6,7 @@ Aqui estão os scripts que geram os documentos Word em `docs/entregas/`.
 - `guia_instalacao.js`: o conteúdo do Guia de Instalação (usa a biblioteca `docx`, em Node.js).
 - `guia_codigo.js`: o conteúdo do Guia de Código. Os trechos de código são copiados dos ficheiros do projeto no momento em que o documento é gerado; se um trecho deixar de existir, o script para com erro.
 - `guia_estudo.js`: o conteúdo do Guia de Estudo (o texto entre [[ ]] fica marcado a amarelo, para a formanda completar).
+- `guiao.js`: o Guião de Apresentação (diapositivos, tempos, demonstração e planos B).
 - `comum.js`: as peças que os documentos partilham (tabelas, caixas, blocos de código, capa).
 - `aplicar_molde.py`: copia o cabeçalho e o rodapé do molde para o documento gerado e põe o nome da formanda.
 - `gerar.sh`: junta os dois passos e cria uma pré-visualização em imagens (precisa do LibreOffice e do Poppler).
