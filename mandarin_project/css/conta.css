@@ -185,3 +185,10 @@
   color: var(--jade);
   font-weight: 600;
 }
+
+/* O link «Continuar a estudar» da página da conta, com o aspeto de um botão */
+.botao--link {
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+}

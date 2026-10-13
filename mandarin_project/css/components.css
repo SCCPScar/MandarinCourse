@@ -2086,9 +2086,3 @@ body.dark .hoje-concluir {
   color: #0f1519;
 }
 
-/* Página da conta: link com aspeto de botão */
-.botao--link {
-  display: grid;
-  place-items: center;
-  text-decoration: none;
-}

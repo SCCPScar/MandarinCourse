@@ -14,3 +14,13 @@ Aqui estão os scripts que geram os documentos Word em `docs/entregas/`.
 
 Uso: `npm install docx@9` e depois, por exemplo, `bash gerar.sh guia_codigo "Guia de Código - Chá"`.
 A variável `PROJETO` indica a pasta do projeto (por omissão `/home/user/MandarinCourse`).
+
+## Apresentação (PowerPoint)
+
+A pasta `apresentacao/` gera o ficheiro `docs/entregas/Apresentação - Chá.pptx`.
+
+- `apresentacao.js`: os diapositivos e as notas do orador (os textos do Guião). Usa a biblioteca `pptxgenjs` e os ícones da `react-icons`.
+- `img/`: as capturas de ecrã do site, tiradas com uma conta de demonstração.
+- `gerar.sh`: cria o ficheiro e as imagens de pré-visualização.
+
+Uso: `npm install` dentro de `apresentacao/` e depois `bash gerar.sh`.
