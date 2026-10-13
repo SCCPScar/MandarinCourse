@@ -13,7 +13,9 @@ const PROJETO = process.env.PROJETO || '/home/user/MandarinCourse';
 
 // Texto com partes a **negrito** e `código`
 function runs(texto, extra = {}) {
-  return texto.split(/(\*\*[^*]+\*\*|`[^`]+`)/).filter(Boolean).map((parte) => {
+  return texto.split(/(\*\*[^*]+\*\*|`[^`]+`|\[\[[^\]]+\]\])/).filter(Boolean).map((parte) => {
+    // [[texto]]: algo que a Scarllett tem de completar (fica marcado a amarelo)
+    if (parte.startsWith('[[')) return new TextRun({ text: '[' + parte.slice(2, -2) + ']', font: FONTE, highlight: 'yellow', ...extra });
     if (parte.startsWith('**')) return new TextRun({ text: parte.slice(2, -2), bold: true, font: FONTE, ...extra });
     if (parte.startsWith('`')) return new TextRun({ text: parte.slice(1, -1), font: FONTE_CODIGO, size: 20, color: 'A32A18', ...extra });
     return new TextRun({ text: parte, font: FONTE, ...extra });
