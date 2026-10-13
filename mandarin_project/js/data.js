@@ -65,15 +65,42 @@ function botoesOuvir(hanzi, rotulo) {
     + `</span>`;
 }
 
-function speakText(text,rate){
-  if(!text)return;speechSynthesis.cancel();
-  const utt=new SpeechSynthesisUtterance(text);
-  voices=speechSynthesis.getVoices();
-  const v=voices.find(v=>v.lang.includes('zh')&&v.lang.includes('CN'))||voices.find(v=>v.lang.startsWith('zh'))||null;
-  if(v)utt.voice=v;utt.lang='zh-CN';
-  utt.rate=rate||parseFloat(document.getElementById('speak-rate')?.value||0.85);
+// Aqui eu leio um texto em chinês em voz alta, com a voz do próprio browser (Web Speech API).
+// rate é a velocidade: 1 é normal, menos de 1 é mais devagar.
+function speakText(text, rate) {
+  if (!text) return;
+
+  // Browsers muito antigos não têm voz nenhuma
+  if (!('speechSynthesis' in window)) {
+    showToast('Este browser não consegue ler texto em voz alta. Usa o Chrome ou o Edge.', 5000, 'sem-som');
+    return;
+  }
+
+  speechSynthesis.cancel();                       // paro o que estiver a ser dito antes
+  const utt = new SpeechSynthesisUtterance(text);
+
+  // Procuro uma voz chinesa: primeiro da China continental (zh-CN), depois qualquer uma em chinês
+  voices = speechSynthesis.getVoices();
+  const v = voices.find(v => v.lang.includes('zh') && v.lang.includes('CN'))
+         || voices.find(v => v.lang.startsWith('zh'))
+         || null;
+  if (v) utt.voice = v;
+  utt.lang = 'zh-CN';
+
+  // Se as vozes já carregaram e nenhuma é chinesa, aviso no momento do clique
+  if (voices.length && !v) {
+    showToast('Este computador não tem voz chinesa, por isso pode não se ouvir nada. Usa o Chrome ou o Edge.', 5000, 'sem-som');
+  }
+
+  utt.rate = rate || parseFloat(document.getElementById('speak-rate')?.value || 0.85);
   speechSynthesis.speak(utt);
-  const st=document.getElementById('speak-status');if(st){st.innerHTML='<i class="i i-ouvir" aria-hidden="true"></i> A falar…';utt.onend=()=>{st.textContent='';};}
+
+  // Na ferramenta "Ouvir" do Praticar mostro "A falar…" enquanto a voz fala
+  const st = document.getElementById('speak-status');
+  if (st) {
+    st.innerHTML = '<i class="i i-ouvir" aria-hidden="true"></i> A falar…';
+    utt.onend = () => { st.textContent = ''; };
+  }
 }
 document.getElementById('speak-rate')?.addEventListener('input',function(){const l=document.getElementById('speak-rate-label');if(l)l.textContent=this.value+'×';});
 

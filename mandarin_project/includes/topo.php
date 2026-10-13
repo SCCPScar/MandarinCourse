@@ -34,8 +34,9 @@
   <?php endforeach; ?>
 
   <?php if (!empty($usa_hanzi)): ?>
-  <!-- Hanzi Writer: anima a ordem dos traços dos caracteres -->
-  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+  <!-- Hanzi Writer (licença MIT): anima a ordem dos traços dos caracteres.
+       Está guardado no próprio site, na pasta vendor/, para funcionar sem internet. -->
+  <script src="vendor/hanzi-writer/hanzi-writer.min.js"></script>
   <?php endif; ?>
 </head>
 <body>

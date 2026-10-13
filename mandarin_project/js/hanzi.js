@@ -7,6 +7,18 @@
 // ═══ HANZI WRITER ═══
 let hanziWriterInstance = null;
 
+// Aqui eu digo ao HanziWriter onde estão os desenhos dos traços de cada caractere.
+// Primeiro procuro na pasta vendor/ do próprio site (funciona sem internet).
+// Só se o caractere não estiver lá é que vou buscá-lo à internet (CDN jsDelivr).
+function carregarTracos(char, onComplete, onError) {
+  fetch('vendor/hanzi-writer-data/' + encodeURIComponent(char) + '.json')
+    .then(r => { if (!r.ok) throw new Error('não está na pasta'); return r.json(); })
+    .catch(() => fetch('https://cdn.jsdelivr.net/npm/hanzi-writer-data@2.0.1/' + encodeURIComponent(char) + '.json')
+      .then(r => { if (!r.ok) throw new Error('não existe'); return r.json(); }))
+    .then(onComplete)
+    .catch(onError);
+}
+
 // ═══ FUNÇÕES DO HANZI WRITER ═══
 function loadChar(char) {
   const input = document.getElementById('hanzi-input');
@@ -21,7 +33,9 @@ function loadChar(char) {
       width:200, height:200, padding:16,
       strokeColor:'#C8361F', radicalColor:'#A32A18',
       outlineColor:'#D5DEDB', showOutline:true,
-      strokeAnimationSpeed:1, delayBetweenStrokes:200, rendererType:'svg'
+      strokeAnimationSpeed:1, delayBetweenStrokes:200, rendererType:'svg',
+      charDataLoader: carregarTracos,
+      onLoadCharDataError: () => { if (hint) hint.textContent = 'Não encontrei os traços deste caractere.'; }
     });
     if (hint) hint.innerHTML = 'Carrega em <i class="i i-jogar" aria-hidden="true"></i> Animar ou <i class="i i-escrever" aria-hidden="true"></i> Praticar';
   } catch(e) { if (hint) hint.textContent = 'Caractere não encontrado.'; }

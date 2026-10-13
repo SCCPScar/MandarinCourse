@@ -61,7 +61,7 @@ require 'includes/cabecalho.php';
 
   <h2>Bibliotecas</h2>
   <ul>
-    <li><strong><a href="https://hanziwriter.org" target="_blank" rel="noopener">Hanzi Writer</a></strong>, de David Chanin (licença MIT), para animar a ordem dos traços dos caracteres. Os dados dos traços vêm do projeto Make Me a Hanzi.</li>
+    <li><strong><a href="https://hanziwriter.org" target="_blank" rel="noopener">Hanzi Writer</a></strong>, de David Chanin (licença MIT), para animar a ordem dos traços dos caracteres. Os dados dos traços vêm do projeto Make Me a Hanzi (pacote hanzi-writer-data, licença Arphic Public License, incluída na pasta vendor/). A biblioteca e os traços dos caracteres usados no curso estão guardados no próprio site, para funcionarem sem internet.</li>
   </ul>
 
   <h2>Ilustrações</h2>

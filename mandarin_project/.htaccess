@@ -1,25 +1,36 @@
 # .htaccess
-# Aqui eu dou instruções ao Apache (o servidor web do XAMPP) para esta pasta.
+# Aqui eu dou instruções ao Apache (o servidor web do XAMPP e do alojamento) para esta pasta.
+# Todas as regras usam caminhos relativos: o site funciona em C:\xampp\htdocs\cha,
+# noutra pasta qualquer ou na raiz de um alojamento online, sem mudar nada.
 
-# 1) Página de erro 404: quando alguém abre um endereço que não existe, vê a nossa página.
-#    O caminho começa em /cha/ porque o site fica em C:\xampp\htdocs\cha.
-#    Se a pasta tiver outro nome, eu troco "cha" pelo nome da pasta.
-ErrorDocument 404 /cha/404.php
-# As pastas proibidas (erro 403) também mostram a mesma página, para não se saber o que lá está
-ErrorDocument 403 /cha/404.php
-
-# 2) Não mostrar a lista de ficheiros de uma pasta (por exemplo /cha/img/) a quem a abrir.
+# 1) Não mostrar a lista de ficheiros de uma pasta (por exemplo img/) a quem a abrir.
 Options -Indexes
 
+# Liga o "reescritor" de endereços do Apache (mod_rewrite, que já vem ligado no XAMPP).
+RewriteEngine On
+
+# 2) As páginas do curso eram .html e passaram a .php (para todas usarem a mesma navegação).
+#    Quem tiver um link antigo guardado é enviado para a página nova (301 = mudou de vez).
+#    %1 é a pasta onde o site está e %2 o nome da página.
+RewriteCond %{REQUEST_URI} ^(.*/)(introducao|sons|basico|vocabulario|caracteres|praticar|biblioteca)\.html$
+RewriteRule ^ %1%2.php [R=301,L]
+
 # 3) Proteger ficheiros que só o PHP deve ler: os includes e os dados.
-#    Quem tentar abri-los no browser recebe "Proibido" (erro 403).
-RedirectMatch 403 ^/cha/(includes|dados)/
+#    Quem tentar abri-los no browser vê a página "não encontrada", para não se saber o que lá está.
+RewriteRule ^(includes|dados)(/|$) 404.php [END]
 
-# As páginas do curso eram .html e passaram a .php (para todas usarem a mesma navegação).
-# Quem tiver um link antigo guardado é enviado para a página nova (301 = mudou de vez).
-RedirectMatch 301 ^/cha/(introducao|sons|basico|vocabulario|caracteres|praticar|biblioteca)\.html$ /cha/$1.php
+# 4) Página de erro 404: quando alguém abre um endereço que não existe, vê a nossa página.
+#    -f quer dizer "é um ficheiro" e -d "é uma pasta"; o ! quer dizer "não".
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ 404.php [END]
 
-# 4) Cabeçalhos de segurança enviados em todas as respostas.
+#    Uma pasta sem página inicial (img/, css/, vendor/...) também mostra a página 404.
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}/index.php !-f
+RewriteRule ^ 404.php [END]
+
+# 5) Cabeçalhos de segurança enviados em todas as respostas.
 <IfModule mod_headers.c>
     # O browser não tenta "adivinhar" o tipo de um ficheiro (evita executar um .txt como script)
     Header set X-Content-Type-Options "nosniff"
