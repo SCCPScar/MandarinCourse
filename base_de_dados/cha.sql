@@ -34,7 +34,7 @@ CREATE TABLE utilizadores (
   ultimo_estudo   DATE NULL,
   consentimento   DATETIME NOT NULL,  -- quando aceitou a política de privacidade (RGPD)
   criado_em       DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 -- ---------------------------------------------------------------------
@@ -53,7 +53,7 @@ CREATE TABLE cidades (
   descricao TEXT NOT NULL,          -- o que a cidade tem de especial e porque é que a rota passa por ela
   consegues VARCHAR(255) NOT NULL,  -- o que o aluno já consegue fazer no fim da cidade
   capa      VARCHAR(10) NULL        -- início do nome da foto de capa (ex.: "bj0"); NULL se ainda não houver
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 -- ---------------------------------------------------------------------
@@ -68,7 +68,7 @@ CREATE TABLE unidades (
   foto       VARCHAR(30) NULL,   -- início do nome da foto (ex.: "bj2-cumprimentos"); NULL se ainda não houver
   legenda    VARCHAR(400) NULL,  -- o que a foto mostra (texto para quem a vê e para o atributo alt)
   FOREIGN KEY (cidade_id) REFERENCES cidades(id)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------
 -- 4. CULTURA
@@ -83,7 +83,7 @@ CREATE TABLE cultura (
   titulo     VARCHAR(60)  NOT NULL,
   texto      VARCHAR(500) NOT NULL,
   FOREIGN KEY (cidade_id) REFERENCES cidades(id)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 -- ---------------------------------------------------------------------
@@ -98,7 +98,7 @@ CREATE TABLE licoes (
   minutos     TINYINT UNSIGNED NOT NULL DEFAULT 15,
   explicacao  TEXT NULL,   -- texto curto que explica o tema da lição
   FOREIGN KEY (unidade_id) REFERENCES unidades(id)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 -- ---------------------------------------------------------------------
@@ -112,7 +112,7 @@ CREATE TABLE palavras (
   pinyin     VARCHAR(40)  NOT NULL,
   traducao   VARCHAR(100) NOT NULL,
   FOREIGN KEY (licao_id) REFERENCES licoes(id)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 -- ---------------------------------------------------------------------
@@ -126,7 +126,7 @@ CREATE TABLE frases (
   pinyin     VARCHAR(120) NOT NULL,
   traducao   VARCHAR(160) NOT NULL,
   FOREIGN KEY (licao_id) REFERENCES licoes(id)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 -- ---------------------------------------------------------------------
@@ -143,7 +143,7 @@ CREATE TABLE progresso (
   PRIMARY KEY (utilizador_id, licao_id),
   FOREIGN KEY (utilizador_id) REFERENCES utilizadores(id) ON DELETE CASCADE,
   FOREIGN KEY (licao_id)   REFERENCES licoes(id)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 -- ---------------------------------------------------------------------
@@ -156,7 +156,7 @@ CREATE TABLE tentativas_login (
   email    VARCHAR(120) NOT NULL,
   momento  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   INDEX (email, momento)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 -- =====================================================================

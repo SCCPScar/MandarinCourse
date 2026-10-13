@@ -4,7 +4,8 @@
 // Todas as páginas que precisam da base de dados fazem: require 'includes/ligacao.php';
 
 // No XAMPP o utilizador do MySQL é "root" e não tem palavra-passe.
-// Num servidor a sério eu usaria outro utilizador, com palavra-passe forte.
+// No alojamento online troco estes quatro valores pelos que o painel do alojamento me dá
+// (ver o Guia de Instalação). Essa palavra-passe fica só no servidor: nunca a ponho no GitHub.
 $servidor = 'localhost';
 $base     = 'cha';
 $utilizador_bd = 'root';
