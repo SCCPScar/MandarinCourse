@@ -85,10 +85,10 @@ require 'includes/topo.php';
 <p class="section-intro">O pinyin escreve os sons do mandarim com o alfabeto latino e as marcas dos tons. É como as rodinhas de uma bicicleta: aprende-o bem e consegues ler qualquer palavra nova. Atenção: NÃO se lê como o português!</p>
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="switchTab(event,'initials')">Iniciais (consoantes)</button>
-  <button class="tab-btn" onclick="switchTab(event,'finals')">Finais (vogais)</button>
-  <button class="tab-btn" onclick="switchTab(event,'tricky')">Sons difíceis</button>
-  <button class="tab-btn" onclick="switchTab(event,'tonemarks')">Regras dos acentos</button>
+  <button class="tab-btn active" onclick="abrirSeparador(event,'initials')">Iniciais (consoantes)</button>
+  <button class="tab-btn" onclick="abrirSeparador(event,'finals')">Finais (vogais)</button>
+  <button class="tab-btn" onclick="abrirSeparador(event,'tricky')">Sons difíceis</button>
+  <button class="tab-btn" onclick="abrirSeparador(event,'tonemarks')">Regras dos acentos</button>
 </div>
 
 <div id="initials" class="tab-content active">

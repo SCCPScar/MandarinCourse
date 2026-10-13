@@ -18,7 +18,7 @@ require 'includes/topo.php';
   <div class="potd-py" id="potd-py">jiā yóu</div>
   <div class="potd-en" id="potd-en">Força! Tu consegues!</div>
   <div class="potd-ex" id="potd-ex">考试加油！ Boa sorte no exame!</div>
-  <button id="speak-potd" onclick="speakText(document.getElementById('potd-zh').textContent)"><i class="i i-ouvir" aria-hidden="true"></i></button>
+  <button id="speak-potd" onclick="falar(document.getElementById('potd-zh').textContent)"><i class="i i-ouvir" aria-hidden="true"></i></button>
 </div>
 
 <section class="hero hero--foto">
@@ -44,7 +44,7 @@ require 'includes/topo.php';
 
 <div id="progress-overview">
   <h2 class="ach-titulo"><i class="i i-certo" aria-hidden="true"></i> O teu progresso no vocabulário</h2>
-  <p class="ach-texto">Quantas palavras de cada tema da página Vocabulário já marcaste como aprendidas.</p>
+  <p class="ach-texto">Quantas palavras de cada tema já aprendeste nos <a class="ach-link" href="praticar.php#tab-flash">cartões de memória do Praticar</a> (uma palavra conta quando a avalias como Razoável ou Fácil).</p>
   <div class="po-grid" id="po-grid"></div>
 </div>
 

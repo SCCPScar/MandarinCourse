@@ -441,3 +441,6 @@
 .po-grid, .medalhas { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 700px) { .po-grid, .medalhas { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 420px) { .po-grid, .medalhas { grid-template-columns: 1fr; } }
+
+/* Link para os cartões, no texto do progresso (na cor principal, legível nos dois modos) */
+.ach-link { color: var(--jade); font-weight: 600; }

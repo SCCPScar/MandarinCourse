@@ -22,10 +22,10 @@ require 'includes/topo.php';
 <p class="section-intro">Estas são as frases que vais usar todos os dias. Decora-as antes de tudo o resto e pratica até saírem sem pensar.</p>
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="switchTab(event,'greetings')">Cumprimentos</button>
-  <button class="tab-btn" onclick="switchTab(event,'polite')">Frases de cortesia</button>
-  <button class="tab-btn" onclick="switchTab(event,'questions')">Perguntas essenciais</button>
-  <button class="tab-btn" onclick="switchTab(event,'shopping')">Compras e comida</button>
+  <button class="tab-btn active" onclick="abrirSeparador(event,'greetings')">Cumprimentos</button>
+  <button class="tab-btn" onclick="abrirSeparador(event,'polite')">Frases de cortesia</button>
+  <button class="tab-btn" onclick="abrirSeparador(event,'questions')">Perguntas essenciais</button>
+  <button class="tab-btn" onclick="abrirSeparador(event,'shopping')">Compras e comida</button>
 </div>
 
 <div id="greetings" class="tab-content active">

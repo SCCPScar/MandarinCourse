@@ -23,10 +23,10 @@ require 'includes/topo.php';
 <p class="section-intro">Os caracteres parecem assustadores, mas seguem padrões. Existem cerca de 50 000, mas bastam uns 2000 para ler jornais e uns 3500 para o dia a dia. A maioria junta peças mais simples.</p>
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="switchTab(event,'radicals')">Radicais (raízes)</button>
-  <button class="tab-btn" onclick="switchTab(event,'stroke-order')">Ordem dos traços</button>
-  <button class="tab-btn" onclick="switchTab(event,'top100')">Os mais usados</button>
-  <button class="tab-btn" onclick="switchTab(event,'simplified')">Simplificado ou tradicional</button>
+  <button class="tab-btn active" onclick="abrirSeparador(event,'radicals')">Radicais (raízes)</button>
+  <button class="tab-btn" onclick="abrirSeparador(event,'stroke-order')">Ordem dos traços</button>
+  <button class="tab-btn" onclick="abrirSeparador(event,'top100')">Os mais usados</button>
+  <button class="tab-btn" onclick="abrirSeparador(event,'simplified')">Simplificado ou tradicional</button>
 </div>
 
 <div id="radicals" class="tab-content active">

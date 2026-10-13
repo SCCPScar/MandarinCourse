@@ -114,7 +114,7 @@ require 'includes/topo.php';
   <h3>Teste rápido</h3>
   <div id="quiz-area"></div>
   <div style="text-align:center;margin-top:1rem">
-    <button type="button" id="quiz-comecar" class="botao-cha" onclick="startQuiz()"><i class="i i-jogar" aria-hidden="true"></i> Começar o quiz</button>
+    <button type="button" id="quiz-comecar" class="botao-cha" onclick="comecarQuiz()"><i class="i i-jogar" aria-hidden="true"></i> Começar o quiz</button>
   </div>
 </div>
 
@@ -128,16 +128,16 @@ require 'includes/topo.php';
 <p class="section-intro">11 ferramentas para praticar: cartões de memória, jogos, dicionário, temporizador, cultura, pronúncia e mais.</p>
 
 <div id="api-tabs" style="display:flex;gap:3px;border-bottom:2px solid var(--paper-dark);flex-wrap:wrap;margin-bottom:0">
-  <button class="api-tab-btn active" onclick="switchApiTab(event,'tab-flash')">Cartões</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-sb')">Construir frases</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-chargame')">Jogo de caracteres</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-speak')">Ouvir</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-dict')">Dicionário</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-hanzi')">Traços</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-notebook')">Caderno</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-timer')">Temporizador</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-keyboard')">Teclado</button>
-  <button class="api-tab-btn" onclick="switchApiTab(event,'tab-mic')">Pronúncia</button>
+  <button class="api-tab-btn active" onclick="abrirFerramenta(event,'tab-flash')">Cartões</button>
+  <button class="api-tab-btn" onclick="abrirFerramenta(event,'tab-sb')">Construir frases</button>
+  <button class="api-tab-btn" onclick="abrirFerramenta(event,'tab-chargame')">Jogo de caracteres</button>
+  <button class="api-tab-btn" onclick="abrirFerramenta(event,'tab-speak')">Ouvir</button>
+  <button class="api-tab-btn" onclick="abrirFerramenta(event,'tab-dict')">Dicionário</button>
+  <button class="api-tab-btn" onclick="abrirFerramenta(event,'tab-hanzi')">Traços</button>
+  <button class="api-tab-btn" onclick="abrirFerramenta(event,'tab-notebook')">Caderno</button>
+  <button class="api-tab-btn" onclick="abrirFerramenta(event,'tab-timer')">Temporizador</button>
+  <button class="api-tab-btn" onclick="abrirFerramenta(event,'tab-keyboard')">Teclado</button>
+  <button class="api-tab-btn" onclick="abrirFerramenta(event,'tab-mic')">Pronúncia</button>
 </div>
 
 <!-- CARTÕES DE MEMÓRIA -->
@@ -149,7 +149,7 @@ require 'includes/topo.php';
       <div class="fc-stat"><div class="fsn" id="fc-learned" style="color:#0E7C66">0</div><div class="fsl">Aprendidas</div></div>
       <div class="fc-stat"><div class="fsn" id="fc-due" style="color:var(--red)">0</div><div class="fsl">Por aprender</div></div>
     </div>
-    <div class="fc-card-wrap" onclick="flipCard()">
+    <div class="fc-card-wrap" onclick="virarCartao()">
       <div class="fc-card" id="fc-card">
         <div class="fc-front"><div class="fc-zh-big" id="fc-zh-front">—</div><div class="fc-hint-txt">Toca para ver</div></div>
         <div class="fc-back">
@@ -165,10 +165,11 @@ require 'includes/topo.php';
     </div>
     <div style="text-align:center;font-size:0.8125rem;color:var(--ink-light);margin:6px 0" id="fc-prog">Toca no cartão para começar</div>
     <div class="fc-controls" id="fc-controls" style="display:none">
-      <button class="fc-btn hard" onclick="rateCard('hard')">Difícil</button>
-      <button class="fc-btn ok" onclick="rateCard('ok')">Razoável</button>
-      <button class="fc-btn easy" onclick="rateCard('easy')">Fácil</button>
+      <button class="fc-btn hard" onclick="avaliarCartao('hard')">Difícil</button>
+      <button class="fc-btn ok" onclick="avaliarCartao('ok')">Razoável</button>
+      <button class="fc-btn easy" onclick="avaliarCartao('easy')">Fácil</button>
     </div>
+    <p class="fc-shortcuts">Atalhos: <span class="kbd">Espaço</span> virar o cartão · <span class="kbd">1</span> Difícil · <span class="kbd">2</span> Razoável · <span class="kbd">3</span> Fácil</p>
   </div>
 </div>
 
@@ -176,7 +177,7 @@ require 'includes/topo.php';
 <div id="tab-sb" class="api-tab-content" style="padding-top:1.2rem">
   <div class="info" style="margin-bottom:.8rem"><strong>Construir frases</strong>. Escolhe uma estrutura e toca nas palavras para as pôr no sítio certo. O site verifica a tua resposta!</div>
   <div id="sb-box">
-    <select class="sb-select" id="sb-pattern" onchange="loadSbPattern()">
+    <select class="sb-select" id="sb-pattern" onchange="novaFrase()">
       <option value="">Escolhe uma estrutura…</option>
       <option value="svo">Sujeito + verbo + objeto</option>
       <option value="shi">Sujeito + 是 + nome</option>
@@ -187,9 +188,9 @@ require 'includes/topo.php';
     <div class="sb-slot-row" id="sb-slots"></div>
     <div class="sb-pool" id="sb-pool"></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <button onclick="checkSentence()" style="background:var(--red);color:#fff;border:none;padding:8px 18px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Verificar ✓</button>
-      <button onclick="resetSb()" style="background:var(--paper-dark);color:var(--ink);border:none;padding:8px 18px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Recomeçar <i class="i i-repetir" aria-hidden="true"></i></button>
-      <button onclick="newSbQ()" style="background:var(--blue);color:#fff;border:none;padding:8px 18px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Seguinte</button>
+      <button onclick="verificarFrase()" style="background:var(--red);color:#fff;border:none;padding:8px 18px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Verificar ✓</button>
+      <button onclick="limparFrase()" style="background:var(--paper-dark);color:var(--ink);border:none;padding:8px 18px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Recomeçar <i class="i i-repetir" aria-hidden="true"></i></button>
+      <button onclick="novaFrase()" style="background:var(--blue);color:#fff;border:none;padding:8px 18px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Seguinte</button>
     </div>
     <div class="sb-result" id="sb-result"></div>
   </div>
@@ -200,9 +201,9 @@ require 'includes/topo.php';
   <div class="info" style="margin-bottom:.8rem"><strong>Jogo de reconhecer caracteres</strong>. Vês um caractere e adivinhas o pinyin, contra o relógio. Há dois modos.</div>
   <div id="cg-box">
     <div style="display:flex;gap:10px;margin-bottom:1rem;flex-wrap:wrap;align-items:center">
-      <button onclick="startCG('choice')" style="background:var(--red);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)"><i class="i i-jogar" aria-hidden="true"></i> Escolha múltipla</button>
-      <button onclick="startCG('type')" style="background:var(--blue);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Escrever o pinyin</button>
-      <button id="cg-parar" onclick="pararCG()" style="display:none;background:var(--paper-dark);color:var(--ink);border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)"><i class="i i-parar" aria-hidden="true"></i> Parar o jogo</button>
+      <button onclick="comecarJogo('choice')" style="background:var(--red);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)"><i class="i i-jogar" aria-hidden="true"></i> Escolha múltipla</button>
+      <button onclick="comecarJogo('type')" style="background:var(--blue);color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">Escrever o pinyin</button>
+      <button id="cg-parar" onclick="pararJogo()" style="display:none;background:var(--paper-dark);color:var(--ink);border:none;padding:8px 16px;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)"><i class="i i-parar" aria-hidden="true"></i> Parar o jogo</button>
       <span id="cg-score-label" style="font-size:0.8125rem;font-weight:600;color:var(--ink-light)">Pontos: 0 | Recorde: 0</span>
     </div>
     <div id="cg-area"><div style="text-align:center;padding:2rem;color:var(--ink-light);font-size:0.875rem">Escolhe um modo para começar! </div></div>
@@ -215,7 +216,7 @@ require 'includes/topo.php';
   <div style="background:var(--white);border-radius:var(--radius);border:1.5px solid var(--paper-dark);padding:1.3rem">
     <div style="display:flex;gap:8px;margin-bottom:.8rem;flex-wrap:wrap">
       <input id="speak-input" type="text" value="你好，我叫李明，很高兴认识你！" style="flex:1;min-width:160px;padding:9px 12px;border-radius:10px;border:1.5px solid var(--paper-dark);font-size:1.125rem;font-family:var(--font-chinese);background:var(--paper-mid);outline:none;color:var(--ink)">
-      <button onclick="speakText(document.getElementById('speak-input').value)" style="padding:9px 16px;background:var(--red);color:#fff;border:none;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)"><i class="i i-ouvir" aria-hidden="true"></i> Ouvir</button>
+      <button onclick="falar(document.getElementById('speak-input').value)" style="padding:9px 16px;background:var(--red);color:#fff;border:none;border-radius:10px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)"><i class="i i-ouvir" aria-hidden="true"></i> Ouvir</button>
     </div>
     <div style="margin-bottom:.8rem">
       <label style="font-size:0.75rem;color:var(--ink-light);margin-right:8px">Velocidade:</label>
@@ -223,11 +224,11 @@ require 'includes/topo.php';
       <span id="speak-rate-label" style="font-size:0.75rem;color:var(--ink-light);margin-left:6px">0.8×</span>
     </div>
     <div style="display:flex;gap:7px;flex-wrap:wrap">
-      <button class="preset-char" style="font-size:0.75rem;padding:5px 10px" onclick="speakText('你好！早上好！')">你好！早上好！</button>
-      <button class="preset-char" style="font-size:0.75rem;padding:5px 10px" onclick="speakText('这个多少钱？')">这个多少钱？</button>
-      <button class="preset-char" style="font-size:0.75rem;padding:5px 10px" onclick="speakText('我是葡萄牙人，我在学中文。')">我是葡萄牙人</button>
-      <button class="preset-char" style="font-size:0.75rem;padding:5px 10px" onclick="speakText('请再说一遍，慢一点。')">请再说一遍</button>
-      <button class="preset-char" style="font-size:0.75rem;padding:5px 10px" onclick="speakText('对不起，我不明白。')">对不起，我不明白</button>
+      <button class="preset-char" style="font-size:0.75rem;padding:5px 10px" onclick="falar('你好！早上好！')">你好！早上好！</button>
+      <button class="preset-char" style="font-size:0.75rem;padding:5px 10px" onclick="falar('这个多少钱？')">这个多少钱？</button>
+      <button class="preset-char" style="font-size:0.75rem;padding:5px 10px" onclick="falar('我是葡萄牙人，我在学中文。')">我是葡萄牙人</button>
+      <button class="preset-char" style="font-size:0.75rem;padding:5px 10px" onclick="falar('请再说一遍，慢一点。')">请再说一遍</button>
+      <button class="preset-char" style="font-size:0.75rem;padding:5px 10px" onclick="falar('对不起，我不明白。')">对不起，我不明白</button>
     </div>
     <div id="speak-status" style="font-size:0.75rem;color:var(--green);min-height:18px;margin-top:6px"></div>
   </div>
@@ -238,8 +239,8 @@ require 'includes/topo.php';
   <div class="info" style="margin-bottom:.8rem"><strong>Dicionário</strong>. Procura uma palavra do vocabulário do curso em chinês, em pinyin ou em português. Carrega em «+ Guardar» para a pôr no caderno.</div>
   <div id="dict-section">
     <div id="dict-input-row">
-      <input id="dict-input" type="text" placeholder="Escreve em chinês ou em português… ex.: 朋友 ou amigo" onkeydown="if(event.key==='Enter')lookupWord()">
-      <button id="dict-btn" onclick="lookupWord()">Procurar <i class="i i-procurar" aria-hidden="true"></i></button>
+      <input id="dict-input" type="text" placeholder="Escreve em chinês ou em português… ex.: 朋友 ou amigo" onkeydown="if(event.key==='Enter')procurarPalavra()">
+      <button id="dict-btn" onclick="procurarPalavra()">Procurar <i class="i i-procurar" aria-hidden="true"></i></button>
     </div>
     <div id="dict-result"><p style="color:var(--ink-light);font-size:0.8125rem">Experimenta: 朋友 (péngyou) · gōngzuò · casa · 学习 (xuéxí) · caro</p></div>
   </div>
@@ -251,9 +252,9 @@ require 'includes/topo.php';
   <div id="hanzi-section">
     <div id="hanzi-input-row">
       <input id="hanzi-input" type="text" maxlength="1" placeholder="字" value="中">
-      <button class="hanzi-action-btn" id="hanzi-animate-btn" onclick="animateHanzi()"><i class="i i-jogar" aria-hidden="true"></i> Animar</button>
-      <button class="hanzi-action-btn" id="hanzi-quiz-btn" onclick="quizHanzi()"><i class="i i-escrever" aria-hidden="true"></i> Praticar</button>
-      <button class="speak-btn" style="padding:7px 12px;font-size:0.75rem" onclick="speakText(document.getElementById('hanzi-input').value)"><i class="i i-ouvir" aria-hidden="true"></i> Ouvir</button>
+      <button class="hanzi-action-btn" id="hanzi-animate-btn" onclick="animarTracos()"><i class="i i-jogar" aria-hidden="true"></i> Animar</button>
+      <button class="hanzi-action-btn" id="hanzi-quiz-btn" onclick="praticarTracos()"><i class="i i-escrever" aria-hidden="true"></i> Praticar</button>
+      <button class="speak-btn" style="padding:7px 12px;font-size:0.75rem" onclick="falar(document.getElementById('hanzi-input').value)"><i class="i i-ouvir" aria-hidden="true"></i> Ouvir</button>
     </div>
     <div id="hanzi-canvas-wrap">
       <div><svg id="hanzi-target" width="200" height="200"></svg><div style="text-align:center;font-size:0.6875rem;color:var(--ink-light);margin-top:3px" id="hanzi-hint"></div></div>
@@ -279,10 +280,14 @@ require 'includes/topo.php';
   <div class="info" style="margin-bottom:.8rem"><i class="i i-caderno" aria-hidden="true"></i> <strong>O meu caderno de vocabulário</strong>. As palavras que guardas no Dicionário aparecem aqui e ficam guardadas no teu browser.</div>
   <div id="nb-box">
     <div style="display:flex;gap:7px;margin-bottom:.9rem;flex-wrap:wrap">
-      <button onclick="clearNotebook()" style="background:#FBE3DE;color:#A32A18;border:1.5px solid #FBE3DE;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:0.75rem;font-family:var(--font-main)">Apagar tudo</button>
-      <button onclick="exportNotebook()" style="background:var(--paper-dark);color:var(--ink);border:none;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:0.75rem;font-family:var(--font-main)">Exportar como texto</button>
+      <button onclick="apagarCaderno()" style="background:#FBE3DE;color:#A32A18;border:1.5px solid #FBE3DE;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:0.75rem;font-family:var(--font-main)">Apagar tudo</button>
+      <button onclick="exportarCaderno()" style="background:var(--paper-dark);color:var(--ink);border:none;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:0.75rem;font-family:var(--font-main)">Exportar como texto</button>
     </div>
     <div id="nb-list"></div>
+  </div>
+  <div class="partilhar">
+    <button type="button" class="partilhar__botao" onclick="partilharProgresso()">Partilhar progresso</button>
+    <div id="share-card"></div>
   </div>
 </div>
 
@@ -292,9 +297,9 @@ require 'includes/topo.php';
   <div id="timer-wrap">
     <div id="timer-display">00:00</div>
     <div class="timer-btns">
-      <button class="timer-btn" id="t-start" onclick="startTimer()" style="background:#0E7C66;color:#fff"><i class="i i-jogar" aria-hidden="true"></i> Começar</button>
-      <button class="timer-btn" id="t-stop" onclick="stopTimer()" style="background:var(--red);color:#fff;display:none"><i class="i i-pausa" aria-hidden="true"></i> Pausa</button>
-      <button class="timer-btn" id="t-reset" onclick="resetTimer()" style="background:var(--paper-dark);color:var(--ink)"><i class="i i-repetir" aria-hidden="true"></i> Recomeçar</button>
+      <button class="timer-btn" id="t-start" onclick="comecarTemporizador()" style="background:#0E7C66;color:#fff"><i class="i i-jogar" aria-hidden="true"></i> Começar</button>
+      <button class="timer-btn" id="t-stop" onclick="pararTemporizador()" style="background:var(--red);color:#fff;display:none"><i class="i i-pausa" aria-hidden="true"></i> Pausa</button>
+      <button class="timer-btn" id="t-reset" onclick="recomecarTemporizador()" style="background:var(--paper-dark);color:var(--ink)"><i class="i i-repetir" aria-hidden="true"></i> Recomeçar</button>
     </div>
     <div class="streak-row">
       <div class="s-item"><div class="sn" id="streak-num">0</div><div class="sl"><i class="i i-dias" aria-hidden="true"></i> Dias seguidos</div></div>
@@ -357,10 +362,10 @@ require 'includes/topo.php';
   <div class="info" style="margin-bottom:.8rem"><i class="i i-gravar" aria-hidden="true"></i> <strong>Treino de pronúncia e tons</strong>. Usa o teu microfone para analisar os tons e a pronúncia em tempo real. Funciona melhor no Chrome ou no Edge.</div>
 
   <div class="mic-tabs">
-    <button class="mic-tab active" onclick="switchMicTab(event,'mictab-tone')">Ver os tons</button>
-    <button class="mic-tab" onclick="switchMicTab(event,'mictab-repeat')">Repetir</button>
-    <button class="mic-tab" onclick="switchMicTab(event,'mictab-recog')">Reconhecimento de voz</button>
-    <button class="mic-tab" onclick="switchMicTab(event,'mictab-score')">Os meus resultados</button>
+    <button class="mic-tab active" onclick="abrirTreinoPronuncia(event,'mictab-tone')">Ver os tons</button>
+    <button class="mic-tab" onclick="abrirTreinoPronuncia(event,'mictab-repeat')">Repetir</button>
+    <button class="mic-tab" onclick="abrirTreinoPronuncia(event,'mictab-recog')">Reconhecimento de voz</button>
+    <button class="mic-tab" onclick="abrirTreinoPronuncia(event,'mictab-score')">Os meus resultados</button>
   </div>
 
   <!-- VISUALIZADOR DE TONS -->
@@ -368,19 +373,19 @@ require 'includes/topo.php';
     <p style="font-size:0.8125rem;color:var(--ink-light);margin-bottom:10px">Escolhe um tom, carrega em Gravar e fala. O gráfico mostra a altura da tua voz em tempo real: tenta imitar a forma do tom!</p>
 
     <div class="tone-practice-grid" id="tone-target-grid">
-      <div class="tone-target-card selected" onclick="selectTone(this,1)" data-tone="1">
+      <div class="tone-target-card selected" onclick="escolherTom(this,1)" data-tone="1">
         <div class="ttc-zh">妈</div><div class="ttc-py">mā</div>
         <div class="ttc-tone" style="color:#2F6FD0">1.º tom: alto e plano ―</div>
       </div>
-      <div class="tone-target-card" onclick="selectTone(this,2)" data-tone="2">
+      <div class="tone-target-card" onclick="escolherTom(this,2)" data-tone="2">
         <div class="ttc-zh">麻</div><div class="ttc-py">má</div>
         <div class="ttc-tone" style="color:#0E7C66">2.º tom: a subir ↗</div>
       </div>
-      <div class="tone-target-card" onclick="selectTone(this,3)" data-tone="3">
+      <div class="tone-target-card" onclick="escolherTom(this,3)" data-tone="3">
         <div class="ttc-zh">马</div><div class="ttc-py">mǎ</div>
         <div class="ttc-tone" style="color:#9A6A08">3.º tom: desce e sobe ↘↗</div>
       </div>
-      <div class="tone-target-card" onclick="selectTone(this,4)" data-tone="4">
+      <div class="tone-target-card" onclick="escolherTom(this,4)" data-tone="4">
         <div class="ttc-zh">骂</div><div class="ttc-py">mà</div>
         <div class="ttc-tone" style="color:#A32A18">4.º tom: a descer ↘</div>
       </div>
@@ -394,15 +399,15 @@ require 'includes/topo.php';
     <canvas id="wave-canvas" height="80"></canvas>
 
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px">
-      <button class="mic-btn idle" id="tone-mic-btn" onclick="toggleToneRecording()"><i class="i i-gravar" aria-hidden="true"></i> Começar a gravar</button>
-      <button onclick="playTargetTone()" style="background:var(--gold);color:#fff;border:none;padding:10px 18px;border-radius:20px;font-size:0.8125rem;font-weight:700;cursor:pointer;font-family:var(--font-main)"><i class="i i-ouvir" aria-hidden="true"></i> Ouvir o modelo</button>
-      <button onclick="clearToneCanvas()" style="background:var(--paper-dark);color:var(--ink);border:none;padding:10px 18px;border-radius:20px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">✕ Limpar</button>
+      <button class="mic-btn idle" id="tone-mic-btn" onclick="gravarTom()"><i class="i i-gravar" aria-hidden="true"></i> Começar a gravar</button>
+      <button onclick="ouvirTomAlvo()" style="background:var(--gold);color:#fff;border:none;padding:10px 18px;border-radius:20px;font-size:0.8125rem;font-weight:700;cursor:pointer;font-family:var(--font-main)"><i class="i i-ouvir" aria-hidden="true"></i> Ouvir o modelo</button>
+      <button onclick="limparGraficoTom()" style="background:var(--paper-dark);color:var(--ink);border:none;padding:10px 18px;border-radius:20px;font-size:0.8125rem;font-weight:600;cursor:pointer;font-family:var(--font-main)">✕ Limpar</button>
     </div>
     <div id="tone-feedback" style="margin-top:10px"></div>
 
     <div style="margin-top:8px;display:flex;align-items:center;gap:8px;">
       <label style="font-size:0.8125rem;color:var(--ink-mid);display:flex;align-items:center;gap:6px;cursor:pointer;">
-        <input type="checkbox" id="show-pinyin-toggle" onchange="togglePinyinDisplay()" checked style="cursor:pointer;">
+        <input type="checkbox" id="show-pinyin-toggle" onchange="mostrarOuEsconderPinyin()" checked style="cursor:pointer;">
         <span>Mostrar Pinyin nos caracteres</span>
       </label>
     </div>
@@ -416,14 +421,14 @@ require 'includes/topo.php';
     <p style="font-size:0.8125rem;color:var(--ink-light);margin-bottom:10px">Carrega em <i class="i i-ouvir" aria-hidden="true"></i> para ouvir a palavra, depois em <i class="i i-gravar" aria-hidden="true"></i> e diz a palavra. O reconhecimento de voz verifica se a disseste bem.</p>
 
     <div style="display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap;align-items:center">
-      <select id="repeat-category" onchange="loadRepeatWords()" style="padding:8px 12px;border-radius:10px;border:1.5px solid var(--paper-dark);font-size:0.8125rem;font-family:var(--font-main);background:var(--paper-mid);outline:none;color:var(--ink)">
+      <select id="repeat-category" onchange="mostrarPalavrasParaRepetir()" style="padding:8px 12px;border-radius:10px;border:1.5px solid var(--paper-dark);font-size:0.8125rem;font-family:var(--font-main);background:var(--paper-mid);outline:none;color:var(--ink)">
         <option value="greetings">Cumprimentos</option>
         <option value="numbers">Números</option>
         <option value="food">Comida</option>
         <option value="work">Frases de trabalho</option>
         <option value="tones">Pares de tons (os mais difíceis!)</option>
       </select>
-      <button onclick="loadRepeatWords()" style="background:var(--paper-dark);color:var(--ink);border:none;padding:8px 14px;border-radius:10px;font-size:0.8125rem;cursor:pointer;font-family:var(--font-main)">Recarregar <i class="i i-repetir" aria-hidden="true"></i></button>
+      <button onclick="mostrarPalavrasParaRepetir()" style="background:var(--paper-dark);color:var(--ink);border:none;padding:8px 14px;border-radius:10px;font-size:0.8125rem;cursor:pointer;font-family:var(--font-main)">Recarregar <i class="i i-repetir" aria-hidden="true"></i></button>
     </div>
 
     <div id="repeat-word-list"></div>
@@ -435,8 +440,8 @@ require 'includes/topo.php';
         <div id="repeat-target-en" style="font-size:0.875rem;color:var(--ink)"></div>
       </div>
       <div style="display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap">
-        <button onclick="hearRepeatTarget()" style="background:var(--gold);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-size:0.875rem;font-weight:700;cursor:pointer;font-family:var(--font-main)"><i class="i i-ouvir" aria-hidden="true"></i> Ouvir</button>
-        <button class="mic-btn idle" id="repeat-mic-btn" onclick="toggleRepeatRecording()" style="padding:10px 20px"><i class="i i-gravar" aria-hidden="true"></i> Dizer</button>
+        <button onclick="ouvirPalavraAlvo()" style="background:var(--gold);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-size:0.875rem;font-weight:700;cursor:pointer;font-family:var(--font-main)"><i class="i i-ouvir" aria-hidden="true"></i> Ouvir</button>
+        <button class="mic-btn idle" id="repeat-mic-btn" onclick="gravarRepeticao()" style="padding:10px 20px"><i class="i i-gravar" aria-hidden="true"></i> Dizer</button>
       </div>
       <div id="repeat-result" style="text-align:center;margin-top:10px;font-size:0.875rem;min-height:30px"></div>
     </div>
@@ -449,18 +454,18 @@ require 'includes/topo.php';
     <div style="background:var(--paper-mid);border-radius:10px;padding:12px 16px;margin-bottom:10px">
       <p style="font-size:0.75rem;font-weight:700;color:var(--ink-light);margin-bottom:6px">Experimenta dizer uma destas:</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap" id="recog-prompts">
-        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">你好</span>
-        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">谢谢你</span>
-        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">我爱学中文</span>
-        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">今天天气很好</span>
-        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">我是葡萄牙人</span>
-        <span onclick="setRecogPrompt(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">请问厕所在哪里</span>
+        <span onclick="escolherFraseParaDizer(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">你好</span>
+        <span onclick="escolherFraseParaDizer(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">谢谢你</span>
+        <span onclick="escolherFraseParaDizer(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">我爱学中文</span>
+        <span onclick="escolherFraseParaDizer(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">今天天气很好</span>
+        <span onclick="escolherFraseParaDizer(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">我是葡萄牙人</span>
+        <span onclick="escolherFraseParaDizer(this)" style="font-family:var(--font-chinese);font-size:1rem;color:var(--red);cursor:pointer;padding:4px 10px;border:1.5px solid var(--paper-dark);border-radius:8px;background:var(--white)">请问厕所在哪里</span>
       </div>
     </div>
 
     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
       <div id="recog-target-display" style="flex:1;min-width:160px;background:var(--white);border:1.5px solid var(--paper-dark);border-radius:10px;padding:10px 14px;font-family:var(--font-chinese);font-size:1.25rem;color:var(--ink);min-height:44px">Carrega numa frase acima ou fala livremente…</div>
-      <button class="mic-btn idle" id="recog-mic-btn" onclick="toggleRecogRecording()" style="white-space:nowrap"><i class="i i-gravar" aria-hidden="true"></i> Gravar</button>
+      <button class="mic-btn idle" id="recog-mic-btn" onclick="gravarFalaLivre()" style="white-space:nowrap"><i class="i i-gravar" aria-hidden="true"></i> Gravar</button>
     </div>
 
     <div id="recog-result" style="margin-top:10px">
@@ -483,7 +488,7 @@ require 'includes/topo.php';
       <p style="font-size:0.75rem;font-weight:700;color:var(--ink-light);margin-bottom:8px">ÚLTIMAS TENTATIVAS:</p>
       <div id="ps-history"></div>
     </div>
-    <button onclick="clearPronunScores()" style="margin-top:1rem;background:var(--red-light);color:var(--red-dark);border:1.5px solid var(--red-light);border-radius:8px;padding:6px 14px;cursor:pointer;font-size:0.75rem;font-family:var(--font-main)">Apagar o histórico</button>
+    <button onclick="apagarHistoricoPronuncia()" style="margin-top:1rem;background:var(--red-light);color:var(--red-dark);border:1.5px solid var(--red-light);border-radius:8px;padding:6px 14px;cursor:pointer;font-size:0.75rem;font-family:var(--font-main)">Apagar o histórico</button>
   </div>
 
 </div>

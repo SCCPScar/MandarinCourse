@@ -11,16 +11,6 @@
 
 let exPalavras = [], exPerguntas = [], exAtual = 0, exCertas = 0, exErradas = [];
 
-// Baralho uma lista (algoritmo de Fisher-Yates) sem mexer na original
-function baralhar(lista) {
-  const copia = [...lista];
-  for (let i = copia.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copia[i], copia[j]] = [copia[j], copia[i]];
-  }
-  return copia;
-}
-
 // Monto as perguntas: cada palavra aparece em dois tipos diferentes, até um máximo de 12
 function montarPerguntas(palavras) {
   const tipos = ['ouvir', 'significado', 'escrever'];
@@ -52,23 +42,23 @@ function mostrarPergunta() {
   let enunciado, textoOpcao;
   if (tipo === 'ouvir') {
     enunciado = `<p class="ex__pergunta">Ouve e escolhe a palavra certa.</p>${botoesOuvir(palavra.hanzi, 'a palavra')}`;
-    textoOpcao = o => `<span class="ex__zh" lang="zh-CN">${esc(o.hanzi)}</span>`;
-    setTimeout(() => speakText(palavra.hanzi, VELOCIDADE_NORMAL), 300);   // toca logo uma vez
+    textoOpcao = o => `<span class="ex__zh" lang="zh-CN">${escapar(o.hanzi)}</span>`;
+    setTimeout(() => falar(palavra.hanzi, VELOCIDADE_NORMAL), 300);   // toca logo uma vez
   } else if (tipo === 'significado') {
     enunciado = `<p class="ex__pergunta">O que quer dizer?</p>
-      <p class="ex__grande"><span lang="zh-CN">${esc(palavra.hanzi)}</span> <span class="ex__py">${esc(palavra.pinyin)}</span></p>
+      <p class="ex__grande"><span lang="zh-CN">${escapar(palavra.hanzi)}</span> <span class="ex__py">${escapar(palavra.pinyin)}</span></p>
       ${botoesOuvir(palavra.hanzi, palavra.pinyin)}`;
-    textoOpcao = o => esc(o.traducao);
+    textoOpcao = o => escapar(o.traducao);
   } else {
-    enunciado = `<p class="ex__pergunta">Como se diz em chinês?</p><p class="ex__grande">«${esc(palavra.traducao)}»</p>`;
-    textoOpcao = o => `<span class="ex__zh" lang="zh-CN">${esc(o.hanzi)}</span>`;
+    enunciado = `<p class="ex__pergunta">Como se diz em chinês?</p><p class="ex__grande">«${escapar(palavra.traducao)}»</p>`;
+    textoOpcao = o => `<span class="ex__zh" lang="zh-CN">${escapar(o.hanzi)}</span>`;
   }
 
   caixa.innerHTML = `
     <p class="ex__contador">Pergunta ${exAtual + 1} de ${exPerguntas.length}</p>
     ${enunciado}
     <div class="ex__opcoes">
-      ${opcoes.map(o => `<button type="button" class="ex__opcao" data-hanzi="${esc(o.hanzi)}">${textoOpcao(o)}</button>`).join('')}
+      ${opcoes.map(o => `<button type="button" class="ex__opcao" data-hanzi="${escapar(o.hanzi)}">${textoOpcao(o)}</button>`).join('')}
     </div>
     <div class="ex__correcao" role="status"></div>`;
 
@@ -96,7 +86,7 @@ function responder(botao) {
     <p class="${certo ? 'ex__certo' : 'ex__errado'}">
       <i class="i ${certo ? 'i-certo' : 'i-errado'}" aria-hidden="true"></i>
       ${certo ? 'Certo!' : 'Ainda não.'}
-      <span lang="zh-CN">${esc(palavra.hanzi)}</span> · ${esc(palavra.pinyin)} · ${esc(palavra.traducao)}
+      <span lang="zh-CN">${escapar(palavra.hanzi)}</span> · ${escapar(palavra.pinyin)} · ${escapar(palavra.traducao)}
     </p>
     <button type="button" class="botao-cha" id="ex-seguinte">${ultima ? 'Ver o resultado' : 'Próxima pergunta'} <i class="i i-seguinte" aria-hidden="true"></i></button>`;
   const seguinte = document.getElementById('ex-seguinte');
@@ -108,7 +98,7 @@ function mostrarResultado() {
   const caixa = document.getElementById('exercicio');
   const total = exPerguntas.length;
   const lista = exErradas.map(p => `
-    <li><span class="ex__zh" lang="zh-CN">${esc(p.hanzi)}</span> <span class="ex__py">${esc(p.pinyin)}</span> ${esc(p.traducao)} ${botoesOuvir(p.hanzi, p.pinyin)}</li>`).join('');
+    <li><span class="ex__zh" lang="zh-CN">${escapar(p.hanzi)}</span> <span class="ex__py">${escapar(p.pinyin)}</span> ${escapar(p.traducao)} ${botoesOuvir(p.hanzi, p.pinyin)}</li>`).join('');
 
   caixa.innerHTML = `
     <p class="ex__pontos">${exCertas} de ${total} certas</p>

@@ -558,3 +558,75 @@ body.dark .lib-grid > .lib-card:first-child::before { color: #0F1519; }
 /* O significado ocupa sempre 2 linhas de altura, para as caixas cinzentas ficarem todas iguais */
 .tone-card .example > div:not(.zh):not(.ouvir-na-tabela) { min-height: 3.2em; display: flex; align-items: center; justify-content: center; }
 @media (max-width: 600px) { .tone-card { flex-basis: 100%; } }
+
+/* ═══ ESTILOS QUE ANTES ESTAVAM DENTRO DO JAVASCRIPT ═══
+   Aqui eu juntei os estilos que os ficheiros js/ escreviam com style="...".
+   Assim o JavaScript só trata do comportamento e o CSS trata do aspeto. */
+
+/* Quiz (js/quiz.js) */
+.quiz-contador { color: var(--ink-light); font-size: 0.875rem; margin-bottom: 8px; }
+#quiz-area .quiz-question { margin-top: 1rem; }
+.quiz-mensagem-final { text-align: center; font-size: 1rem; }
+
+/* Construtor de frases (js/construtor.js) */
+.sb-seta { font-size: 1.125rem; color: var(--ink-light); padding: 0 2px; }
+
+/* Jogo de caracteres (js/jogo.js) */
+.cg-tempo { font-size: 0.75rem; color: var(--ink-light); text-align: center; }
+.cg-instrucao { text-align: center; font-size: 0.75rem; color: var(--ink-light); margin-bottom: 6px; }
+.cg-opt-significado { font-size: 0.6875rem; color: var(--ink-light); }
+.cg-verificar { display: block; margin: 7px auto; background: var(--blue); color: #fff; border: none; padding: 7px 18px; border-radius: 10px; font-size: 0.8125rem; cursor: pointer; font-family: var(--font-main); }
+.cg-tfill--pouco { background: var(--red); }
+.cg-input-field--certo { border-color: #0E7C66; }
+.cg-input-field--errado { border-color: var(--red); }
+.cg-correcao { max-width: 280px; margin: 6px auto; }
+.cg-parado { text-align: center; padding: 2rem; color: var(--ink-light); font-size: 0.875rem; }
+
+/* Dicionário e caderno (js/caderno.js) */
+.dict-vazio { color: var(--red); }
+.dict-linha { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+.dict-guardar { position: static; margin-left: 0; }
+.nb-vazio { text-align: center; padding: 2rem; color: var(--ink-light); font-size: 0.8125rem; }
+.partilhar { margin-top: 16px; text-align: center; }
+.partilhar__botao { background: var(--red); color: #fff; border: none; padding: 10px 20px; border-radius: 10px; font-size: 0.875rem; cursor: pointer; font-family: var(--font-main); }
+.sc-rodape { font-size: 0.75rem; opacity: 0.7; }
+
+/* Cartões de memória */
+.fc-shortcuts { font-size: 0.75rem; color: var(--ink-light); text-align: center; margin-top: 8px; }
+
+/* Semana de estudo (js/estudo.js) */
+.semana-dia { text-align: center; }
+.semana-bola { width: 32px; height: 32px; border-radius: 50%; background: var(--paper-dark); display: flex; align-items: center; justify-content: center; font-size: 0.8125rem; color: #fff; }
+.semana-bola--feito { background: #0E7C66; }
+.semana-nome { font-size: 0.625rem; color: var(--ink-light); margin-top: 2px; }
+
+/* Sessão de hoje (js/conquistas.js) */
+.hoje-passo { display: flex; gap: 12px; padding: 12px; border-radius: 12px; background: var(--paper-mid); margin-bottom: 8px; }
+.hoje-passo__icone { font-size: 1.5rem; flex-shrink: 0; color: var(--jade); }
+.hoje-passo__titulo { font-weight: 700; margin-bottom: 2px; }
+.hoje-passo__texto { font-size: 0.8125rem; color: var(--ink-light); }
+.hoje-passo__link { display: inline-block; margin-top: 6px; color: var(--jade); font-size: 0.8125rem; font-weight: 600; }
+.hoje-palavra { display: inline-block; margin: 4px 4px 0 0; padding: 3px 8px; background: var(--paper-dark); border-radius: 8px; font-size: 0.8125rem; }
+.hoje-palavra__zh { font-family: var(--font-chinese); color: var(--red); }
+.hoje-palavra__py { color: var(--ink-light); }
+
+/* Treino de pronúncia (js/pronuncia.js) */
+.tom-detalhe { margin-top: 6px; font-size: 0.75rem; color: var(--ink-light); }
+.rw-pt { font-size: 0.75rem; color: var(--ink-light); flex: 1; }
+.rw-praticar { background: var(--red); color: #fff; border: none; padding: 5px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 600; cursor: pointer; font-family: var(--font-main); }
+.erro-voz { color: var(--red); }
+.recog-diz, .recog-alvo { font-family: var(--font-chinese); font-size: 1.375rem; }
+.recog-diz { color: var(--ink); }
+.recog-alvo { color: var(--red); font-weight: 700; }
+.recog-espera { color: var(--ink-light); font-size: 0.8125rem; }
+.recog-estado { margin-bottom: 6px; font-size: 0.75rem; color: var(--ink-light); }
+.recog-caixa { border-radius: 10px; padding: 12px 16px; border-left: 4px solid; font-size: 0.8125rem; color: var(--ink-mid); }
+.recog-caixa--certo { background: var(--green-light); border-color: var(--green); }
+.recog-caixa--tenta { background: var(--blue-light); border-color: var(--blue); }
+.ps-vazio { color: var(--ink-light); font-size: 0.8125rem; }
+.ps-linha { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--paper-dark); font-size: 0.75rem; }
+.ps-marca { font-weight: 700; }
+.ps-marca--certo { color: var(--green); }
+.ps-marca--errado { color: var(--red); }
+.ps-nome { flex: 1; color: var(--ink-mid); }
+.ps-hora { color: var(--ink-light); }

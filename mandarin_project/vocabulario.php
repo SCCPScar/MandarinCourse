@@ -22,12 +22,12 @@ require 'includes/topo.php';
 <p class="section-intro">Estas são algumas das palavras mais usadas no dia a dia. Estuda-as com calma, um grupo de cada vez.</p>
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="switchTab(event,'people')">Pessoas e pronomes</button>
-  <button class="tab-btn" onclick="switchTab(event,'verbs')">Verbos principais</button>
-  <button class="tab-btn" onclick="switchTab(event,'adjectives')">Adjetivos</button>
-  <button class="tab-btn" onclick="switchTab(event,'places')">Lugares e transportes</button>
-  <button class="tab-btn" onclick="switchTab(event,'food')">Comida e bebida</button>
-  <button class="tab-btn" onclick="switchTab(event,'time-words')">Tempo e frequência</button>
+  <button class="tab-btn active" onclick="abrirSeparador(event,'people')">Pessoas e pronomes</button>
+  <button class="tab-btn" onclick="abrirSeparador(event,'verbs')">Verbos principais</button>
+  <button class="tab-btn" onclick="abrirSeparador(event,'adjectives')">Adjetivos</button>
+  <button class="tab-btn" onclick="abrirSeparador(event,'places')">Lugares e transportes</button>
+  <button class="tab-btn" onclick="abrirSeparador(event,'food')">Comida e bebida</button>
+  <button class="tab-btn" onclick="abrirSeparador(event,'time-words')">Tempo e frequência</button>
 </div>
 
 <div id="people" class="tab-content active">

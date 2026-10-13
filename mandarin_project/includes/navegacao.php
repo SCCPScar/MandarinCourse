@@ -21,11 +21,11 @@
       <img src="img/logo-cha.svg" alt="" width="40" height="40">
       <h2 id="onboard-titulo">Boas-vindas ao Chá!</h2>
       <p>Qual é o teu nível de mandarim? Assim sei por onde começar.</p>
-      <button class="onboard-btn" onclick="selectLevel(this,'zero')"><strong>Nunca estudei mandarim</strong><span>Começas em Pequim, pelos sons e pelos tons</span></button>
-      <button class="onboard-btn" onclick="selectLevel(this,'basic')"><strong>Sei algumas palavras e o pinyin</strong><span>Começas em Xi'an</span></button>
-      <button class="onboard-btn" onclick="selectLevel(this,'inter')"><strong>Consigo ter conversas simples</strong><span>Começas em Chengdu</span></button>
-      <button class="onboard-btn" onclick="selectLevel(this,'adv')"><strong>Quero aperfeiçoar o que já sei</strong><span>Começas em Hangzhou</span></button>
-      <button id="onboard-start" onclick="finishOnboard()" style="display:none">Começar a aprender</button>
+      <button class="onboard-btn" onclick="escolherNivel(this,'zero')"><strong>Nunca estudei mandarim</strong><span>Começas em Pequim, pelos sons e pelos tons</span></button>
+      <button class="onboard-btn" onclick="escolherNivel(this,'basic')"><strong>Sei algumas palavras e o pinyin</strong><span>Começas em Xi'an</span></button>
+      <button class="onboard-btn" onclick="escolherNivel(this,'inter')"><strong>Consigo ter conversas simples</strong><span>Começas em Chengdu</span></button>
+      <button class="onboard-btn" onclick="escolherNivel(this,'adv')"><strong>Quero aperfeiçoar o que já sei</strong><span>Começas em Hangzhou</span></button>
+      <button id="onboard-start" onclick="terminarBoasVindas()" style="display:none">Começar a aprender</button>
       <p class="onboard-credito">Foto: Nuno Alberto, Unsplash</p>
     </div>
   </div>
@@ -34,11 +34,11 @@
 <!-- JANELA DA SESSÃO DE HOJE -->
 <div id="daily-modal">
   <div id="daily-box">
-    <button onclick="closeDailyModal()" aria-label="Fechar" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.25rem;cursor:pointer;color:var(--ink-light)">✕</button>
+    <button onclick="fecharSessaoDeHoje()" aria-label="Fechar" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.25rem;cursor:pointer;color:var(--ink-light)">✕</button>
     <h2><i class="i i-hoje" aria-hidden="true"></i> Sessão de hoje</h2>
     <p style="color:var(--ink-light);font-size:0.875rem;margin-bottom:16px">A tua sessão diária, com cerca de 10 minutos.</p>
     <div id="daily-steps"></div>
-    <button onclick="closeDailyModal()" style="margin-top:16px;background:var(--jade);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:0.9375rem;cursor:pointer;font-family:var(--font-main)">✓ Marcar como concluída</button>
+    <button onclick="fecharSessaoDeHoje()" style="margin-top:16px;background:var(--jade);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:0.9375rem;cursor:pointer;font-family:var(--font-main)">✓ Marcar como concluída</button>
   </div>
 </div>
 
@@ -49,21 +49,33 @@
   </a>
   <nav class="site-nav__menu" id="site-menu" aria-label="Principal">
     <ul class="site-nav__links">
-        <li><a class="site-nav__link" href="index.php">Início</a></li>
-        <li><a class="site-nav__link" href="rota.php">A rota</a></li>
-        <li><a class="site-nav__link" href="introducao.php">Introdução</a></li>
-        <li><a class="site-nav__link" href="sons.php">Sons</a></li>
-        <li><a class="site-nav__link" href="basico.php">Básico</a></li>
-        <li><a class="site-nav__link" href="gramatica.php">Gramática</a></li>
-        <li><a class="site-nav__link" href="vocabulario.php">Vocabulário</a></li>
-        <li><a class="site-nav__link" href="caracteres.php">Caracteres</a></li>
-        <li><a class="site-nav__link" href="cultura.php">Cultura</a></li>
-        <li><a class="site-nav__link" href="praticar.php">Praticar</a></li>
-        <li><a class="site-nav__link" href="biblioteca.php">Biblioteca</a></li>
+      <?php
+      // Os links do menu: endereço => nome que aparece.
+      // A página que está aberta ganha aria-current="page" (fica sublinhada e os leitores de ecrã dizem "página atual").
+      $links_do_menu = [
+          'index.php'       => 'Início',
+          'rota.php'        => 'A rota',
+          'introducao.php'  => 'Introdução',
+          'sons.php'        => 'Sons',
+          'basico.php'      => 'Básico',
+          'gramatica.php'   => 'Gramática',
+          'vocabulario.php' => 'Vocabulário',
+          'caracteres.php'  => 'Caracteres',
+          'cultura.php'     => 'Cultura',
+          'praticar.php'    => 'Praticar',
+          'biblioteca.php'  => 'Biblioteca',
+      ];
+      // basename() tira as pastas do caminho: "/cha/sons.php" fica "sons.php"
+      $pagina_aberta = basename($_SERVER['SCRIPT_NAME']);
+      foreach ($links_do_menu as $endereco => $nome):
+          $atual = ($endereco === $pagina_aberta) ? ' aria-current="page"' : '';
+      ?>
+        <li><a class="site-nav__link" href="<?= $endereco ?>"<?= $atual ?>><?= $nome ?></a></li>
+      <?php endforeach; ?>
     </ul>
     <div class="site-nav__tools">
-      <button type="button" class="site-nav__tool" onclick="openDailyModal()" title="Sessão de hoje"><i class="i i-hoje" aria-hidden="true"></i> <span class="site-nav__texto">Hoje</span></button>
-      <button type="button" class="site-nav__tool" id="dark-toggle" onclick="toggleDark()" title="Mudar para o modo escuro"><i class="i i-escuro" aria-hidden="true"></i> <span class="site-nav__texto">Escuro</span></button>
+      <button type="button" class="site-nav__tool" onclick="abrirSessaoDeHoje()" title="Sessão de hoje"><i class="i i-hoje" aria-hidden="true"></i> <span class="site-nav__texto">Hoje</span></button>
+      <button type="button" class="site-nav__tool" id="dark-toggle" onclick="trocarModoEscuro()" title="Mudar para o modo escuro"><i class="i i-escuro" aria-hidden="true"></i> <span class="site-nav__texto">Escuro</span></button>
       <a class="site-nav__tool" href="conta.php" title="A minha conta"><i class="i i-conta" aria-hidden="true"></i> <span class="site-nav__texto">Conta</span></a>
     </div>
   </nav>
