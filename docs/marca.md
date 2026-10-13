@@ -87,5 +87,3 @@ Proibido: confetes, partículas, animações em loop, elementos que piscam, som 
 - A primeiro ecrã mostra sempre a próxima ação, a meta do dia e o progresso.
 - No máximo 1 destaque forte (foto ou cor sólida) por ecrã.
 - Fundo com quadrícula discreta inspirada no 田字格.
-
-Estudo visual completo (com demonstrações interativas): https://claude.ai/artifact/3QLat173XmEtcJ7YmJsDTG
