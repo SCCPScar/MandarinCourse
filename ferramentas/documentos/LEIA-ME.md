@@ -24,3 +24,17 @@ A pasta `apresentacao/` gera o ficheiro `docs/entregas/Apresentação - Chá.ppt
 - `gerar.sh`: cria o ficheiro e as imagens de pré-visualização.
 
 Uso: `npm install` dentro de `apresentacao/` e depois `bash gerar.sh`.
+
+## Relatório Final
+
+A pasta `relatorio/` gera o ficheiro `docs/entregas/Relatório Final - Chá.docx` a partir do `molde.docx` do formador.
+Ao contrário dos guias, o relatório é escrito **dentro do próprio molde**: a capa, o cabeçalho, o rodapé, a grelha de planificação e a ficha de planeamento são os do formador, só preenchidos.
+
+- `relatorio.py`: o texto do relatório e o preenchimento do molde (usa a biblioteca `python-docx`). Os excertos de código do Anexo D são copiados dos ficheiros reais do projeto.
+- `estrutura.py`: desenha o esquema da estrutura do site (`img/estrutura.png`, convertido a partir do SVG).
+- `paginas.py`: descobre em que página fica cada título, para o índice.
+- `gerar_relatorio.sh`: corre tudo em duas passagens (a segunda escreve os números de página no índice). Precisa do LibreOffice e do Poppler.
+- `img/`: as capturas de ecrã do site e dos protótipos.
+
+Uso: `pip install python-docx` e depois `bash relatorio/gerar_relatorio.sh`.
+O texto entre [ ] marcado a amarelo é para a formanda completar no Word.
