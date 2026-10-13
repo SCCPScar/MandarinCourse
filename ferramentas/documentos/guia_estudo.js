@@ -60,7 +60,7 @@ const conteudo = [
   h2('3.1 Em 30 segundos'),
   caixa('Para decorar a ideia (não as palavras):', '«O Chá é um site gratuito para aprender mandarim em sessões curtas, de cerca de 15 minutos, o tempo de um chá. O aluno segue uma rota por 6 cidades da China, com lições que têm explicação, vocabulário com som, frases e um exercício. Tem também páginas de estudo livre e ferramentas para praticar, como cartões de memória, um quiz e um treino de pronúncia. Fiz o site em PHP e MySQL, com HTML, CSS e JavaScript, e está todo em português de Portugal.»', 'E6F2EF', '0E7C66'),
   h2('3.2 Em 2 minutos'),
-  passos([
+  ...passos([
     '**O problema:** quem trabalha ou estuda tem pouco tempo, e os cursos de mandarim em português de Portugal são poucos. A maioria está em inglês ou em português do Brasil.',
     '**A ideia:** aprender um pouco todos os dias, no tempo de um chá. O nome também liga as duas línguas: a palavra portuguesa «chá» vem do chinês 茶 (chá), trazida de Macau no século XVI.',
     '**O que o site tem:** uma rota de 6 cidades (Pequim, Xi\'an, Chengdu, Guilin, Hangzhou e Xangai), com 24 unidades e 72 lições; páginas de sons, gramática, vocabulário, caracteres e cultura; 10 ferramentas de prática e uma biblioteca de recursos gratuitos.',
