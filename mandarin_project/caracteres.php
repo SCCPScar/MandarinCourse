@@ -58,7 +58,7 @@ require 'includes/topo.php';
   <p class="section-intro">A ordem dos traços importa: muda o aspeto do caractere quando escreves depressa e é essencial para o telemóvel reconhecer a tua letra. Segue estas regras:</p>
   <div class="grammar-box">
     <h3>As 8 regras da ordem dos traços</h3>
-    <ol style="padding-left:1.5rem; line-height:2.2; color:var(--ink-mid);">
+    <ol class="lista-espacada">
       <li><strong>De cima para baixo</strong>: 三 (sān, três). Primeiro a linha de cima, depois a do meio e por fim a de baixo</li>
       <li><strong>Da esquerda para a direita</strong>: 川 (chuān, rio). Primeiro o traço da esquerda, depois o do meio e por fim o da direita</li>
       <li><strong>O horizontal antes do vertical</strong> (quando se cruzam): 十 (shí, dez). Primeiro o horizontal</li>
@@ -112,17 +112,17 @@ require 'includes/topo.php';
 <div id="simplified" class="tab-content">
   <div class="grammar-box">
     <h3>Simplificado (简体 (jiǎntǐ)) ou tradicional (繁體 (fántǐ))</h3>
-    <p style="margin-bottom:12px; color:var(--ink-light);">Para a China continental, aprende o simplificado. O tradicional usa-se em Taiwan, Hong Kong e Macau.</p>
+    <p class="texto-cinzento">Para a China continental, aprende o simplificado. O tradicional usa-se em Taiwan, Hong Kong e Macau.</p>
     <div class="table-wrap">
     <table class="phrase-table">
       <tr><th>Simplificado</th><th>Tradicional</th><th>Pinyin</th><th>Significado</th></tr>
-      <tr><td class="zh-cell">爱</td><td class="zh-cell" style="font-size:1.125rem">愛</td><td class="py-cell">ài</td><td>amor</td></tr>
-      <tr><td class="zh-cell">书</td><td class="zh-cell" style="font-size:1.125rem">書</td><td class="py-cell">shū</td><td>livro</td></tr>
-      <tr><td class="zh-cell">说</td><td class="zh-cell" style="font-size:1.125rem">說</td><td class="py-cell">shuō</td><td>falar</td></tr>
-      <tr><td class="zh-cell">国</td><td class="zh-cell" style="font-size:1.125rem">國</td><td class="py-cell">guó</td><td>país</td></tr>
-      <tr><td class="zh-cell">车</td><td class="zh-cell" style="font-size:1.125rem">車</td><td class="py-cell">chē</td><td>carro / veículo</td></tr>
-      <tr><td class="zh-cell">门</td><td class="zh-cell" style="font-size:1.125rem">門</td><td class="py-cell">mén</td><td>porta / portão</td></tr>
-      <tr><td class="zh-cell">长</td><td class="zh-cell" style="font-size:1.125rem">長</td><td class="py-cell">cháng/zhǎng</td><td>comprido / crescer</td></tr>
+      <tr><td class="zh-cell">爱</td><td class="zh-cell zh-cell--tradicional">愛</td><td class="py-cell">ài</td><td>amor</td></tr>
+      <tr><td class="zh-cell">书</td><td class="zh-cell zh-cell--tradicional">書</td><td class="py-cell">shū</td><td>livro</td></tr>
+      <tr><td class="zh-cell">说</td><td class="zh-cell zh-cell--tradicional">說</td><td class="py-cell">shuō</td><td>falar</td></tr>
+      <tr><td class="zh-cell">国</td><td class="zh-cell zh-cell--tradicional">國</td><td class="py-cell">guó</td><td>país</td></tr>
+      <tr><td class="zh-cell">车</td><td class="zh-cell zh-cell--tradicional">車</td><td class="py-cell">chē</td><td>carro / veículo</td></tr>
+      <tr><td class="zh-cell">门</td><td class="zh-cell zh-cell--tradicional">門</td><td class="py-cell">mén</td><td>porta / portão</td></tr>
+      <tr><td class="zh-cell">长</td><td class="zh-cell zh-cell--tradicional">長</td><td class="py-cell">cháng/zhǎng</td><td>comprido / crescer</td></tr>
     </table>
     </div>
   </div>

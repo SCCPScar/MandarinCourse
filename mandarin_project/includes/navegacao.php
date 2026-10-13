@@ -34,11 +34,11 @@
 <!-- JANELA DA SESSÃO DE HOJE -->
 <div id="daily-modal">
   <div id="daily-box">
-    <button onclick="fecharSessaoDeHoje()" aria-label="Fechar" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.25rem;cursor:pointer;color:var(--ink-light)">✕</button>
+    <button class="hoje-fechar" onclick="fecharSessaoDeHoje()" aria-label="Fechar">✕</button>
     <h2><i class="i i-hoje" aria-hidden="true"></i> Sessão de hoje</h2>
-    <p style="color:var(--ink-light);font-size:0.875rem;margin-bottom:16px">A tua sessão diária, com cerca de 10 minutos.</p>
+    <p class="hoje-intro">A tua sessão diária, com cerca de 10 minutos.</p>
     <div id="daily-steps"></div>
-    <button onclick="fecharSessaoDeHoje()" style="margin-top:16px;background:var(--jade);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:0.9375rem;cursor:pointer;font-family:var(--font-main)">✓ Marcar como concluída</button>
+    <button class="hoje-concluir" onclick="fecharSessaoDeHoje()">✓ Marcar como concluída</button>
   </div>
 </div>
 

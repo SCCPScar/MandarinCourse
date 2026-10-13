@@ -23,35 +23,35 @@ require 'includes/topo.php';
 
 <div class="tones-grid">
   <div class="tone-card">
-    <div class="big" style="color:#2F6FD0">mā</div>
+    <div class="big tom-1">mā</div>
     <span class="tone-badge t1">1.º tom</span>
     <h3>Alto e plano ―</h3>
     <p>Fica em cima, como quem canta uma nota longa e sempre igual.</p>
     <div class="example"><div class="zh">妈</div><div>mā = mãe</div></div>
   </div>
   <div class="tone-card">
-    <div class="big" style="color:#0E7C66">má</div>
+    <div class="big tom-2">má</div>
     <span class="tone-badge t2">2.º tom</span>
     <h3>A subir ↗</h3>
     <p>Sobe, como quando perguntas «hã?». Começa a meio e acaba em cima.</p>
     <div class="example"><div class="zh">麻</div><div>má = cânhamo / dormente</div></div>
   </div>
   <div class="tone-card">
-    <div class="big" style="color:#9A6A08">mǎ</div>
+    <div class="big tom-3">mǎ</div>
     <span class="tone-badge t3">3.º tom</span>
     <h3>Desce e sobe ↘↗</h3>
     <p>Desce e depois sobe, como um «a sério?» desconfiado. Começa a meio, desce bem e volta a subir.</p>
     <div class="example"><div class="zh">马</div><div>mǎ = cavalo</div></div>
   </div>
   <div class="tone-card">
-    <div class="big" style="color:#A32A18">mà</div>
+    <div class="big tom-4">mà</div>
     <span class="tone-badge t4">4.º tom</span>
     <h3>A descer ↘</h3>
     <p>Cai de repente, como uma ordem: «Para!» Começa em cima e acaba em baixo.</p>
     <div class="example"><div class="zh">骂</div><div>mà = ralhar</div></div>
   </div>
   <div class="tone-card">
-    <div class="big" style="color:#5B6873">ma</div>
+    <div class="big tom-neutro">ma</div>
     <span class="tone-badge t5">Tom neutro</span>
     <h3>Curto e leve</h3>
     <p>Não tem marca. É muito curto, quase engolido. Aparece sobretudo nas partículas.</p>
@@ -63,7 +63,7 @@ require 'includes/topo.php';
 
 <div class="tip"><strong>Truque dos tons:</strong> Quando aparecem dois 3.º tons seguidos (ex.: 你好 nǐhǎo), o primeiro passa a 2.º tom na fala. Por isso nǐhǎo soa como níhǎo. A esta regra chama-se sandhi tonal.</div>
 
-<h3 style="margin: 1.5rem 0 1rem; font-size: 1.125rem;">Pares de tons para praticar</h3>
+<h3 class="subtitulo">Pares de tons para praticar</h3>
 <div class="table-wrap">
 <table class="phrase-table">
   <tr><th>Caractere</th><th>Pinyin</th><th>Significado</th><th>Tom</th></tr>
@@ -99,13 +99,13 @@ require 'includes/topo.php';
     <tr><td><strong>b, p, m, f</strong></td><td>Quase como em português. O b é mais seco e o p leva um sopro de ar</td><td>bā 八 (oito)</td><td></td></tr>
     <tr><td><strong>d, t, n, l</strong></td><td>Quase como em português. O d é mais seco e o t leva um sopro de ar</td><td>dà 大 (grande)</td><td></td></tr>
     <tr><td><strong>g, k, h</strong></td><td>O g é mais seco, o k leva um sopro de ar e o h soa como o «r» de «rato»</td><td>gāo 高 (alto)</td><td></td></tr>
-    <tr><td><strong style="color:var(--red)">j</strong></td><td>Como «dj» em «Djibuti», com a língua plana</td><td>jī 鸡 (galinha)</td><td>Só aparece antes de i e ü</td></tr>
-    <tr><td><strong style="color:var(--red)">q</strong></td><td>Como o «tch» de «tchim-tchim», com a língua plana</td><td>qī 七 (sete)</td><td>Nada a ver com o «q» português</td></tr>
-    <tr><td><strong style="color:var(--red)">x</strong></td><td>Como o «ch» de «chá», mais leve</td><td>xīn 心 (coração)</td><td>A ponta da língua fica em baixo, sem enrolar</td></tr>
-    <tr><td><strong style="color:var(--red)">zh</strong></td><td>Como «dj», com a língua enrolada para trás</td><td>zhōng 中 (meio)</td><td>Retroflexa: a língua enrola para trás</td></tr>
-    <tr><td><strong style="color:var(--red)">ch</strong></td><td>Como «tch», com a língua enrolada para trás</td><td>chī 吃 (comer)</td><td>Retroflexa</td></tr>
-    <tr><td><strong style="color:var(--red)">sh</strong></td><td>Como o «ch» de «chave», com a língua enrolada para trás</td><td>shū 书 (livro)</td><td>Retroflexa</td></tr>
-    <tr><td><strong style="color:var(--red)">r</strong></td><td>Entre o «j» de «já» e um «r» inglês. É único!</td><td>rén 人 (pessoa)</td><td>Não existe em português</td></tr>
+    <tr><td><strong class="som-destaque">j</strong></td><td>Como «dj» em «Djibuti», com a língua plana</td><td>jī 鸡 (galinha)</td><td>Só aparece antes de i e ü</td></tr>
+    <tr><td><strong class="som-destaque">q</strong></td><td>Como o «tch» de «tchim-tchim», com a língua plana</td><td>qī 七 (sete)</td><td>Nada a ver com o «q» português</td></tr>
+    <tr><td><strong class="som-destaque">x</strong></td><td>Como o «ch» de «chá», mais leve</td><td>xīn 心 (coração)</td><td>A ponta da língua fica em baixo, sem enrolar</td></tr>
+    <tr><td><strong class="som-destaque">zh</strong></td><td>Como «dj», com a língua enrolada para trás</td><td>zhōng 中 (meio)</td><td>Retroflexa: a língua enrola para trás</td></tr>
+    <tr><td><strong class="som-destaque">ch</strong></td><td>Como «tch», com a língua enrolada para trás</td><td>chī 吃 (comer)</td><td>Retroflexa</td></tr>
+    <tr><td><strong class="som-destaque">sh</strong></td><td>Como o «ch» de «chave», com a língua enrolada para trás</td><td>shū 书 (livro)</td><td>Retroflexa</td></tr>
+    <tr><td><strong class="som-destaque">r</strong></td><td>Entre o «j» de «já» e um «r» inglês. É único!</td><td>rén 人 (pessoa)</td><td>Não existe em português</td></tr>
     <tr><td><strong>z</strong></td><td>Como «dz», com a língua nos dentes</td><td>zài 在 (em / estar)</td><td></td></tr>
     <tr><td><strong>c</strong></td><td>Como o «ts» de «tsunami»</td><td>cǎo 草 (relva)</td><td>Nada a ver com o «c» português</td></tr>
     <tr><td><strong>s</strong></td><td>Como o «s» de «sapo»</td><td>sān 三 (três)</td><td></td></tr>
@@ -125,15 +125,15 @@ require 'includes/topo.php';
     <tr><td><strong>i</strong></td><td>«i», na maioria das sílabas</td><td>nǐ 你 (tu)</td></tr>
     <tr><td><strong>i (depois de zh, ch, sh, r, z, c, s)</strong></td><td>Um zumbido, quase sem vogal</td><td>shī 师 (professor)</td></tr>
     <tr><td><strong>u</strong></td><td>«u», como em «lua»</td><td>bù 不 (não)</td></tr>
-    <tr><td><strong style="color:var(--red)">ü / u (depois de j, q, x, y)</strong></td><td>Como o «u» francês: lábios em bico e dizes «i»</td><td>lǜ 绿 (verde), yú 鱼 (peixe)</td></tr>
+    <tr><td><strong class="som-destaque">ü / u (depois de j, q, x, y)</strong></td><td>Como o «u» francês: lábios em bico e dizes «i»</td><td>lǜ 绿 (verde), yú 鱼 (peixe)</td></tr>
     <tr><td><strong>ai</strong></td><td>«ai», como em «pai»</td><td>ài 爱 (amor)</td></tr>
     <tr><td><strong>ei</strong></td><td>«ei», como em «lei»</td><td>bēi 杯 (copo)</td></tr>
     <tr><td><strong>ao</strong></td><td>«au», como em «mau»</td><td>hǎo 好 (bom)</td></tr>
     <tr><td><strong>ou</strong></td><td>«ôu», com o u bem marcado</td><td>gǒu 狗 (cão)</td></tr>
     <tr><td><strong>an / en / in / un</strong></td><td>O «n» final pronuncia-se, sem som nasal</td><td>fàn 饭 (arroz / refeição)</td></tr>
     <tr><td><strong>ang / eng / ing / ong</strong></td><td>Acabam em «ng», como o inglês «song»</td><td>míng 名 (nome)</td></tr>
-    <tr><td><strong style="color:var(--red)">ian</strong></td><td>Soa «ién»!</td><td>tiān 天 (céu / dia)</td></tr>
-    <tr><td><strong style="color:var(--red)">iu</strong></td><td>«iou» encurtado, soa quase «iô»</td><td>liù 六 (seis)</td></tr>
+    <tr><td><strong class="som-destaque">ian</strong></td><td>Soa «ién»!</td><td>tiān 天 (céu / dia)</td></tr>
+    <tr><td><strong class="som-destaque">iu</strong></td><td>«iou» encurtado, soa quase «iô»</td><td>liù 六 (seis)</td></tr>
   </table>
   </div>
 </div>
@@ -156,14 +156,14 @@ require 'includes/topo.php';
 <div id="tonemarks" class="tab-content">
   <div class="grammar-box">
     <h3>Onde se põe o acento do tom?</h3>
-    <p style="margin-bottom:12px; color:var(--ink-light);">O acento vai sempre na vogal principal. As regras são:</p>
-    <ul style="padding-left:1.5rem; color:var(--ink-mid); line-height:2;">
+    <p class="texto-cinzento">O acento vai sempre na vogal principal. As regras são:</p>
+    <ul class="lista-espacada">
       <li>Se houver <strong>a</strong> ou <strong>e</strong>, o acento vai para essa vogal: <em>hǎo, xiè</em></li>
       <li>Se houver <strong>ou</strong>, o acento vai para o <strong>o</strong>: <em>hóu</em></li>
       <li>Nos outros casos, vai para a <strong>última vogal</strong>: <em>guī, liú, duō</em></li>
       <li>O acento indica o tom da sílaba, não a sílaba tónica</li>
     </ul>
-    <div class="formula" style="margin-top:12px;">Regra: primeiro a ou e; depois o o de «ou»; senão, a última vogal</div>
+    <div class="formula">Regra: primeiro a ou e; depois o o de «ou»; senão, a última vogal</div>
   </div>
   <div class="tip"><strong>Dica para escrever em chinês:</strong> no telemóvel ou no computador, instala um teclado de pinyin. Escreve a sílaba sem acentos e escolhe o caractere certo na lista. Exemplo: escreves «ni» e escolhes 你 (nǐ), 妮 (nī), 尼 (ní)…</div>
 </div>

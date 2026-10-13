@@ -3,44 +3,133 @@
  * Aqui eu dou estilo à folha de treino dos caracteres (folha.php), no ecrã e na impressão.
  */
 
-.folha { max-width: 1000px; margin: 0 auto; padding: 32px var(--page-gutter) 48px; }
-.folha__topo { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
-.folha h1 { font-size: 2rem; }
-.folha h1 [lang="zh-CN"] { font-family: var(--font-chinese); color: var(--seal-text); }
-.folha__py { font-size: 1.125rem; font-style: italic; font-weight: 400; color: var(--ink-light); }
-.folha__topo p { color: var(--ink-mid); max-width: 620px; }
-.folha__vazia { padding: 20px; background: var(--white); border-radius: var(--radius); }
+.folha {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px var(--page-gutter) 48px;
+}
+.folha__topo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.folha h1 {
+  font-size: 2rem;
+}
+.folha h1 [lang="zh-CN"] {
+  font-family: var(--font-chinese);
+  color: var(--seal-text);
+}
+.folha__py {
+  font-size: 1.125rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink-light);
+}
+.folha__topo p {
+  color: var(--ink-mid);
+  max-width: 620px;
+}
+.folha__vazia {
+  padding: 20px;
+  background: var(--white);
+  border-radius: var(--radius);
+}
 
 /* Cada linha: 1 modelo + 3 claros + 6 vazios = 10 caixas */
-.folha__linha { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; margin-bottom: 8px; break-inside: avoid; }
+.folha__linha {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+  break-inside: avoid;
+}
 
 /* A caixa 田字格: um quadrado com uma cruz e as duas diagonais tracejadas, que ajudam a pôr os traços no sítio.
    As linhas são desenhadas com degradês (linear-gradient), sem imagens. */
 .tzg {
   position: relative;
   aspect-ratio: 1;
-  border: 1.5px solid #C8361F;
-  background:
-    linear-gradient(to right, transparent calc(50% - 0.5px), rgba(200, 54, 31, 0.35) calc(50% - 0.5px), rgba(200, 54, 31, 0.35) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
-    linear-gradient(to bottom, transparent calc(50% - 0.5px), rgba(200, 54, 31, 0.35) calc(50% - 0.5px), rgba(200, 54, 31, 0.35) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+  border: 1.5px solid #c8361f;
+  background: linear-gradient(
+      to right,
+      transparent calc(50% - 0.5px),
+      rgba(200, 54, 31, 0.35) calc(50% - 0.5px),
+      rgba(200, 54, 31, 0.35) calc(50% + 0.5px),
+      transparent calc(50% + 0.5px)
+    ),
+    linear-gradient(
+      to bottom,
+      transparent calc(50% - 0.5px),
+      rgba(200, 54, 31, 0.35) calc(50% - 0.5px),
+      rgba(200, 54, 31, 0.35) calc(50% + 0.5px),
+      transparent calc(50% + 0.5px)
+    ),
     #fff;
   display: grid;
   place-items: center;
-  color: #18212B;
+  color: #18212b;
 }
-.tzg [lang="zh-CN"] { font-family: var(--font-chinese); font-size: clamp(1.5rem, 5vw, 3rem); line-height: 1; }
-.tzg--claro [lang="zh-CN"] { color: rgba(24, 33, 43, 0.18); }
-.tzg__py { position: absolute; top: 2px; left: 0; right: 0; text-align: center; font-size: 0.6875rem; color: #0E7C66; font-style: italic; }
-.folha__rodape { margin-top: 16px; font-size: 0.8125rem; color: var(--ink-light); text-align: center; }
+.tzg [lang="zh-CN"] {
+  font-family: var(--font-chinese);
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  line-height: 1;
+}
+.tzg--claro [lang="zh-CN"] {
+  color: rgba(24, 33, 43, 0.18);
+}
+.tzg__py {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.6875rem;
+  color: #0e7c66;
+  font-style: italic;
+}
+.folha__rodape {
+  margin-top: 16px;
+  font-size: 0.8125rem;
+  color: var(--ink-light);
+  text-align: center;
+}
 
 /* ═══ IMPRESSÃO ═══
    Escondo tudo o que não é a folha (barra, rodapé, botões) e uso a página A4 inteira. */
 @media print {
-  @page { size: A4; margin: 12mm; }
-  body { padding-top: 0 !important; background: #fff !important; }
-  .site-nav, .rodape, #back-top, #read-bar, #toast, .folha__topo .botao-cha, #onboard-overlay, #daily-modal { display: none !important; }
-  .folha { padding: 0; max-width: none; }
-  .folha h1 { font-size: 18pt; }
-  .folha__topo p { font-size: 10pt; }
-  .page { min-height: 0 !important; }
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+  body {
+    padding-top: 0 !important;
+    background: #fff !important;
+  }
+  .site-nav,
+  .rodape,
+  #back-top,
+  #read-bar,
+  #toast,
+  .folha__topo .botao-cha,
+  #onboard-overlay,
+  #daily-modal {
+    display: none !important;
+  }
+  .folha {
+    padding: 0;
+    max-width: none;
+  }
+  .folha h1 {
+    font-size: 18pt;
+  }
+  .folha__topo p {
+    font-size: 10pt;
+  }
+  .page {
+    min-height: 0 !important;
+  }
 }

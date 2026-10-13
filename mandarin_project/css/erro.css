@@ -4,7 +4,10 @@
  * Uso só as cores da marca que estão em base.css.
  */
 
-body { background: var(--paper); color: var(--ink); }
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
 
 .erro {
   display: flex;
@@ -17,7 +20,9 @@ body { background: var(--paper); color: var(--ink); }
   padding: 32px 16px;
   text-align: center;
 }
-.erro__logo { margin-bottom: 24px; }
+.erro__logo {
+  margin-bottom: 24px;
+}
 
 /* O número 404 em grande, com o carimbo vermelho da marca.
    Escrevo ".erro .erro__codigo" (duas classes) para ganhar à regra ".erro p", que é mais específica do que uma classe só. */
@@ -28,15 +33,49 @@ body { background: var(--paper); color: var(--ink); }
   line-height: 1;
   color: var(--seal);
 }
-.erro .erro__zh { color: var(--ink); margin-top: 12px; font-family: var(--font-chinese); font-size: 2rem; font-weight: 700; }
-.erro .erro__py { color: var(--jade); font-weight: 600; margin-bottom: 24px; }
+.erro .erro__zh {
+  color: var(--ink);
+  margin-top: 12px;
+  font-family: var(--font-chinese);
+  font-size: 2rem;
+  font-weight: 700;
+}
+.erro .erro__py {
+  color: var(--jade);
+  font-weight: 600;
+  margin-bottom: 24px;
+}
 
-.erro h1 { font-size: 1.625rem; margin-bottom: 12px; }
-.erro p { line-height: 1.6; color: var(--ink-light); }
-.erro strong { color: var(--ink); }
+.erro h1 {
+  font-size: 1.625rem;
+  margin-bottom: 12px;
+}
+.erro p {
+  line-height: 1.6;
+  color: var(--ink-light);
+}
+.erro strong {
+  color: var(--ink);
+}
 
-.erro__botoes { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 24px; }
-.erro__botoes .botao-cha { margin: 0; }
+.erro__botoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+.erro__botoes .botao-cha {
+  margin: 0;
+}
 /* O segundo botão é branco com contorno, como na página inicial */
-.erro__botao-claro { background: var(--white); color: var(--ink); border: 1.5px solid var(--paper-dark); box-shadow: none; }
-.erro a:not(.botao-cha) { color: var(--jade); font-weight: 600; }
+.erro__botao-claro {
+  background: var(--white);
+  color: var(--ink);
+  border: 1.5px solid var(--paper-dark);
+  box-shadow: none;
+}
+.erro a:not(.botao-cha) {
+  color: var(--jade);
+  font-weight: 600;
+}

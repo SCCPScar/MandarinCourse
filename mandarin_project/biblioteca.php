@@ -33,7 +33,7 @@ require 'includes/topo.php';
       <div class="lib-desc">O curso completo do Foreign Service Institute dos EUA, usado para formar diplomatas. É do domínio público e está guardado no Internet Archive: os manuais em PDF e as gravações em áudio estão em páginas separadas. Está em inglês.</div>
       <div class="lib-tags"><span class="lib-tag tag-pdf">PDF</span><span class="lib-tag tag-audio">Áudio</span></div>
       <a class="lib-btn" href="https://archive.org/details/FSI-StandardChinese-StudentTexts" target="_blank" rel="noopener">Abrir os manuais</a>
-      <a class="lib-btn secondary" href="https://archive.org/details/FSIStandardChinese" target="_blank" rel="noopener" style="margin-top:4px">Ouvir os áudios</a>
+      <a class="lib-btn secondary" href="https://archive.org/details/FSIStandardChinese" target="_blank" rel="noopener">Ouvir os áudios</a>
     </div>
 
     <div class="lib-card">
@@ -82,7 +82,7 @@ require 'includes/topo.php';
       <div class="lib-desc">O Anki é o sistema de cartões com revisão espaçada mais conhecido do mundo, e é gratuito. No AnkiWeb há baralhos do HSK feitos por outros alunos: escolhe um com boas avaliações para treinar o vocabulário com áudio e caracteres.</div>
       <div class="lib-tags"><span class="lib-tag tag-app">Aplicação</span></div>
       <a class="lib-btn" href="https://ankiweb.net/shared/decks/HSK" target="_blank" rel="noopener">Ver os baralhos do HSK</a>
-      <a class="lib-btn secondary" href="https://apps.ankiweb.net/" target="_blank" rel="noopener" style="margin-top:4px">Instalar o Anki</a>
+      <a class="lib-btn secondary" href="https://apps.ankiweb.net/" target="_blank" rel="noopener">Instalar o Anki</a>
     </div>
 
     <div class="lib-card">
@@ -289,7 +289,7 @@ require 'includes/topo.php';
 </div>
 
 <!-- PERCURSO RECOMENDADO -->
-<div class="grammar-box" style="border-left-color: var(--gold);">
+<div class="grammar-box grammar-box--dourada">
   <h3>Um dia de estudo com estes recursos</h3>
   <div class="table-wrap">
   <table class="phrase-table">

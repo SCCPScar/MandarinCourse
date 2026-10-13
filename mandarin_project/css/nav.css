@@ -8,22 +8,30 @@
 
 :root {
   --nav-height: 64px;
-  --page-max: 1240px;       /* largura máxima do conteúdo (igual ao .container) */
-  --page-gutter: 2rem;      /* igual ao padding do .container */
+  --page-max: 1240px; /* largura máxima do conteúdo (igual ao .container) */
+  --page-gutter: 2rem; /* igual ao padding do .container */
   --ease-nav: cubic-bezier(0.625, 0.05, 0, 1);
 }
 @media (max-width: 700px) {
-  :root { --page-gutter: 1rem; }
+  :root {
+    --page-gutter: 1rem;
+  }
 }
 
 /* O conteúdo começa abaixo da barra fixa */
-body { padding-top: var(--nav-height); }
-.anchor { scroll-margin-top: calc(var(--nav-height) + 16px); }
+body {
+  padding-top: var(--nav-height);
+}
+.anchor {
+  scroll-margin-top: calc(var(--nav-height) + 16px);
+}
 
 /* ═══ BARRA ═══ */
 .site-nav {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
   height: var(--nav-height);
   display: flex;
@@ -84,7 +92,8 @@ body { padding-top: var(--nav-height); }
   align-items: center;
   gap: 20px;
   list-style: none;
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .site-nav__link,
 .site-nav__tool {
@@ -93,24 +102,33 @@ body { padding-top: var(--nav-height); }
   font-weight: 600;
   color: var(--ink);
   text-decoration: none;
-  opacity: 0.8;               /* não menos: abaixo disto o texto fica sem contraste suficiente */
+  opacity: 0.8; /* não menos: abaixo disto o texto fica sem contraste suficiente */
   transition: opacity 0.2s;
 }
 .site-nav__link:hover,
 .site-nav__link:focus-visible,
 .site-nav__tool:hover,
-.site-nav__tool:focus-visible { opacity: 1; }
+.site-nav__tool:focus-visible {
+  opacity: 1;
+}
 
 /* Página atual: opacidade total + sublinhado discreto.
    (Usamos ::after porque o text-decoration não passa para as letras em inline-block.) */
-.site-nav__link { position: relative; display: inline-block; }
-.site-nav__link[aria-current="page"] { opacity: 1; }
+.site-nav__link {
+  position: relative;
+  display: inline-block;
+}
+.site-nav__link[aria-current="page"] {
+  opacity: 1;
+}
 .site-nav__link[aria-current="page"]::after {
   content: "";
   position: absolute;
-  left: 0; right: 0; bottom: -4px;
+  left: 0;
+  right: 0;
+  bottom: -4px;
   height: 2px;
-  background: var(--seal);   /* a página atual fica sublinhada a vermelho-carimbo */
+  background: var(--seal); /* a página atual fica sublinhada a vermelho-carimbo */
 }
 
 .site-nav__tools {
@@ -122,12 +140,28 @@ body { padding-top: var(--nav-height); }
 /* No computador: o menu ocupa o espaço que sobra depois do logótipo,
    os links ficam no meio e as ferramentas (Hoje, Escuro, Conta) ficam à direita, só com o ícone. */
 @media (min-width: 1200px) {
-  .site-nav__menu { flex: 1; }
-  .site-nav__links { margin-inline: auto; }
-  .site-nav__tools { margin-left: auto; }   /* empurra as ferramentas para a direita */
-  .site-nav__tool .i { width: 1.35rem; height: 1.35rem; }
+  .site-nav__menu {
+    flex: 1;
+  }
+  .site-nav__links {
+    margin-inline: auto;
+  }
+  .site-nav__tools {
+    margin-left: auto;
+  } /* empurra as ferramentas para a direita */
+  .site-nav__tool .i {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
   /* O texto das ferramentas fica escondido, mas o leitor de ecrã continua a lê-lo */
-  .site-nav__texto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .site-nav__texto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
 }
 .site-nav__tool {
   background: none;
@@ -157,7 +191,7 @@ body { padding-top: var(--nav-height); }
 }
 .roll__char {
   display: inline-block;
-  white-space: pre;           /* mantém os espaços entre palavras */
+  white-space: pre; /* mantém os espaços entre palavras */
 }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
@@ -188,7 +222,9 @@ body { padding-top: var(--nav-height); }
 
 /* ═══ TELEMÓVEL E TABLET (< 1200px) ═══ */
 @media (max-width: 1199.98px) {
-  .site-nav__toggle { display: inline-block; }
+  .site-nav__toggle {
+    display: inline-block;
+  }
 
   /* O menu vira um painel em ecrã inteiro, por baixo da barra */
   .site-nav__menu {
@@ -205,7 +241,10 @@ body { padding-top: var(--nav-height); }
     visibility: hidden;
     opacity: 0;
     transform: translateY(-12px);
-    transition: opacity 0.35s var(--ease-nav), transform 0.35s var(--ease-nav), visibility 0s linear 0.35s;
+    transition:
+      opacity 0.35s var(--ease-nav),
+      transform 0.35s var(--ease-nav),
+      visibility 0s linear 0.35s;
   }
   body[data-menu-open="true"] .site-nav__menu {
     visibility: visible;
@@ -213,7 +252,9 @@ body { padding-top: var(--nav-height); }
     transform: translateY(0);
     transition-delay: 0s;
   }
-  body[data-menu-open="true"] { overflow: hidden; } /* a página por trás não rola */
+  body[data-menu-open="true"] {
+    overflow: hidden;
+  } /* a página por trás não rola */
 
   .site-nav__links {
     flex-direction: column;
@@ -227,20 +268,38 @@ body { padding-top: var(--nav-height); }
     letter-spacing: -0.01em;
     line-height: 1.25;
   }
-  .site-nav__link[aria-current="page"]::after { height: 2px; bottom: -2px; }
-  .site-nav__tools { flex-wrap: wrap; gap: 20px; }
-  .site-nav__tool { font-size: 1rem; opacity: 0.85; display: inline-flex; align-items: center; gap: 6px; }
+  .site-nav__link[aria-current="page"]::after {
+    height: 2px;
+    bottom: -2px;
+  }
+  .site-nav__tools {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .site-nav__tool {
+    font-size: 1rem;
+    opacity: 0.85;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .site-nav,
-  .site-nav__menu { transition: none; }
+  .site-nav__menu {
+    transition: none;
+  }
 }
 
 /* Em portáteis com ecrãs de 1200 a 1400 px, o espaço entre os links encolhe um pouco,
    para os 11 links nunca chegarem perto do logótipo nem das ferramentas.
    clamp(mínimo, ideal, máximo): o espaço acompanha a largura do ecrã, entre 12 e 22 px. */
 @media (min-width: 1200px) {
-  .site-nav__links { gap: clamp(12px, 1.25vw, 22px); }
-  .site-nav__tools { gap: clamp(10px, 1vw, 14px); }
+  .site-nav__links {
+    gap: clamp(12px, 1.25vw, 22px);
+  }
+  .site-nav__tools {
+    gap: clamp(10px, 1vw, 14px);
+  }
 }

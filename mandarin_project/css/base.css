@@ -3,79 +3,120 @@
  * Aqui eu guardo as variáveis, o reset, a tipografia, o layout e as regras para telemóvel.
  */
 
-
-  /* Aqui eu guardo as cores e as fontes da marca Chá (ver docs/marca.md).
+/* Aqui eu guardo as cores e as fontes da marca Chá (ver docs/marca.md).
      Os nomes antigos (--red, --green…) continuam a existir, para eu não ter de
      mudar todos os ficheiros, mas agora apontam para as cores novas. */
-  :root {
-    /* Cores da marca */
-    --jade: #0E7C66;      /* cor principal: botões, progresso, respostas certas */
-    --seal: #E0442E;      /* carimbo: logótipo e dias seguidos */
-    --seal-text: #C8361F; /* carimbo em texto pequeno (tem contraste suficiente) */
-    --gold-brand: #E8A317;/* conquistas */
-    --plum: #A8325E;      /* resposta errada */
+:root {
+  /* Cores da marca */
+  --jade: #0e7c66; /* cor principal: botões, progresso, respostas certas */
+  --seal: #e0442e; /* carimbo: logótipo e dias seguidos */
+  --seal-text: #c8361f; /* carimbo em texto pequeno (tem contraste suficiente) */
+  --gold-brand: #e8a317; /* conquistas */
+  --plum: #a8325e; /* resposta errada */
 
-    /* Nomes antigos, agora com as cores novas */
-    --red: var(--seal-text); --red-light: #FBE3DE; --red-dark: #A32A18;
-    --gold: var(--gold-brand); --gold-light: #FDF3DC; --gold-dark: #7A5406;
-    --ink: #18212B; --ink-mid: #26323D; --ink-light: #46535D;   /* mais escuras: no modo claro o texto estava muito apagado */
-    --paper: #F4F7F6; --paper-mid: #EAF0EE; --paper-dark: #D5DEDB;
-    --white: #FFFFFF; --green: var(--jade); --green-light: #D8EEE8;
-    --blue: #2F6FD0; --blue-light: #DCE8F8; --blue-dark: #1F4E8C;
-    /* Fundo escuro que continua escuro nos dois modos (cabeçalhos de tabelas, rodapé).
+  /* Nomes antigos, agora com as cores novas */
+  --red: var(--seal-text);
+  --red-light: #fbe3de;
+  --red-dark: #a32a18;
+  --gold: var(--gold-brand);
+  --gold-light: #fdf3dc;
+  --gold-dark: #7a5406;
+  --ink: #18212b;
+  --ink-mid: #26323d;
+  --ink-light: #46535d; /* mais escuras: no modo claro o texto estava muito apagado */
+  --paper: #f4f7f6;
+  --paper-mid: #eaf0ee;
+  --paper-dark: #d5dedb;
+  --white: #ffffff;
+  --green: var(--jade);
+  --green-light: #d8eee8;
+  --blue: #2f6fd0;
+  --blue-light: #dce8f8;
+  --blue-dark: #1f4e8c;
+  /* Fundo escuro que continua escuro nos dois modos (cabeçalhos de tabelas, rodapé).
        Não uso var(--ink) como fundo, porque no modo escuro a tinta passa a ser clara. */
-    --fundo-escuro: #18212B;
-    /* Cabeçalho das tabelas: jade no modo claro (com letra branca tem contraste de 5:1) */
-    --fundo-tabela: #0E7C66;
+  --fundo-escuro: #18212b;
+  /* Cabeçalho das tabelas: jade no modo claro (com letra branca tem contraste de 5:1) */
+  --fundo-tabela: #0e7c66;
 
-    /* Fontes (carregadas em css/fontes.css) */
-    --font-titulos: 'Bricolage Grotesque', 'Lexend', system-ui, sans-serif;
-    --font-main: 'Lexend', system-ui, sans-serif;
-    --font-chinese: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Noto Sans CJK SC', sans-serif;
+  /* Fontes (carregadas em css/fontes.css) */
+  --font-titulos: "Bricolage Grotesque", "Lexend", system-ui, sans-serif;
+  --font-main: "Lexend", system-ui, sans-serif;
+  --font-chinese: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Noto Sans CJK SC", sans-serif;
 
-    --shadow: 0 2px 12px rgba(0,0,0,0.08);
-    --shadow-hover: 0 6px 24px rgba(0,0,0,0.14);
-    --radius: 12px;
-  }
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.14);
+  --radius: 12px;
+}
 
-  /* Os títulos usam a fonte da marca */
-  h1, h2 { font-family: var(--font-titulos); letter-spacing: -0.01em; }
+/* Os títulos usam a fonte da marca */
+h1,
+h2 {
+  font-family: var(--font-titulos);
+  letter-spacing: -0.01em;
+}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  /* A letra base do site: 112,5% de 16 px = 18 px. Todos os tamanhos estão em rem
+/* A letra base do site: 112,5% de 16 px = 18 px. Todos os tamanhos estão em rem
      (múltiplos desta letra), por isso para aumentar ou diminuir o site todo basta mudar este número. */
-  html { font-size: 112.5%; }
-  @media (max-width: 700px) { html { font-size: 106.25%; } }   /* 17 px no telemóvel */
-
-  body {
-    font-family: var(--font-main);
-    background: var(--paper);
-    color: var(--ink);
-    line-height: 1.6;
-    font-size: 1rem;
+html {
+  font-size: 112.5%;
+}
+@media (max-width: 700px) {
+  html {
+    font-size: 106.25%;
   }
+} /* 17 px no telemóvel */
 
-  /* A barra de navegação está em css/nav.css */
+body {
+  font-family: var(--font-main);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 1rem;
+}
 
-  /* Botão principal da marca (verde jade), usado em várias páginas */
-  .botao-cha {
-    display: inline-flex;
-    align-items: center;
-    min-height: 48px;
-    padding: 0 22px;
-    margin: 0 8px 8px 0;
-    border-radius: 12px;
-    background: var(--jade);
-    color: #fff;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 4px 0 #084C3F;     /* uma "base" por baixo, como uma tecla */
-    transition: transform 0.12s, box-shadow 0.12s;
-  }
-  .botao-cha:hover { transform: translateY(-1px); }
-  .botao-cha:active { transform: translateY(3px); box-shadow: 0 1px 0 #084C3F; }
-  .botao-cha--claro { background: rgba(255, 255, 255, 0.14); box-shadow: none; }
+/* A barra de navegação está em css/nav.css */
 
-  /* Os <button> não herdam a letra da página como os links; aqui eu obrigo-os a herdar */
-  button.botao-cha { font-family: inherit; font-size: 1rem; border: 0; cursor: pointer; gap: 8px; }
+/* Botão principal da marca (verde jade), usado em várias páginas */
+.botao-cha {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 22px;
+  margin: 0 8px 8px 0;
+  border-radius: 12px;
+  background: var(--jade);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 0 #084c3f; /* uma "base" por baixo, como uma tecla */
+  transition:
+    transform 0.12s,
+    box-shadow 0.12s;
+}
+.botao-cha:hover {
+  transform: translateY(-1px);
+}
+.botao-cha:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #084c3f;
+}
+.botao-cha--claro {
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+}
+
+/* Os <button> não herdam a letra da página como os links; aqui eu obrigo-os a herdar */
+button.botao-cha {
+  font-family: inherit;
+  font-size: 1rem;
+  border: 0;
+  cursor: pointer;
+  gap: 8px;
+}

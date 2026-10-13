@@ -40,19 +40,25 @@
 }
 
 ::view-transition-old(root) {
-  animation-name: cha-page-out;   /* página antiga: some e desfoca */
+  animation-name: cha-page-out; /* página antiga: some e desfoca */
 }
 
 ::view-transition-new(root) {
-  animation-name: cha-page-in;    /* página nova: aparece e fica nítida */
+  animation-name: cha-page-in; /* página nova: aparece e fica nítida */
 }
 
 @keyframes cha-page-out {
-  to { opacity: 0; filter: blur(5px); }
+  to {
+    opacity: 0;
+    filter: blur(5px);
+  }
 }
 
 @keyframes cha-page-in {
-  from { opacity: 0; filter: blur(5px); }
+  from {
+    opacity: 0;
+    filter: blur(5px);
+  }
 }
 
 /* 5. A barra não esmaece: só desliza para o lugar certo se estava escondida. */
@@ -67,5 +73,5 @@
 }
 
 ::view-transition-old(site-nav) {
-  display: none;                  /* mostra só a barra da página nova */
+  display: none; /* mostra só a barra da página nova */
 }

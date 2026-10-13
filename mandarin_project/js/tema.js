@@ -2,7 +2,7 @@
  * tema.js
  * Aqui eu faço o modo escuro.
  * Ao carregar no botão "Escuro", ponho a classe "dark" no <body>.
- * O css/dark.css tem as cores do modo escuro para tudo o que está dentro de body.dark.
+ * O css/ferramentas.css tem as cores do modo escuro para tudo o que está dentro de body.dark.
  * A escolha fica guardada no browser, para se manter nas outras páginas.
  */
 

@@ -119,7 +119,7 @@ require 'includes/topo.php';
 <p class="section-intro">Com 1 hora por dia, 6 dias por semana, a rota leva cerca de 12 meses. Com menos tempo por dia demora mais, e está tudo bem: estudar todos os dias vale mais do que estudar muito de uma vez.</p>
 
 <div class="plan-grid">
-  <div class="plan-card" style="border-top-color:var(--seal)">
+  <div class="plan-card plan-card--selo">
     <h3>Meses 1 e 2 · Pequim 北京 <span class="py-inline">Běijīng</span></h3>
     <ul>
       <li>Os sons do pinyin e os 4 tons</li>
@@ -129,7 +129,7 @@ require 'includes/topo.php';
       <li>Cerca de 250 palavras e 100 caracteres</li>
     </ul>
   </div>
-  <div class="plan-card" style="border-top-color:var(--gold)">
+  <div class="plan-card plan-card--dourado">
     <h3>Meses 3 e 4 · Xi'an 西安 <span class="py-inline">Xī'ān</span></h3>
     <ul>
       <li>Pedir comida numa banca</li>
@@ -139,7 +139,7 @@ require 'includes/topo.php';
       <li>Nível 1 do HSK 3.0 concluído</li>
     </ul>
   </div>
-  <div class="plan-card" style="border-top-color:var(--jade)">
+  <div class="plan-card plan-card--jade">
     <h3>Meses 5 e 6 · Chengdu 成都 <span class="py-inline">Chéngdū</span></h3>
     <ul>
       <li>Falar da tua rotina</li>
@@ -149,7 +149,7 @@ require 'includes/topo.php';
       <li>Cerca de 850 palavras</li>
     </ul>
   </div>
-  <div class="plan-card" style="border-top-color:var(--blue)">
+  <div class="plan-card plan-card--azul">
     <h3>Meses 7 e 8 · Guilin 桂林 <span class="py-inline">Guìlín</span></h3>
     <ul>
       <li>Comprar bilhetes de comboio</li>
@@ -159,7 +159,7 @@ require 'includes/topo.php';
       <li>Nível 2 do HSK 3.0 concluído</li>
     </ul>
   </div>
-  <div class="plan-card" style="border-top-color:var(--plum)">
+  <div class="plan-card plan-card--ameixa">
     <h3>Meses 9 e 10 · Hangzhou 杭州 <span class="py-inline">Hángzhōu</span></h3>
     <ul>
       <li>Comparar coisas</li>
@@ -169,7 +169,7 @@ require 'includes/topo.php';
       <li>Cerca de 1750 palavras</li>
     </ul>
   </div>
-  <div class="plan-card" style="border-top-color:var(--ink)">
+  <div class="plan-card plan-card--tinta">
     <h3>Meses 11 e 12 · Xangai 上海 <span class="py-inline">Shànghǎi</span></h3>
     <ul>
       <li>Casa, banco e serviços</li>
@@ -179,7 +179,7 @@ require 'includes/topo.php';
       <li>Nível 3 do HSK 3.0 concluído</li>
     </ul>
   </div>
-  <div class="plan-card" style="border-top-color:var(--paper-dark)">
+  <div class="plan-card plan-card--cinzento">
     <h3>Um dia normal (1 hora)</h3>
     <ul>
       <li>15 a 20 min: uma lição nova</li>
@@ -191,10 +191,10 @@ require 'includes/topo.php';
   </div>
 </div>
 
-<div class="grammar-box" style="margin-top: 2rem; border-left-color: var(--gold)">
+<div class="grammar-box grammar-box--dourada grammar-box--afastada">
   <h3>Recursos gratuitos</h3>
-  <p style="color:var(--ink-light);margin-bottom:8px">Carrega no nome para abrires o site ou a aplicação (abre num separador novo). Há mais recursos na <a href="biblioteca.php">Biblioteca</a>.</p>
-  <ul style="padding-left:1.5rem; line-height:2.2; color:var(--ink-mid);">
+  <p class="texto-cinzento">Carrega no nome para abrires o site ou a aplicação (abre num separador novo). Há mais recursos na <a href="biblioteca.php">Biblioteca</a>.</p>
+  <ul class="lista-espacada">
     <li><strong><a href="https://www.hellochinese.cc/" target="_blank" rel="noopener">HelloChinese</a></strong> (aplicação): a melhor aplicação gratuita para começar, com ótimo treino de pinyin</li>
     <li><strong><a href="https://www.duolingo.com/" target="_blank" rel="noopener">Duolingo Chinese</a></strong> (aplicação): boa para criar o hábito diário e rever vocabulário</li>
     <li><strong><a href="https://apps.ankiweb.net/" target="_blank" rel="noopener">Anki</a></strong> (aplicação e site): cartões de memória gratuitos; há baralhos do HSK no AnkiWeb</li>
@@ -210,7 +210,7 @@ require 'includes/topo.php';
   </ul>
 </div>
 
-<div class="tip" style="margin-top: 1.5rem">
+<div class="tip">
   <strong>A regra número 1:</strong> <em>Fala desde o primeiro dia.</em> Mesmo que erres os tons, mesmo que a gramática saia torta, fala. Os chineses valorizam muito qualquer esforço e vão ajudar-te. O maior erro de quem aprende é esperar até estar «pronto» para falar. Já estás pronto. 加油！(jiāyóu: à letra «pôr óleo», quer dizer «força, tu consegues!»)
 </div>
 

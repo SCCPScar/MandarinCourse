@@ -225,7 +225,7 @@ require 'includes/topo.php';
 
 <div class="table-wrap">
 <table class="phrase-table">
-  <tr><th colspan="3" style="background:var(--red-dark)">Frases para reuniões · 开会用语 (kāihuì yòngyǔ)</th></tr>
+  <tr><th colspan="3" class="th-trabalho">Frases para reuniões · 开会用语 (kāihuì yòngyǔ)</th></tr>
   <tr><th>Chinês</th><th>Pinyin</th><th>Significado</th></tr>
   <tr><td class="zh-cell">我们开始吧</td><td class="py-cell">wǒmen kāishǐ ba</td><td>Vamos começar</td></tr>
   <tr><td class="zh-cell">请大家注意</td><td class="py-cell">qǐng dàjiā zhùyì</td><td>Peço a atenção de todos</td></tr>
@@ -242,9 +242,9 @@ require 'includes/topo.php';
 </table>
 </div>
 
-<div style="margin-top: 1.5rem;" class="table-wrap">
+<div class="table-wrap">
 <table class="phrase-table">
-  <tr><th colspan="3" style="background:var(--red-dark)">Frases para e-mail e WeChat · 邮件和微信 (yóujiàn hé Wēixìn)</th></tr>
+  <tr><th colspan="3" class="th-trabalho">Frases para e-mail e WeChat · 邮件和微信 (yóujiàn hé Wēixìn)</th></tr>
   <tr><th>Chinês</th><th>Pinyin</th><th>Significado</th></tr>
   <tr><td class="zh-cell">您好</td><td class="py-cell">nín hǎo</td><td>Caro(a) / Olá (início de e-mail)</td></tr>
   <tr><td class="zh-cell">请问……</td><td class="py-cell">qǐngwèn…</td><td>Posso perguntar… (para começar uma pergunta com educação)</td></tr>
@@ -258,9 +258,9 @@ require 'includes/topo.php';
 </table>
 </div>
 
-<div style="margin-top: 1.5rem;" class="table-wrap">
+<div class="table-wrap">
 <table class="phrase-table">
-  <tr><th colspan="3" style="background:var(--red-dark)">Vocabulário de negócios · 商务词汇 (shāngwù cíhuì)</th></tr>
+  <tr><th colspan="3" class="th-trabalho">Vocabulário de negócios · 商务词汇 (shāngwù cíhuì)</th></tr>
   <tr><th>Chinês</th><th>Pinyin</th><th>Significado</th></tr>
   <tr><td class="zh-cell">合同</td><td class="py-cell">hétong</td><td>contrato</td></tr>
   <tr><td class="zh-cell">项目</td><td class="py-cell">xiàngmù</td><td>projeto</td></tr>

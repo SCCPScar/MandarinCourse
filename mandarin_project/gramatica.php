@@ -49,7 +49,7 @@ require 'includes/topo.php';
 <div class="grammar-box anchor" id="estrutura-2">
   <h3>Estrutura 2: 是 (shì), o «ser» com nomes</h3>
   <div class="formula"><span class="placeholder">Sujeito</span> + 是 (shì) + <span class="placeholder">Nome / identidade</span></div>
-  <div class="tip" style="margin:8px 0">Não uses 是 (shì) com adjetivos! «Ela é bonita» = 她很漂亮 (tā hěn piàoliang) (e não 她是漂亮 (tā shì piàoliang))</div>
+  <div class="tip">Não uses 是 (shì) com adjetivos! «Ela é bonita» = 她很漂亮 (tā hěn piàoliang) (e não 她是漂亮 (tā shì piàoliang))</div>
   <ul class="example-list">
     <li><span class="zh-ex">我是学生</span><span class="py-ex">wǒ shì xuésheng</span><span class="en-ex">Sou estudante</span></li>
     <li><span class="zh-ex">他是老师</span><span class="py-ex">tā shì lǎoshī</span><span class="en-ex">Ele é professor</span></li>
@@ -121,14 +121,14 @@ require 'includes/topo.php';
     <li><span class="zh-ex">昨天我在北京吃了北京烤鸭</span><span class="py-ex">Zuótiān wǒ zài Běijīng chī le Běijīng kǎoyā</span><span class="en-ex">Ontem comi pato à Pequim em Pequim</span></li>
     <li><span class="zh-ex">下午两点开会</span><span class="py-ex">xiàwǔ liǎng diǎn kāihuì</span><span class="en-ex">Reunião às 14h</span></li>
   </ul>
-  <div class="tip" style="margin-top:8px"><i class="i i-relogio" aria-hidden="true"></i> <strong>Palavras de tempo:</strong> 今天 jīntiān (hoje) | 明天 míngtiān (amanhã) | 昨天 zuótiān (ontem) | 现在 xiànzài (agora) | 以前 yǐqián (antes) | 以后 yǐhòu (depois)</div>
+  <div class="tip"><i class="i i-relogio" aria-hidden="true"></i> <strong>Palavras de tempo:</strong> 今天 jīntiān (hoje) | 明天 míngtiān (amanhã) | 昨天 zuótiān (ontem) | 现在 xiànzài (agora) | 以前 yǐqián (antes) | 以后 yǐhòu (depois)</div>
 </div>
 
 <div class="grammar-box anchor" id="estrutura-9">
   <h3>Estrutura 9: os classificadores (量词, liàngcí)</h3>
   <div class="formula"><span class="placeholder">Número</span> + <span class="placeholder">Classificador</span> + <span class="placeholder">Nome</span></div>
-  <div class="warning" style="margin:8px 0">Não podes dizer «um livro» diretamente: precisas de um classificador. Diz-se 一本书 (yī běn shū), e não 一书 (yì shū).</div>
-  <div class="table-wrap" style="margin-top:10px">
+  <div class="warning">Não podes dizer «um livro» diretamente: precisas de um classificador. Diz-se 一本书 (yī běn shū), e não 一书 (yì shū).</div>
+  <div class="table-wrap">
   <table class="phrase-table">
     <tr><th>Classificador</th><th>Pinyin</th><th>Usa-se para</th><th>Exemplo</th></tr>
     <tr><td class="zh-cell">个</td><td class="py-cell">gè</td><td>Geral (pessoas e coisas)</td><td>一个人 (yí ge rén) (uma pessoa), 两个苹果 (liǎng ge píngguǒ) (duas maçãs)</td></tr>

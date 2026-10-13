@@ -1,0 +1,358 @@
+/*
+ * praticar.css
+ * Aqui eu dou estilo às partes da página Praticar que antes tinham o estilo
+ * escrito no próprio HTML (style="..."). Agora o HTML só diz O QUE cada coisa é
+ * (com uma classe) e este ficheiro diz COMO aparece.
+ * Este ficheiro só é carregado no Praticar ($css_extra = ['praticar'] no praticar.php).
+ */
+
+/* ═══ DIÁLOGOS ═══ */
+.dialogo-titulo {
+  margin: 1.5rem 0 0.75rem;
+  font-size: 1.0625rem;
+  color: var(--ink);
+}
+
+/* ═══ QUIZ ═══ */
+.quiz-comecar-linha {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* ═══ SEPARADORES DAS FERRAMENTAS ═══ */
+.api-tab-content {
+  padding-top: 1.2rem;
+}
+.api-tab-content > .info {
+  margin-bottom: 0.8rem;
+}
+
+/* ═══ BOTÕES DAS FERRAMENTAS ═══
+   Uma classe base (botao-ferramenta) e outras que só mudam a cor ou o tamanho.
+   Ex.: class="botao-ferramenta botao-ferramenta--vermelho" */
+.botao-ferramenta {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-family: var(--font-main);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.botao-ferramenta--vermelho {
+  background: var(--red);
+  color: #fff;
+}
+.botao-ferramenta--azul {
+  background: var(--blue);
+  color: #fff;
+}
+.botao-ferramenta--dourado {
+  background: var(--gold);
+  color: #fff;
+}
+.botao-ferramenta--cinzento {
+  background: var(--paper-dark);
+  color: var(--ink);
+}
+.botao-ferramenta--perigo {
+  background: var(--red-light);
+  color: var(--red-dark);
+}
+.botao-ferramenta--pequeno {
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+.botao-ferramenta--redondo {
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+/* Uma linha de botões que passa para a linha de baixo quando não cabe */
+.linha-botoes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.linha-botoes--topo {
+  margin-bottom: 1rem;
+}
+.linha-botoes--gravar {
+  margin-top: 10px;
+  gap: 10px;
+}
+.linha-botoes--centro {
+  justify-content: center;
+  margin-top: 12px;
+  gap: 10px;
+}
+
+/* Textos pequenos que se repetem nas ferramentas */
+.explicacao-ferramenta {
+  font-size: 0.8125rem;
+  color: var(--ink-light);
+  margin-bottom: 10px;
+}
+.mini-titulo {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ink-light);
+  margin-bottom: 7px;
+  text-transform: uppercase;
+}
+.dica-cinzenta {
+  color: var(--ink-light);
+  font-size: 0.8125rem;
+}
+.cor-dourada {
+  color: var(--gold);
+}
+.cor-vermelha {
+  color: var(--red);
+}
+.tip--junto {
+  margin-top: 8px;
+}
+.tip--pequena {
+  margin-top: 12px;
+  font-size: 0.75rem;
+}
+
+/* ═══ CARTÕES DE MEMÓRIA ═══ */
+.fsn--verde {
+  color: #0e7c66;
+}
+.fsn--vermelho {
+  color: var(--red);
+}
+.fc-ouvir {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+.fc-prog {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--ink-light);
+  margin: 6px 0;
+}
+
+/* ═══ JOGO DE CARACTERES ═══ */
+.cg-pontos {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink-light);
+}
+
+/* ═══ OUVIR ═══ */
+.caixa-ferramenta {
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--paper-dark);
+  padding: 1.3rem;
+}
+.campo-chines {
+  flex: 1;
+  min-width: 160px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  border: 1.5px solid var(--paper-dark);
+  background: var(--paper-mid);
+  color: var(--ink);
+  font-family: var(--font-chinese);
+  font-size: 1.125rem;
+}
+.velocidade {
+  margin-bottom: 0.8rem;
+  font-size: 0.75rem;
+  color: var(--ink-light);
+}
+.velocidade label {
+  margin-right: 8px;
+}
+.velocidade input {
+  vertical-align: middle;
+  width: 100px;
+}
+#speak-rate-label {
+  margin-left: 6px;
+}
+.preset-char--frase {
+  font-size: 0.75rem;
+  padding: 5px 10px;
+}
+#speak-status {
+  font-size: 0.75rem;
+  color: var(--green);
+  min-height: 18px;
+  margin-top: 6px;
+}
+
+/* ═══ TRAÇOS ═══ */
+#hanzi-hint {
+  text-align: center;
+  font-size: 0.6875rem;
+  color: var(--ink-light);
+  margin-top: 3px;
+}
+
+/* ═══ TEMPORIZADOR ═══ */
+.timer-btn--comecar {
+  background: #0e7c66;
+  color: #fff;
+}
+.timer-btn--pausa {
+  background: var(--red);
+  color: #fff;
+}
+.timer-btn--recomecar {
+  background: var(--paper-dark);
+  color: var(--ink);
+}
+.semana {
+  margin-top: 1rem;
+}
+#week-grid {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* ═══ PRONÚNCIA ═══ */
+.ttc-tone--1 {
+  color: #2f6fd0;
+}
+.ttc-tone--2 {
+  color: #0e7c66;
+}
+.ttc-tone--3 {
+  color: #9a6a08;
+}
+.ttc-tone--4 {
+  color: #a32a18;
+}
+#tone-canvas-wrap {
+  position: relative;
+}
+#tone-feedback,
+#recog-result,
+#recog-feedback {
+  margin-top: 10px;
+}
+.opcao-pinyin {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  color: var(--ink-mid);
+  cursor: pointer;
+}
+.seletor {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1.5px solid var(--paper-dark);
+  background: var(--paper-mid);
+  color: var(--ink);
+  font-family: var(--font-main);
+  font-size: 0.8125rem;
+}
+
+/* Repetir palavras */
+.repetir-caixa {
+  margin-top: 1rem;
+  padding: 12px;
+  background: var(--paper-mid);
+  border-radius: 10px;
+}
+.repetir-alvo {
+  text-align: center;
+}
+#repeat-target-zh {
+  font-family: var(--font-chinese);
+  font-size: 3.25rem;
+  font-weight: 700;
+  color: var(--red);
+}
+#repeat-target-py {
+  font-style: italic;
+  color: var(--ink-light);
+  font-size: 0.9375rem;
+  margin: 2px 0;
+}
+#repeat-target-en {
+  font-size: 0.875rem;
+  color: var(--ink);
+}
+#repeat-result {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.875rem;
+  min-height: 30px;
+}
+
+/* Reconhecimento de voz */
+.frases-sugeridas {
+  background: var(--paper-mid);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+}
+.frase-sugerida {
+  padding: 4px 10px;
+  border: 1.5px solid var(--paper-dark);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--red);
+  font-family: var(--font-chinese);
+  font-size: 1rem;
+  cursor: pointer;
+}
+#recog-target-display {
+  flex: 1;
+  min-width: 160px;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1.5px solid var(--paper-dark);
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-chinese);
+  font-size: 1.25rem;
+}
+#recog-mic-btn {
+  white-space: nowrap;
+}
+
+/* Os meus resultados */
+.psn--verde {
+  color: var(--green);
+}
+.psn--vermelho {
+  color: var(--red);
+}
+.psn--dourado {
+  color: var(--gold);
+}
+.historico {
+  margin-top: 1.2rem;
+}
+.historico__apagar {
+  margin-top: 1rem;
+}
+
+/* ═══ MODO ESCURO ═══
+   No modo escuro o vermelho, o jade e o dourado ficam mais claros.
+   Nos botões com essas cores de fundo, a letra branca deixava de se ler: troco-a por uma quase preta. */
+body.dark .botao-ferramenta--vermelho,
+body.dark .botao-ferramenta--azul,
+body.dark .botao-ferramenta--dourado,
+body.dark .timer-btn--pausa,
+body.dark .partilhar__botao,
+body.dark .rw-praticar,
+body.dark .cg-verificar {
+  color: #0f1519;
+}

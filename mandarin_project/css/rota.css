@@ -10,8 +10,14 @@
   margin: 0 auto;
   padding: 56px var(--page-gutter) 72px;
 }
-.rota h2 { font-size: 2rem; color: var(--ink); }
-.rota__intro { color: var(--ink-light); margin: 4px 0 24px; }
+.rota h2 {
+  font-size: 2rem;
+  color: var(--ink);
+}
+.rota__intro {
+  color: var(--ink-light);
+  margin: 4px 0 24px;
+}
 
 /* 3 colunas no computador, 2 no tablet, 1 no telemóvel */
 .rota__lista {
@@ -26,10 +32,26 @@
   overflow: hidden;
   box-shadow: var(--shadow);
 }
-.cidade__link { display: block; height: 100%; color: inherit; text-decoration: none; }
-.cidade { transition: transform 0.15s, box-shadow 0.15s; }
-.cidade:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
-.cidade__link:focus-visible { outline: 3px solid var(--jade); outline-offset: 3px; border-radius: var(--radius); }
+.cidade__link {
+  display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+.cidade {
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+.cidade:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+.cidade__link:focus-visible {
+  outline: 3px solid var(--jade);
+  outline-offset: 3px;
+  border-radius: var(--radius);
+}
 .cidade__foto {
   display: block;
   width: 100%;
@@ -46,30 +68,67 @@
   font-size: 4rem;
   font-weight: 700;
 }
-.cidade__texto { padding: 16px 18px 20px; }
-.cidade__meses { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--jade); }
-.cidade h3 { font-family: var(--font-titulos); font-size: 1.375rem; font-weight: 800; color: var(--ink); margin: 2px 0; }
-.cidade h3 span { font-family: var(--font-chinese); font-weight: 500; color: var(--ink-light); margin-left: 4px; }
-.cidade p { color: var(--ink-light); font-size: 0.9375rem; }
-.cidade__feitas { margin-top: 6px; font-size: 0.8125rem !important; }
+.cidade__texto {
+  padding: 16px 18px 20px;
+}
+.cidade__meses {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--jade);
+}
+.cidade h3 {
+  font-family: var(--font-titulos);
+  font-size: 1.375rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 2px 0;
+}
+.cidade h3 span {
+  font-family: var(--font-chinese);
+  font-weight: 500;
+  color: var(--ink-light);
+  margin-left: 4px;
+}
+.cidade p {
+  color: var(--ink-light);
+  font-size: 0.9375rem;
+}
+.cidade__feitas {
+  margin-top: 6px;
+  font-size: 0.8125rem !important;
+}
 
 /* Barra de progresso de cada cidade */
-.progresso { height: 6px; margin-top: 12px; border-radius: 3px; background: var(--paper-dark); overflow: hidden; }
-.progresso__barra { height: 100%; background: var(--jade); border-radius: 3px; }
+.progresso {
+  height: 6px;
+  margin-top: 12px;
+  border-radius: 3px;
+  background: var(--paper-dark);
+  overflow: hidden;
+}
+.progresso__barra {
+  height: 100%;
+  background: var(--jade);
+  border-radius: 3px;
+}
 
 /* Carimbo da cidade: aparece quando o aluno faz todas as lições da cidade.
    É um selo vermelho, rodado como o carimbo do logótipo. */
-.cidade { position: relative; }
+.cidade {
+  position: relative;
+}
 .carimbo {
   position: absolute;
   top: 14px;
   right: 14px;
   z-index: 1;
   padding: 8px 10px;
-  border: 3px solid #FFFFFF;
+  border: 3px solid #ffffff;
   border-radius: 12px;
-  background: var(--seal, #E0442E);
-  color: #FFFFFF;
+  background: var(--seal, #e0442e);
+  color: #ffffff;
   font-family: var(--font-chinese);
   font-size: 1.125rem;
   font-weight: 700;
@@ -80,11 +139,24 @@
 }
 
 /* 3 colunas no computador, 2 no tablet, 1 no telemóvel */
-@media (max-width: 960px) { .rota__lista { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .rota__lista { grid-template-columns: 1fr; } }
+@media (max-width: 960px) {
+  .rota__lista {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .rota__lista {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* O pinyin e o nível HSK de cada cidade */
-.cidade__pinyin { display: block; font-style: italic; color: var(--jade); font-size: 0.9375rem; }
+.cidade__pinyin {
+  display: block;
+  font-style: italic;
+  color: var(--jade);
+  font-size: 0.9375rem;
+}
 .cidade__hsk {
   display: inline-block;
   margin: 8px 0 6px;
@@ -107,23 +179,66 @@
   box-shadow: var(--shadow);
   text-align: center;
 }
-.rota-geral__numeros { font-size: 1.125rem; color: var(--ink-mid); margin-bottom: 12px; }
-.rota-geral__numeros strong { font-family: var(--font-titulos); font-size: 2rem; color: var(--jade); }
-.rota-geral .progresso { height: 18px; border-radius: 9px; margin: 0; }
-.rota-geral .progresso__barra { border-radius: 9px; }
-.rota-geral p { margin-top: 10px; color: var(--ink-light); }
+.rota-geral__numeros {
+  font-size: 1.125rem;
+  color: var(--ink-mid);
+  margin-bottom: 12px;
+}
+.rota-geral__numeros strong {
+  font-family: var(--font-titulos);
+  font-size: 2rem;
+  color: var(--jade);
+}
+.rota-geral .progresso {
+  height: 18px;
+  border-radius: 9px;
+  margin: 0;
+}
+.rota-geral .progresso__barra {
+  border-radius: 9px;
+}
+.rota-geral p {
+  margin-top: 10px;
+  color: var(--ink-light);
+}
 
 /* As barras dos cartões ficam mais grossas do que antes (6 px era pouco) */
-.cidade .progresso { height: 10px; border-radius: 5px; }
+.cidade .progresso {
+  height: 10px;
+  border-radius: 5px;
+}
 
 /* ═══ CULTURA ═══ */
-.cultura-secao { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--page-gutter) 72px; }
-.cultura-secao h2 { font-size: 2rem; }
-.cultura-secao > p { color: var(--ink-light); margin: 4px 0 24px; max-width: 760px; }
-.cultura-cidade { margin-top: 32px; }
-.cultura-cidade h3 { font-family: var(--font-titulos); font-size: 1.375rem; margin-bottom: 12px; }
-.cultura-cidade h3 a { color: var(--ink); }
-.cultura-lista { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.cultura-secao {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--page-gutter) 72px;
+}
+.cultura-secao h2 {
+  font-size: 2rem;
+}
+.cultura-secao > p {
+  color: var(--ink-light);
+  margin: 4px 0 24px;
+  max-width: 760px;
+}
+.cultura-cidade {
+  margin-top: 32px;
+}
+.cultura-cidade h3 {
+  font-family: var(--font-titulos);
+  font-size: 1.375rem;
+  margin-bottom: 12px;
+}
+.cultura-cidade h3 a {
+  color: var(--ink);
+}
+.cultura-lista {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
 .cultura-item {
   padding: 18px;
   background: var(--white);
@@ -131,33 +246,110 @@
   border-left: 4px solid var(--cor-cultura, var(--jade));
   box-shadow: var(--shadow);
 }
-.cultura-item:nth-child(4n+2) { --cor-cultura: var(--seal); }
-.cultura-item:nth-child(4n+3) { --cor-cultura: var(--gold); }
-.cultura-item:nth-child(4n+4) { --cor-cultura: var(--blue); }
-.cultura-item__topo { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
-.cultura-item__zh { font-family: var(--font-chinese); font-size: 1.5rem; font-weight: 700; color: var(--red); }
-.cultura-item__py { font-style: italic; color: var(--jade); }
-.cultura-item h4 { font-size: 1rem; margin-bottom: 4px; }
-.cultura-item p { color: var(--ink-light); font-size: 0.9375rem; line-height: 1.55; }
+.cultura-item:nth-child(4n + 2) {
+  --cor-cultura: var(--seal);
+}
+.cultura-item:nth-child(4n + 3) {
+  --cor-cultura: var(--gold);
+}
+.cultura-item:nth-child(4n + 4) {
+  --cor-cultura: var(--blue);
+}
+.cultura-item__topo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.cultura-item__zh {
+  font-family: var(--font-chinese);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--red);
+}
+.cultura-item__py {
+  font-style: italic;
+  color: var(--jade);
+}
+.cultura-item h4 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+.cultura-item p {
+  color: var(--ink-light);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
 
-.rota h1 { font-size: clamp(2rem, 4vw, 2.75rem); color: var(--ink); }
-.cultura-item p { margin-bottom: 12px; }
-.rota-geral a:not(.botao-cha), .cultura-cidade h3 a:hover { color: var(--jade); font-weight: 600; }
+.rota h1 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  color: var(--ink);
+}
+.cultura-item p {
+  margin-bottom: 12px;
+}
+.rota-geral a:not(.botao-cha),
+.cultura-cidade h3 a:hover {
+  color: var(--jade);
+  font-weight: 600;
+}
 
 /* O convite para a página da cultura, no fim da rota */
-.convite-cultura { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; padding: 28px 32px; border-radius: 20px; background: var(--gold-light); border-left: 6px solid var(--gold); }
-.convite-cultura h2 { margin-bottom: 6px; }
-.convite-cultura p { color: var(--ink-mid); max-width: 640px; }
-.convite-cultura .botao-cha { margin: 0; }
+.convite-cultura {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 32px;
+  border-radius: 20px;
+  background: var(--gold-light);
+  border-left: 6px solid var(--gold);
+}
+.convite-cultura h2 {
+  margin-bottom: 6px;
+}
+.convite-cultura p {
+  color: var(--ink-mid);
+  max-width: 640px;
+}
+.convite-cultura .botao-cha {
+  margin: 0;
+}
 
 /* Página da cultura: os atalhos para as cidades ficam em linha */
-.indice--cidades { border-left-color: var(--gold); }
-.indice--cidades ol { columns: auto; display: flex; flex-wrap: wrap; gap: 6px 24px; list-style: none; padding: 0; }
-.cultura-cidade.anchor { scroll-margin-top: calc(var(--nav-height) + 16px); }
-.cultura-cidade h3 .py-inline { margin-left: 8px; }
+.indice--cidades {
+  border-left-color: var(--gold);
+}
+.indice--cidades ol {
+  columns: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 24px;
+  list-style: none;
+  padding: 0;
+}
+.cultura-cidade.anchor {
+  scroll-margin-top: calc(var(--nav-height) + 16px);
+}
+.cultura-cidade h3 .py-inline {
+  margin-left: 8px;
+}
 
 /* Barra de progresso grande, com a percentagem por baixo, e o botão bem afastado da barra */
-.rota-geral .progresso { height: 24px; border-radius: 12px; }
-.rota-geral .progresso__barra { border-radius: 12px; min-width: 24px; }
-.rota-geral__pct { margin: 10px 0 0 !important; font-weight: 700; color: var(--jade) !important; }
-.rota-geral .botao-cha { margin: 24px 0 0 !important; }
+.rota-geral .progresso {
+  height: 24px;
+  border-radius: 12px;
+}
+.rota-geral .progresso__barra {
+  border-radius: 12px;
+  min-width: 24px;
+}
+.rota-geral__pct {
+  margin: 10px 0 0 !important;
+  font-weight: 700;
+  color: var(--jade) !important;
+}
+.rota-geral .botao-cha {
+  margin: 24px 0 0 !important;
+}

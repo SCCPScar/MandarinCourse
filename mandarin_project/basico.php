@@ -134,7 +134,7 @@ require 'includes/topo.php';
 <div class="tip"><strong>A lógica dos números:</strong> Os números de 11 a 99 são perfeitamente lógicos: 十一 (shíyī) = 10 + 1 = 11, 二十五 (èrshíwǔ) = 2 × 10 + 5 = 25, 三百六十五 (sānbǎi liùshíwǔ) = 365. Não há formas irregulares!</div>
 <div class="warning"><strong>两 (liǎng) ou 二 (èr):</strong> Os dois querem dizer «dois», mas 两 (liǎng) usa-se para contar coisas (两个人 (liǎng ge rén) = 2 pessoas). 二 (èr) usa-se nos números (第二 (dì-èr) = segundo, 二十 (èrshí) = 20).</div>
 
-<div class="grammar-box" style="margin-top:1.5rem">
+<div class="grammar-box">
   <h3>Dizer as horas</h3>
   <div class="formula">
     <span class="placeholder">[hora]</span> 点 (diǎn) <span class="placeholder">[minutos]</span> 分 (fēn) → [hora] horas e [minutos] minutos

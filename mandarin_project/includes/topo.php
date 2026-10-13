@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="<?= versao('css/base.css') ?>">
   <link rel="stylesheet" href="<?= versao('css/icones.css') ?>">
   <link rel="stylesheet" href="<?= versao('css/components.css') ?>">
-  <link rel="stylesheet" href="<?= versao('css/dark.css') ?>">
+  <link rel="stylesheet" href="<?= versao('css/ferramentas.css') ?>">
   <link rel="stylesheet" href="<?= versao('css/nav.css') ?>">
   <link rel="stylesheet" href="<?= versao('css/transitions.css') ?>">
   <?php foreach ($css_extra ?? [] as $css): ?>

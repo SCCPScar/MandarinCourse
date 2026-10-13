@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: flex-end;
   overflow: hidden;
-  background: #0F1519;
+  background: #0f1519;
 }
 .hero-cha__foto {
   position: absolute;
@@ -20,7 +20,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: left 80%;      /* as taças ficam em baixo, à esquerda */
+  object-position: left 80%; /* as taças ficam em baixo, à esquerda */
 }
 /* Um degradê escuro por trás do texto, para as letras brancas se lerem bem */
 .hero-cha::after {
@@ -41,7 +41,12 @@
   line-height: 1.05;
   margin-bottom: 16px;
 }
-.hero-cha p { font-size: 1.0625rem; line-height: 1.55; opacity: 0.9; margin-bottom: 24px; }
+.hero-cha p {
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  opacity: 0.9;
+  margin-bottom: 24px;
+}
 
 /* Crédito do fotógrafo, pequeno, no canto */
 .credito {
@@ -52,7 +57,9 @@
   font-size: 0.6875rem;
   color: rgba(255, 255, 255, 0.8);
 }
-.credito--telemovel { display: none; }
+.credito--telemovel {
+  display: none;
+}
 
 /* ═══ 2. PAINEL DO ALUNO ═══ */
 .painel {
@@ -61,7 +68,7 @@
   align-items: center;
   gap: 8px 24px;
   max-width: var(--page-max);
-  margin: -32px auto 0;            /* sobe um pouco por cima do hero */
+  margin: -32px auto 0; /* sobe um pouco por cima do hero */
   padding: 20px 24px;
   position: relative;
   z-index: 2;
@@ -70,30 +77,70 @@
   box-shadow: var(--shadow);
   width: calc(100% - 2 * var(--page-gutter));
 }
-.painel__ola { font-family: var(--font-titulos); font-size: 1.25rem; font-weight: 800; color: var(--ink); }
-.painel p { color: var(--ink-light); flex: 1 1 320px; }
-.painel__numeros { display: flex; gap: 20px; list-style: none; color: var(--ink-light); }
-.painel__numeros strong { color: var(--ink); font-size: 1.25rem; margin-right: 4px; }
-.painel a { margin-left: auto; color: var(--jade); font-weight: 600; }
+.painel__ola {
+  font-family: var(--font-titulos);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+.painel p {
+  color: var(--ink-light);
+  flex: 1 1 320px;
+}
+.painel__numeros {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  color: var(--ink-light);
+}
+.painel__numeros strong {
+  color: var(--ink);
+  font-size: 1.25rem;
+  margin-right: 4px;
+}
+.painel a {
+  margin-left: auto;
+  color: var(--jade);
+  font-weight: 600;
+}
 
 /* ═══ TABLET E TELEMÓVEL ═══ */
 @media (max-width: 767.98px) {
   /* No telemóvel a foto fica em cima e o texto em baixo, sobre o degradê */
-  .hero-cha { min-height: 88svh; align-items: flex-end; justify-content: flex-start; }
-  .hero-cha__foto { object-position: center top; }
-  .hero-cha::after { background: linear-gradient(to top, rgba(15, 21, 25, 0.92) 0%, rgba(15, 21, 25, 0.55) 45%, rgba(15, 21, 25, 0) 70%); }
-  .hero-cha__texto { margin: 0; padding: 0 var(--page-gutter) 64px; }
-  .credito { top: 8px; bottom: auto; }
-  .credito--computador { display: none; }
-  .credito--telemovel { display: block; }
-  .painel a { margin-left: 0; }
+  .hero-cha {
+    min-height: 88svh;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+  .hero-cha__foto {
+    object-position: center top;
+  }
+  .hero-cha::after {
+    background: linear-gradient(to top, rgba(15, 21, 25, 0.92) 0%, rgba(15, 21, 25, 0.55) 45%, rgba(15, 21, 25, 0) 70%);
+  }
+  .hero-cha__texto {
+    margin: 0;
+    padding: 0 var(--page-gutter) 64px;
+  }
+  .credito {
+    top: 8px;
+    bottom: auto;
+  }
+  .credito--computador {
+    display: none;
+  }
+  .credito--telemovel {
+    display: block;
+  }
+  .painel a {
+    margin-left: 0;
+  }
 }
-
 
 /* ═══ HERO EM CARTÃO ═══
    Aqui eu mudo o hero para duas colunas: o texto à esquerda e a imagem num cartão à direita.
    Uso as cores da marca: o fundo porcelana (--paper) e o texto em tinta (--ink).
-   No modo escuro estas variáveis trocam sozinhas (ver dark.css).
+   No modo escuro estas variáveis trocam sozinhas (ver ferramentas.css).
    Como a imagem já não fica por baixo do texto, deixo de precisar do degradê. */
 .hero-cha--cartao {
   background: var(--paper);
@@ -105,12 +152,31 @@
   min-height: 0;
   padding: 56px max(var(--page-gutter), calc((100% - var(--page-max)) / 2 + var(--page-gutter))) 88px;
 }
-.hero-cha--cartao::after { display: none; }
-.hero-cha--cartao .hero-cha__texto { margin: 0; max-width: 520px; color: var(--ink); }
-.hero-cha--cartao p { color: var(--ink-light); opacity: 1; }
+.hero-cha--cartao::after {
+  display: none;
+}
+.hero-cha--cartao .hero-cha__texto {
+  margin: 0;
+  max-width: 520px;
+  color: var(--ink);
+}
+.hero-cha--cartao p {
+  color: var(--ink-light);
+  opacity: 1;
+}
 /* O segundo botão fica branco com contorno, para se ver bem no fundo claro */
-.hero-cha--cartao .botao-cha--claro, .convite .botao-cha--claro { background: var(--white); color: var(--ink); border: 1.5px solid var(--paper-dark); }
-.hero-cha__cartao { position: relative; z-index: 1; margin: 0; width: 420px; }
+.hero-cha--cartao .botao-cha--claro,
+.convite .botao-cha--claro {
+  background: var(--white);
+  color: var(--ink);
+  border: 1.5px solid var(--paper-dark);
+}
+.hero-cha__cartao {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  width: 420px;
+}
 .hero-cha__cartao img {
   display: block;
   width: 100%;
@@ -118,69 +184,238 @@
   border-radius: 20px;
   box-shadow: 0 24px 50px rgba(24, 33, 43, 0.22);
 }
-.hero-cha__cartao figcaption { margin-top: 8px; font-size: 0.6875rem; color: var(--ink-light); text-align: right; }
+.hero-cha__cartao figcaption {
+  margin-top: 8px;
+  font-size: 0.6875rem;
+  color: var(--ink-light);
+  text-align: right;
+}
 
 @media (max-width: 900px) {
-  .hero-cha--cartao { grid-template-columns: 1fr; justify-items: center; gap: 28px; padding-top: 32px; }
-  .hero-cha--cartao .hero-cha__texto { padding: 0; text-align: center; }
-  .hero-cha__cartao { width: min(80vw, 380px); }
+  .hero-cha--cartao {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 28px;
+    padding-top: 32px;
+  }
+  .hero-cha--cartao .hero-cha__texto {
+    padding: 0;
+    text-align: center;
+  }
+  .hero-cha__cartao {
+    width: min(80vw, 380px);
+  }
 }
 
 /* Frase pequena por cima do título do topo */
-.hero-cha__antes { font-size: 0.875rem !important; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--jade) !important; margin-bottom: 10px !important; }
+.hero-cha__antes {
+  font-size: 0.875rem !important;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--jade) !important;
+  margin-bottom: 10px !important;
+}
 
 /* O painel do aluno, quando existe, fica logo abaixo do topo */
-.painel { margin-top: -40px; margin-bottom: 24px; }
-.painel__numeros li { display: inline-flex; align-items: center; gap: 6px; }
-.painel__numeros .i { color: var(--seal); }
+.painel {
+  margin-top: -40px;
+  margin-bottom: 24px;
+}
+.painel__numeros li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.painel__numeros .i {
+  color: var(--seal);
+}
 
 /* ═══ SECÇÕES «SOBRE O SITE» ═══
    Cada secção ocupa a largura toda; o conteúdo fica centrado na largura da página.
    As secções alternam o fundo (claro, branco, escuro) para a página ter ritmo e cor. */
-.sobre { padding: 64px var(--page-gutter); }
-.sobre:nth-of-type(odd) { background: var(--white); }
-.sobre__dentro { max-width: var(--page-max); margin: 0 auto; }
-.sobre h2 { font-size: clamp(1.75rem, 3vw, 2.25rem); margin-bottom: 16px; color: var(--ink); }
-.sobre p { line-height: 1.7; color: var(--ink-mid); margin-bottom: 12px; max-width: 760px; }
-.sobre__intro { font-size: 1.125rem; margin-bottom: 32px !important; }
+.sobre {
+  padding: 64px var(--page-gutter);
+}
+.sobre:nth-of-type(odd) {
+  background: var(--white);
+}
+.sobre__dentro {
+  max-width: var(--page-max);
+  margin: 0 auto;
+}
+.sobre h2 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+.sobre p {
+  line-height: 1.7;
+  color: var(--ink-mid);
+  margin-bottom: 12px;
+  max-width: 760px;
+}
+.sobre__intro {
+  font-size: 1.125rem;
+  margin-bottom: 32px !important;
+}
 
 /* Porquê «Chá»: o carimbo grande à esquerda e o texto à direita */
-.sobre__dentro--duas { display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: center; }
-.sobre__carimbo { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 28px; border-radius: 24px; background: var(--red-light); }
-.sobre__zh { font-family: var(--font-chinese); font-size: 6rem !important; line-height: 1; color: var(--seal-text) !important; padding: 8px 16px; border-radius: 16px; }
-.sobre__py { font-size: 1.5rem; font-style: italic; color: var(--ink-mid); margin-bottom: 8px; }
+.sobre__dentro--duas {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.sobre__carimbo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 28px;
+  border-radius: 24px;
+  background: var(--red-light);
+}
+.sobre__zh {
+  font-family: var(--font-chinese);
+  font-size: 6rem !important;
+  line-height: 1;
+  color: var(--seal-text) !important;
+  padding: 8px 16px;
+  border-radius: 16px;
+}
+.sobre__py {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--ink-mid);
+  margin-bottom: 8px;
+}
 
 /* Os quatro princípios, em cartões coloridos */
-.principios { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
-.principio { padding: 24px; border-radius: var(--radius); background: var(--paper); border-top: 5px solid var(--cor-principio, var(--jade)); }
-.principio:nth-child(2) { --cor-principio: var(--seal); }
-.principio:nth-child(3) { --cor-principio: var(--gold); }
-.principio:nth-child(4) { --cor-principio: var(--blue); }
-.principio .i { width: 2rem; height: 2rem; color: var(--cor-principio, var(--jade)); margin-bottom: 12px; }
-.principio h3 { font-family: var(--font-titulos); font-size: 1.25rem; margin-bottom: 6px; color: var(--ink); }
-.principio p { font-size: 0.9375rem; margin: 0; color: var(--ink-light); }
+.principios {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+.principio {
+  padding: 24px;
+  border-radius: var(--radius);
+  background: var(--paper);
+  border-top: 5px solid var(--cor-principio, var(--jade));
+}
+.principio:nth-child(2) {
+  --cor-principio: var(--seal);
+}
+.principio:nth-child(3) {
+  --cor-principio: var(--gold);
+}
+.principio:nth-child(4) {
+  --cor-principio: var(--blue);
+}
+.principio .i {
+  width: 2rem;
+  height: 2rem;
+  color: var(--cor-principio, var(--jade));
+  margin-bottom: 12px;
+}
+.principio h3 {
+  font-family: var(--font-titulos);
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+.principio p {
+  font-size: 0.9375rem;
+  margin: 0;
+  color: var(--ink-light);
+}
 
 /* «É difícil?»: secção escura, com duas colunas (fácil / precisa de treino) */
-.sobre--escuro { background: var(--fundo-escuro) !important; }
-.sobre--escuro h2, .sobre--escuro h3 { color: #fff; }
-.sobre--escuro p { color: rgba(255, 255, 255, 0.85); }
-.dificil { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
-.dificil__coluna { padding: 24px; border-radius: var(--radius); background: rgba(255, 255, 255, 0.06); border-left: 5px solid var(--cor-dificil); }
-.dificil__coluna--facil { --cor-dificil: #3DBE9C; }
-.dificil__coluna--dificil { --cor-dificil: #F2B83A; }
-.dificil__coluna h3 { font-size: 1.125rem; margin-bottom: 12px; color: var(--cor-dificil) !important; }
-.dificil__coluna ul { padding-left: 20px; color: rgba(255, 255, 255, 0.9); line-height: 1.7; }
-.sobre__nota { font-size: 1.0625rem; }
+.sobre--escuro {
+  background: var(--fundo-escuro) !important;
+}
+.sobre--escuro h2,
+.sobre--escuro h3 {
+  color: #fff;
+}
+.sobre--escuro p {
+  color: rgba(255, 255, 255, 0.85);
+}
+.dificil {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.dificil__coluna {
+  padding: 24px;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.06);
+  border-left: 5px solid var(--cor-dificil);
+}
+.dificil__coluna--facil {
+  --cor-dificil: #3dbe9c;
+}
+.dificil__coluna--dificil {
+  --cor-dificil: #f2b83a;
+}
+.dificil__coluna h3 {
+  font-size: 1.125rem;
+  margin-bottom: 12px;
+  color: var(--cor-dificil) !important;
+}
+.dificil__coluna ul {
+  padding-left: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+}
+.sobre__nota {
+  font-size: 1.0625rem;
+}
 
 /* Porquê escolher o Chá: lista em duas colunas e um convite no fim */
-.vantagens { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px 32px; margin-bottom: 48px; }
-.vantagens li { padding-left: 18px; border-left: 3px solid var(--jade); color: var(--ink-mid); line-height: 1.6; }
-.vantagens strong { display: block; color: var(--ink); }
-.convite { text-align: center; padding: 40px 24px; border-radius: 24px; background: var(--green-light); }
-.convite__zh { font-family: var(--font-chinese); font-size: 2.25rem; font-weight: 700; color: var(--jade); margin: 0 auto 4px !important; }
-.convite__py { color: var(--ink-mid); margin: 0 auto 20px !important; }
+.vantagens {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px 32px;
+  margin-bottom: 48px;
+}
+.vantagens li {
+  padding-left: 18px;
+  border-left: 3px solid var(--jade);
+  color: var(--ink-mid);
+  line-height: 1.6;
+}
+.vantagens strong {
+  display: block;
+  color: var(--ink);
+}
+.convite {
+  text-align: center;
+  padding: 40px 24px;
+  border-radius: 24px;
+  background: var(--green-light);
+}
+.convite__zh {
+  font-family: var(--font-chinese);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--jade);
+  margin: 0 auto 4px !important;
+}
+.convite__py {
+  color: var(--ink-mid);
+  margin: 0 auto 20px !important;
+}
 
 @media (max-width: 760px) {
-  .sobre__dentro--duas, .dificil { grid-template-columns: 1fr; }
-  .sobre { padding: 48px var(--page-gutter); }
+  .sobre__dentro--duas,
+  .dificil {
+    grid-template-columns: 1fr;
+  }
+  .sobre {
+    padding: 48px var(--page-gutter);
+  }
 }
