@@ -50,7 +50,7 @@ require 'includes/topo.php';
     <div class="hero-cha__texto">
       <p class="hero-cha__antes">Curso de mandarim gratuito, em português de Portugal</p>
       <h1>Aprende chinês na hora do chá</h1>
-      <p>Cada lição demora cerca de 15 minutos: o tempo de beber uma chávena de chá. Lição a lição, segues uma rota de 12 meses por 6 cidades da China, do primeiro 你好 (nǐ hǎo) até ao nível 3 do HSK.</p>
+      <p>Cada lição demora cerca de 15 minutos: o tempo de beber uma chávena de chá. Lição a lição, segues uma rota por 6 cidades da China, a começar pelo primeiro 你好 (nǐ hǎo). Esta versão tem as primeiras 72 lições; a rota completa está planeada até ao nível 3 do HSK.</p>
       <?php if ($aluno && $proxima): ?>
         <a class="botao-cha" href="licao.php?id=<?= (int) $proxima['id'] ?>">Continuar: <?= e($proxima['titulo']) ?></a>
         <a class="botao-cha botao-cha--claro" href="rota.php">Ver a rota</a>

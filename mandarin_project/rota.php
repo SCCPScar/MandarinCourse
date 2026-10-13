@@ -36,7 +36,7 @@ require 'includes/topo.php';
 ?>
 <section class="rota" id="rota">
   <h1>A rota de 12 meses</h1>
-  <p class="rota__intro">Seis cidades da China, cada uma com cerca de 2 meses e 4 unidades. Em cada cidade aprendes o que precisarias para lá viver: em Pequim os sons, em Xi'an a comida, em Xangai o trabalho. No fim da rota tens o nível 3 do HSK 3.0, cerca de 2245 palavras.</p>
+  <p class="rota__intro">Seis cidades da China, cada uma com cerca de 2 meses e 4 unidades. Em cada cidade aprendes o que precisarias para lá viver: em Pequim os sons, em Xi'an a comida, em Xangai o trabalho. A rota completa está planeada até ao nível 3 do HSK 3.0, cerca de 2245 palavras. Esta versão do site tem as primeiras 72 lições (3 por unidade), com 523 palavras; as outras vão sendo acrescentadas.</p>
 
   <!-- Progresso geral: uma barra grande e centrada -->
   <div class="rota-geral">

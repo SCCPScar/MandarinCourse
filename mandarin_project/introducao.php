@@ -116,7 +116,7 @@ require 'includes/topo.php';
   <div class="section-num">2</div>
   <h2>O teu plano de 12 meses <span class="zh">学习计划</span> <span class="section-header__py">xuéxí jìhuà</span></h2>
 </div>
-<p class="section-intro">Com 1 hora por dia, 6 dias por semana, a rota leva cerca de 12 meses. Com menos tempo por dia demora mais, e está tudo bem: estudar todos os dias vale mais do que estudar muito de uma vez.</p>
+<p class="section-intro">Este é o plano da rota completa. Esta versão do site tem as primeiras 72 lições, que são a base da rota. Com 1 hora por dia, 6 dias por semana, a rota completa leva cerca de 12 meses. Com menos tempo por dia demora mais, e está tudo bem: estudar todos os dias vale mais do que estudar muito de uma vez.</p>
 
 <div class="plan-grid">
   <div class="plan-card plan-card--selo">
