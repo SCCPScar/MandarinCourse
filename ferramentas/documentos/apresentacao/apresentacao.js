@@ -256,7 +256,7 @@ async function icone(Componente, cor) {
   s = pres.addSlide({ masterName: 'CONTEUDO', sectionTitle: 'Apresentação' });
   s.addText('Dificuldades e aprendizagens', { placeholder: 'title' });
   const blocos = [
-    [lu.LuAlertCircle, 'Dificuldades', COR.selo, ['[A tua maior dificuldade]', '[Como a resolveste]']],
+    [lu.LuAlertCircle, 'Dificuldades', COR.selo, ['Garantir que o site era bom de ouvir e fácil de ver', 'Testei as vozes no Chrome e no Edge e criei o botão «Devagar»', 'Letra maior e contraste verificado (WCAG 2.2 AA)']],
     [lu.LuLightbulb, 'O que aprendi', COR.ouro, ['[Por exemplo: organizar um projeto grande por fases]', '[Por exemplo: testar com pessoas reais]']],
   ];
   for (let i = 0; i < 2; i++) {
@@ -266,14 +266,14 @@ async function icone(Componente, cor) {
     texto(s, blocos[i][1], { x: x + 1.4, y: 2.25, w: 4.2, h: 0.65, fontSize: 24, bold: true, valign: 'middle' });
     texto(s, blocos[i][3].map((t, j) => ({ text: t, options: { bullet: true, breakLine: j < blocos[i][3].length - 1 } })), { x: x + 0.4, y: 3.25, w: 5.2, h: 2.8, fontSize: 18, color: COR.tinta, paraSpaceAfter: 10, valign: 'top' });
   }
-  s.addNotes('A maior dificuldade foi [a tua]. Resolvi [como]. Aprendi [duas coisas]. (0:45)');
+  s.addNotes('A minha maior dificuldade foi garantir que o site era bom de ouvir e fácil de ver. Como o site usa a voz do próprio browser, e não gravações, testei as vozes no Chrome e no Edge, configurei o site para escolher sempre a voz de chinês da China continental e acrescentei o botão «Devagar». No visual, pensei nas pessoas com baixa visão: aumentei a letra e verifiquei o contraste de todas as cores, no modo claro e no escuro. Aprendi [duas coisas]. (0:45)');
 
   // ═══ 12. LIMITAÇÕES E TRABALHO FUTURO ═══
   s = pres.addSlide({ masterName: 'CONTEUDO', sectionTitle: 'Apresentação' });
   s.addText('Limitações e próximos passos', { placeholder: 'title' });
   const futuro = [
     [lu.LuAlertTriangle, 'Limitações', COR.cinza, ['Esta versão tem as primeiras 72 lições da rota', 'O progresso das ferramentas fica só no browser', 'O som depende de o browser ter voz chinesa']],
-    [lu.LuRocket, 'Trabalho futuro', COR.jade, ['Completar a rota até ao nível 3 do HSK', 'Guardar todo o progresso na conta', 'Missões no fim de cada cidade e certificado', 'Modo de cores para daltónicos', 'Tutor com IA, do lado do servidor']],
+    [lu.LuRocket, 'Trabalho futuro', COR.jade, ['Completar a rota até ao nível 3 do HSK, com revisão de nativos', 'Guardar todo o progresso na conta', 'Missões no fim de cada cidade e certificado', 'Modo de cores para daltónicos', 'Tutor com IA, do lado do servidor']],
   ];
   for (let i = 0; i < 2; i++) {
     const x = M + i * 6.2;
@@ -282,7 +282,7 @@ async function icone(Componente, cor) {
     texto(s, futuro[i][1], { x: x + 1.4, y: 2.25, w: 4.2, h: 0.65, fontSize: 24, bold: true, valign: 'middle' });
     texto(s, futuro[i][3].map((t, j) => ({ text: t, options: { bullet: true, breakLine: j < futuro[i][3].length - 1 } })), { x: x + 0.4, y: 3.25, w: 5.2, h: 2.8, fontSize: 17, color: COR.tinta, paraSpaceAfter: 8, valign: 'top' });
   }
-  s.addNotes('O site tem limitações que conheço: esta versão tem as primeiras 72 lições da rota; o progresso das ferramentas de prática fica só no browser; e o som depende de o browser ter uma voz chinesa. No futuro quero completar a rota até ao nível 3 do HSK, guardar todo o progresso na conta, criar missões no fim de cada cidade e um certificado, e um modo de cores para pessoas daltónicas. (0:45)');
+  s.addNotes('O site tem limitações que conheço: esta versão tem as primeiras 72 lições da rota; o progresso das ferramentas de prática fica só no browser; e o som depende de o browser ter uma voz chinesa. No futuro quero completar a rota até ao nível 3 do HSK, com a ajuda de falantes nativos ou licenciados em Chinês para rever e criar lições, guardar todo o progresso na conta, criar missões no fim de cada cidade e um certificado, e um modo de cores para pessoas daltónicas. (0:45)');
 
   // ═══ 13. CONCLUSÃO ═══
   s = pres.addSlide({ masterName: 'CAPA', sectionTitle: 'Apresentação' });
