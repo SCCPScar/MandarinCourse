@@ -134,7 +134,7 @@ const conteudo = [
   h2('5.1 Se a apresentação for presencial (notebook da escola)'),
   tabela([
     ['Situação', 'O que fazer'],
-    ['Plano A', 'Abrir o site online (InfinityFree) no notebook da escola'],
+    ['Plano A', 'Abrir o site online (cha-mandarim.infinityfreeapp.com) no notebook da escola'],
     ['O site online não abre (sem internet ou alojamento suspenso)', 'Plano B: ligar a pen drive, abrir o XAMPP Portable, ligar o Apache e o MySQL e abrir http://localhost/cha/ (ver Guia de Instalação, secção 4)'],
     ['A pen drive também falha', 'Plano C: abrir o vídeo de demonstração que está na pen drive e na nuvem, e comentá-lo como se fosse ao vivo'],
     ['Nada abre', 'Plano D: os diapositivos de reserva no fim do PowerPoint têm capturas de ecrã de cada passo da demonstração'],
