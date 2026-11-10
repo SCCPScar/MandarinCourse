@@ -69,7 +69,8 @@ const conteudo = [
     '**O que aprendi:** [[uma ou duas frases tuas, por exemplo: organizar um projeto grande, a importância de testar com pessoas reais]].',
   ]),
   h2('3.3 A tua motivação'),
-  p('O júri vai quase de certeza perguntar porque escolheste este tema. Completa com a tua razão verdadeira: [[porque te interessas pelo mandarim e pela China, o que te levou a este tema]]. Junta a razão prática: há poucos recursos gratuitos em português de Portugal, e quem trabalha precisa de sessões curtas.'),
+  p('O júri vai quase de certeza perguntar porque escolheste este tema. A tua razão é pessoal, e é isso que a torna forte: sempre te interessaste pela língua e pela cultura chinesas; em 2022 entraste na licenciatura em Tradução e Interpretação de Chinês, em Leiria, mas tiveste de a interromper no fim do primeiro ano, por motivos financeiros e familiares, porque não podias pagar os dois anos de intercâmbio na China. Quando quiseste continuar sozinha, só encontraste conteúdos pagos. Junta a razão prática: há poucos recursos gratuitos em português de Portugal, e quem trabalha precisa de sessões curtas.'),
+  caixa('Resposta curta.', '«Porque é a minha história. Comecei a licenciatura em Chinês, tive de a interromper por motivos financeiros e, quando quis continuar sozinha, só encontrei conteúdos pagos. Fiz o site que eu gostava de ter encontrado.» Liga isto à página Biblioteca: ela existe porque era exatamente o que procuravas quando tiveste de parar o curso.'),
 
   // ═══ 4 ═══
   h1('4. A história do projeto'),
@@ -85,7 +86,7 @@ const conteudo = [
     ['13/10/2026', 'Simplificação do código, Hanzi Writer sem internet, base de dados só com o que o site usa, Guia de Instalação e Guia de Código'],
   ], [2000, 6504]),
   h2('4.1 O que os testers pediram e o que mudou'),
-  p('O site foi testado por [[quem: colegas, amigos, família; quantas pessoas]]. Estas foram as mudanças principais que resultaram desses testes. É uma boa história para contar: mostra que ouviste os utilizadores.'),
+  p('O site foi testado por duas pessoas da tua família, com perfis diferentes: a tua irmã, que também estuda mandarim por conta própria, olhou sobretudo para o conteúdo e os exercícios; a tua mãe avaliou a leitura, as cores e o tamanho da letra do ponto de vista de uma pessoa mais velha. Tu não contas como testadora, porque fizeste o site. Estas foram as mudanças principais que resultaram desses testes. É uma boa história para contar: mostra que ouviste os utilizadores.'),
   tabela([
     ['Pedido dos testers', 'O que fiz'],
     ['A letra e o site pareciam pequenos', 'Letra maior em todo o site, página mais larga'],
@@ -140,7 +141,7 @@ const conteudo = [
   h1('7. Perguntas prováveis do júri'),
   p('Organizadas por tema. Começa pelas de segurança (7.4) e pelas difíceis (7.9).'),
   h2('7.1 Sobre o projeto'),
-  ...qa('Porque escolheu este tema?', 'Por [[a tua razão pessoal]]. E porque quase não há cursos gratuitos de mandarim em português de Portugal, e quem trabalha precisa de algo que caiba em 15 minutos por dia.'),
+  ...qa('Porque escolheu este tema?', 'Porque é a minha história. Comecei a licenciatura em Chinês, tive de a interromper por motivos financeiros e, quando quis continuar sozinha, só encontrei conteúdos pagos. Fiz o site que eu gostava de ter encontrado. E porque quase não há cursos gratuitos de mandarim em português de Portugal, e quem trabalha precisa de algo que caiba em 15 minutos por dia.'),
   ...qa('Porque se chama «Chá»?', 'Por duas razões. A ideia é estudar um pouco todos os dias, no tempo de beber um chá. E a palavra «chá» em português vem do chinês 茶, chá: os portugueses trouxeram-na de Macau no século XVI. Os ingleses dizem «tea» porque a palavra deles veio de outra região da China.'),
   ...qa('A quem se destina o site?', 'A falantes de português de Portugal, a partir dos 13 anos, que queiram começar o mandarim do zero ou rever o básico, sobretudo quem tem pouco tempo.'),
   ...qa('O que distingue o seu site de uma aplicação como o Duolingo?', 'Está em português de Portugal, explica a gramática e a cultura em vez de só repetir exercícios, segue a norma oficial HSK 3.0 e é gratuito, sem publicidade e sem recolher dados para além do necessário.'),
@@ -183,6 +184,8 @@ const conteudo = [
   ...qa('As fotografias têm direitos de autor?', 'Usei fotografias com a licença gratuita do Unsplash e indiquei o autor de cada uma na página de Créditos. Algumas ilustrações foram desenhadas de propósito para o projeto. A imagem da página inicial foi gerada com uma ferramenta de imagens e está identificada como tal.'),
   h2('7.8 Testes'),
   ...qa('Como testou o site?', 'De três formas: testes automáticos (segurança, lições, ferramentas, links, contraste, e um teste que carrega em todos os botões de todas as páginas), testes manuais no browser, e testes com pessoas reais, que deram as sugestões da secção 4.1.'),
+  ...qa('O site serve para pessoas daltónicas?', 'Ainda não tem um modo próprio: está no trabalho futuro. Mas a informação nunca depende só da cor. Na página Sons, cada tom tem uma cor e também o número escrito («1.º tom», «2.º tom»). E o contraste das cores foi verificado segundo as WCAG 2.2.', 'Se puderes, abre a página Sons e mostra.'),
+  ...qa('Só duas pessoas testaram? É pouco.', 'Foi um teste informal, mas escolhi dois perfis diferentes: alguém que estuda mandarim e uma pessoa mais velha, que é quem tem mais dificuldade com letra pequena e pouco contraste. Numa próxima fase, testaria com mais pessoas, por exemplo colegas do curso.'),
   ...qa('Encontrou erros nos testes?', 'Sim, vários, e corrigi-os. Por exemplo: o temporizador somava os minutos duas vezes ao pausar, o quiz e o exercício das lições tinham uma função com o mesmo nome, e o browser mostrava versões antigas do CSS, o que resolvi com o cache busting.'),
   h2('7.9 Perguntas difíceis'),
   ...qa('Usou inteligência artificial para fazer o projeto?', 'Usei ferramentas de apoio, como hoje se faz na programação, e o formador acompanhou o processo. O que importa é que percebo e sei explicar o código, e posso mostrar qualquer parte.', 'Não negues. O formador sabe e está na sala. Responde com calma e oferece-te para explicar uma parte do código.'),
@@ -190,7 +193,7 @@ const conteudo = [
   ...qa('Porque é que o progresso dos cartões não fica na conta?', 'Porque as ferramentas de prática funcionam sem conta, por isso guardam no browser. Na conta fica o que precisa de conta: as lições concluídas. Passar tudo para a conta é trabalho futuro: precisava de tabelas novas e de páginas PHP para receber os dados do JavaScript.'),
   ...qa('O que acontece se o computador não tiver voz chinesa?', 'Os botões de som não fazem som, e o site mostra um aviso a explicar. No Chrome e no Edge com internet há sempre voz chinesa. É uma limitação de usar a voz do browser em vez de ficheiros de áudio.'),
   ...qa('Mude agora a cor principal do site (ou outra alteração ao vivo).', 'Abro o ficheiro, mudo o valor, guardo e carrego em Ctrl+F5.', 'Treina a secção 12 do Guia de Código. Não tenhas pressa: diz em voz alta o que estás a fazer.'),
-  ...qa('Que melhorias faria no futuro?', 'Completar as lições da rota até ao nível 3 do HSK; guardar todo o progresso na conta; missões no fim de cada cidade e um certificado; e voltar a ter um tutor com IA, feito do lado do servidor e com cuidado com os dados.'),
+  ...qa('Que melhorias faria no futuro?', 'Completar as lições da rota até ao nível 3 do HSK; guardar todo o progresso na conta; missões no fim de cada cidade e um certificado; um modo de cores para pessoas daltónicas; e voltar a ter um tutor com IA, feito do lado do servidor e com cuidado com os dados.'),
 
   // ═══ 8 ═══
   h1('8. Limitações e números'),

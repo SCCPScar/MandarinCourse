@@ -103,7 +103,7 @@ async function icone(Componente, cor) {
     texto(s, problemas[i][1], { x: x + 0.35, y: 3.65, w: 3.2, h: 0.6, fontSize: 21, bold: true });
     texto(s, problemas[i][2], { x: x + 0.35, y: 4.3, w: 3.1, h: 1.4, fontSize: 16, color: COR.cinza, valign: 'top' });
   }
-  s.addNotes('Quem trabalha ou estuda tem pouco tempo livre. Quem quer aprender mandarim encontra sobretudo cursos em inglês ou em português do Brasil, e muitas vezes desiste porque parece difícil demais. [A tua motivação numa frase.] Por isso quis criar um curso gratuito, em português de Portugal, que coubesse num intervalo curto do dia. (1:00)');
+  s.addNotes('Quem trabalha ou estuda tem pouco tempo livre. Quem quer aprender mandarim encontra sobretudo cursos em inglês ou em português do Brasil, e muitas vezes desiste porque parece difícil demais. Eu própria passei por isto. Em 2022 entrei na licenciatura em Tradução e Interpretação de Chinês, aqui em Leiria, mas tive de parar no fim do primeiro ano para trabalhar, porque não tinha condições para fazer os dois anos de intercâmbio na China. Quis continuar sozinha e só encontrei cursos pagos. Por isso quis criar um curso gratuito, em português de Portugal, que coubesse num intervalo curto do dia. (1:00)');
 
   // ═══ 3. A IDEIA E O NOME ═══
   s = pres.addSlide({ masterName: 'CONTEUDO', sectionTitle: 'Apresentação' });
@@ -250,7 +250,7 @@ async function icone(Componente, cor) {
     cartao(s, 6.75, y, 5.98, 0.85, COR.jadeClaro);
     texto(s, testes[i][1], { x: 6.95, y, w: 5.6, h: 0.85, fontSize: 17, valign: 'middle' });
   }
-  s.addNotes('Pedi a [quem] que testassem o site. As sugestões mais importantes foram letra maior, poder ouvir tudo também devagar, o quiz não passar sozinho à pergunta seguinte e separar a gramática. Fiz essas mudanças, e foram das que mais melhoraram o site. (0:45)');
+  s.addNotes('Pedi à minha mãe e à minha irmã que testassem o site. A minha irmã também estuda mandarim sozinha, por isso olhou para o conteúdo e para os exercícios. A minha mãe ajudou-me a ver se o site era fácil de ler para uma pessoa mais velha. As sugestões mais importantes foram letra maior, poder ouvir tudo também devagar, o quiz não passar sozinho à pergunta seguinte e separar a gramática. Fiz essas mudanças, e foram das que mais melhoraram o site. (0:45)');
 
   // ═══ 11. DIFICULDADES E APRENDIZAGENS ═══
   s = pres.addSlide({ masterName: 'CONTEUDO', sectionTitle: 'Apresentação' });
@@ -273,7 +273,7 @@ async function icone(Componente, cor) {
   s.addText('Limitações e próximos passos', { placeholder: 'title' });
   const futuro = [
     [lu.LuAlertTriangle, 'Limitações', COR.cinza, ['Esta versão tem as primeiras 72 lições da rota', 'O progresso das ferramentas fica só no browser', 'O som depende de o browser ter voz chinesa']],
-    [lu.LuRocket, 'Trabalho futuro', COR.jade, ['Completar a rota até ao nível 3 do HSK', 'Guardar todo o progresso na conta', 'Missões no fim de cada cidade e certificado', 'Tutor com IA, do lado do servidor']],
+    [lu.LuRocket, 'Trabalho futuro', COR.jade, ['Completar a rota até ao nível 3 do HSK', 'Guardar todo o progresso na conta', 'Missões no fim de cada cidade e certificado', 'Modo de cores para daltónicos', 'Tutor com IA, do lado do servidor']],
   ];
   for (let i = 0; i < 2; i++) {
     const x = M + i * 6.2;
@@ -282,7 +282,7 @@ async function icone(Componente, cor) {
     texto(s, futuro[i][1], { x: x + 1.4, y: 2.25, w: 4.2, h: 0.65, fontSize: 24, bold: true, valign: 'middle' });
     texto(s, futuro[i][3].map((t, j) => ({ text: t, options: { bullet: true, breakLine: j < futuro[i][3].length - 1 } })), { x: x + 0.4, y: 3.25, w: 5.2, h: 2.8, fontSize: 17, color: COR.tinta, paraSpaceAfter: 8, valign: 'top' });
   }
-  s.addNotes('O site tem limitações que conheço: esta versão tem as primeiras 72 lições da rota; o progresso das ferramentas de prática fica só no browser; e o som depende de o browser ter uma voz chinesa. No futuro quero completar a rota até ao nível 3 do HSK, guardar todo o progresso na conta, criar missões no fim de cada cidade e um certificado. (0:45)');
+  s.addNotes('O site tem limitações que conheço: esta versão tem as primeiras 72 lições da rota; o progresso das ferramentas de prática fica só no browser; e o som depende de o browser ter uma voz chinesa. No futuro quero completar a rota até ao nível 3 do HSK, guardar todo o progresso na conta, criar missões no fim de cada cidade e um certificado, e um modo de cores para pessoas daltónicas. (0:45)');
 
   // ═══ 13. CONCLUSÃO ═══
   s = pres.addSlide({ masterName: 'CAPA', sectionTitle: 'Apresentação' });

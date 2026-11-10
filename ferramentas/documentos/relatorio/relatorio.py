@@ -253,8 +253,9 @@ p_indice = paragrafo('2. Índice')
 # ═══ Títulos principais do molde: passam a contar para o índice ═══
 TITULOS = ['3. INTRODUÇÃO', '4. ESTRUTURA DO PROJETO', '5. Planificação', '6. Ficha de planeamento',
            '7. Imagens do projeto', '8. Conclusão', '9. Fontes de pesquisa', '10. Anexos']
-for t in TITULOS:
-    nivel_de_titulo(paragrafo(t), 0)
+TITULO_PARS = [paragrafo(t) for t in TITULOS]  # guardo-os já: depois o índice tem textos iguais
+for par in TITULO_PARS:
+    nivel_de_titulo(par, 0)
 
 
 def limpar_marcador(comeca):
@@ -279,7 +280,7 @@ titulos_indice.append((0, '3. INTRODUÇÃO'))
 c.p('Este relatório descreve o projeto final do curso de Técnico/a Especialista em Tecnologias e Programação de Sistemas de Informação: o **Chá**, um site gratuito para aprender mandarim, em português de Portugal, a partir do zero. O documento apresenta as razões da escolha do tema, a estrutura do site, a planificação e o registo das tarefas, as imagens do resultado final, as conclusões e as fontes consultadas.')
 c.sub('3.1 Razões da escolha do tema')
 c.p('O mandarim é a língua materna com mais falantes no mundo, mas quem quer começar a aprendê-lo em Portugal encontra sobretudo cursos pagos ou materiais em inglês e em português do Brasil. Muitas pessoas desistem cedo porque a língua parece difícil demais e porque têm pouco tempo livre para estudar.')
-c.p('[[Escreve aqui, em uma ou duas frases, a tua motivação pessoal para escolher o mandarim.]]')
+c.p('O interesse pela língua e pela cultura chinesas acompanha-me há muitos anos. Em 2022 ingressei na licenciatura em Tradução e Interpretação de Chinês, em Leiria, mas só consegui concluir o primeiro ano: o curso exigia dois anos de intercâmbio na China e, por motivos financeiros e familiares, tive de interromper os estudos para trabalhar. Quis continuar a aprender sozinha, mas os recursos mais completos que encontrei eram pagos. Foi daí que nasceu o Chá: um ponto de partida gratuito para quem, como eu, quer aprender mandarim e não pode pagar um curso ou um professor. O site ensina o nível inicial e reúne, na página Biblioteca, manuais em PDF e vídeos gratuitos para quem quiser continuar.')
 c.p('O nome do projeto junta as duas ideias principais. A palavra portuguesa «chá» vem do chinês 茶 (*chá*) e chegou a Portugal através do comércio com Macau, no século XVI; por isso, em português dizemos «chá» e em inglês diz-se «tea». Ao mesmo tempo, cada lição foi pensada para cerca de 15 minutos, o tempo de beber uma chávena de chá.')
 c.sub('3.2 O que pretendia desenvolver e mostrar')
 c.p('O objetivo foi criar um curso que qualquer pessoa pudesse começar sem pagar e sem criar conta, com um caminho claro do primeiro som até conversas do dia a dia. Para isso defini os seguintes objetivos:')
@@ -464,7 +465,7 @@ c = Cursor(limpar_marcador('[Aqui deverás explicar que conclusão'))
 titulos_indice.append((0, '8. Conclusão'))
 c.p('O desenvolvimento do Chá permitiu-me aplicar, num único projeto, conteúdos de várias unidades do curso: a programação para a web do lado do cliente e do servidor, a modelação e a programação de bases de dados, a segurança dos sistemas e o controlo de versões com Git.')
 c.p('Os objetivos definidos na ficha de planeamento foram cumpridos. O site tem 72 lições organizadas em 6 cidades, com 523 palavras e 222 frases de exemplo, som em todo o chinês, exercícios em cada lição e ferramentas de prática que funcionam sem conta. As contas de utilizador guardam as palavras-passe com hash bcrypt, usam consultas preparadas, proteção contra XSS e CSRF e um limite de tentativas de início de sessão, e o utilizador pode eliminar a conta e todos os seus dados a qualquer momento, como prevê o RGPD.')
-c.p('Os testes com utilizadores foram uma das fases mais úteis. [[Quem testou o site]] mostraram problemas que eu não tinha visto, como o tamanho da letra, a necessidade de ouvir o chinês mais devagar e o quiz passar sozinho à pergunta seguinte. As alterações feitas a partir dessas sugestões estão no Anexo E.')
+c.p('Os testes com utilizadores foram uma das fases mais úteis. Pedi à minha mãe e à minha irmã que usassem o site: a minha irmã, que também estuda mandarim por conta própria, avaliou sobretudo o conteúdo e os exercícios; a minha mãe avaliou o aspeto visual, para confirmar que o site é confortável para pessoas mais velhas, nas cores e no tamanho da letra. Estes testes mostraram problemas que eu não tinha visto, como o tamanho da letra, a necessidade de ouvir o chinês mais devagar e o quiz passar sozinho à pergunta seguinte. As alterações feitas a partir dessas sugestões estão no Anexo E.')
 c.p('[[A tua maior dificuldade durante o projeto e a forma como a resolveste.]]')
 c.p('Com este trabalho aprendi a dividir um projeto grande em fases, a planear a base de dados antes de escrever as páginas, a proteger os dados de quem usa o site e a escrever código simples e comentado, que outra pessoa consiga ler e manter. Aprendi também que um projeto só fica bom depois de ser testado por pessoas reais.')
 c.p('O projeto tem limitações que identifiquei e que ficam como trabalho futuro:')
@@ -473,6 +474,7 @@ for m in [
     'guardar na conta também o progresso das ferramentas de prática, que hoje fica apenas no browser;',
     'o som depende de o browser ter uma voz chinesa instalada; no futuro poderia usar ficheiros de áudio gravados;',
     'criar missões no fim de cada cidade e um certificado de conclusão;',
+    'criar um modo de cores adaptado a pessoas daltónicas;',
     'acrescentar um tutor de conversação com inteligência artificial, a funcionar do lado do servidor.',
 ]:
     c.marca(m)
@@ -566,7 +568,7 @@ c.codigo('mandarin_project/entrar.php', '// Proteção contra força bruta', 'ex
 c.codigo('mandarin_project/concluir-licao.php', '// 1) Progresso.', '$inserir->execute', 'Excerto 3: a lição concluída é gravada uma só vez na tabela progresso')
 
 c.sub('Anexo E: Testes com utilizadores e verificações técnicas')
-c.p('Depois da primeira versão completa, pedi a [[quem testou o site]] que usassem o site e dessem a sua opinião. A Tabela 6 mostra as principais sugestões e o que foi alterado.')
+c.p('Depois da primeira versão completa, pedi a duas pessoas da minha família que usassem o site e dessem a sua opinião: a minha irmã, que estuda mandarim por conta própria, e a minha mãe, para avaliar a leitura e as cores do ponto de vista de uma pessoa mais velha. A Tabela 6 mostra as principais sugestões e o que foi alterado.')
 c.tabela([
     ['Sugestão', 'Alteração feita'],
     ['A letra era pequena e o site parecia apertado.', 'Letra maior, área de leitura mais larga e mais cor nas páginas.'],
@@ -639,6 +641,23 @@ p_indice.paragraph_format.space_after = Pt(12)
 
 # Os parágrafos "." soltos do molde
 tirar_pontos(None)
+
+# Quebras de página: o molde usa parágrafos só com uma quebra no fim de cada secção. Quando o texto
+# enche a página, essa quebra passa para a página seguinte e deixa-a em branco. Por isso troco-as
+# por «quebra de página antes» em cada título principal, e tiro os parágrafos vazios antes dele.
+def vazio(el):
+    return el.tag == qn('w:p') and not ''.join(el.itertext()).strip() and 'w:drawing' not in el.xml and 'w:sectPr' not in el.xml
+
+for el in list(corpo):
+    if vazio(el) and 'w:type="page"' in el.xml:
+        el.getparent().remove(el)
+for par in TITULO_PARS:
+    par.paragraph_format.page_break_before = True
+    anterior = par._p.getprevious()
+    while anterior is not None and vazio(anterior):
+        antes = anterior.getprevious()
+        anterior.getparent().remove(anterior)
+        anterior = antes
 
 # Propriedades do documento
 doc.core_properties.author = NOME
