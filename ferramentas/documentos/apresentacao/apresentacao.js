@@ -257,7 +257,7 @@ async function icone(Componente, cor) {
   s.addText('Dificuldades e aprendizagens', { placeholder: 'title' });
   const blocos = [
     [lu.LuAlertCircle, 'Dificuldades', COR.selo, ['Garantir que o site era bom de ouvir e fácil de ver', 'Testei as vozes no Chrome e no Edge e criei o botão «Devagar»', 'Letra maior e contraste verificado (WCAG 2.2 AA)']],
-    [lu.LuLightbulb, 'O que aprendi', COR.ouro, ['[Por exemplo: organizar um projeto grande por fases]', '[Por exemplo: testar com pessoas reais]']],
+    [lu.LuLightbulb, 'O que aprendi', COR.ouro, ['PHP e back-end: pesquisar antes de programar', 'Ouvir quem testa e mudar, mesmo sem concordar à partida', 'Mais mandarim, ao rever as lições']],
   ];
   for (let i = 0; i < 2; i++) {
     const x = M + i * 6.2;
@@ -266,7 +266,7 @@ async function icone(Componente, cor) {
     texto(s, blocos[i][1], { x: x + 1.4, y: 2.25, w: 4.2, h: 0.65, fontSize: 24, bold: true, valign: 'middle' });
     texto(s, blocos[i][3].map((t, j) => ({ text: t, options: { bullet: true, breakLine: j < blocos[i][3].length - 1 } })), { x: x + 0.4, y: 3.25, w: 5.2, h: 2.8, fontSize: 18, color: COR.tinta, paraSpaceAfter: 10, valign: 'top' });
   }
-  s.addNotes('A minha maior dificuldade foi garantir que o site era bom de ouvir e fácil de ver. Como o site usa a voz do próprio browser, e não gravações, testei as vozes no Chrome e no Edge, configurei o site para escolher sempre a voz de chinês da China continental e acrescentei o botão «Devagar». No visual, pensei nas pessoas com baixa visão: aumentei a letra e verifiquei o contraste de todas as cores, no modo claro e no escuro. Aprendi [duas coisas]. (0:45)');
+  s.addNotes('A minha maior dificuldade foi garantir que o site era bom de ouvir e fácil de ver. Como o site usa a voz do próprio browser, e não gravações, testei as vozes no Chrome e no Edge, configurei o site para escolher sempre a voz de chinês da China continental e acrescentei o botão «Devagar». No visual, pensei nas pessoas com baixa visão: aumentei a letra e verifiquei o contraste de todas as cores, no modo claro e no escuro. Aprendi sobretudo três coisas. Primeiro, PHP e a parte do servidor, que era a que mais me preocupava, porque não é o meu ponto forte: tive de pesquisar bastante antes de programar, senão o projeto nunca teria saído do papel. Segundo, a ouvir as opiniões de quem testa e a mudar o site, mesmo quando, no início, não concordava. E, ao rever as lições, aprendi também mais mandarim. (0:45)');
 
   // ═══ 12. LIMITAÇÕES E TRABALHO FUTURO ═══
   s = pres.addSlide({ masterName: 'CONTEUDO', sectionTitle: 'Apresentação' });

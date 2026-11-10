@@ -33,7 +33,7 @@ const conteudo = [
   p('Este guia prepara-te para explicar o Chá ao júri por palavras tuas. Junta três coisas: um plano de estudo até ao dia da apresentação, o que precisas de saber sobre o projeto (história, funcionalidades, decisões e limitações) e as perguntas mais prováveis, com uma resposta modelo para cada uma.'),
   p('Usa-o junto com o **Guia de Código**: este guia diz o que responder; o Guia de Código mostra onde está cada coisa no código.'),
   caixa('Importante.', 'As respostas modelo não são para decorar palavra a palavra. Lê, percebe a ideia e diz à tua maneira. O júri nota quando alguém recita. Uma resposta simples e certa vale mais do que uma resposta comprida e decorada.'),
-  p('O texto marcado a [[amarelo]] é para completares tu, com coisas que só tu sabes (a tua motivação, quem testou o site).'),
+  p('As partes pessoais (a tua motivação, quem testou o site, a maior dificuldade e o que aprendeste) já estão escritas com as tuas respostas. Lê-as em voz alta e ajusta as palavras até soarem tuas.'),
 
   // ═══ 2 ═══
   h1('2. Plano de estudo até 25 de novembro'),
@@ -66,7 +66,7 @@ const conteudo = [
     '**O que o site tem:** uma rota de 6 cidades (Pequim, Xi\'an, Chengdu, Guilin, Hangzhou e Xangai), com 24 unidades e 72 lições; páginas de sons, gramática, vocabulário, caracteres e cultura; 10 ferramentas de prática e uma biblioteca de recursos gratuitos.',
     '**Como funciona por dentro:** o PHP vai buscar a rota, as lições e as palavras a uma base de dados MySQL com 9 tabelas. O JavaScript faz os exercícios e usa a voz do próprio browser para ler o chinês. Quem cria conta guarda as lições concluídas.',
     '**Cuidados:** segurança (palavras-passe com hash, proteção contra SQL injection, XSS e CSRF, limite de tentativas de login), RGPD (consentimento, idade mínima de 13 anos, direito a apagar a conta) e acessibilidade (contraste, teclado, leitores de ecrã).',
-    '**O que aprendi:** [[uma ou duas frases tuas, por exemplo: organizar um projeto grande, a importância de testar com pessoas reais]].',
+    '**O que aprendi:** PHP e a parte do servidor, a pesquisar antes de programar e a ouvir quem testa o site, mudando mesmo quando no início não concordava.',
   ]),
   h2('3.3 A tua motivação'),
   p('O júri vai quase de certeza perguntar porque escolheste este tema. A tua razão é pessoal, e é isso que a torna forte: sempre te interessaste pela língua e pela cultura chinesas; em 2022 entraste na licenciatura em Tradução e Interpretação de Chinês, em Leiria, mas tiveste de a interromper no fim do primeiro ano, por motivos financeiros e familiares, porque não podias pagar os dois anos de intercâmbio na China. Quando quiseste continuar sozinha, só encontraste conteúdos pagos. Junta a razão prática: há poucos recursos gratuitos em português de Portugal, e quem trabalha precisa de sessões curtas.'),
@@ -141,6 +141,9 @@ const conteudo = [
   h1('7. Perguntas prováveis do júri'),
   p('Organizadas por tema. Começa pelas de segurança (7.4) e pelas difíceis (7.9).'),
   h2('7.1 Sobre o projeto'),
+  ...qa('O que aprendeu com este projeto?', 'Aprendi sobretudo três coisas. Primeiro, PHP e a parte do servidor, que era a que mais me preocupava, porque não é o meu ponto forte: tive de pesquisar bastante antes de programar, senão o projeto nunca teria saído do papel. Segundo, a ouvir as opiniões de quem testa e a mudar o site, mesmo quando, no início, não concordava. E, ao rever as lições, aprendi também mais mandarim.', 'Se te perguntarem por trabalho em equipa, sê honesta: o projeto foi individual; o que aprendeste foi a ouvir as opiniões de quem testou o site.'),
+  ...qa('Quem verificou se o chinês das lições está correto?', 'Fui eu, ao rever as lições, com o que aprendi no primeiro ano da licenciatura em Chinês; aliás, aprendi mais mandarim nesse processo. Mas não sou nativa, e por isso, se o site for publicado, quero que falantes nativos ou licenciados em Chinês revejam as lições e ajudem a criar novas.'),
+  ...qa('Que editor de código usou?', 'O Visual Studio Code: é gratuito, simples de usar e é um dos editores mais usados hoje em dia.'),
   ...qa('Porque escolheu este tema?', 'Porque é a minha história. Comecei a licenciatura em Chinês, tive de a interromper por motivos financeiros e, quando quis continuar sozinha, só encontrei conteúdos pagos. Fiz o site que eu gostava de ter encontrado. E porque quase não há cursos gratuitos de mandarim em português de Portugal, e quem trabalha precisa de algo que caiba em 15 minutos por dia.'),
   ...qa('Porque se chama «Chá»?', 'Por duas razões. A ideia é estudar um pouco todos os dias, no tempo de beber um chá. E a palavra «chá» em português vem do chinês 茶, chá: os portugueses trouxeram-na de Macau no século XVI. Os ingleses dizem «tea» porque a palavra deles veio de outra região da China.'),
   ...qa('A quem se destina o site?', 'A falantes de português de Portugal, a partir dos 13 anos, que queiram começar o mandarim do zero ou rever o básico, sobretudo quem tem pouco tempo.'),
