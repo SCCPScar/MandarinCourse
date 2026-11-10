@@ -424,7 +424,7 @@ def preencher(tabela, linha, texto):
 
 
 preencher(2, 1, 'Chá: aprender mandarim na hora do chá')
-preencher(2, 3, '[[endereço do site online]]  (versão local: http://localhost/cha/)')
+preencher(2, 3, 'cha-mandarim.infinityfreeapp.com  (versão local: http://localhost/cha/)')
 preencher(2, 5, NOME)
 preencher(3, 1, 'Falantes de português, sobretudo residentes em Portugal, a partir dos 13 anos, que queiram começar a aprender mandarim do zero e tenham pouco tempo livre por dia. Não é preciso saber nada de chinês nem criar conta para estudar: a conta é opcional e serve para guardar o progresso.')
 cel = preencher(4, 1, 'Desenvolver um site gratuito, em português de Portugal, que ensine mandarim em sessões curtas de cerca de 15 minutos, através de uma rota por 6 cidades da China organizada pelos níveis HSK. Cada lição tem explicação, palavras e frases com som e um exercício; as ferramentas de prática (quiz, cartões, ordem dos traços, pronúncia, dicionário e caderno) funcionam sem conta. Quem cria conta guarda as lições concluídas na base de dados. O site deve ser seguro, cumprir o RGPD e ser acessível no computador e no telemóvel.')

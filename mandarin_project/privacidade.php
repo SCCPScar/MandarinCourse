@@ -9,7 +9,7 @@ require 'includes/cabecalho.php';
 ?>
 <section class="conta-caixa">
   <h1>Política de Privacidade</h1>
-  <p>Última atualização: 12 de outubro de 2026</p>
+  <p>Última atualização: 10 de novembro de 2026</p>
 
   <h2>Quem é o responsável</h2>
   <p>Scarllett Pena, <a href="mailto:scarllettsabrinapena@gmail.com">scarllettsabrinapena@gmail.com</a>. O Chá é um projeto escolar e gratuito.</p>
@@ -23,8 +23,9 @@ require 'includes/cabecalho.php';
   <h2>O que fica guardado no teu browser</h2>
   <p>Algumas preferências ficam só no teu browser (armazenamento local), e não chegam ao servidor: o modo escuro, o nível que escolheste na primeira visita, e o caderno, as revisões, os dias seguidos e as conquistas dos exercícios das páginas de prática. Podes apagá-las quando quiseres nas definições do browser.</p>
 
-  <h2>Serviços de outras empresas</h2>
-  <p>Na página Caracteres, a animação dos traços usa a biblioteca Hanzi Writer, que o browser descarrega do jsDelivr. Para isso, o jsDelivr recebe o teu endereço IP, como acontece em qualquer site. Nos exercícios de pronúncia, o reconhecimento de voz é feito pelo próprio browser: no Chrome e no Edge, o áudio é enviado para os servidores da Google ou da Microsoft para ser convertido em texto. Só acontece quando carregas no botão do microfone.</p>
+  <h2>Onde ficam os dados e serviços de outras empresas</h2>
+  <p>Os dados das contas ficam guardados no alojamento <strong>InfinityFree</strong>, uma empresa registada nos Países Baixos, que guarda o site e a base de dados nos seus servidores. O serviço gratuito é prestado pela empresa iFastNet Ltd. Estas empresas atuam como subcontratantes (art. 28.º do RGPD): guardam os dados, mas não os podem usar para outros fins. Segundo a política de privacidade da InfinityFree, os dados podem ser tratados fora do Espaço Económico Europeu.</p>
+  <p>A animação dos traços dos caracteres usa a biblioteca Hanzi Writer, que está guardada no próprio site. Só quando um caractere não está no site é que o browser vai buscar os traços ao jsDelivr; nesse caso, o jsDelivr recebe o teu endereço IP, como acontece em qualquer site. Nos exercícios de pronúncia, o reconhecimento de voz é feito pelo próprio browser: no Chrome e no Edge, o áudio é enviado para os servidores da Google ou da Microsoft para ser convertido em texto. Só acontece quando carregas no botão do microfone.</p>
 
   <h2>Base legal</h2>
   <p>O teu consentimento, dado ao criar a conta (art. 6.º, n.º 1, alínea a) do RGPD). Para te registares tens de ter 13 anos ou mais (art. 16.º da Lei n.º 58/2019).</p>

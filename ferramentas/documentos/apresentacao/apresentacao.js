@@ -228,7 +228,7 @@ async function icone(Componente, cor) {
   // ═══ 9. DEMONSTRAÇÃO ═══
   s = pres.addSlide({ masterName: 'SECCAO', sectionTitle: 'Apresentação' });
   s.addText('Demonstração', { placeholder: 'title' });
-  texto(s, '[endereço do site]', { x: M, y: 3.9, w: W - 2 * M, h: 0.6, fontSize: 22, color: COR.jadeClaro, align: 'center' });
+  texto(s, 'cha-mandarim.infinityfreeapp.com', { x: M, y: 3.9, w: W - 2 * M, h: 0.6, fontSize: 22, color: COR.jadeClaro, align: 'center' });
   s.addNotes('Muda para o browser e segue o roteiro da demonstração do guião (4:30): página inicial, a rota, Pequim, lição 1 com som e exercício, concluir lição, cartões e traços, modo escuro, phpMyAdmin com o hash. Se algo falhar, os diapositivos de reserva no fim têm as capturas de cada passo.');
 
   // ═══ 10. TESTES COM UTILIZADORES ═══
