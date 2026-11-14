@@ -56,7 +56,7 @@ const conteudo = [
     '«Bom dia. Chamo-me Scarllett Pena e vou apresentar o meu projeto final do curso de Técnico Especialista em Tecnologias e Programação de Sistemas de Informação: o Chá, um site para aprender mandarim na hora do chá.»',
     'logo a seguir à apresentação.'),
   ...diapositivo(2, 'O problema', '1:00',
-    'Três ideias curtas: «pouco tempo», «poucos recursos em português de Portugal», «o mandarim parece difícil demais».',
+    'Três ideias curtas: «pouco tempo», «poucos cursos gratuitos», «o mandarim parece difícil demais».',
     '«Quem trabalha ou estuda tem pouco tempo livre. Quem quer aprender mandarim encontra sobretudo cursos em inglês ou em português do Brasil, e muitas vezes desiste porque parece difícil demais. Eu própria passei por isto. Em 2022 entrei na licenciatura em Tradução e Interpretação de Chinês, aqui em Leiria, mas tive de parar no fim do primeiro ano para trabalhar, porque não tinha condições para fazer os dois anos de intercâmbio na China. Quis continuar sozinha e só encontrei cursos pagos. Por isso quis criar um curso gratuito, em português de Portugal, que coubesse num intervalo curto do dia.»',
     'quando disseres «intervalo curto do dia».'),
   ...diapositivo(3, 'A ideia e o nome', '1:00',

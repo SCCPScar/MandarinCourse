@@ -19,7 +19,9 @@ A variável `PROJETO` indica a pasta do projeto (por omissão `/home/user/Mandar
 
 A pasta `apresentacao/` gera o ficheiro `docs/entregas/Apresentação - Chá.pptx`.
 
-- `apresentacao.js`: os diapositivos e as notas do orador (os textos do Guião). Usa a biblioteca `pptxgenjs` e os ícones da `react-icons`.
+- `apresentacao.js`: os diapositivos. Usa a biblioteca `pptxgenjs` e os ícones da `react-icons`. O texto chinês e o esquema da base de dados entram como imagens, para aparecerem iguais em qualquer computador.
+- `notas.js`: as notas do orador de cada diapositivo (os textos do Guião).
+- `verificar.py`: mede cada texto com as medidas da letra Calibri e avisa quando um texto não cabe na caixa, quando duas coisas se sobrepõem ou quando algo fica colado à borda. Uso: `python3 verificar.py "Apresentação - Chá.pptx"` (precisa do `python-pptx`).
 - `img/`: as capturas de ecrã do site, tiradas com uma conta de demonstração.
 - `gerar.sh`: cria o ficheiro e as imagens de pré-visualização.
 
