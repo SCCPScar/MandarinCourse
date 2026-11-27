@@ -40,3 +40,13 @@ Ao contrário dos guias, o relatório é escrito **dentro do próprio molde**: a
 
 Uso: `pip install python-docx` e depois `bash relatorio/gerar_relatorio.sh`.
 O texto entre [ ] marcado a amarelo é para a formanda completar no Word.
+
+## Lista de palavras em chinês
+
+A pasta `palavras/` gera `docs/entregas/Palavras em chinês - Chá.pdf`: todas as palavras em chinês do site, com o pinyin e a tradução.
+
+- `extrair.py`: lê as palavras da base de dados (`base_de_dados/cha.sql`), do vocabulário do Praticar (`js/palavras.js`) e das páginas de conteúdo (cartões e tabelas com chinês, pinyin e português).
+- `gerar_html.py`: organiza a lista em três partes (lições, resto do site sem repetições, índice alfabético pelo pinyin).
+- `pdf.js`: transforma o HTML em PDF com o Chromium (precisa do Playwright).
+
+Uso: `bash palavras/gerar.sh`.
